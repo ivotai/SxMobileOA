@@ -41,12 +41,8 @@ class LoginAct : AppCompatActivity() {
             btnLogin.isEnabled = it.result
         }
 
-        btnLogin.clicks().subscribe { login() }
-    }
-
-    private fun login() {
-        LoginFetcher(etAccount.trimText(), etPwd.trimText())
-                .execute()
+        btnLogin.clicks()
+                .flatMap { LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute() }
                 .subscribe(object : Observer<Response> {
                     override fun onComplete() {
                     }
