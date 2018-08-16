@@ -6,7 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
-abstract class BaseFetcher {
+abstract class UseCase {
 
     private val generalApi = ComponentHolder.appComponent.getGeneralApi()
 
@@ -19,7 +19,7 @@ abstract class BaseFetcher {
     // 提交用的字符串
     private fun params() = Params(busiCode, parameters).toString()
 
-    fun start(): Observable<Response> {
+    fun execute(): Observable<Response> {
         return generalApi.get(params())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -2,12 +2,13 @@ package com.unicorn.sxmobileoa.app.chongqing
 
 import java.util.*
 
-class LoginFetcher : BaseFetcher() {
+class LoginUseCase(account: String, pwd: String) : UseCase() {
 
     override val busiCode: String = ""
 
     override val parameters = HashMap<String, Any>().apply {
-        put("", "")
+        put("account", account)
+        put("pwd", pwd)
     }
 
 }
