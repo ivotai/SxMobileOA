@@ -6,7 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
-abstract class UseCase {
+abstract class BaseFetcher {
 
     private val generalApi = ComponentHolder.appComponent.getGeneralApi()
 

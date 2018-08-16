@@ -21,14 +21,12 @@ class Params(val busiCode: String,
     // 随机数
     var randCode = Md5Main.getRandom()
     // 时间
-    var time =                 DateTime().toString(Key.DATE_VALUE_FORMAT)
-
-    var seqM =""
+    var time = DateTime().toString(Key.DATE_VALUE_FORMAT)
+    var seqM = ""
     // md5加密后的字符串
-    var secM =  Md5Main.sign(uuid + busiCode + thirdFlow + appId + randCode + md5key)
+    var secM = Md5Main.sign(uuid + busiCode + thirdFlow + appId + randCode + md5key)
 
-    //
-
+    // TODO 依赖注入 Gson 或尝试 data class
     override fun toString(): String {
         return Gson().toJson(this)
     }

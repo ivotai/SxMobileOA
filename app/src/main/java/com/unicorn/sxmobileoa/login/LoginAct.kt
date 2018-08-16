@@ -6,7 +6,7 @@ import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.chongqing.LoginUseCase
+import com.unicorn.sxmobileoa.app.chongqing.LoginFetcher
 import com.unicorn.sxmobileoa.app.chongqing.Response
 import com.unicorn.sxmobileoa.app.clicks
 import com.unicorn.sxmobileoa.app.trimText
@@ -45,7 +45,7 @@ class LoginAct : AppCompatActivity() {
     }
 
     private fun login() {
-        LoginUseCase(etAccount.trimText(), etPwd.trimText())
+        LoginFetcher(etAccount.trimText(), etPwd.trimText())
                 .execute()
                 .subscribe(object : Observer<Response> {
                     override fun onComplete() {

@@ -8,7 +8,7 @@ class ConfigModule {
 
     @Provides
     @BaseUrl
-    fun baseUrl() = "https://www.apiopen.top/"
+    fun baseUrl() = "http://127.0.0.1:8080/"
 
 }
 
