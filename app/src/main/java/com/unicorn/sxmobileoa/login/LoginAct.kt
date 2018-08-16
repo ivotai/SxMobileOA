@@ -3,11 +3,18 @@ package com.unicorn.sxmobileoa.login
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
+import com.jakewharton.rxbinding2.view.RxView
 import com.jakewharton.rxbinding2.widget.RxTextView
+import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.chongqing.LoginFetcher
+import com.unicorn.sxmobileoa.app.chongqing.Response
 import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.act_login.*
+import java.util.concurrent.TimeUnit
 
 class LoginAct : AppCompatActivity() {
 
@@ -32,8 +39,29 @@ class LoginAct : AppCompatActivity() {
                 }).subscribe {
             validationResult = it
             btnLogin.isEnabled = it.result
-            com.orhanobut.logger.Logger.e(it.toString())
         }
+
+        RxView.clicks(btnLogin)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe { login() }
+    }
+
+    private fun login() {
+        LoginFetcher().start().subscribe(object : Observer<Response> {
+            override fun onComplete() {
+            }
+
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onNext(t: Response) {
+                Logger.e(t.toString())
+            }
+
+            override fun onError(e: Throwable) {
+                Logger.e(e.toString())
+            }
+        })
     }
 
 }
