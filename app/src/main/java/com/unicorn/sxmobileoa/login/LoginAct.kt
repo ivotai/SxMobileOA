@@ -1,9 +1,10 @@
-package com.unicorn.sxmobileoa
+package com.unicorn.sxmobileoa.login
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
+import com.unicorn.sxmobileoa.R
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.act_login.*

@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa
+package com.unicorn.sxmobileoa.app
 
 import android.app.Application
 import com.blankj.utilcode.util.Utils
