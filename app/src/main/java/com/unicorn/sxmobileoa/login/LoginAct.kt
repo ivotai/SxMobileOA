@@ -6,8 +6,8 @@ import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.chongqing.BaseResponse
 import com.unicorn.sxmobileoa.app.chongqing.LoginFetcher
-import com.unicorn.sxmobileoa.app.chongqing.Response
 import com.unicorn.sxmobileoa.app.clicks
 import com.unicorn.sxmobileoa.app.trimText
 import io.reactivex.Observable
@@ -41,16 +41,17 @@ class LoginAct : AppCompatActivity() {
             btnLogin.isEnabled = it.result
         }
 
+        // TODO 测试 faker 登录接口
         btnLogin.clicks()
                 .flatMap { LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute() }
-                .subscribe(object : Observer<Response> {
+                .subscribe(object : Observer<BaseResponse> {
                     override fun onComplete() {
                     }
 
                     override fun onSubscribe(d: Disposable) {
                     }
 
-                    override fun onNext(t: Response) {
+                    override fun onNext(t: BaseResponse) {
                         Logger.e(t.toString())
                     }
 

@@ -65,7 +65,7 @@
 #-keepnames @com.squareup.moshi.JsonClass class *
 
 #model
--keep class com.unicorn.prepare.test.model.**{*;}
+#-keep class com.unicorn.prepare.test.model.**{*;}
 
 #RxCache
 -dontwarn io.rx_cache2.internal.**

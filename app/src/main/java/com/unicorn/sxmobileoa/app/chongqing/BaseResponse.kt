@@ -1,8 +1,6 @@
 package com.unicorn.sxmobileoa.app.chongqing
 
-import com.google.gson.internal.LinkedTreeMap
-
-data class Response(
+data class BaseResponse(
         var code: String,
         var msg: String,
         var busiCode: String,
@@ -13,7 +11,7 @@ data class Response(
         var seqD: String,
         var seqR: String,
         var thirdFlow: String,
-        var parameters: LinkedTreeMap<String, String>? = null
+        var parameters: Any
 ) {
 
     /**

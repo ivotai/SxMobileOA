@@ -9,15 +9,15 @@ import java.util.*
 class Params(val busiCode: String,
              val parameters: HashMap<String, Any>) {
 
-    val uuid = "58e01a1c-56e6-42f2-8725-563dca4b3898"
+    val uuid = "776ef4e7-0edd-467b-9b4c-c33ec3fb4d8a"
     val version = "1.0"
     // 请求业务
     val loginName = ""
-    val appId = "04e8310b-86f0-478c-b102-76f3c0710c00"
+    val appId = "1c7bd52c-1bfe-11e6-b6ba-3e1d05defe78"
     // 64位以内流水号每次访问是唯一的
     var thirdFlow = UUID.randomUUID().toString()
     // 登陆后的返回值用来获取其它参数
-    var ticket = Global.loginResponse?.ticket
+    var ticket = Global.loginResponse?.ticket ?: ""
     // 随机数
     var randCode = Md5Main.getRandom()
     // 时间
@@ -33,7 +33,7 @@ class Params(val busiCode: String,
 
     companion object {
         // md5密钥
-        val md5key = "b6474df096ac3750"
+        val md5key = "8d021e610b57b6f1"
     }
 
 }
