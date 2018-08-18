@@ -7,7 +7,7 @@ import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.clicks
-import com.unicorn.sxmobileoa.test.TestAct
+import com.unicorn.sxmobileoa.general.GeneralAct
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.act_login.*
@@ -55,7 +55,7 @@ class LoginAct : AppCompatActivity() {
 //                    }
 //                })
 
-        btnLogin.clicks().subscribe { startActivity(Intent(this@LoginAct,TestAct::class.java)) }
+        btnLogin.clicks().subscribe { startActivity(Intent(this@LoginAct,GeneralAct::class.java)) }
     }
 
 }

@@ -1,8 +1,9 @@
-package com.unicorn.sxmobileoa.test
+package com.unicorn.sxmobileoa.shouWen
 
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.base.ListFra
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -10,9 +11,9 @@ import kotlinx.android.synthetic.main.fra_general_list.*
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class ShouWenFra : PageFra<ShouWen>() {
+class ShouWenFra : ListFra<ShouWen>() {
 
-    override val layoutID = R.layout.fra_general_list
+    override val layoutId = R.layout.fra_general_list
 
     override val recyclerView1: RecyclerView
         get() = recyclerView

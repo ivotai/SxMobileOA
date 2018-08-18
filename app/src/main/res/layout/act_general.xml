@@ -12,7 +12,6 @@
         android:layout_height="56dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="收文"
         android:textColor="@color/md_white"
         android:textSize="18dp" />
 

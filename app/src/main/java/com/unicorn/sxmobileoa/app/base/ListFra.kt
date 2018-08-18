@@ -1,6 +1,5 @@
-package com.unicorn.sxmobileoa.test
+package com.unicorn.sxmobileoa.app.base
 
-import android.annotation.SuppressLint
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -12,15 +11,15 @@ import io.reactivex.Observer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class PageFra<T> : BaseFra() {
+abstract class ListFra<Model> : BaseFra() {
 
-    abstract val adapter1: BaseQuickAdapter<T, BaseViewHolder>
+    abstract val adapter1: BaseQuickAdapter<Model, BaseViewHolder>
 
     abstract val recyclerView1: RecyclerView
 
     abstract val swipeRefreshLayout1: SwipeRefreshLayout
 
-    abstract fun loadPage(page: Int, rows: Int): Observable<ArrayList<T>>
+    abstract fun loadPage(page: Int, rows: Int): Observable<ArrayList<Model>>
 
     private val rows = 5
 
@@ -45,10 +44,10 @@ abstract class PageFra<T> : BaseFra() {
         loadFirstPage()
     }
 
-    fun loadFirstPage() {
+    private fun loadFirstPage() {
         adapter1.data.clear()
         loadPage(page = pageNo, rows = rows)
-                .subscribe(object :Observer<List<T>>{
+                .subscribe(object : Observer<List<Model>> {
                     override fun onComplete() {
                     }
 
@@ -56,11 +55,10 @@ abstract class PageFra<T> : BaseFra() {
                         compositeDisposable.add(d)
                     }
 
-                    override fun onNext(t: List<T>) {
+                    override fun onNext(it: List<Model>) {
                         swipeRefreshLayout1.isRefreshing = false
 //                        val response = it.response!!
-//                        adapter1.setNewData(response.data.rows)
-                        adapter1.setNewData(t)
+                        adapter1.setNewData(it)
 //                        if (adapter1.data.size == response.data.total) {
 //                            adapter1.loadMoreEnd()
 //                        }
@@ -72,10 +70,9 @@ abstract class PageFra<T> : BaseFra() {
                 })
     }
 
-    @SuppressLint("CheckResult")
     private fun loadNextPage() {
         loadPage(page = pageNo, rows = rows)
-                .subscribe(object :Observer<List<T>>{
+                .subscribe(object : Observer<List<Model>> {
                     override fun onComplete() {
                     }
 
@@ -83,11 +80,10 @@ abstract class PageFra<T> : BaseFra() {
                         compositeDisposable.add(d)
                     }
 
-                    override fun onNext(t: List<T>) {
-                      adapter1.loadMoreComplete()
-                        adapter1.addData(t)
+                    override fun onNext(it: List<Model>) {
+                        adapter1.loadMoreComplete()
+                        adapter1.addData(it)
                         adapter1.notifyDataSetChanged()
-//                        adapter1.notifyDataSetChanged()
 //                        if (adapter1.data.size == response.data.total) {
 //                            adapter1.loadMoreEnd()
 //                        }

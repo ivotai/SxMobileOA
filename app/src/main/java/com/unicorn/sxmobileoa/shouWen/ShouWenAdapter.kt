@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.test
+package com.unicorn.sxmobileoa.shouWen
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -7,6 +7,7 @@ import com.unicorn.sxmobileoa.R
 class ShouWenAdapter: BaseQuickAdapter<ShouWen, BaseViewHolder>(R.layout.item_shou_wen) {
 
     override fun convert(helper: BaseViewHolder, item: ShouWen) {
+        helper.setText(R.id.tv,item.text)
     }
 
 }
