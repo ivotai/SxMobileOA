@@ -10,7 +10,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.unicorn.sxmobileoa"
-        minSdkVersion 15
+        minSdkVersion 17
         //noinspection OldTargetApi
         targetSdkVersion 27
         versionCode 1
