@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.shouWen
+package com.unicorn.sxmobileoa.business.shouWen
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder

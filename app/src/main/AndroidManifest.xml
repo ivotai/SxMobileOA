@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".login.LoginAct">
         </activity>
-        <activity android:name=".general.GeneralAct">
+        <activity android:name="com.unicorn.sxmobileoa.business.shouWen.ShouWenAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

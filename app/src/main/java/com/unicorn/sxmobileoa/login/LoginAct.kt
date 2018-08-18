@@ -7,7 +7,7 @@ import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.clicks
-import com.unicorn.sxmobileoa.general.GeneralAct
+import com.unicorn.sxmobileoa.business.general.GeneralAct
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.act_login.*
