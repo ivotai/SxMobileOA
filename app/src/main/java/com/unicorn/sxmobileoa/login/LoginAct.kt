@@ -1,18 +1,14 @@
 package com.unicorn.sxmobileoa.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
-import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.chongqing.BaseResponse
-import com.unicorn.sxmobileoa.app.chongqing.LoginFetcher
 import com.unicorn.sxmobileoa.app.clicks
-import com.unicorn.sxmobileoa.app.trimText
+import com.unicorn.sxmobileoa.test.TestAct
 import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.act_login.*
 
@@ -41,24 +37,25 @@ class LoginAct : AppCompatActivity() {
             btnLogin.isEnabled = it.result
         }
 
-        // TODO 测试 faker 登录接口
-        btnLogin.clicks()
-                .flatMap { LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute() }
-                .subscribe(object : Observer<BaseResponse> {
-                    override fun onComplete() {
-                    }
+//        btnLogin.clicks()
+//                .flatMap { LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute() }
+//                .subscribe(object : Observer<BaseResponse> {
+//                    override fun onComplete() {
+//                    }
+//
+//                    override fun onSubscribe(d: Disposable) {
+//                    }
+//
+//                    override fun onNext(t: BaseResponse) {
+//                        Logger.e(t.toString())
+//                    }
+//
+//                    override fun onError(e: Throwable) {
+//                        Logger.e(e.toString())
+//                    }
+//                })
 
-                    override fun onSubscribe(d: Disposable) {
-                    }
-
-                    override fun onNext(t: BaseResponse) {
-                        Logger.e(t.toString())
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Logger.e(e.toString())
-                    }
-                })
+        btnLogin.clicks().subscribe { startActivity(Intent(this@LoginAct,TestAct::class.java)) }
     }
 
 }
