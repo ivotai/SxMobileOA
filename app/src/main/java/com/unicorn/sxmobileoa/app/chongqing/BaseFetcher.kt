@@ -18,7 +18,7 @@ abstract class BaseFetcher {
 
     fun execute(): Observable<BaseResponse> {
         val params = Params(busiCode, parameters).toString()
-        return generalApi.get(params)
+        return generalApi.get(params = params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         //                .filter(response -> response.getCode().equals(SUCCESS_CODE))

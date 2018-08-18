@@ -10,7 +10,6 @@ class LoginFetcher(account: String, pwd: String) : BaseFetcher() {
         put("fydm", "R00")
         put("userid", "111")
         put("password", "111")
-//        put("pwd", pwd)
     }
 
 }
