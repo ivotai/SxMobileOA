@@ -27,7 +27,7 @@ abstract class GeneralAct : AppCompatActivity() {
                     val indicator = if (it == 0) indicatorYiBan else indicatorDaiBan
                     val indicatorUnSelect = if (it == 1) indicatorYiBan else indicatorDaiBan
                     indicator.setBackgroundColor(ContextCompat.getColor(this@GeneralAct, R.color.colorPrimary))
-                    indicatorUnSelect.setBackgroundColor(Color.WHITE)
+                    indicatorUnSelect.setBackgroundColor(Color.TRANSPARENT)
                     viewPager.setCurrentItem(it, false)
                 }
     }
