@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/md_white"
-    tools:ignore="SpUsage,HardcodedText">
+    android:orientation="vertical"
+    tools:ignore="SpUsage,HardcodedText,ContentDescription">
 
     <TextView
         android:id="@+id/tvBt"
@@ -23,104 +23,132 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <TextView
-                android:layout_width="64dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="文号"
-                android:textColor="@color/md_grey_400"
-                android:textSize="16dp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvWh"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="文号"
+                    android:textColor="@color/md_grey_400"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tvWh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/md_black"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/md_black"
-                android:textSize="16dp" />
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="拟稿人"
+                    android:textColor="@color/md_grey_400"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tvNgr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/md_black"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="拟稿部门"
+                    android:textColor="@color/md_grey_400"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tvNgbm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/md_black"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="时间"
+                    android:textColor="@color/md_grey_400"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tvSj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/md_black"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="64dp"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="拟稿人"
-                android:textColor="@color/md_grey_400"
-                android:textSize="16dp" />
-
-            <TextView
-                android:id="@+id/tvNgr"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/md_black"
-                android:textSize="16dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+                android:src="@mipmap/sp" />
 
             <TextView
+                android:gravity="center"
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="拟稿部门"
-                android:textColor="@color/md_grey_400"
-                android:textSize="16dp" />
-
-            <TextView
-                android:id="@+id/tvNgbm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/md_black"
-                android:textSize="16dp" />
+                android:text="拟稿人发起申请"
+                android:textSize="14dp" />
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="64dp"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="时间"
-                android:textColor="@color/md_grey_400"
-                android:textSize="16dp" />
-
-            <TextView
-                android:id="@+id/tvSj"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/md_black"
-                android:textSize="16dp" />
-
-        </LinearLayout>
-
 
     </LinearLayout>
 
