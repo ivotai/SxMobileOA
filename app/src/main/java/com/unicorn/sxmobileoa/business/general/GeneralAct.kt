@@ -1,35 +1,45 @@
 package com.unicorn.sxmobileoa.business.general
 
 import android.graphics.Color
-import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import com.jakewharton.rxbinding2.support.v4.view.RxViewPager
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.clicks
 import kotlinx.android.synthetic.main.act_general.*
-import me.yokeyword.fragmentation.SupportActivity
 
-abstract class GeneralAct : SupportActivity() {
+abstract class GeneralAct : BaseAct() {
 
     abstract val title: String
 
     abstract val adapter: GeneralPagerAdapter
+    override val layoutId = R.layout.act_general
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_general)
-
+    override fun initViews() {
         tvTitle.text = title
         viewPager.adapter = adapter
+    }
 
-        tabYiBan.clicks().map { 0 }
-                .mergeWith(tabDaiBan.clicks().map { 1 })
+    private val POS_DAI_BAN = 0
+    private val POS_YI_BAN = 1
+
+    override fun bindIntent() {
+        tabDaiBan.clicks().map { POS_DAI_BAN }
+                .mergeWith(tabYiBan.clicks().map { POS_YI_BAN })
                 .subscribe {
-                    val indicator = if (it == 0) indicatorYiBan else indicatorDaiBan
-                    val indicatorUnSelect = if (it == 1) indicatorYiBan else indicatorDaiBan
-                    indicator.setBackgroundColor(ContextCompat.getColor(this@GeneralAct, R.color.colorPrimary))
-                    indicatorUnSelect.setBackgroundColor(Color.TRANSPARENT)
-                    viewPager.setCurrentItem(it, false)
+                    selectTab(it)
+                    viewPager.currentItem = it
                 }
+
+        RxViewPager.pageSelections(viewPager)
+                .subscribe { selectTab(it) }
+    }
+
+    private fun selectTab(pos: Int) {
+        val colorSelected = ContextCompat.getColor(this@GeneralAct, R.color.colorPrimary)
+        val colorUnSelected = Color.TRANSPARENT
+        indicatorDaiBan.setBackgroundColor(if (pos == POS_DAI_BAN) colorSelected else colorUnSelected)
+        indicatorYiBan.setBackgroundColor(if (pos == POS_YI_BAN) colorSelected else colorUnSelected)
     }
 
 }

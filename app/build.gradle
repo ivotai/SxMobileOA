@@ -55,6 +55,7 @@ dependencies {
     implementation 'com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x'
     implementation 'com.github.VictorAlbertos.Jolyglot:gson:0.0.4'
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-support-v4:2.1.1'
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     implementation files('libs/withub-common-util-1.4.3.jar')
     implementation 'net.danlew:android.joda:2.9.9.4'

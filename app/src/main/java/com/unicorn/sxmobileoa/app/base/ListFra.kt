@@ -45,7 +45,7 @@ abstract class ListFra<Model> : BaseFra() {
     }
 
     private fun loadFirstPage() {
-        adapter1.data.clear()
+
         loadPage(page = pageNo, rows = rows)
                 .subscribe(object : Observer<List<Model>> {
                     override fun onComplete() {
@@ -57,7 +57,8 @@ abstract class ListFra<Model> : BaseFra() {
 
                     override fun onNext(it: List<Model>) {
                         swipeRefreshLayout1.isRefreshing = false
-//                        val response = it.response!!
+//                        adapter1.data.clear()
+//  val response = it.response!!
                         adapter1.setNewData(it)
 //                        if (adapter1.data.size == response.data.total) {
 //                            adapter1.loadMoreEnd()
