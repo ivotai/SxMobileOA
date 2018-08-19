@@ -1,12 +1,13 @@
-package com.unicorn.sxmobileoa.business.shouWen
+package com.unicorn.sxmobileoa.business.shouWen.list
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.chongqing.Key
+import com.unicorn.sxmobileoa.business.shouWen.ShouWen
 import org.joda.time.DateTime
 
-class ShouWenAdapter : BaseQuickAdapter<ShouWen, BaseViewHolder>(R.layout.item_shou_wen) {
+class ShouWenListAdapter : BaseQuickAdapter<ShouWen, BaseViewHolder>(R.layout.item_shou_wen) {
 
     override fun convert(helper: BaseViewHolder, item: ShouWen) {
         item.apply {

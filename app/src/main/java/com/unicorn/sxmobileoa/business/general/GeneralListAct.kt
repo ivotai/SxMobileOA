@@ -6,26 +6,24 @@ import com.jakewharton.rxbinding2.support.v4.view.RxViewPager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.clicks
-import kotlinx.android.synthetic.main.act_general.*
+import kotlinx.android.synthetic.main.act_general_list.*
 
-abstract class GeneralAct : BaseAct() {
+abstract class GeneralListAct : BaseAct() {
 
     abstract val title: String
 
     abstract val adapter: GeneralPagerAdapter
-    override val layoutId = R.layout.act_general
+
+    override val layoutId = R.layout.act_general_list
 
     override fun initViews() {
         tvTitle.text = title
         viewPager.adapter = adapter
     }
 
-    private val POS_DAI_BAN = 0
-    private val POS_YI_BAN = 1
-
     override fun bindIntent() {
-        tabDaiBan.clicks().map { POS_DAI_BAN }
-                .mergeWith(tabYiBan.clicks().map { POS_YI_BAN })
+        tabDaiBan.clicks().map { 0 }
+                .mergeWith(tabYiBan.clicks().map { 1 })
                 .subscribe {
                     selectTab(it)
                     viewPager.currentItem = it
@@ -36,10 +34,10 @@ abstract class GeneralAct : BaseAct() {
     }
 
     private fun selectTab(pos: Int) {
-        val colorSelected = ContextCompat.getColor(this@GeneralAct, R.color.colorPrimary)
+        val colorSelected = ContextCompat.getColor(this@GeneralListAct, R.color.colorPrimary)
         val colorUnSelected = Color.TRANSPARENT
-        indicatorDaiBan.setBackgroundColor(if (pos == POS_DAI_BAN) colorSelected else colorUnSelected)
-        indicatorYiBan.setBackgroundColor(if (pos == POS_YI_BAN) colorSelected else colorUnSelected)
+        indicatorDaiBan.setBackgroundColor(if (pos == 0) colorSelected else colorUnSelected)
+        indicatorYiBan.setBackgroundColor(if (pos == 1) colorSelected else colorUnSelected)
     }
 
 }
