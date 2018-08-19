@@ -47,6 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="待办"
+                    android:textStyle="bold"
                     android:textColor="@color/md_black"
                     android:textSize="18dp" />
 
@@ -88,6 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="已办"
+                    android:textStyle="bold"
                     android:textColor="@color/md_black"
                     android:textSize="18dp" />
 

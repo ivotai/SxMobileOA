@@ -11,9 +11,9 @@
         android:id="@+id/tvBt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="12dp"
         android:textColor="@color/md_black"
-        android:textSize="15dp" />
+        android:textSize="17dp" />
 
     <View
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,12 +32,12 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="64dp"
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="文号"
                 android:textColor="@color/md_grey_400"
-                android:textSize="14dp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/tvWh"
@@ -45,23 +45,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:textColor="@color/md_black"
-                android:textSize="14dp" />
+                android:textSize="16dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="64dp"
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="拟稿人"
                 android:textColor="@color/md_grey_400"
-                android:textSize="14dp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/tvNgr"
@@ -69,23 +69,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:textColor="@color/md_black"
-                android:textSize="14dp" />
+                android:textSize="16dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="64dp"
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="拟稿部门"
                 android:textColor="@color/md_grey_400"
-                android:textSize="14dp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/tvNgbm"
@@ -93,23 +93,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:textColor="@color/md_black"
-                android:textSize="14dp" />
+                android:textSize="16dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="64dp"
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="时间"
                 android:textColor="@color/md_grey_400"
-                android:textSize="14dp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/tvSj"
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:textColor="@color/md_black"
-                android:textSize="14dp" />
+                android:textSize="16dp" />
 
         </LinearLayout>
 
