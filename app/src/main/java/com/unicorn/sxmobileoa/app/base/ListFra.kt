@@ -19,7 +19,7 @@ abstract class ListFra<Model> : BaseFra() {
 
     abstract val swipeRefreshLayout1: SwipeRefreshLayout
 
-    abstract fun loadPage(page: Int, rows: Int): Observable<ArrayList<Model>>
+    abstract fun loadPage(page: Int, rows: Int): Observable<List<Model>>
 
     private val rows = 5
 
