@@ -3,12 +3,12 @@ package com.unicorn.sxmobileoa.business.general
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.clicks
 import kotlinx.android.synthetic.main.act_general.*
+import me.yokeyword.fragmentation.SupportActivity
 
-abstract class GeneralAct : AppCompatActivity() {
+abstract class GeneralAct : SupportActivity() {
 
     abstract val title: String
 

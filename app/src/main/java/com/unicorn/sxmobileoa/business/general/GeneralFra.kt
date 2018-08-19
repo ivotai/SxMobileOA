@@ -13,6 +13,10 @@ abstract class GeneralFra<MODEL> : ListFra<MODEL>() {
         addItemDecoration()
     }
 
+    override fun bindIntent() {
+        // do nothing
+    }
+
     private fun addItemDecoration() {
         // TODO 自定义 ItemDecoration
         HorizontalDividerItemDecoration.Builder(context)

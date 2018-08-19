@@ -40,7 +40,7 @@ abstract class ListFra<Model> : BaseFra() {
         }
     }
 
-    override fun bindIntent() {
+    override fun onSupportVisible() {
         loadFirstPage()
     }
 
