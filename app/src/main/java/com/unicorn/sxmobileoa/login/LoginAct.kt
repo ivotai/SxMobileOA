@@ -46,8 +46,8 @@ class LoginAct : AppCompatActivity() {
 //                    override fun onSubscribe(d: Disposable) {
 //                    }
 //
-//                    override fun onNext(t: BaseResponse) {
-//                        Logger.e(t.toString())
+//                    override fun onNext(actual: BaseResponse) {
+//                        Logger.e(actual.toString())
 //                    }
 //
 //                    override fun onError(e: Throwable) {

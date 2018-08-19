@@ -7,8 +7,8 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.chongqing.Key
 import com.unicorn.sxmobileoa.app.clicks
-import com.unicorn.sxmobileoa.business.flowNode.FlowNodeAct
 import com.unicorn.sxmobileoa.business.shouWen.ShouWen
+import com.unicorn.sxmobileoa.business.shouWen.detail.ShouWenDetailAct
 import org.joda.time.DateTime
 
 class ShouWenAdapter : BaseQuickAdapter<ShouWen, BaseViewHolder>(R.layout.item_shou_wen) {
@@ -22,10 +22,10 @@ class ShouWenAdapter : BaseQuickAdapter<ShouWen, BaseViewHolder>(R.layout.item_s
             helper.setText(R.id.tvSj, DateTime(sj).toString(Key.DATE_VALUE_FORMAT))
         }
 
-        helper.getView<View>(R.id.tvBt)
+        helper.getView<View>(R.id.root)
                 .clicks()
                 .subscribe { _ ->
-                    Intent(mContext, FlowNodeAct::class.java)
+                    Intent(mContext, ShouWenDetailAct::class.java)
                             .let { mContext.startActivity(it) }
                 }
     }

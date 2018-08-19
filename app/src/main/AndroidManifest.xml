@@ -11,17 +11,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
-        <activity android:name=".login.LoginAct"></activity>
-        <activity android:name=".business.shouWen.list.ShouWenAct">
+        android:theme="@style/AppTheme">
+        <activity android:name=".login.LoginAct" />
+        <activity android:name=".business.shouWen.list.ShouWenListAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".business.flowNode.FlowNodeAct"></activity>
+        <activity android:name="com.unicorn.sxmobileoa.business.general.flowNode.FlowNodeAct" />
+        <activity android:name=".business.shouWen.detail.ShouWenDetailAct"></activity>
     </application>
 
 </manifest>

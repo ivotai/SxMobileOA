@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa
 
-import com.unicorn.sxmobileoa.business.flowNode.FlowNode
+import com.unicorn.sxmobileoa.business.general.flowNode.FlowNode
 import com.unicorn.sxmobileoa.business.shouWen.ShouWen
 import io.reactivex.Observable
 import java.util.*
