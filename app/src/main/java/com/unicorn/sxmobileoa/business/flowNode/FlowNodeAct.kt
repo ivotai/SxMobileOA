@@ -8,7 +8,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.act_flow_node.*
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 class FlowNodeAct : BaseAct() {
 
@@ -25,7 +24,7 @@ class FlowNodeAct : BaseAct() {
 
     override fun bindIntent() {
         TestHelper.getFlowNodeObservable()
-                .delay(1, TimeUnit.SECONDS)
+//                .delay(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { flowNodeList ->
@@ -34,6 +33,12 @@ class FlowNodeAct : BaseAct() {
                     return@map list
                 }
                 .subscribe { flowNodeAdapter.setNewData(it) }
+
+
+//    val dialog = BottomSheetDialog(this,0)
+//        val  root = View.inflate(this, R.layout.act_flow_node, null);
+//dialog.setContentView(root)
+//        dialog.show()
     }
 
 }

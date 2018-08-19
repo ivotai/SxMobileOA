@@ -8,6 +8,7 @@
     tools:ignore="HardcodedText,SpUsage,NestedWeights,UseCompoundDrawables,ContentDescription">
 
     <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:text="流程节点"

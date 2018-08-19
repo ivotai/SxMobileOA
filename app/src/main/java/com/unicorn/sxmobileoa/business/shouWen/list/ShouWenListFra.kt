@@ -10,7 +10,6 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fra_general_list.*
-import java.util.concurrent.TimeUnit
 
 class ShouWenListFra : GeneralListFra<ShouWen>() {
 
@@ -22,11 +21,11 @@ class ShouWenListFra : GeneralListFra<ShouWen>() {
     override val swipeRefreshLayout1: SwipeRefreshLayout
         get() = swipeRefreshLayout
 
-    override val adapter1 = ShouWenListAdapter()
+    override val adapter1 = ShouWenAdapter()
 
     override fun loadPage(page: Int, rows: Int): Observable<List<ShouWen>> {
         return TestHelper.getShouWenObservable()
-                .delay(1, TimeUnit.SECONDS)
+//                .delay(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }

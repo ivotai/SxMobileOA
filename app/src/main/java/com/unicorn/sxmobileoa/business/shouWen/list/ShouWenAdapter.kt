@@ -11,7 +11,7 @@ import com.unicorn.sxmobileoa.business.flowNode.FlowNodeAct
 import com.unicorn.sxmobileoa.business.shouWen.ShouWen
 import org.joda.time.DateTime
 
-class ShouWenListAdapter : BaseQuickAdapter<ShouWen, BaseViewHolder>(R.layout.item_shou_wen) {
+class ShouWenAdapter : BaseQuickAdapter<ShouWen, BaseViewHolder>(R.layout.item_shou_wen) {
 
     override fun convert(helper: BaseViewHolder, item: ShouWen) {
         item.apply {
