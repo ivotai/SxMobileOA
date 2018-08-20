@@ -21,7 +21,8 @@ abstract class BaseFetcher<Parameters> {
 
     fun execute(): Observable<Parameters> {
         val params = Params(busiCode, parameters)
-        return generalApi.get(params = params.toString())
+        val json = ComponentHolder.appComponent.getGson().toJson(params)
+        return generalApi.get(json)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .filter { it.code == "000000" }
