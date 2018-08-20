@@ -6,6 +6,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.TestHelper
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.business.general.CheckedWrapper
+import com.unicorn.sxmobileoa.business.general.flowNode.model.FlowNode
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -24,7 +25,7 @@ class FlowNodeAct : BaseAct() {
             flowNodeAdapter.bindToRecyclerView(this)
         }
         HorizontalDividerItemDecoration.Builder(this)
-                .color(ContextCompat.getColor(this, R.color.md_grey_200))
+                .color(ContextCompat.getColor(this, R.color.md_grey_300))
                 .size(1)
                 .build()
                 .let { recyclerView.addItemDecoration(it) }
@@ -40,6 +41,7 @@ class FlowNodeAct : BaseAct() {
                     flowNodeList.forEach { list.add(CheckedWrapper(it)) }
                     return@map list
                 }
+                .doOnNext { it[0].isChecked = true }
                 .subscribe { flowNodeAdapter.setNewData(it) }
 
     }
