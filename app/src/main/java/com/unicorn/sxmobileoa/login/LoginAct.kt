@@ -1,28 +1,32 @@
 package com.unicorn.sxmobileoa.login
 
-import android.content.Intent
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
+import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.clicks
-import com.unicorn.sxmobileoa.business.general.GeneralAct
+import com.unicorn.sxmobileoa.app.trimText
 import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.act_login.*
 
-class LoginAct : AppCompatActivity() {
+class LoginAct : BaseAct() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_login)
-        bindIntent()
+    override val layoutId = R.layout.act_login
+
+    @SuppressLint("SetTextI18n")
+    override fun initViews() {
+        etAccount.setText("审判管理员")
+        etPwd.setText("withub3305")
     }
 
     private lateinit var validationResult: ValidationResult
 
-    private fun bindIntent() {
+    override fun bindIntent() {
         Observable.combineLatest(
                 RxTextView.textChanges(etAccount),
                 RxTextView.textChanges(etPwd),
@@ -37,25 +41,23 @@ class LoginAct : AppCompatActivity() {
             btnLogin.isEnabled = it.result
         }
 
-//        btnLogin.clicks()
-//                .flatMap { LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute() }
-//                .subscribe(object : Observer<BaseResponse> {
-//                    override fun onComplete() {
-//                    }
-//
-//                    override fun onSubscribe(d: Disposable) {
-//                    }
-//
-//                    override fun onNext(actual: BaseResponse) {
-//                        Logger.e(actual.toString())
-//                    }
-//
-//                    override fun onError(e: Throwable) {
-//                        Logger.e(e.toString())
-//                    }
-//                })
+        btnLogin.clicks()
+                .flatMap { LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute() }
+                .subscribe(object : Observer<LoginResponse> {
+                    override fun onComplete() {
+                    }
 
-        btnLogin.clicks().subscribe { startActivity(Intent(this@LoginAct,GeneralAct::class.java)) }
+                    override fun onSubscribe(d: Disposable) {
+                    }
+
+                    override fun onNext(actual: LoginResponse) {
+                        Logger.e(actual.toString())
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Logger.e(e.toString())
+                    }
+                })
     }
 
 }

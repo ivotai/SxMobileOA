@@ -1,7 +1,7 @@
 package com.unicorn.sxmobileoa.app
 
 
-import com.unicorn.sxmobileoa.app.chongqing.LoginResponse
+import com.unicorn.sxmobileoa.login.LoginResponse
 
 object  Global {
 

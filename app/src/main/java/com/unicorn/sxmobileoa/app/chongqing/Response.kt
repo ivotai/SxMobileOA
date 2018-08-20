@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa.app.chongqing
 
-data class BaseResponse(
+data class Response(
         var code: String,
         var msg: String,
         var busiCode: String,
