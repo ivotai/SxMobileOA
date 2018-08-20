@@ -5,6 +5,7 @@ import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.clicks
 import com.unicorn.sxmobileoa.app.trimText
@@ -43,14 +44,15 @@ class LoginAct : BaseAct() {
 
         btnLogin.clicks()
                 .flatMap { LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute() }
-                .subscribe(object : Observer<LoginResponse> {
+                .subscribe(object : Observer<LoginParameters> {
                     override fun onComplete() {
                     }
 
                     override fun onSubscribe(d: Disposable) {
                     }
 
-                    override fun onNext(actual: LoginResponse) {
+                    override fun onNext(actual: LoginParameters) {
+                        Global.LOGIN_PARAMETERS = actual
                         Logger.e(actual.toString())
                     }
 

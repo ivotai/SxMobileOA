@@ -1,11 +1,11 @@
 package com.unicorn.sxmobileoa.login
 
 import com.google.gson.Gson
-import com.unicorn.sxmobileoa.app.chongqing.BaseFetcher
+import com.unicorn.sxmobileoa.app.chongqing.ParametersFetcher
 import com.unicorn.sxmobileoa.app.chongqing.Response
 import java.util.*
 
-class LoginFetcher(account: String, pwd: String) : BaseFetcher<LoginResponse>() {
+class LoginFetcher(account: String, pwd: String) : ParametersFetcher<LoginParameters>() {
 
     override val busiCode: String = "ydbg_userLogin"
 
@@ -15,9 +15,9 @@ class LoginFetcher(account: String, pwd: String) : BaseFetcher<LoginResponse>() 
         put("password", pwd)
     }
 
-    override fun map(response: Response): LoginResponse {
+    override fun map(response: Response): LoginParameters {
         val json = response.parameters.toString()
-        return Gson().fromJson(json, LoginResponse::class.java)
+        return Gson().fromJson(json, LoginParameters::class.java)
     }
 
 }

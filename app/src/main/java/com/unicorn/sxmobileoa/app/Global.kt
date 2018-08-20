@@ -1,10 +1,10 @@
 package com.unicorn.sxmobileoa.app
 
 
-import com.unicorn.sxmobileoa.login.LoginResponse
+import com.unicorn.sxmobileoa.login.LoginParameters
 
 object  Global {
 
-     val loginResponse: LoginResponse? = null
+     var LOGIN_PARAMETERS: LoginParameters? = null
 
 }

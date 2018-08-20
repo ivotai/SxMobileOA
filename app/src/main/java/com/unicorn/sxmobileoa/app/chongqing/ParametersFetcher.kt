@@ -6,7 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
-abstract class BaseFetcher<Parameters> {
+abstract class ParametersFetcher<Parameters> {
 
     // 业务编码
     protected abstract val busiCode: String
@@ -20,12 +20,12 @@ abstract class BaseFetcher<Parameters> {
     private val generalApi = ComponentHolder.appComponent.getGeneralApi()
 
     fun execute(): Observable<Parameters> {
-        val params = Params(busiCode, parameters).toString()
-        return generalApi.get(params = params)
+        val params = Params(busiCode, parameters)
+        return generalApi.get(params = params.toString())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .filter { it.code == "000000" }
-                .map { map(it) }
+                .map(this::map)
     }
 
 }

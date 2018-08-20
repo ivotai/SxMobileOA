@@ -17,7 +17,7 @@ class Params(val busiCode: String,
     // 64位以内流水号每次访问是唯一的
     var thirdFlow = UUID.randomUUID().toString()
     // 登陆后的返回值用来获取其它参数
-    var ticket = Global.loginResponse?.ticket
+    var ticket = Global.LOGIN_PARAMETERS?.ticket
     // 随机数
     var randCode = Md5Main.getRandom()
     // 时间
