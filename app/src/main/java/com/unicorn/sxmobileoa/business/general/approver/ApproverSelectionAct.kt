@@ -5,8 +5,8 @@ import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.TestHelper
 import com.unicorn.sxmobileoa.app.base.BaseAct
-import com.unicorn.sxmobileoa.business.general.CheckedWrapper
 import com.unicorn.sxmobileoa.business.general.approver.model.Approver
+import com.unicorn.sxmobileoa.business.general.checked.CheckedWrapper
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

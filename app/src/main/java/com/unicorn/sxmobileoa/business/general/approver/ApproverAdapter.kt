@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.clicks
-import com.unicorn.sxmobileoa.business.general.CheckedWrapper
+import com.unicorn.sxmobileoa.business.general.checked.CheckedWrapper
 import com.unicorn.sxmobileoa.business.general.approver.model.Approver
 
 class ApproverAdapter : BaseQuickAdapter<CheckedWrapper<Approver>, BaseViewHolder>(R.layout.item_approver_selection) {

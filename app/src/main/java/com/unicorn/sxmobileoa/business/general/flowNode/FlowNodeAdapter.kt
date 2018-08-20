@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.clicks
-import com.unicorn.sxmobileoa.business.general.CheckedWrapper
+import com.unicorn.sxmobileoa.business.general.checked.CheckedWrapper
 import com.unicorn.sxmobileoa.business.general.flowNode.model.FlowNode
 
 class FlowNodeAdapter : BaseQuickAdapter<CheckedWrapper<FlowNode>, BaseViewHolder>(R.layout.item_flow_node) {

@@ -7,7 +7,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.TestHelper
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.clicks
-import com.unicorn.sxmobileoa.business.general.CheckedWrapper
+import com.unicorn.sxmobileoa.business.general.checked.CheckedWrapper
 import com.unicorn.sxmobileoa.business.general.approver.ApproverSelectionAct
 import com.unicorn.sxmobileoa.business.general.flowNode.model.FlowNode
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
