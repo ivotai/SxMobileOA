@@ -6,7 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
-abstract class ParametersFetcher<Parameters> {
+abstract class BaseFetcher<Parameters> {
 
     // 业务编码
     protected abstract val busiCode: String

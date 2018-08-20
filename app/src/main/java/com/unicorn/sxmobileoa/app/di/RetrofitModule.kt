@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.app.di
 
+import com.google.gson.Gson
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import com.unicorn.sxmobileoa.BuildConfig
@@ -20,7 +21,7 @@ class RetrofitModule {
 
     @Singleton
     @Provides
-    fun providerLoggingInterceptor():LoggingInterceptor = LoggingInterceptor.Builder()
+    fun providerLoggingInterceptor(): LoggingInterceptor = LoggingInterceptor.Builder()
             .loggable(BuildConfig.DEBUG)
             .setLevel(Level.BASIC)
             .log(Platform.INFO)
@@ -55,5 +56,9 @@ class RetrofitModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
+
+    @Singleton
+    @Provides
+    fun providerGson(): Gson = Gson()
 
 }
