@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.login
+package com.unicorn.sxmobileoa.login.model
 
 data class LoginParameters(
         val ticket: String,

@@ -5,7 +5,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.chongqing.Key
+import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.clicks
 import com.unicorn.sxmobileoa.business.shouWen.ShouWen
 import com.unicorn.sxmobileoa.business.shouWen.detail.ShouWenDetailAct

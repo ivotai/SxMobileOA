@@ -1,8 +1,9 @@
 package com.unicorn.sxmobileoa.login
 
-import com.unicorn.sxmobileoa.app.chongqing.BaseFetcher
-import com.unicorn.sxmobileoa.app.chongqing.Response
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
+import com.unicorn.sxmobileoa.app.network.BaseFetcher
+import com.unicorn.sxmobileoa.app.network.Response
+import com.unicorn.sxmobileoa.login.model.LoginParameters
 import java.util.*
 
 class LoginFetcher(account: String, pwd: String) : BaseFetcher<LoginParameters>() {

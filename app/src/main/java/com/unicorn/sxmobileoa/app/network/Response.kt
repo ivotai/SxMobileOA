@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.app.chongqing
+package com.unicorn.sxmobileoa.app.network
 
 data class Response(
         var code: String,
@@ -12,20 +12,5 @@ data class Response(
         var seqR: String,
         var thirdFlow: String,
         var parameters: Any
-) {
-
-    /**
-     * code : 000000
-     * msg : 请求成功
-     * busiCode : getFyList
-     * randCode : 92cfb7f8-5c05-42d5-9247-36a67829d5a3
-     * time : 20170622141844
-     * seqM :
-     * secM :
-     * seqD :
-     * seqR :
-     * thirdFlow : 1234567
-     */
-
-}
+)
 

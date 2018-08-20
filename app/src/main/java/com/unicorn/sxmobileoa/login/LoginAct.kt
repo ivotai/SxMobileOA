@@ -1,6 +1,7 @@
 package com.unicorn.sxmobileoa.login
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.orhanobut.logger.Logger
@@ -9,6 +10,9 @@ import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.clicks
 import com.unicorn.sxmobileoa.app.trimText
+import com.unicorn.sxmobileoa.business.shouWen.list.ShouWenListAct
+import com.unicorn.sxmobileoa.login.model.LoginParameters
+import com.unicorn.sxmobileoa.login.model.ValidationResult
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -53,7 +57,7 @@ class LoginAct : BaseAct() {
 
                     override fun onNext(actual: LoginParameters) {
                         Global.LOGIN_PARAMETERS = actual
-                        Logger.e(actual.toString())
+                        startActivity(Intent(this@LoginAct, ShouWenListAct::class.java))
                     }
 
                     override fun onError(e: Throwable) {

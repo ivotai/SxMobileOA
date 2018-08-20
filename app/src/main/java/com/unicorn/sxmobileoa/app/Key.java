@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.app.chongqing;
+package com.unicorn.sxmobileoa.app;
 
 public class Key {
 

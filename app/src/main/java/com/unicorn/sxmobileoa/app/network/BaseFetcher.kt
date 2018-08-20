@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.app.chongqing
+package com.unicorn.sxmobileoa.app.network
 
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import io.reactivex.Observable
