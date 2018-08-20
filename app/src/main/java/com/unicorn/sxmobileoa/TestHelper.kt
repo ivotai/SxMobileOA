@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa
 
+import com.unicorn.sxmobileoa.business.general.approver.model.Approver
 import com.unicorn.sxmobileoa.business.general.flowNode.model.FlowNode
 import com.unicorn.sxmobileoa.business.shouWen.ShouWen
 import io.reactivex.Observable
@@ -28,5 +29,14 @@ object TestHelper {
         it.onComplete()
     }
 
+    fun getApproverObservable(): Observable<List<Approver>> = Observable.create<List<Approver>> {
+        val list = ArrayList<Approver>()
+        list.add(Approver( "罗勇"))
+        list.add(Approver( "李国强"))
+        list.add(Approver( "罗飞明"))
+        list.add(Approver( "赵程"))
+        it.onNext(list)
+        it.onComplete()
+    }
 
 }
