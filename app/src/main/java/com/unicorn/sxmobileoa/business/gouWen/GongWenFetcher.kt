@@ -13,7 +13,7 @@ class GongWenFetcher(val type: String) : BaseFetcher<Any>() {
         put("moduleCode", "OA_FUN_GWGL")
         // 1已办 2待办 6所有待办
         put("type", type)
-        //  TODO
+        //  TODO flowCode 是啥？
         put("flowCode", "")
     }
 
