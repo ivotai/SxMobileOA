@@ -27,4 +27,6 @@ abstract class GeneralListFra<MODEL> : ListFra<MODEL>() {
                 .let { recyclerView1.addItemDecoration(it) }
     }
 
+
+
 }

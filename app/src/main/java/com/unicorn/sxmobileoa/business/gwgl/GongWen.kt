@@ -1,6 +1,6 @@
-package com.unicorn.sxmobileoa.business.shouWen
+package com.unicorn.sxmobileoa.business.gwgl
 
-data class ShouWen(
+data class GongWen(
         val bt: String,
         val wh: String,
         val ngr: String,

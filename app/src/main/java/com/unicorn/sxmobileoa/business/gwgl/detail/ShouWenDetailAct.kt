@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.business.shouWen.detail
+package com.unicorn.sxmobileoa.business.gwgl.detail
 
 import android.content.Intent
 import android.os.Bundle

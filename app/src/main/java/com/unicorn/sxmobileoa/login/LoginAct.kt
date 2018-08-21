@@ -10,7 +10,7 @@ import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.clicks
 import com.unicorn.sxmobileoa.app.trimText
-import com.unicorn.sxmobileoa.business.shouWen.list.ShouWenListAct
+import com.unicorn.sxmobileoa.business.gwgl.GwglAct
 import com.unicorn.sxmobileoa.login.model.LoginParameters
 import com.unicorn.sxmobileoa.login.model.ValidationResult
 import io.reactivex.Observable
@@ -60,7 +60,7 @@ class LoginAct : BaseAct() {
 
                     override fun onNext(t: LoginParameters) {
                         Global.LOGIN_PARAMETERS = t
-                        startActivity(Intent(this@LoginAct, ShouWenListAct::class.java))
+                        startActivity(Intent(this@LoginAct, GwglAct::class.java))
                     }
 
                     override fun onError(e: Throwable) {

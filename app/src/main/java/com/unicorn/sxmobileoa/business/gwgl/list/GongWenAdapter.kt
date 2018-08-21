@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.business.shouWen.list
+package com.unicorn.sxmobileoa.business.gwgl.list
 
 import android.content.Intent
 import android.view.View
@@ -7,13 +7,13 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.clicks
-import com.unicorn.sxmobileoa.business.shouWen.ShouWen
-import com.unicorn.sxmobileoa.business.shouWen.detail.ShouWenDetailAct
+import com.unicorn.sxmobileoa.business.gwgl.GongWen
+import com.unicorn.sxmobileoa.business.gwgl.detail.ShouWenDetailAct
 import org.joda.time.DateTime
 
-class ShouWenAdapter : BaseQuickAdapter<ShouWen, BaseViewHolder>(R.layout.item_shou_wen) {
+class GongWenAdapter : BaseQuickAdapter<GongWen, BaseViewHolder>(R.layout.item_gong_wen) {
 
-    override fun convert(helper: BaseViewHolder, item: ShouWen) {
+    override fun convert(helper: BaseViewHolder, item: GongWen) {
         item.apply {
             helper.setText(R.id.tvBt, bt)
             helper.setText(R.id.tvWh, wh)
