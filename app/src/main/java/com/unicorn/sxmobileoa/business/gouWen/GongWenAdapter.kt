@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.business.gwgl.list
+package com.unicorn.sxmobileoa.business.gouWen
 
 import android.content.Intent
 import android.view.View
@@ -7,8 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.clicks
-import com.unicorn.sxmobileoa.business.gwgl.GongWen
-import com.unicorn.sxmobileoa.business.gwgl.detail.ShouWenDetailAct
+import com.unicorn.sxmobileoa.business.gouWen.detail.ShouWenDetailAct
 import org.joda.time.DateTime
 
 class GongWenAdapter : BaseQuickAdapter<GongWen, BaseViewHolder>(R.layout.item_gong_wen) {

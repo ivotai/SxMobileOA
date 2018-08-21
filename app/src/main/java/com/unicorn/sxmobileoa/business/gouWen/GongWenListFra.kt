@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.business.gwgl.list
+package com.unicorn.sxmobileoa.business.gouWen
 
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
@@ -6,8 +6,6 @@ import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.TestHelper
 import com.unicorn.sxmobileoa.business.general.GeneralListFra
-import com.unicorn.sxmobileoa.business.gwgl.GongWen
-import com.unicorn.sxmobileoa.business.gwgl.GongWenFetcher
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -28,9 +26,8 @@ import kotlinx.android.synthetic.main.fra_general_list.*
     override val adapter1 = GongWenAdapter()
 
     override fun loadPage(page: Int, rows: Int): Observable<List<GongWen>> {
-
-        //
-        GongWenFetcher("1").execute().subscribe(object :Observer<Any>{
+        val type = arguments!!.getString("type")
+        GongWenFetcher(type).execute().subscribe(object :Observer<Any>{
             override fun onComplete() {
             }
 
@@ -46,10 +43,7 @@ import kotlinx.android.synthetic.main.fra_general_list.*
             }
         })
 
-
-
         return TestHelper.getShouWenObservable()
-//                .delay(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }

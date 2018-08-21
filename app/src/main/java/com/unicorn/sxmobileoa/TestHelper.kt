@@ -2,7 +2,7 @@ package com.unicorn.sxmobileoa
 
 import com.unicorn.sxmobileoa.business.general.approver.model.Approver
 import com.unicorn.sxmobileoa.business.general.flowNode.model.FlowNode
-import com.unicorn.sxmobileoa.business.gwgl.GongWen
+import com.unicorn.sxmobileoa.business.gouWen.GongWen
 import io.reactivex.Observable
 import java.util.*
 

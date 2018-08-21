@@ -19,11 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".business.gwgl.GwglAct">
+        <activity android:name=".business.gouWen.GongWenAct">
 
         </activity>
         <activity android:name=".business.general.flowNode.FlowNodeAct" />
-        <activity android:name=".business.gwgl.detail.ShouWenDetailAct" />
+        <activity android:name=".business.gouWen.detail.ShouWenDetailAct" />
         <activity android:name=".business.general.approver.ApproverSelectionAct"></activity>
     </application>
 

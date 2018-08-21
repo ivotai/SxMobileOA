@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".business.gwgl.detail.ShouWenDetailAct">
+    tools:context=".business.gouWen.detail.ShouWenDetailAct">
 
 </android.support.constraint.ConstraintLayout>

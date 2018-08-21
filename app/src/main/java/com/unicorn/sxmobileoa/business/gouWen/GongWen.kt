@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.business.gwgl
+package com.unicorn.sxmobileoa.business.gouWen
 
 data class GongWen(
         val bt: String,

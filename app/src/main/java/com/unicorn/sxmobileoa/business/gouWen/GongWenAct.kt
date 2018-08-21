@@ -1,10 +1,9 @@
-package com.unicorn.sxmobileoa.business.gwgl
+package com.unicorn.sxmobileoa.business.gouWen
 
 import com.unicorn.sxmobileoa.business.general.GeneralAct
 import com.unicorn.sxmobileoa.business.general.GeneralPagerAdapter
-import com.unicorn.sxmobileoa.business.gwgl.list.GongWenListFra
 
-class GwglAct : GeneralAct() {
+class GongWenAct : GeneralAct() {
 
     override val title = "公文管理"
 
