@@ -10,8 +10,14 @@ class ShouWenFetcher: BaseFetcher<Any>() {
     override val busiCode: String = "ydbg_sxYdgbSpdlist"
 
     override val parameters = HashMap<String, Any>().apply {
-        put("moduleCode", "OA_FUN_GWGL_WBFW")
+        put("moduleCode", "OA_FUN_GWGL")
+        // TODO 待办
         put("type", "6")
+
+        // TODO DELETE
+        put("court_code", "M00")
+        put("username", "审判管理员")
+        put("password", "withub3305")
     }
 
     override fun map(response: Response): Any {

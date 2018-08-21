@@ -45,7 +45,6 @@ abstract class ListFra<Model> : BaseFra() {
     }
 
     private fun loadFirstPage() {
-
         loadPage(page = pageNo, rows = rows)
                 .subscribe(object : Observer<List<Model>> {
                     override fun onComplete() {

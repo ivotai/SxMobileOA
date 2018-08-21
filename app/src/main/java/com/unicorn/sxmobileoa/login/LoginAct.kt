@@ -46,8 +46,11 @@ class LoginAct : BaseAct() {
             btnLogin.isEnabled = it.result
         }
 
-        btnLogin.clicks()
-                .flatMap { LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute() }
+        btnLogin.clicks().subscribe { login() }
+    }
+
+    private fun login(){
+        LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute()
                 .subscribe(object : Observer<LoginParameters> {
                     override fun onComplete() {
                     }
@@ -55,8 +58,8 @@ class LoginAct : BaseAct() {
                     override fun onSubscribe(d: Disposable) {
                     }
 
-                    override fun onNext(actual: LoginParameters) {
-                        Global.LOGIN_PARAMETERS = actual
+                    override fun onNext(t: LoginParameters) {
+                        Global.LOGIN_PARAMETERS = t
                         startActivity(Intent(this@LoginAct, ShouWenListAct::class.java))
                     }
 

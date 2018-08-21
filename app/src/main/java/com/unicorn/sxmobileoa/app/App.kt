@@ -2,7 +2,6 @@ package com.unicorn.sxmobileoa.app
 
 import android.app.Application
 import com.blankj.utilcode.util.Utils
-import com.facebook.stetho.Stetho
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 
@@ -16,7 +15,6 @@ class App :Application(){
     private fun init(){
         Logger.addLogAdapter(AndroidLogAdapter())
         Utils.init(this)
-        Stetho.initializeWithDefaults(this)
     }
 
 }

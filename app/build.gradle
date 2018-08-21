@@ -47,8 +47,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-moshi:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation 'com.orhanobut:logger:2.2.0'
-    implementation 'com.facebook.stetho:stetho:1.5.0'
-    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
     implementation 'com.blankj:utilcode:1.17.3'
     implementation 'com.uber.autodispose:autodispose:1.0.0-RC1'
     implementation 'com.uber.autodispose:autodispose-android-archcomponents:1.0.0-RC1'
