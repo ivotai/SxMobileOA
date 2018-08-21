@@ -23,8 +23,7 @@ data class Params(
 ) {
 
     // 登陆后的返回值用来获取其它参数
-    val ticket
-        get() = Global.LOGIN_PARAMETERS?.ticket
+    val ticket = Global.LOGIN_PARAMETERS?.ticket
 
     companion object {
         // md5密钥

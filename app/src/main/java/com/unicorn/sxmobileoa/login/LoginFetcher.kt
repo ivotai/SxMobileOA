@@ -4,16 +4,17 @@ import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseFetcher
 import com.unicorn.sxmobileoa.app.network.Response
 import com.unicorn.sxmobileoa.login.model.LoginParameters
-import java.util.*
 
-class LoginFetcher(account: String, pwd: String) : BaseFetcher<LoginParameters>() {
+class LoginFetcher(val account: String,val pwd: String) : BaseFetcher<LoginParameters>() {
 
     override val busiCode: String = "ydbg_userLogin"
 
-    override val parameters = HashMap<String, Any>().apply {
-        put("court_code", "M00")
-        put("username", account)
-        put("password", pwd)
+    override fun initParameters() {
+        parameters.apply {
+            put("court_code", "M00")
+            put("username", account)
+            put("password", pwd)
+        }
     }
 
     override fun map(response: Response): LoginParameters {

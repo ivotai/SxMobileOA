@@ -46,7 +46,7 @@ class RetrofitModule {
             .addNetworkInterceptor(loggingInterceptor)
             // TODO 可能需要配置更多参数
             .readTimeout(19,TimeUnit.SECONDS)
-            .connectTimeout(100, TimeUnit.SECONDS)
+            .connectTimeout(5, TimeUnit.SECONDS)
             .build()
 
     @Singleton

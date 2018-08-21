@@ -1,11 +1,12 @@
-package com.unicorn.sxmobileoa.business.gouWen
+package com.unicorn.sxmobileoa.business.gwgl.fwlc
 
 import com.unicorn.sxmobileoa.business.general.GeneralAct
 import com.unicorn.sxmobileoa.business.general.GeneralPagerAdapter
+import com.unicorn.sxmobileoa.business.gwgl.GongWenListFra
 
-class GongWenAct : GeneralAct() {
+class FwlcAct : GeneralAct() {
 
-    override val title = "公文管理"
+    override val title = "发文"
 
     override val adapter = object : GeneralPagerAdapter(supportFragmentManager) {
 
