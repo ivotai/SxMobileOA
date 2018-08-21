@@ -6,7 +6,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.base.ListFra
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 
-abstract class GeneralListFra<MODEL> : ListFra<MODEL>() {
+abstract class GeneralListFra<Model> : ListFra<Model>() {
 
     override fun initViews() {
         super.initViews()
