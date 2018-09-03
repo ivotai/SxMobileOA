@@ -28,7 +28,6 @@ abstract class GeneralAct : BaseAct() {
                     selectTab(it)
                     viewPager.currentItem = it
                 }
-
         RxViewPager.pageSelections(viewPager)
                 .subscribe { selectTab(it) }
     }
