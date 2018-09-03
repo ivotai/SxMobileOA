@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/main_margin"
+    tools:ignore="HardcodedText">
+
+    <TextView
+        android:id="@+id/ggxx"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_height"
+        android:background="@color/md_green_50"
+        android:text="公告消息"
+        app:layout_constraintEnd_toStartOf="@+id/xwzx"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/xwzx"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_height"
+        android:layout_marginStart="@dimen/main_margin"
+        android:background="@color/md_red_50"
+        android:text="新闻中心"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/ggxx"
+        app:layout_constraintTop_toTopOf="@+id/ggxx" />
+
+    <TextView
+        android:id="@+id/jddb"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_height"
+        android:layout_marginTop="@dimen/main_margin"
+        android:background="@color/md_green_50"
+        android:text="接待待办"
+        app:layout_constraintEnd_toStartOf="@+id/ycdb"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ggxx" />
+
+    <TextView
+        android:id="@+id/ycdb"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_height"
+        android:layout_marginStart="@dimen/main_margin"
+        android:background="@color/md_green_50"
+        android:text="用车待办"
+        app:layout_constraintEnd_toStartOf="@+id/gcdb"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/jddb"
+        app:layout_constraintTop_toTopOf="@+id/jddb" />
+
+    <TextView
+        android:id="@+id/gcdb"
+        android:layout_width="0dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="@dimen/main_margin"
+        android:background="@color/md_green_50"
+        android:text="公出待办"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/ycdb"
+        app:layout_constraintTop_toTopOf="@+id/jddb" />
+
+    <TextView
+        android:id="@+id/nbsw"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_height"
+        android:layout_marginTop="@dimen/main_margin"
+        android:background="@color/md_green_50"
+        android:text="内部收文"
+        app:layout_constraintEnd_toStartOf="@+id/wbfw"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jddb" />
+
+    <TextView
+        android:id="@+id/wbfw"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_height"
+        android:layout_marginStart="@dimen/main_margin"
+        android:background="@color/md_green_50"
+        android:text="外部发文"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/nbsw"
+        app:layout_constraintTop_toTopOf="@+id/nbsw" />
+
+</android.support.constraint.ConstraintLayout>

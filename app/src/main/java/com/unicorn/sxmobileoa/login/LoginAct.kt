@@ -10,9 +10,9 @@ import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.clicks
 import com.unicorn.sxmobileoa.app.trimText
-import com.unicorn.sxmobileoa.business.gwgl.fwlc.FwlcAct
 import com.unicorn.sxmobileoa.login.model.LoginParameters
 import com.unicorn.sxmobileoa.login.model.ValidationResult
+import com.unicorn.sxmobileoa.remove.business.gwgl.fwlc.FwlcAct
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable

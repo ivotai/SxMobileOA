@@ -1,7 +1,7 @@
 package com.unicorn.sxmobileoa
 
-import com.unicorn.sxmobileoa.business.general.approver.model.Approver
-import com.unicorn.sxmobileoa.business.general.flowNode.model.FlowNode
+import com.unicorn.sxmobileoa.remove.business.general.approver.model.Approver
+import com.unicorn.sxmobileoa.remove.business.general.flowNode.model.FlowNode
 import io.reactivex.Observable
 import java.util.*
 
