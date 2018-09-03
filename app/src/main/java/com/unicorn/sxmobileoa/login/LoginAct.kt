@@ -13,6 +13,7 @@ import com.unicorn.sxmobileoa.app.trimText
 import com.unicorn.sxmobileoa.login.model.LoginParameters
 import com.unicorn.sxmobileoa.login.model.ValidationResult
 import com.unicorn.sxmobileoa.remove.business.gwgl.fwlc.FwlcAct
+import florent37.github.com.rxlifecycle.RxLifecycle.disposeOnDestroy
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -49,8 +50,9 @@ class LoginAct : BaseAct() {
         btnLogin.clicks().subscribe { login() }
     }
 
-    private fun login(){
+    private fun login() {
         LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute()
+                .compose(disposeOnDestroy(this))
                 .subscribe(object : Observer<LoginParameters> {
                     override fun onComplete() {
                     }

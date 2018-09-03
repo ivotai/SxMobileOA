@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
+import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.disposables.CompositeDisposable
@@ -46,6 +47,7 @@ abstract class ListFra<Model> : BaseFra() {
 
     private fun loadFirstPage() {
         loadPage(page = pageNo, rows = rows)
+                .compose(RxLifecycle.disposeOnDestroy(this))
                 .subscribe(object : Observer<List<Model>> {
                     override fun onComplete() {
                     }
@@ -72,6 +74,7 @@ abstract class ListFra<Model> : BaseFra() {
 
     private fun loadNextPage() {
         loadPage(page = pageNo, rows = rows)
+                .compose(RxLifecycle.disposeOnDestroy(this))
                 .subscribe(object : Observer<List<Model>> {
                     override fun onComplete() {
                     }
