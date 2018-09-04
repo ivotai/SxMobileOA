@@ -7,9 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import florent37.github.com.rxlifecycle.RxLifecycle
-import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
+import io.reactivex.Single
 
 abstract class PageFra<Model> : BaseFra() {
 
@@ -19,7 +17,7 @@ abstract class PageFra<Model> : BaseFra() {
 
     abstract val swipeRefreshLayout1: SwipeRefreshLayout
 
-    abstract fun loadPage(page: Int, rows: Int): Observable<List<Model>>
+    abstract fun loadPage(page: Int, rows: Int): Single<List<Model>>
 
     private val rows = 5
 
@@ -45,51 +43,32 @@ abstract class PageFra<Model> : BaseFra() {
     private fun loadFirstPage() {
         loadPage(page = pageNo, rows = rows)
                 .compose(RxLifecycle.disposeOnDestroy(this))
-                .subscribe(object : Observer<List<Model>> {
-                    override fun onComplete() {
-                    }
-
-                    override fun onSubscribe(d: Disposable) {
-                    }
-
-                    override fun onNext(it: List<Model>) {
-                        swipeRefreshLayout1.isRefreshing = false
+                .subscribe({
+                    swipeRefreshLayout1.isRefreshing = false
 //                        adapter1.data.clear()
 //  val response = it.response!!
-                        adapter1.setNewData(it)
+                    adapter1.setNewData(it)
 //                        if (adapter1.data.size == response.data.total) {
 //                            adapter1.loadMoreEnd()
 //                        }
-                    }
+                },{
+                    swipeRefreshLayout1.isRefreshing = false
 
-                    override fun onError(e: Throwable) {
-                        swipeRefreshLayout1.isRefreshing = false
-                    }
                 })
     }
 
     private fun loadNextPage() {
         loadPage(page = pageNo, rows = rows)
                 .compose(RxLifecycle.disposeOnDestroy(this))
-                .subscribe(object : Observer<List<Model>> {
-                    override fun onComplete() {
-                    }
-
-                    override fun onSubscribe(d: Disposable) {
-                    }
-
-                    override fun onNext(it: List<Model>) {
-                        adapter1.loadMoreComplete()
-                        adapter1.addData(it)
-                        adapter1.notifyDataSetChanged()
+                .subscribe({
+                    adapter1.loadMoreComplete()
+                    adapter1.addData(it)
+                    adapter1.notifyDataSetChanged()
 //                        if (adapter1.data.size == response.data.total) {
 //                            adapter1.loadMoreEnd()
 //                        }
-                    }
-
-                    override fun onError(e: Throwable) {
-                        adapter1.loadMoreComplete()
-                    }
+                }, {
+                    adapter1.loadMoreComplete()
                 })
     }
 

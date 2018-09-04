@@ -1,8 +1,10 @@
 package com.unicorn.sxmobileoa.main
 
+import android.content.Intent
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.dblb.DblbAct
 import kotlinx.android.synthetic.main.act_bgsx.*
 
 class BgsxAct : BaseAct() {
@@ -14,7 +16,7 @@ class BgsxAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        jddb.safeClicks().subscribe {  }
+        jddb.safeClicks().subscribe { startActivity(Intent(this, DblbAct::class.java)) }
     }
 
 }
