@@ -8,7 +8,7 @@ import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.base.BaseAct
-import com.unicorn.sxmobileoa.app.clicks
+import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.trimText
 import com.unicorn.sxmobileoa.login.model.LoginParameters
 import com.unicorn.sxmobileoa.login.model.ValidationResult
@@ -47,7 +47,7 @@ class LoginAct : BaseAct() {
             btnLogin.isEnabled = it.result
         }
 
-        btnLogin.clicks().subscribe { login() }
+        btnLogin.safeClicks().subscribe { login() }
     }
 
     private fun login() {
