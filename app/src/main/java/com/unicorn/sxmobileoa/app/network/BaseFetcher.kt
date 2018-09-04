@@ -2,8 +2,6 @@ package com.unicorn.sxmobileoa.app.network
 
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 abstract class BaseFetcher<Parameters> {
@@ -28,11 +26,7 @@ abstract class BaseFetcher<Parameters> {
         initParameters()
         val params = Params(busiCode, parameters)
         val json = ComponentHolder.appComponent.getGson().toJson(params)
-        return generalApi.get(json)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .filter { it.code == "000000" }
-                .map(this::map)
+        return Observable.empty()
     }
 
 }
