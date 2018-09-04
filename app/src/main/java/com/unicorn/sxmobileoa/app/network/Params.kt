@@ -1,6 +1,5 @@
 package com.unicorn.sxmobileoa.app.network
 
-import cn.net.withub.common.util.sec.Md5Main
 import com.unicorn.sxmobileoa.app.Global
 import org.joda.time.DateTime
 import java.util.*
@@ -16,7 +15,7 @@ data class Params(
         // 64位以内流水号每次访问是唯一的
         val thirdFlow: String = UUID.randomUUID().toString(),
         // 随机数
-        val randCode: String = Md5Main.getRandom(),
+//        val randCode: String = Md5Main.getRandom(),
         // 时间
         val time: String = DateTime().toString("yyyy-MM-dd HH:mm:ss"),
         val seqM: String = ""
@@ -31,6 +30,6 @@ data class Params(
     }
 
     // md5加密后的字符串
-    val secM = Md5Main.sign(uuid + busiCode + thirdFlow + appId + randCode + md5key)
+//    val secM = Md5Main.sign(uuid + busiCode + thirdFlow + appId + randCode + md5key)
 
 }

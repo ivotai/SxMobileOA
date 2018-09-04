@@ -5,97 +5,202 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/main_margin"
-    tools:ignore="HardcodedText">
+    tools:ignore="HardcodedText,ContentDescription,SpUsage">
 
-    <TextView
+    <LinearLayout
         android:id="@+id/ggxx"
         android:layout_width="0dp"
         android:layout_height="@dimen/main_height"
-        android:background="@color/md_green_50"
-        android:text="公告消息"
+        android:background="#00C1E2"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/xwzx"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ggxx" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="公告信息"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/main_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/xwzx"
         android:layout_width="0dp"
         android:layout_height="@dimen/main_height"
         android:layout_marginStart="@dimen/main_margin"
-        android:background="@color/md_red_50"
-        android:text="新闻中心"
+        android:background="#2C5CA8"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/ggxx"
-        app:layout_constraintTop_toTopOf="@+id/ggxx" />
+        app:layout_constraintTop_toTopOf="@+id/ggxx">
 
-    <TextView
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/xwzx" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新闻中心"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/main_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/jddb"
         android:layout_width="0dp"
         android:layout_height="@dimen/main_height"
         android:layout_marginTop="@dimen/main_margin"
-        android:background="@color/md_green_50"
-        android:text="接待待办"
+        android:background="#F7B239"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/ycdb"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ggxx" />
+        app:layout_constraintTop_toBottomOf="@+id/ggxx">
 
-    <TextView
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/jddb" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接待待办"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/main_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/ycdb"
         android:layout_width="0dp"
         android:layout_height="@dimen/main_height"
         android:layout_marginStart="@dimen/main_margin"
-        android:background="@color/md_green_50"
-        android:text="用车待办"
+        android:background="#00BE8E"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/gcdb"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/jddb"
-        app:layout_constraintTop_toTopOf="@+id/jddb" />
+        app:layout_constraintTop_toTopOf="@+id/jddb">
 
-    <TextView
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ycdb" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用车待办"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/main_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
         android:id="@+id/gcdb"
+        android:background="#954292"
         android:layout_width="0dp"
-        android:layout_height="63dp"
+        android:layout_height="@dimen/main_height"
         android:layout_marginStart="@dimen/main_margin"
-        android:background="@color/md_green_50"
-        android:text="公出待办"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/ycdb"
-        app:layout_constraintTop_toTopOf="@+id/jddb" />
+        app:layout_constraintTop_toTopOf="@+id/jddb" >
 
-    <TextView
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/gcdb" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="公出待办"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/main_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
         android:id="@+id/nbsw"
         android:layout_width="0dp"
         android:layout_height="@dimen/main_height"
         android:layout_marginTop="@dimen/main_margin"
-        android:background="@color/md_green_50"
-        android:text="内部收文"
         app:layout_constraintEnd_toStartOf="@+id/wbfw"
         app:layout_constraintHorizontal_bias="0.5"
+        android:background="#46B54E"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jddb" />
+        app:layout_constraintTop_toBottomOf="@+id/jddb" >
 
-    <TextView
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/nbsw" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="内部收文"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/main_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
         android:id="@+id/wbfw"
         android:layout_width="0dp"
         android:layout_height="@dimen/main_height"
         android:layout_marginStart="@dimen/main_margin"
-        android:background="@color/md_green_50"
-        android:text="外部发文"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
+        android:background="#E077E0"
         app:layout_constraintStart_toEndOf="@+id/nbsw"
-        app:layout_constraintTop_toTopOf="@+id/nbsw" />
+        app:layout_constraintTop_toTopOf="@+id/nbsw" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/wbfw" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="外部发文"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/main_text_size" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
