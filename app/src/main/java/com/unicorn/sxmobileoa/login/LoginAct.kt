@@ -6,18 +6,16 @@ import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.app.trimText
-import com.unicorn.sxmobileoa.login.model.LoginParameters
 import com.unicorn.sxmobileoa.login.model.ValidationResult
-import com.unicorn.sxmobileoa.remove.business.gwgl.fwlc.FwlcAct
+import com.unicorn.sxmobileoa.main.BgsxAct
 import florent37.github.com.rxlifecycle.RxLifecycle.disposeOnDestroy
 import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.act_login.*
 
 class LoginAct : BaseAct() {
@@ -51,24 +49,17 @@ class LoginAct : BaseAct() {
     }
 
     private fun login() {
-        LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute()
+        Single.just(Any())
                 .compose(disposeOnDestroy(this))
-                .subscribe(object : Observer<LoginParameters> {
-                    override fun onComplete() {
-                    }
-
-                    override fun onSubscribe(d: Disposable) {
-                    }
-
-                    override fun onNext(t: LoginParameters) {
-                        Global.LOGIN_PARAMETERS = t
-                        startActivity(Intent(this@LoginAct, FwlcAct::class.java))
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Logger.e(e.toString())
-                    }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    startActivity(Intent(this@LoginAct, BgsxAct::class.java))
+                }, {
+                    Logger.e(it.toString())
                 })
+
+//        LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute()
     }
 
 }

@@ -2,10 +2,8 @@ package com.unicorn.sxmobileoa.remove.business.general
 
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
-import com.jakewharton.rxbinding2.support.v4.view.RxViewPager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.base.BaseAct
-import com.unicorn.sxmobileoa.app.clicks
 import kotlinx.android.synthetic.main.act_general.*
 
 abstract class GeneralAct : BaseAct() {
@@ -22,14 +20,14 @@ abstract class GeneralAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        tabDaiBan.clicks().map { 0 }
-                .mergeWith(tabYiBan.clicks().map { 1 })
-                .subscribe {
-                    selectTab(it)
-                    viewPager.currentItem = it
-                }
-        RxViewPager.pageSelections(viewPager)
-                .subscribe { selectTab(it) }
+//        tabDaiBan.clicks().map { 0 }
+//                .mergeWith(tabYiBan.clicks().map { 1 })
+//                .subscribe {
+//                    selectTab(it)
+//                    viewPager.currentItem = it
+//                }
+//        RxViewPager.pageSelections(viewPager)
+//                .subscribe { selectTab(it) }
     }
 
     private fun selectTab(pos: Int) {

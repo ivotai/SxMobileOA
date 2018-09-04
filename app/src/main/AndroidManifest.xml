@@ -12,20 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login.LoginAct"></activity>
-
-        <activity android:name=".main.MainAct">
+        <activity android:name=".login.LoginAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.unicorn.sxmobileoa.remove.business.gwgl.fwlc.FwlcAct"></activity>
-        <activity android:name="com.unicorn.sxmobileoa.remove.business.general.flowNode.FlowNodeAct" />
-        <!--<activity android:name=".business.gwgl.detail.ShouWenDetailAct" />-->
-        <activity android:name="com.unicorn.sxmobileoa.remove.business.general.approver.ApproverSelectionAct" />
+        <activity android:name=".main.BgsxAct"></activity>
+        <activity android:name=".remove.business.gwgl.fwlc.FwlcAct" />
+        <activity android:name=".remove.business.general.flowNode.FlowNodeAct" />
+        <!-- <activity android:name=".business.gwgl.detail.ShouWenDetailAct" /> -->
+        <activity android:name=".remove.business.general.approver.ApproverSelectionAct" />
+        <activity android:name=".dblb.DblbAct"></activity>
     </application>
 
 </manifest>

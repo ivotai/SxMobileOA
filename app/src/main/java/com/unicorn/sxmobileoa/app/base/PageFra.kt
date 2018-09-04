@@ -9,10 +9,9 @@ import com.unicorn.sxmobileoa.R
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Observable
 import io.reactivex.Observer
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class ListFra<Model> : BaseFra() {
+abstract class PageFra<Model> : BaseFra() {
 
     abstract val adapter1: BaseQuickAdapter<Model, BaseViewHolder>
 
@@ -26,8 +25,6 @@ abstract class ListFra<Model> : BaseFra() {
 
     private val pageNo
         get() = adapter1.data.size / rows
-
-    private val compositeDisposable = CompositeDisposable()
 
     override fun initViews() {
         swipeRefreshLayout1.setOnRefreshListener { loadFirstPage() }
@@ -53,7 +50,6 @@ abstract class ListFra<Model> : BaseFra() {
                     }
 
                     override fun onSubscribe(d: Disposable) {
-                        compositeDisposable.add(d)
                     }
 
                     override fun onNext(it: List<Model>) {
@@ -80,7 +76,6 @@ abstract class ListFra<Model> : BaseFra() {
                     }
 
                     override fun onSubscribe(d: Disposable) {
-                        compositeDisposable.add(d)
                     }
 
                     override fun onNext(it: List<Model>) {
@@ -96,11 +91,6 @@ abstract class ListFra<Model> : BaseFra() {
                         adapter1.loadMoreComplete()
                     }
                 })
-    }
-
-    override fun onDestroy() {
-        compositeDisposable.dispose()
-        super.onDestroy()
     }
 
 }

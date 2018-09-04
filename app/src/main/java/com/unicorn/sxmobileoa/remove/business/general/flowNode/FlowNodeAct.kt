@@ -1,14 +1,12 @@
 package com.unicorn.sxmobileoa.remove.business.general.flowNode
 
-import android.content.Intent
+//import com.unicorn.sxmobileoa.app.clicks
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.TestHelper
 import com.unicorn.sxmobileoa.app.base.BaseAct
-import com.unicorn.sxmobileoa.app.clicks
 import com.unicorn.sxmobileoa.remove.business.general.checked.CheckedWrapper
-import com.unicorn.sxmobileoa.remove.business.general.approver.ApproverSelectionAct
 import com.unicorn.sxmobileoa.remove.business.general.flowNode.model.FlowNode
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -46,7 +44,7 @@ class FlowNodeAct : BaseAct() {
                 }
                 .doOnNext { it[0].isChecked = true }
                 .subscribe { flowNodeAdapter.setNewData(it) }
-        tvNextStep.clicks().subscribe { startActivity(Intent(this,ApproverSelectionAct::class.java)) }
+//        tvNextStep.clicks().subscribe { startActivity(Intent(this,ApproverSelectionAct::class.java)) }
     }
 
 }

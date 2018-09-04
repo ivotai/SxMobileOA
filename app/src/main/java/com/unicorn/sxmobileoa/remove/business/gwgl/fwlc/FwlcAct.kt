@@ -2,7 +2,7 @@ package com.unicorn.sxmobileoa.remove.business.gwgl.fwlc
 
 import com.unicorn.sxmobileoa.remove.business.general.GeneralAct
 import com.unicorn.sxmobileoa.remove.business.general.GeneralPagerAdapter
-import com.unicorn.sxmobileoa.remove.business.gwgl.GongWenListFra
+import com.unicorn.sxmobileoa.remove.business.gwgl.GongWenPageFra
 
 class FwlcAct : GeneralAct() {
 
@@ -10,7 +10,7 @@ class FwlcAct : GeneralAct() {
 
     override val adapter = object : GeneralPagerAdapter(supportFragmentManager) {
 
-        override fun getListFra() = GongWenListFra()
+        override fun getListFra() = GongWenPageFra()
 
     }
 

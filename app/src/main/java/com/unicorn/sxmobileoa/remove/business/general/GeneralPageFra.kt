@@ -3,10 +3,10 @@ package com.unicorn.sxmobileoa.remove.business.general
 import android.support.v4.content.ContextCompat
 import com.blankj.utilcode.util.ConvertUtils
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.base.ListFra
+import com.unicorn.sxmobileoa.app.base.PageFra
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 
-abstract class GeneralListFra<Model> : ListFra<Model>() {
+abstract class GeneralPageFra<Model> : PageFra<Model>() {
 
     override fun initViews() {
         super.initViews()
