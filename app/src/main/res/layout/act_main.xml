@@ -120,18 +120,18 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
         android:id="@+id/gcdb"
-        android:background="#954292"
         android:layout_width="0dp"
         android:layout_height="@dimen/main_height"
         android:layout_marginStart="@dimen/main_margin"
+        android:background="#954292"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/ycdb"
-        app:layout_constraintTop_toTopOf="@+id/jddb" >
+        app:layout_constraintTop_toTopOf="@+id/jddb">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -148,18 +148,18 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
         android:id="@+id/nbsw"
         android:layout_width="0dp"
         android:layout_height="@dimen/main_height"
         android:layout_marginTop="@dimen/main_margin"
+        android:background="#46B54E"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/wbfw"
         app:layout_constraintHorizontal_bias="0.5"
-        android:background="#46B54E"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jddb" >
+        app:layout_constraintTop_toBottomOf="@+id/jddb">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -176,18 +176,18 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
         android:id="@+id/wbfw"
         android:layout_width="0dp"
         android:layout_height="@dimen/main_height"
         android:layout_marginStart="@dimen/main_margin"
+        android:background="#E077E0"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
-        android:background="#E077E0"
         app:layout_constraintStart_toEndOf="@+id/nbsw"
-        app:layout_constraintTop_toTopOf="@+id/nbsw" >
+        app:layout_constraintTop_toTopOf="@+id/nbsw">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -198,6 +198,90 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="外部发文"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/main_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wply"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_height"
+        android:layout_marginTop="@dimen/main_margin"
+        android:background="#F7B239"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/qjdb"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nbsw">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/wply" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="物品领用"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/main_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/qjdb"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_height"
+        android:layout_marginStart="@dimen/main_margin"
+        android:background="#00BE8E"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/csx"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/wply"
+        app:layout_constraintTop_toTopOf="@+id/wply">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/qjdb" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请假待办"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/main_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/csx"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/main_height"
+        android:layout_marginStart="@dimen/main_margin"
+        android:background="#954292"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/qjdb"
+        app:layout_constraintTop_toTopOf="@+id/qjdb">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/csx" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="超审限"
             android:textColor="@color/md_white"
             android:textSize="@dimen/main_text_size" />
 
