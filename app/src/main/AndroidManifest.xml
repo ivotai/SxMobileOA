@@ -19,12 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.BgsxAct"></activity>
+        <activity android:name=".main.BgsxAct" />
         <activity android:name=".remove.business.gwgl.fwlc.FwlcAct" />
         <activity android:name=".remove.business.general.flowNode.FlowNodeAct" />
         <!-- <activity android:name=".business.gwgl.detail.ShouWenDetailAct" /> -->
         <activity android:name=".remove.business.general.approver.ApproverSelectionAct" />
-        <activity android:name=".dblb.DblbAct"></activity>
+        <activity android:name=".dblb.DblbAct" />
+        <activity android:name=".detail.JddbDetailAct"></activity>
     </application>
 
 </manifest>

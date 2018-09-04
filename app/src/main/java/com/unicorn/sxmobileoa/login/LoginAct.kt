@@ -1,21 +1,15 @@
 package com.unicorn.sxmobileoa.login
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
-import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.login.model.ValidationResult
-import com.unicorn.sxmobileoa.main.BgsxAct
-import florent37.github.com.rxlifecycle.RxLifecycle.disposeOnDestroy
+import com.unicorn.sxmobileoa.login.useCase.LoginUseCase
 import io.reactivex.Observable
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.act_login.*
 
 class LoginAct : BaseAct() {
@@ -49,15 +43,16 @@ class LoginAct : BaseAct() {
     }
 
     private fun login() {
-        Single.just(Any())
-                .compose(disposeOnDestroy(this))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    startActivity(Intent(this@LoginAct, BgsxAct::class.java))
-                }, {
-                    Logger.e(it.toString())
-                })
+        LoginUseCase("sdf","dsf").start()
+//        Single.just(Any())
+//                .compose(disposeOnDestroy(this))
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({
+//                    startActivity(Intent(this@LoginAct, BgsxAct::class.java))
+//                }, {
+//                    Logger.e(it.toString())
+//                })
 
 //        LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute()
     }

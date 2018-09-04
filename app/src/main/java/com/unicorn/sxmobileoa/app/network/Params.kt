@@ -1,6 +1,5 @@
 package com.unicorn.sxmobileoa.app.network
 
-import com.unicorn.sxmobileoa.app.Global
 import org.joda.time.DateTime
 import java.util.*
 
@@ -22,7 +21,7 @@ data class Params(
 ) {
 
     // 登陆后的返回值用来获取其它参数
-    val ticket = Global.LOGIN_PARAMETERS?.ticket
+//    val ticket = Global.LOGIN_PARAMETERS?.ticket
 
     companion object {
         // md5密钥

@@ -1,13 +1,11 @@
 package com.unicorn.sxmobileoa.app.api
 
-import com.unicorn.sxmobileoa.app.network.Response
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.POST
 
 interface GeneralApi {
 
-    @GET("request.shtml")
-    fun get(@Query("params") params: String): Observable<Response>
+    @POST("request.shtml")
+    fun post(params: String): Observable<String>
 
 }

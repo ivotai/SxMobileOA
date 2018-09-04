@@ -1,9 +1,11 @@
 package com.unicorn.sxmobileoa.app
 
-import com.unicorn.sxmobileoa.login.model.LoginParameters
+import com.unicorn.sxmobileoa.login.model.LoginInfo
 
 object  Global {
 
-     var LOGIN_PARAMETERS: LoginParameters? = null
+    val ticket:String? = null
+
+    var loginInfo:LoginInfo? = null
 
 }

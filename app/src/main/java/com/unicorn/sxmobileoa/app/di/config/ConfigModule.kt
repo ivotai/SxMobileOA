@@ -8,7 +8,7 @@ class ConfigModule {
 
     @Provides
     @BaseUrl
-    fun baseUrl() = "http://149.0.40.64:8080/"
+    fun baseUrl() = "http://154.0.66.127:8080/busiGate/"
 
 }
 
