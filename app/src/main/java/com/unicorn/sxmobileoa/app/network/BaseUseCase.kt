@@ -49,7 +49,7 @@ abstract class BaseUseCase<Model> {
             addTag("time", DateTime().toString(Key.DATE_FORMAT))
             addTag("phoneType", "android")
 
-            // parameters start
+            // parameters toSingle
             startTag("", Key.parameters)
 
             // 添加自定义参数
@@ -84,9 +84,9 @@ abstract class BaseUseCase<Model> {
         }
     }
 
-    // ============================ start ============================
+    // ============================ toSingle ============================
 
-    fun start(lifecycleOwner: LifecycleOwner): Single<SimpleResponse<Model>> {
+    fun toSingle(lifecycleOwner: LifecycleOwner): Single<SimpleResponse<Model>> {
         val xml = buildXml()
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), xml)
         return ComponentHolder.appComponent.getGeneralApi().post(requestBody)

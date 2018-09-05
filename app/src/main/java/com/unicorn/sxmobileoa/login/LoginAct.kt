@@ -45,21 +45,16 @@ class LoginAct : BaseAct() {
     }
 
     private fun login() {
-        LoginUseCase(etAccount.trimText(), etPwd.trimText()).start(this)
+        LoginUseCase(etAccount.trimText(), etPwd.trimText())
+                .toSingle(this)
                 .subscribe({
                     Logger.e(it.toString())
                 }, {
                     Logger.e(it.toString())
                 })
-//        Single.just(Any())
-//                .compose(disposeOnDestroy(this))
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe({
-//                    startActivity(Intent(this@LoginAct, BgsxAct::class.java))
-//                }, {
-//                    Logger.e(it.toString())
-//                })
+
+        //                    startActivity(Intent(this@LoginAct, BgsxAct::class.java))
+
     }
 
 }
