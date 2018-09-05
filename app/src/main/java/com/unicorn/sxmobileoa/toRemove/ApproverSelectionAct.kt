@@ -1,11 +1,11 @@
-package com.unicorn.sxmobileoa.remove.business
+package com.unicorn.sxmobileoa.toRemove
 
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.base.BaseAct
-import com.unicorn.sxmobileoa.remove.business.approver.model.Approver
-import com.unicorn.sxmobileoa.remove.business.checked.CheckedWrapper
+import com.unicorn.sxmobileoa.toRemove.business.approver.model.Approver
+import com.unicorn.sxmobileoa.toRemove.checked.CheckedWrapper
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

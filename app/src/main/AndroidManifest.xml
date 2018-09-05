@@ -20,9 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".main.BgsxAct" />
-        <activity android:name=".remove.business.flowNode.FlowNodeAct" />
+        <activity android:name=".toRemove.flowNode.FlowNodeAct" />
         <!-- <activity android:name=".business.gwgl.detail.ShouWenDetailAct" /> -->
-        <activity android:name=".remove.business.ApproverSelectionAct" />
+        <activity android:name=".toRemove.ApproverSelectionAct" />
         <activity android:name=".dblb.DblbAct" />
         <activity android:name=".detail.JddbDetailAct">
 

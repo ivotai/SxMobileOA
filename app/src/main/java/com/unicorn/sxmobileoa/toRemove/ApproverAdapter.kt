@@ -1,11 +1,11 @@
-package com.unicorn.sxmobileoa.remove.business
+package com.unicorn.sxmobileoa.toRemove
 
 import android.widget.CheckBox
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.remove.business.approver.model.Approver
-import com.unicorn.sxmobileoa.remove.business.checked.CheckedWrapper
+import com.unicorn.sxmobileoa.toRemove.business.approver.model.Approver
+import com.unicorn.sxmobileoa.toRemove.checked.CheckedWrapper
 
 class ApproverAdapter : BaseQuickAdapter<CheckedWrapper<Approver>, BaseViewHolder>(R.layout.item_approver_selection) {
 
