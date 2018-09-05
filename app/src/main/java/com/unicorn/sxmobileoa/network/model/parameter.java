@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.login.parse;
+package com.unicorn.sxmobileoa.network.model;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Text;

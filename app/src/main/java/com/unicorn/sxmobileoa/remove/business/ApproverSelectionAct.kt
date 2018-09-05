@@ -1,29 +1,27 @@
-package com.unicorn.sxmobileoa.remove.business.general.flowNode
+package com.unicorn.sxmobileoa.remove.business
 
-//import com.unicorn.sxmobileoa.app.clicks
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.TestHelper
 import com.unicorn.sxmobileoa.app.base.BaseAct
-import com.unicorn.sxmobileoa.remove.business.general.checked.CheckedWrapper
-import com.unicorn.sxmobileoa.remove.business.general.flowNode.model.FlowNode
+import com.unicorn.sxmobileoa.remove.business.approver.model.Approver
+import com.unicorn.sxmobileoa.remove.business.checked.CheckedWrapper
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.act_flow_node.*
+import kotlinx.android.synthetic.main.act_approver_selection.*
 import java.util.*
 
-class FlowNodeAct : BaseAct() {
+class ApproverSelectionAct : BaseAct() {
 
-    override val layoutId = R.layout.act_flow_node
+    override val layoutId = R.layout.act_approver_selection
 
-    private val flowNodeAdapter = FlowNodeAdapter()
+    private val approverAdapter = ApproverAdapter()
 
     override fun initViews() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            flowNodeAdapter.bindToRecyclerView(this)
+            approverAdapter.bindToRecyclerView(this)
         }
         HorizontalDividerItemDecoration.Builder(this)
                 .color(ContextCompat.getColor(this, R.color.md_grey_300))
@@ -33,18 +31,16 @@ class FlowNodeAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        TestHelper.getFlowNodeObservable()
+        TestHelper.getApproverObservable()
 //                .delay(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { flowNodeList ->
-                    val list = ArrayList<CheckedWrapper<FlowNode>>()
+                    val list = ArrayList<CheckedWrapper<Approver>>()
                     flowNodeList.forEach { list.add(CheckedWrapper(it)) }
                     return@map list
                 }
-                .doOnNext { it[0].isChecked = true }
-                .subscribe { flowNodeAdapter.setNewData(it) }
-//        tvNextStep.clicks().subscribe { startActivity(Intent(this,ApproverSelectionAct::class.java)) }
+                .subscribe { approverAdapter.setNewData(it) }
     }
 
 }

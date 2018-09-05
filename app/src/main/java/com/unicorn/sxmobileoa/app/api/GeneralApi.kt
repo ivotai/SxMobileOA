@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa.app.api
 
-import com.unicorn.sxmobileoa.login.parse.Response
+import com.unicorn.sxmobileoa.network.model.Response
 import io.reactivex.Single
 import okhttp3.RequestBody
 import retrofit2.http.Body

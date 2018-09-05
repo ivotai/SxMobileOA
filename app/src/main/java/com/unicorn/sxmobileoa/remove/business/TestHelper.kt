@@ -1,7 +1,7 @@
-package com.unicorn.sxmobileoa
+package com.unicorn.sxmobileoa.remove.business
 
-import com.unicorn.sxmobileoa.remove.business.general.approver.model.Approver
-import com.unicorn.sxmobileoa.remove.business.general.flowNode.model.FlowNode
+import com.unicorn.sxmobileoa.remove.business.approver.model.Approver
+import com.unicorn.sxmobileoa.remove.business.flowNode.model.FlowNode
 import io.reactivex.Observable
 import java.util.*
 
@@ -21,10 +21,10 @@ object TestHelper {
 
     fun getApproverObservable(): Observable<List<Approver>> = Observable.create<List<Approver>> {
         val list = ArrayList<Approver>()
-        list.add(Approver( "罗勇"))
-        list.add(Approver( "李国强"))
-        list.add(Approver( "罗飞明"))
-        list.add(Approver( "赵程"))
+        list.add(Approver("罗勇"))
+        list.add(Approver("李国强"))
+        list.add(Approver("罗飞明"))
+        list.add(Approver("赵程"))
         it.onNext(list)
         it.onComplete()
     }

@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.remove.business.general.flowNode.model
+package com.unicorn.sxmobileoa.remove.business.flowNode.model
 
 data class FlowNode(
         val id:String,

@@ -1,11 +1,11 @@
-package com.unicorn.sxmobileoa.remove.business.general.flowNode
+package com.unicorn.sxmobileoa.remove.business.flowNode
 
 import android.widget.RadioButton
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.remove.business.general.checked.CheckedWrapper
-import com.unicorn.sxmobileoa.remove.business.general.flowNode.model.FlowNode
+import com.unicorn.sxmobileoa.remove.business.checked.CheckedWrapper
+import com.unicorn.sxmobileoa.remove.business.flowNode.model.FlowNode
 
 class FlowNodeAdapter : BaseQuickAdapter<CheckedWrapper<FlowNode>, BaseViewHolder>(R.layout.item_flow_node) {
 
