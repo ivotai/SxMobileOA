@@ -9,7 +9,6 @@ import org.xml.sax.InputSource
 import org.xmlpull.v1.XmlSerializer
 import java.io.StringReader
 import java.io.StringWriter
-import java.util.*
 import javax.xml.parsers.SAXParserFactory
 
 abstract class BaseUseCase {
@@ -33,7 +32,7 @@ abstract class BaseUseCase {
             val dateFormat = "yyyyMMddHHmmss"
             addTag("requestFlow", DateTime().toString(dateFormat) + RandomGeneter.generateString(6))
             addTag("version", AppUtils.getAppVersionName())
-            addTag("UUID", UUID.randomUUID().toString())
+            addTag("UUID", "")
             addTag("busiCode", busiCode)
             addTag("loginName", Global.loginInfo?.loginName ?: "")
             addTag("loginBusiType", Global.loginInfo?.loginBusiType ?: "")
@@ -43,7 +42,7 @@ abstract class BaseUseCase {
             addTag("time", DateTime().toString(dateFormat))
             addTag("phoneType", "android")
 
-            // parameters start
+            // Parameters start
             startTag("", Key.parameters)
 
             // 添加自定义参数
@@ -52,7 +51,7 @@ abstract class BaseUseCase {
             // TODO COURT
             addParameter(Key.fydm, "R00")
 
-            // parameters end
+            // Parameters end
             endTag("", Key.parameters)
 
             // request end

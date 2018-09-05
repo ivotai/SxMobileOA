@@ -25,7 +25,9 @@
         <!-- <activity android:name=".business.gwgl.detail.ShouWenDetailAct" /> -->
         <activity android:name=".remove.business.general.approver.ApproverSelectionAct" />
         <activity android:name=".dblb.DblbAct" />
-        <activity android:name=".detail.JddbDetailAct"></activity>
+        <activity android:name=".detail.JddbDetailAct">
+
+        </activity>
     </application>
 
 </manifest>

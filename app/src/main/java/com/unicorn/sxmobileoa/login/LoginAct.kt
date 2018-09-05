@@ -41,9 +41,8 @@ class LoginAct : BaseAct() {
 
         btnLogin.safeClicks().subscribe { login() }
     }
-
     private fun login() {
-        LoginUseCase("sdf","dsf").start()
+        LoginUseCase("0000","withub4l").start()
 //        Single.just(Any())
 //                .compose(disposeOnDestroy(this))
 //                .subscribeOn(Schedulers.io())

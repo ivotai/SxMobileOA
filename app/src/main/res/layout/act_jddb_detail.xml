@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:ignore="HardcodedText,SpUsage">
+    tools:ignore="HardcodedText,SpUsage,RtlSymmetry">
 
     <com.unicorn.sxmobileoa.app.TitleBar
         android:id="@+id/titleBar"
@@ -20,21 +20,20 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/md_grey_600"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/md_grey_400"
+            android:orientation="vertical"
+            android:padding="1px">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="1px"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="120dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="1px"
-                    android:background="@color/md_grey_50"
+                    android:background="@color/md_grey_100"
                     android:gravity="center"
                     android:text="陪同人员"
                     android:textColor="@color/md_black"
@@ -43,10 +42,80 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="1px"
                     android:layout_weight="1"
+                    android:background="@color/md_white"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
                     android:text="苏夏 詹光喜"
                     android:textColor="@color/md_black"
                     android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="1px"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/md_grey_100"
+                    android:gravity="center"
+                    android:text="来访事由"
+                    android:textColor="@color/md_black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1px"
+                    android:layout_weight="1"
+                    android:background="@color/md_white"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:text="来访事由、时间及行程安排"
+                    android:textColor="@color/md_black"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/adViceContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="1px"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/md_grey_100"
+                        android:gravity="center"
+                        android:text="部门领导\n意见"
+                        android:textColor="@color/md_black"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="1px"
+                        android:layout_weight="1"
+                        android:background="@color/md_white"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:text="来访事由、时间及行程安排"
+                        android:textColor="@color/md_black"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
