@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.app
+package com.unicorn.sxmobileoa.app.ui
 
 import android.content.Context
 import android.util.AttributeSet

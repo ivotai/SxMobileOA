@@ -45,7 +45,7 @@ class LoginAct : BaseAct() {
     }
 
     private fun login() {
-        LoginUseCase(etAccount.trimText(), etPwd.trimText()).start()
+        LoginUseCase(etAccount.trimText(), etPwd.trimText()).start(this)
                 .subscribe({
                     Logger.e(it.toString())
                 }, {
@@ -60,8 +60,6 @@ class LoginAct : BaseAct() {
 //                }, {
 //                    Logger.e(it.toString())
 //                })
-
-//        LoginFetcher(etAccount.trimText(), etPwd.trimText()).execute()
     }
 
 }

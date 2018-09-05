@@ -1,15 +1,17 @@
-package com.unicorn.sxmobileoa.network
+package com.unicorn.sxmobileoa.app.network
 
+import android.arch.lifecycle.LifecycleOwner
 import android.util.Xml
 import com.blankj.utilcode.util.AppUtils
 import com.google.gson.reflect.TypeToken
-import com.unicorn.sxmobileoa.app.CommonTransformer
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
-import com.unicorn.sxmobileoa.login.RandomGeneter
-import com.unicorn.sxmobileoa.login.useCase.SimpleResponse
-import com.unicorn.sxmobileoa.network.model.Response
+import com.unicorn.sxmobileoa.app.network.model.Response
+import com.unicorn.sxmobileoa.app.network.model.SimpleResponse
+import com.unicorn.sxmobileoa.app.union.CommonTransformer
+import com.unicorn.sxmobileoa.app.union.RandomGeneter
+import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Single
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -22,15 +24,6 @@ abstract class BaseUseCase<Model> {
     abstract val busiCode: String
 
     abstract fun addParameters()
-
-    fun map(result: String): Model {
-        val gson = ComponentHolder.appComponent.getGson()
-        val token = object : TypeToken<Model>() {
-
-        }.type
-        val t = gson.fromJson<Model>(result, token)
-        return t;
-    }
 
 
     // ============================ buildXml ============================
@@ -92,29 +85,37 @@ abstract class BaseUseCase<Model> {
         }
     }
 
-    fun start(): Single<SimpleResponse<Model>> {
+
+    // ============================ start ============================
+
+    fun start(lifecycleOwner:LifecycleOwner): Single<SimpleResponse<Model>> {
         val xml = buildXml()
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), xml)
         return ComponentHolder.appComponent.getGeneralApi().post(requestBody)
                 .compose(CommonTransformer())
-                .map(this::map)
-
+                .compose(RxLifecycle.disposeOnDestroy(lifecycleOwner))
+                .map(this::toSimpleResponse)
     }
 
-    fun map(original: Response) = SimpleResponse<Model>(original.code, original.msg).apply {
+    fun toSimpleResponse(original: Response) = SimpleResponse<Model>(original.code, original.msg).apply {
         if (original.parameters != null) {
-            original.parameters.parameterList.forEach {
-                if (it.name == "key") {
-                    Global.ticket = it.text
-                }
-                if (it.name == "message") {
-                    message = it.text
-                }
-                if (it.name == "result") {
-                    result = map(it.text)
+            original.parameters.parameterList.forEach { parameter ->
+                when (parameter.name) {
+                    "key" -> Global.ticket = parameter.text
+                    "message" -> message = parameter.text
+                    "result" -> result = toModel(parameter.text)
                 }
             }
         }
+    }
+
+    fun toModel(result: String): Model {
+        val gson = ComponentHolder.appComponent.getGson()
+        val token = object : TypeToken<Model>() {
+
+        }.type
+        val t = gson.fromJson<Model>(result, token)
+        return t;
     }
 
 }

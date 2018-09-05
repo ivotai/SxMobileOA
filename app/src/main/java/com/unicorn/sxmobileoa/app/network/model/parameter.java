@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.network.model;
+package com.unicorn.sxmobileoa.app.network.model;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Text;

@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.login.useCase
+package com.unicorn.sxmobileoa.app.network.model
 
 data class SimpleResponse<Model>(
         val code: String,

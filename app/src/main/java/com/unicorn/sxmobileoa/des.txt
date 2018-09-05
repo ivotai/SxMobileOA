@@ -1,17 +1,19 @@
-1. postman -> ok
-2. okhttp -> ok
-3. retrofit responseBody -> ok
-4. simple xml 转换 -> ok
-5. retrofit simple xml -> ok
-6. parameter null -> ok
-
 
 有空看:
 1. act fra 抽象一致可行？
 
-
 log:
 2018/9/4：陕西的交互要拼一套xml。
+2018/9/5：通信完成大部分。
+
+record
+9/5 如何获取 xml 并转化为实体？
+1. postman -> ok
+2. okhttp -> ok
+3. retrofit 使用 responseBody 做返回值 -> ok
+4. 利用 simple xml 将 string 转化为实体 -> ok
+5. 使用 retrofit simple xml 转换器 -> ok
+6. 对象某些字段可以为空 -> ok
 
 
 
