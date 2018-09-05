@@ -25,7 +25,6 @@ abstract class BaseUseCase<Model> {
 
     abstract fun addParameters()
 
-
     // ============================ buildXml ============================
 
     private lateinit var serializer: XmlSerializer
@@ -85,10 +84,9 @@ abstract class BaseUseCase<Model> {
         }
     }
 
-
     // ============================ start ============================
 
-    fun start(lifecycleOwner:LifecycleOwner): Single<SimpleResponse<Model>> {
+    fun start(lifecycleOwner: LifecycleOwner): Single<SimpleResponse<Model>> {
         val xml = buildXml()
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), xml)
         return ComponentHolder.appComponent.getGeneralApi().post(requestBody)
@@ -97,14 +95,12 @@ abstract class BaseUseCase<Model> {
                 .map(this::toSimpleResponse)
     }
 
-    fun toSimpleResponse(original: Response) = SimpleResponse<Model>(original.code, original.msg).apply {
-        if (original.parameters != null) {
-            original.parameters.parameterList.forEach { parameter ->
-                when (parameter.name) {
-                    "key" -> Global.ticket = parameter.text
-                    "message" -> message = parameter.text
-                    "result" -> result = toModel(parameter.text)
-                }
+    private fun toSimpleResponse(original: Response) = SimpleResponse<Model>(original.code, original.msg).apply {
+        original.parameters?.parameterList?.forEach { parameter ->
+            when (parameter.name) {
+                "key" -> Global.ticket = parameter.text
+                "message" -> message = parameter.text
+                "result" -> result = toModel(parameter.text)
             }
         }
     }
@@ -115,7 +111,7 @@ abstract class BaseUseCase<Model> {
 
         }.type
         val t = gson.fromJson<Model>(result, token)
-        return t;
+        return t
     }
 
 }
