@@ -36,7 +36,7 @@ abstract class PageFra<Model> : BaseFra() {
         }
     }
 
-    override fun onSupportVisible() {
+    override fun bindIntent() {
         loadFirstPage()
     }
 
@@ -51,7 +51,7 @@ abstract class PageFra<Model> : BaseFra() {
 //                        if (adapter1.data.size == response.data.total) {
 //                            adapter1.loadMoreEnd()
 //                        }
-                },{
+                }, {
                     swipeRefreshLayout1.isRefreshing = false
 
                 })

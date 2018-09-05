@@ -1,9 +1,9 @@
 package com.unicorn.sxmobileoa.app.base
 
 import android.os.Bundle
-import me.yokeyword.fragmentation.SupportActivity
+import android.support.v7.app.AppCompatActivity
 
-abstract class BaseAct : SupportActivity() {
+abstract class BaseAct : AppCompatActivity() {
 
      override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -49,6 +49,7 @@ class RetrofitModule {
             .connectTimeout(1, TimeUnit.SECONDS)
             .build()
 
+    @Suppress("DEPRECATION")
     @Singleton
     @Provides
     fun provideRetrofit(@BaseUrl baseUrl: String, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()

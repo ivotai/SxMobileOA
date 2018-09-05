@@ -31,7 +31,8 @@ abstract class BaseUseCase<Model> {
 
     private fun buildXml(): String {
         val stringWriter = StringWriter()
-        serializer = Xml.newSerializer().apply {
+        serializer = Xml.newSerializer()
+        serializer.apply {
             setOutput(stringWriter)
 
             startDocument("UTF-8", true)
