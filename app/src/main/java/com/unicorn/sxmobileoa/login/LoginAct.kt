@@ -3,9 +3,11 @@ package com.unicorn.sxmobileoa.login
 import android.annotation.SuppressLint
 import android.text.TextUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
+import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.app.trimText
 import com.unicorn.sxmobileoa.login.model.ValidationResult
 import com.unicorn.sxmobileoa.login.useCase.LoginUseCase
 import io.reactivex.Observable
@@ -18,8 +20,8 @@ class LoginAct : BaseAct() {
 
     @SuppressLint("SetTextI18n")
     override fun initViews() {
-        etAccount.setText("审判管理员")
-        etPwd.setText("withub3305")
+        etAccount.setText("0000")
+        etPwd.setText("withub4l")
     }
 
     private lateinit var validationResult: ValidationResult
@@ -41,8 +43,14 @@ class LoginAct : BaseAct() {
 
         btnLogin.safeClicks().subscribe { login() }
     }
+
     private fun login() {
-        LoginUseCase("0000","withub4l").start()
+        LoginUseCase(etAccount.trimText(), etPwd.trimText()).start()
+                .subscribe({
+                    Logger.e(it.toString())
+                }, {
+
+                })
 //        Single.just(Any())
 //                .compose(disposeOnDestroy(this))
 //                .subscribeOn(Schedulers.io())

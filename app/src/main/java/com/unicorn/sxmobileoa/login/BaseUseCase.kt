@@ -4,6 +4,13 @@ import android.util.Xml
 import com.blankj.utilcode.util.AppUtils
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.di.ComponentHolder
+import com.unicorn.sxmobileoa.login.parse.Response
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import org.joda.time.DateTime
 import org.xml.sax.InputSource
 import org.xmlpull.v1.XmlSerializer
@@ -61,6 +68,17 @@ abstract class BaseUseCase {
         }
 
         return stringWriter.toString()
+    }
+
+
+    fun start():Single<Response> {
+        val api = ComponentHolder.appComponent.getGeneralApi()
+        val xml = buildXml()
+        val requestBody = RequestBody.create(MediaType.parse("text/xml"), xml)
+        return api.post(requestBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+
     }
 
     fun parseXml(xml:String){

@@ -2,6 +2,9 @@
 2. okhttp -> ok
 3. retrofit responseBody -> ok
 4. simple xml 转换 -> ok
+5. retrofit simple xml -> ok
+6. parameter null -> ok
+
 
 有空看:
 1. act fra 抽象一致可行？
@@ -9,3 +12,18 @@
 
 log:
 2018/9/4：陕西的交互要拼一套xml。
+
+
+
+//        Thread {
+//            val url = "http://154.0.66.127:80/busiGate/request.shtml"
+//            val mediaType = MediaType.parse("text/xml")
+//            val xml  = buildXml()
+//            val body = RequestBody.create(mediaType, xml)
+//            val request = Request.Builder()
+//                    .url(url)
+//                    .post(body)
+//                    .build()
+//            val response = OkHttpClient().newCall(request).execute()
+//            Logger.e(response.body()!!.string())
+//        }.start()
