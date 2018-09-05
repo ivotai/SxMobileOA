@@ -49,7 +49,7 @@ class LoginAct : BaseAct() {
                 .subscribe({
                     Logger.e(it.toString())
                 }, {
-
+                    Logger.e(it.toString())
                 })
 //        Single.just(Any())
 //                .compose(disposeOnDestroy(this))

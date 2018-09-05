@@ -1,1 +1,13 @@
-<?xml version='1.0' encoding='UTF-8' standalone='yes' ?><request><requestFlow>201809050214345gRGYX</requestFlow><version>1.0</version><UUID></UUID><busiCode>oalogin</busiCode><loginName></loginName><loginBusiType></loginBusiType><ticket></ticket><randCode>mLLTwIpWLSTA</randCode><randCodeSec></randCodeSec><time>20180905021435</time><phoneType>android</phoneType><parameters><parameter name="userName"><![CDATA[0000]]></parameter><parameter name="passWord"><![CDATA[withub4l]]></parameter><parameter name="fydm"><![CDATA[R00]]></parameter></parameters></request>
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <code>OA0001</code>
+    <msg>用户名或者密码错误</msg>
+    <randCode>uOBekN</randCode>
+    <randCodeSec></randCodeSec>
+    <loginBusiType></loginBusiType>
+    <time>20180905155151</time>
+    <seqM></seqM>
+    <secM><![CDATA[]]></secM>
+    <seqD></seqD>
+    <seqR></seqR>
+</response>

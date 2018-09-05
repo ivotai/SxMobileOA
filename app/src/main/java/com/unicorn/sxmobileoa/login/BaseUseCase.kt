@@ -5,7 +5,6 @@ import com.blankj.utilcode.util.AppUtils
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
-import com.unicorn.sxmobileoa.login.parse.Response
 import com.unicorn.sxmobileoa.login.useCase.SimpleResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -78,10 +77,28 @@ abstract class BaseUseCase<Model> {
         return api.post(requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(this::map)
+                .map{ response ->
+                    val simpleResponse = SimpleResponse<Model>(response.code, response.msg)
+                    if (response.parameters != null) {
+                        response.parameters.parameters.forEach {
+                            if (it != null) {
+                                if (it.name == "key") {
+                                    Global.ticket = it.text
+                                }
+                                if (it.name == "message") {
+                                    simpleResponse.message = it.text
+                                }
+                                if (it.name == "result") {
+                                    simpleResponse.result = map(it.text)
+                                }
+                            }
+                        }
+                    }
+                    return@map simpleResponse
+                }
     }
 
-    abstract fun map(response: Response): SimpleResponse<Model>
+    abstract fun map(result: String): Model
 
     fun parseXml(xml: String) {
         val saxParser = SAXParserFactory.newInstance().newSAXParser()

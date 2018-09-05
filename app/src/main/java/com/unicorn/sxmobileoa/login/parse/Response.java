@@ -12,6 +12,7 @@ public class Response {
     private String secM;
     private String seqD;
     private String seqR;
+
     private Parameters parameters;
 
     //
@@ -103,4 +104,5 @@ public class Response {
     public void setSeqR(String seqR) {
         this.seqR = seqR;
     }
+
 }
