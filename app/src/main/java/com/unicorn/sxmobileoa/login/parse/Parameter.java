@@ -6,8 +6,8 @@ import org.simpleframework.xml.Text;
 public class Parameter {
 
     @Attribute
-    private String name;
+    public String name;
 
     @Text
-    private String text ;
+    public String text ;
 }

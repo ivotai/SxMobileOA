@@ -6,6 +6,7 @@ import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.login.parse.Response
+import com.unicorn.sxmobileoa.login.useCase.SimpleResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -18,7 +19,7 @@ import java.io.StringReader
 import java.io.StringWriter
 import javax.xml.parsers.SAXParserFactory
 
-abstract class BaseUseCase {
+abstract class BaseUseCase<Model> {
 
     abstract val busiCode: String
 
@@ -70,23 +71,24 @@ abstract class BaseUseCase {
         return stringWriter.toString()
     }
 
-
-    fun start():Single<Response> {
+    fun start(): Single<SimpleResponse<Model>> {
         val api = ComponentHolder.appComponent.getGeneralApi()
         val xml = buildXml()
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), xml)
         return api.post(requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-
+                .map(this::map)
     }
 
-    fun parseXml(xml:String){
-        val saxParser  = SAXParserFactory.newInstance().newSAXParser()
+    abstract fun map(response: Response): SimpleResponse<Model>
+
+    fun parseXml(xml: String) {
+        val saxParser = SAXParserFactory.newInstance().newSAXParser()
         val xmlReader = saxParser.xmlReader
 //        reader.contentHandler =
 
-    val stringReader = StringReader(xml)
+        val stringReader = StringReader(xml)
         xmlReader.parse(InputSource(stringReader))
 
 
