@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.login;
+package com.unicorn.sxmobileoa.app.union;
 
 import java.util.Random;
 
