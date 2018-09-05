@@ -1,7 +1,7 @@
 1. postman -> ok
 2. okhttp -> ok
 3. retrofit responseBody -> ok
-
+4. simple xml 转换 -> ok
 
 有空看:
 1. act fra 抽象一致可行？

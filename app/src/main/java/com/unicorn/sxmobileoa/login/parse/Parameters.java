@@ -8,7 +8,7 @@ import java.util.List;
 @Root(name = "parameters")
 public class Parameters {
 
-    @ElementList(entry = "Parameter",inline = true)
+    @ElementList(entry = "parameter",inline = true)
     public List<Parameter> parameters;
 
 }
