@@ -80,7 +80,7 @@ abstract class BaseUseCase<Model> {
                 .map{ response ->
                     val simpleResponse = SimpleResponse<Model>(response.code, response.msg)
                     if (response.parameters != null) {
-                        response.parameters.parameters.forEach {
+                        response.parameters.parameterList.forEach {
                             if (it != null) {
                                 if (it.name == "key") {
                                     Global.ticket = it.text
