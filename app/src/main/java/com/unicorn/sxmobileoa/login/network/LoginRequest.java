@@ -6,8 +6,8 @@ public class LoginRequest extends request {
 
     public LoginRequest(String username, String password) {
         super("oalogin");
-        put("userName", username);
-        put("passWord", password);
+        addParameter("userName", username);
+        addParameter("passWord", password);
     }
 
 }

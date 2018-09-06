@@ -9,9 +9,9 @@ public class CourtRequest extends request {
     public CourtRequest() {
         super("fyxx");
         // 表示查询所有法院
-        put("type", "0");
+        addParameter("type", "0");
         // 查询所有法院时该参数无效
-        put(Key.fydm, "");
+        addParameter(Key.fydm, "");
     }
 
 }

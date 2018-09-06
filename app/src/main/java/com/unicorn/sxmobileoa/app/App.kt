@@ -4,7 +4,6 @@ import android.app.Application
 import com.blankj.utilcode.util.Utils
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
-import net.danlew.android.joda.JodaTimeAndroid
 
 class App :Application(){
 
@@ -14,7 +13,7 @@ class App :Application(){
     }
 
     private fun init(){
-        JodaTimeAndroid.init(this)
+//        JodaTimeAndroid.init(this)
         Logger.addLogAdapter(AndroidLogAdapter())
         Utils.init(this)
     }

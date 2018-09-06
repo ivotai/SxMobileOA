@@ -65,7 +65,9 @@
 #-keepnames @com.squareup.moshi.JsonClass class *
 
 #model
-#-keep class com.unicorn.prepare.test.model.**{*;}
+-keep class com.unicorn.sxmobileoa.app.network.model.**{*;}
+-keep class com.unicorn.sxmobileoa.court.model.**{*;}
+-keep class com.unicorn.sxmobileoa.login.model.**{*;}
 
 #RxCache
 #-dontwarn io.rx_cache2.internal.**
@@ -78,5 +80,6 @@
 -dontnote org.xmlpull.v1.**
 -keep class org.xmlpull.** { *; }
 -keepclassmembers class org.xmlpull.** { *; }
--keep class org.xmlpull.v1.** { *; }
--keepclassmembers class org.xmlpull.v1.** { *; }
+
+-keep class org.simpleframework.xml.core.** { *; }
+-keepclassmembers class org.simpleframework.xml.core.** { *; }

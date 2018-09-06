@@ -20,7 +20,7 @@ public class request {
         parameters.parameterList = new ArrayList<>();
     }
 
-    public void put(String key, String value) {
+    public void addParameter(String key, String value) {
         parameters.parameterList.add(new parameter(key, value));
     }
 
@@ -36,12 +36,11 @@ public class request {
     @Element
     public String busiCode;
 
-    // TODO 也许需要 loginName 和 loginBusiType 参数
     @Element
-    public String loginName = "";
+    public String loginName = Global.INSTANCE.getLoginInfo() == null ? "" : Global.INSTANCE.getLoginInfo().getLoginName();
 
     @Element
-    public String loginBusiType = "";
+    public String loginBusiType = Global.INSTANCE.getLoginInfo() == null ? "" : Global.INSTANCE.getLoginInfo().getLoginBusiType();
 
     @Element
     public String ticket = Global.INSTANCE.getTicket() == null ? "" : Global.INSTANCE.getTicket();
