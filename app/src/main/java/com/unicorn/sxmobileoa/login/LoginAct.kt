@@ -2,9 +2,11 @@ package com.unicorn.sxmobileoa.login
 
 import android.annotation.SuppressLint
 import android.text.TextUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.base.BaseAct
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.trimText
@@ -47,8 +49,12 @@ class LoginAct : BaseAct() {
     private fun login() {
         LoginUseCase(etAccount.trimText(), etPwd.trimText())
                 .toSingle(this)
-                .subscribe({
-                    Logger.e(it.toString())
+                .subscribe({ response ->
+                    if (response.code != "000000"){
+                        response.msg.let { ToastUtils.showShort(it) }
+                    }else{
+                        Global.loginInfo = response.result
+                    }
                 }, {
                     Logger.e(it.toString())
                 })

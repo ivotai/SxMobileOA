@@ -15,7 +15,8 @@ record
 5. 使用 retrofit simple xml 转换器 -> ok
 6. 对象某些字段可以为空 -> ok
 
-
+9/6 手机如何连接内网
+连接内网的电脑开个 wifi 就行。
 
 //        Thread {
 //            val url = "http://154.0.66.127:80/busiGate/request.shtml"

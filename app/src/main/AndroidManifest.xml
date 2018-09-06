@@ -13,20 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".login.LoginAct">
+             </activity>
+        <activity android:name=".main.BgsxAct" />
+        <activity android:name=".toRemove.flowNode.FlowNodeAct" />
+        <!-- <activity android:name=".business.gwgl.detail.ShouWenDetailAct" /> -->
+        <activity android:name=".toRemove.ApproverSelectionAct" />
+        <activity android:name=".dblb.DblbAct" />
+        <activity android:name=".detail.JddbDetailAct"></activity>
+        <activity android:name=".court.ui.CourtAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.BgsxAct" />
-        <activity android:name=".toRemove.flowNode.FlowNodeAct" />
-        <!-- <activity android:name=".business.gwgl.detail.ShouWenDetailAct" /> -->
-        <activity android:name=".toRemove.ApproverSelectionAct" />
-        <activity android:name=".dblb.DblbAct" />
-        <activity android:name=".detail.JddbDetailAct">
 
-        </activity>
     </application>
 
 </manifest>

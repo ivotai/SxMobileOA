@@ -1,13 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<response>
-    <code>OA0001</code>
-    <msg>用户名或者密码错误</msg>
-    <randCode>uOBekN</randCode>
-    <randCodeSec></randCodeSec>
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<request>
+    <requestFlow>20180906094823JKRrSw</requestFlow>
+    <version>1.0</version>
+    <UUID></UUID>
+    <busiCode>fyxx</busiCode>
+    <loginName></loginName>
     <loginBusiType></loginBusiType>
-    <time>20180905155151</time>
-    <seqM></seqM>
-    <secM><![CDATA[]]></secM>
-    <seqD></seqD>
-    <seqR></seqR>
-</response>
+    <ticket></ticket>
+    <randCode>iKH9wv3IWjCw</randCode>
+    <randCodeSec></randCodeSec>
+    <time>20180906094823</time>
+    <phoneType>android</phoneType>
+    <parameters>
+        <parameter name="type"><![CDATA[0]]></parameter>
+        <parameter name="fydm"><![CDATA[R00]]></parameter>
+    </parameters>
+</request>

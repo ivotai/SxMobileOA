@@ -3,7 +3,6 @@ package com.unicorn.sxmobileoa.app.network
 import android.arch.lifecycle.LifecycleOwner
 import android.util.Xml
 import com.blankj.utilcode.util.AppUtils
-import com.google.gson.reflect.TypeToken
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
@@ -56,8 +55,8 @@ abstract class BaseUseCase<Model> {
             // 添加自定义参数
             addParameters()
 
-            // TODO 获取用户选择的法院编码
-            addParameter(Key.fydm, "R00")
+//             TODO 获取用户选择的法院编码
+//            addParameter(Key.fydm, "R00")
 
             // parameters end
             endTag("", Key.parameters)
@@ -106,13 +105,14 @@ abstract class BaseUseCase<Model> {
         }
     }
 
-    fun toModel(result: String): Model {
-        val gson = ComponentHolder.appComponent.getGson()
-        val token = object : TypeToken<Model>() {
-
-        }.type
-        val t = gson.fromJson<Model>(result, token)
-        return t
-    }
+    abstract fun toModel(json: String): Model
+//    {
+//        val gson = ComponentHolder.appComponent.getGson()
+//        val token = object : TypeToken<Model>() {
+//
+//        }.type
+//        val t = gson.fromJson<Model>(result, token)
+//        return t
+//    }
 
 }
