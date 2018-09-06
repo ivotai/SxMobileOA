@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.ui.ActOrFra
-import io.reactivex.Single
+import io.reactivex.Maybe
 
 interface PageActOrFra<Model> : ActOrFra {
 
@@ -18,7 +18,7 @@ interface PageActOrFra<Model> : ActOrFra {
     val mAdapter: BaseQuickAdapter<Model, BaseViewHolder>
 
     // loadPage 需要处理线程切换以及销毁时dispose的问题
-    fun loadPage(page: Int, rows: Int): Single<List<Model>>
+    fun loadPage(page: Int, rows: Int): Maybe<List<Model>>
 
     private val rows
         get() = 5

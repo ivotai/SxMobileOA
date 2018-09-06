@@ -26,8 +26,6 @@ abstract class BaseUseCase<Model> {
         val requestXml = buildRequestXml()
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), requestXml)
         return ComponentHolder.appComponent.getGeneralApi().post(requestBody)
-                .compose(MainThreadTransformer())
-                .compose(RxLifecycle.disposeOnDestroy(lifecycleOwner))
                 .map(this::toSimpleResponse)
                 .filter { response ->
                     val success = response.code == Key.SUCCESS_CODE
@@ -35,6 +33,8 @@ abstract class BaseUseCase<Model> {
                     return@filter success
                 }
                 .map { it.result }
+                .compose(MainThreadTransformer())
+                .compose(RxLifecycle.disposeOnDestroy(lifecycleOwner))
     }
 
     private fun buildRequestXml(): String {
