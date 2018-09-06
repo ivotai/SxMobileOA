@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/login_bg"
     android:orientation="vertical"
     tools:ignore="HardcodedText,ContentDescription,SpUsage">
 
@@ -12,379 +13,383 @@
         android:layout_width="match_parent"
         android:layout_height="56dp" />
 
-    <android.support.constraint.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@mipmap/login_bg"
-        android:padding="@dimen/main_margin">
+        android:layout_weight="1">
 
-        <LinearLayout
-            android:id="@+id/ggxx"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:background="#00C1E2"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/xwzx"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/main_margin">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ggxx" />
+            <LinearLayout
+                android:id="@+id/ggxx"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:background="#00C1E2"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/xwzx"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="公告信息"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ggxx" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="公告信息"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/xwzx"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginStart="@dimen/main_margin"
-            android:background="#2C5CA8"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/ggxx"
-            app:layout_constraintTop_toTopOf="@+id/ggxx">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/xwzx" />
+            <LinearLayout
+                android:id="@+id/xwzx"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginStart="@dimen/main_margin"
+                android:background="#2C5CA8"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/ggxx"
+                app:layout_constraintTop_toTopOf="@+id/ggxx">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="新闻中心"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/xwzx" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="新闻中心"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/jddb"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginTop="@dimen/main_margin"
-            android:background="#F7B239"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/ycdb"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ggxx">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/jddb" />
+            <LinearLayout
+                android:id="@+id/jddb"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginTop="@dimen/main_margin"
+                android:background="#F7B239"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/ycdb"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ggxx">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="接待待办"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/jddb" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="接待待办"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/ycdb"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginStart="@dimen/main_margin"
-            android:background="#00BE8E"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/gcdb"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/jddb"
-            app:layout_constraintTop_toTopOf="@+id/jddb">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ycdb" />
+            <LinearLayout
+                android:id="@+id/ycdb"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginStart="@dimen/main_margin"
+                android:background="#00BE8E"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/gcdb"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/jddb"
+                app:layout_constraintTop_toTopOf="@+id/jddb">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="用车待办"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ycdb" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="用车待办"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/gcdb"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginStart="@dimen/main_margin"
-            android:background="#954292"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/ycdb"
-            app:layout_constraintTop_toTopOf="@+id/jddb">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/gcdb" />
+            <LinearLayout
+                android:id="@+id/gcdb"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginStart="@dimen/main_margin"
+                android:background="#954292"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/ycdb"
+                app:layout_constraintTop_toTopOf="@+id/jddb">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="公出待办"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/gcdb" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="公出待办"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/nbsw"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginTop="@dimen/main_margin"
-            android:background="#46B54E"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/wbfw"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jddb">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/nbsw" />
+            <LinearLayout
+                android:id="@+id/nbsw"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginTop="@dimen/main_margin"
+                android:background="#46B54E"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/wbfw"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/jddb">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="内部收文"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/nbsw" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="内部收文"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/wbfw"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginStart="@dimen/main_margin"
-            android:background="#E077E0"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/nbsw"
-            app:layout_constraintTop_toTopOf="@+id/nbsw">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/wbfw" />
+            <LinearLayout
+                android:id="@+id/wbfw"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginStart="@dimen/main_margin"
+                android:background="#E077E0"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/nbsw"
+                app:layout_constraintTop_toTopOf="@+id/nbsw">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="外部发文"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/wbfw" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="外部发文"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/wply"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginTop="@dimen/main_margin"
-            android:background="#F7B239"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/qjdb"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nbsw">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/wply" />
+            <LinearLayout
+                android:id="@+id/wply"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginTop="@dimen/main_margin"
+                android:background="#F7B239"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/qjdb"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nbsw">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="物品领用"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/wply" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="物品领用"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/qjdb"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginStart="@dimen/main_margin"
-            android:background="#00BE8E"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/csx"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/wply"
-            app:layout_constraintTop_toTopOf="@+id/wply">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/qjdb" />
+            <LinearLayout
+                android:id="@+id/qjdb"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginStart="@dimen/main_margin"
+                android:background="#00BE8E"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/csx"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/wply"
+                app:layout_constraintTop_toTopOf="@+id/wply">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="请假待办"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/qjdb" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="请假待办"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/csx"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginStart="@dimen/main_margin"
-            android:background="#954292"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/qjdb"
-            app:layout_constraintTop_toTopOf="@+id/qjdb">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/csx" />
+            <LinearLayout
+                android:id="@+id/csx"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginStart="@dimen/main_margin"
+                android:background="#954292"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/qjdb"
+                app:layout_constraintTop_toTopOf="@+id/qjdb">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="超审限"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/csx" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="超审限"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/sbly"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginTop="@dimen/main_margin"
-            android:background="#FB667A"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/sbwx"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wply">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/sbly" />
+            <LinearLayout
+                android:id="@+id/sbly"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginTop="@dimen/main_margin"
+                android:background="#FB667A"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/sbwx"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wply">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="设备领用"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/sbly" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设备领用"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/sbwx"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginStart="@dimen/main_margin"
-            android:background="#0789BA"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/sbbf"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/sbly"
-            app:layout_constraintTop_toTopOf="@+id/sbly">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/sbwx" />
+            <LinearLayout
+                android:id="@+id/sbwx"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginStart="@dimen/main_margin"
+                android:background="#0789BA"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/sbbf"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/sbly"
+                app:layout_constraintTop_toTopOf="@+id/sbly">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="设备维修"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/sbwx" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设备维修"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-        <LinearLayout
-            android:id="@+id/sbbf"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_height"
-            android:layout_marginStart="@dimen/main_margin"
-            android:background="#F7B239"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/sbwx"
-            app:layout_constraintTop_toTopOf="@+id/sbly">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/sbbf" />
+            <LinearLayout
+                android:id="@+id/sbbf"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/main_height"
+                android:layout_marginStart="@dimen/main_margin"
+                android:background="#F7B239"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/sbwx"
+                app:layout_constraintTop_toTopOf="@+id/sbly">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="设备报废"
-                android:textColor="@color/md_white"
-                android:textSize="@dimen/main_text_size" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/sbbf" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设备报废"
+                    android:textColor="@color/md_white"
+                    android:textSize="@dimen/main_text_size" />
 
-    </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
 
 </LinearLayout>
-
 

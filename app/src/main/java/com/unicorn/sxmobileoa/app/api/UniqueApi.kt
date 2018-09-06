@@ -6,7 +6,7 @@ import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface GeneralApi {
+interface UniqueApi {
 
     @POST("request.shtml")
     fun post(@Body requestBody: RequestBody): Single<Response>

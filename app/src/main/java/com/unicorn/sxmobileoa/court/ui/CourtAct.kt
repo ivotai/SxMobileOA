@@ -10,6 +10,7 @@ import com.unicorn.sxmobileoa.court.event.CourtSelectEvent
 import com.unicorn.sxmobileoa.court.useCase.CourtUseCase
 import com.unicorn.sxmobileoa.login.LoginAct
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
+import florent37.github.com.rxlifecycle.RxLifecycle
 import kotlinx.android.synthetic.main.act_court.*
 
 class CourtAct : BaseAct() {
@@ -35,11 +36,13 @@ class CourtAct : BaseAct() {
                 .toMaybe(this)
                 .subscribe { t -> courtAdapter.setNewData(t) }
 
-        RxBus.get().toObservable(CourtSelectEvent::class.java).subscribe { event ->
-            Global.court = event.court
-            startActivity(Intent(this, LoginAct::class.java))
-            finish()
-        }
+        RxBus.get().toObservable(CourtSelectEvent::class.java)
+                .compose(RxLifecycle.disposeOnDestroy(this))
+                .subscribe { event ->
+                    Global.court = event.court
+                    startActivity(Intent(this, LoginAct::class.java))
+                    finish()
+                }
     }
 
 }
