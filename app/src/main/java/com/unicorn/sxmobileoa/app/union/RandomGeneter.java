@@ -3,8 +3,8 @@ package com.unicorn.sxmobileoa.app.union;
 import java.util.Random;
 
 public class RandomGeneter {
-	public static final String allChar = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	public static final String letterChar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	private static final String allChar = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	private static final String letterChar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public static final String numberChar = "0123456789";
 
 	/***************************************************************************
@@ -31,7 +31,7 @@ public class RandomGeneter {
 	 *            随机字符串长度 *
 	 * @return 随机字符串
 	 */
-	public static String generateMixString(int length) {
+	private static String generateMixString(int length) {
 		StringBuffer sb = new StringBuffer();
 		Random random = new Random(System.currentTimeMillis());
 		for (int i = 0; i < length; i++) {
@@ -69,7 +69,7 @@ public class RandomGeneter {
 	 *            字符串长度 *
 	 * @return 纯0字符串
 	 */
-	public static String generateZeroString(int length) {
+	private static String generateZeroString(int length) {
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < length; i++) {
 			sb.append('0');

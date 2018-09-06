@@ -14,13 +14,13 @@ import java.util.ArrayList;
 @Root(strict = false)
 public class request {
 
-    public request(String busiCode) {
+    protected request(String busiCode) {
         this.busiCode = busiCode;
         parameters = new parameters();
         parameters.parameterList = new ArrayList<>();
     }
 
-    public void addParameter(String key, String value) {
+    protected void addParameter(String key, String value) {
         parameters.parameterList.add(new parameter(key, value));
     }
 
