@@ -13,7 +13,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fra_dblb.*
 import java.util.concurrent.TimeUnit
 
-
 class DblbFra : PageFra<Int>() {
 
     override val layoutId = R.layout.fra_dblb

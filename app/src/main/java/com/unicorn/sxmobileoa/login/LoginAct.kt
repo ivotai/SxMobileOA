@@ -12,7 +12,7 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.trimText
 import com.unicorn.sxmobileoa.login.model.ValidationResult
 import com.unicorn.sxmobileoa.login.useCase.LoginUseCase
-import com.unicorn.sxmobileoa.main.BgsxAct
+import com.unicorn.sxmobileoa.bgsx.BgsxAct
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.act_login.*

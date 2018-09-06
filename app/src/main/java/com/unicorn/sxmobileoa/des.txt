@@ -1,12 +1,10 @@
-
-有空看:
-1. act fra 抽象一致可行？
-
-log:
+log：
 2018/9/4：陕西的交互要拼一套xml。
 2018/9/5：通信完成大部分。
+2018/9/6：登录接口，法院列表接口。
 
-record
+
+record：
 9/5 如何获取 xml 并转化为实体？
 1. postman -> ok
 2. okhttp -> ok
@@ -18,15 +16,6 @@ record
 9/6 手机如何连接内网
 连接内网的电脑开个 wifi 就行。
 
-//        Thread {
-//            val url = "http://154.0.66.127:80/busiGate/request.shtml"
-//            val mediaType = MediaType.parse("text/xml")
-//            val xml  = buildXml()
-//            val body = RequestBody.create(mediaType, xml)
-//            val request = Request.Builder()
-//                    .url(url)
-//                    .post(body)
-//                    .build()
-//            val response = OkHttpClient().newCall(request).execute()
-//            Logger.e(response.body()!!.string())
-//        }.start()
+
+有空看:
+1. act fra 抽象一致可行？

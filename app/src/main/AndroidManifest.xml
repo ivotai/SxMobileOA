@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".login.LoginAct">
              </activity>
-        <activity android:name=".main.BgsxAct" />
+        <activity android:name=".bgsx.BgsxAct" />
         <activity android:name=".toRemove.flowNode.FlowNodeAct" />
         <!-- <activity android:name=".business.gwgl.detail.ShouWenDetailAct" /> -->
         <activity android:name=".toRemove.ApproverSelectionAct" />

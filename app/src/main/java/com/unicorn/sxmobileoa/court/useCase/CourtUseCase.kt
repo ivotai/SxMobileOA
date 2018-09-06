@@ -11,15 +11,15 @@ class CourtUseCase : BaseUseCase<List<Court>>() {
     override val busiCode = "fyxx"
 
     override fun addParameters() {
-        // 查询所有法院，参数fydm无效
+        // 查询所有法院
         addParameter("type", "0")
+        // 该参数无效
         addParameter(Key.fydm, "")
     }
 
     override fun toModel(json: String): List<Court> {
         val type = object : TypeToken<List<Court>>() {}.type
-        return ComponentHolder.appComponent.getGson()
-                .fromJson<List<Court>>(json, type)
+        return ComponentHolder.appComponent.getGson().fromJson<List<Court>>(json, type)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.main
+package com.unicorn.sxmobileoa.bgsx
 
 import android.content.Intent
 import com.unicorn.sxmobileoa.R
