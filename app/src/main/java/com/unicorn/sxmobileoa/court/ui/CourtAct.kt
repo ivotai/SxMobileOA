@@ -32,8 +32,8 @@ class CourtAct : BaseAct() {
 
     override fun bindIntent() {
         CourtUseCase()
-                .toSingle(this)
-                .subscribe { t -> courtAdapter.setNewData(t.result) }
+                .toMaybe(this)
+                .subscribe { t -> courtAdapter.setNewData(t) }
 
         RxBus.get().toObservable(CourtSelectEvent::class.java).subscribe { event ->
             Global.court = event.court

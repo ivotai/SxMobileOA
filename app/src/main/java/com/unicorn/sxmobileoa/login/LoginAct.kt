@@ -1,8 +1,8 @@
 package com.unicorn.sxmobileoa.login
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.text.TextUtils
-import com.blankj.utilcode.util.ToastUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
@@ -12,6 +12,7 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.trimText
 import com.unicorn.sxmobileoa.login.model.ValidationResult
 import com.unicorn.sxmobileoa.login.useCase.LoginUseCase
+import com.unicorn.sxmobileoa.main.BgsxAct
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import kotlinx.android.synthetic.main.act_login.*
@@ -48,19 +49,14 @@ class LoginAct : BaseAct() {
 
     private fun login() {
         LoginUseCase(etAccount.trimText(), etPwd.trimText())
-                .toSingle(this)
-                .subscribe({ response ->
-                    if (response.code != "000000"){
-                        response.msg.let { ToastUtils.showShort(it) }
-                    }else{
-                        Global.loginInfo = response.result
-                    }
+                .toMaybe(this)
+                .subscribe({
+                    Global.loginInfo = it
+                    startActivity(Intent(this@LoginAct, BgsxAct::class.java))
+                    Logger.e(it.toString())
                 }, {
                     Logger.e(it.toString())
                 })
-
-        //                    startActivity(Intent(this@LoginAct, BgsxAct::class.java))
-
     }
 
 }

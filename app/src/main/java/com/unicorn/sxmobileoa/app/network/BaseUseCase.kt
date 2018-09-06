@@ -3,6 +3,7 @@ package com.unicorn.sxmobileoa.app.network
 import android.arch.lifecycle.LifecycleOwner
 import android.util.Xml
 import com.blankj.utilcode.util.AppUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
@@ -11,7 +12,7 @@ import com.unicorn.sxmobileoa.app.network.model.SimpleResponse
 import com.unicorn.sxmobileoa.app.union.MainThreadTransformer
 import com.unicorn.sxmobileoa.app.union.RandomGeneter
 import florent37.github.com.rxlifecycle.RxLifecycle
-import io.reactivex.Single
+import io.reactivex.Maybe
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import org.joda.time.DateTime
@@ -49,7 +50,7 @@ abstract class BaseUseCase<Model> {
             addTag("time", DateTime().toString(Key.DATE_FORMAT))
             addTag("phoneType", "android")
 
-            // parameters toSingle
+            // parameters toMaybe
             startTag("", Key.parameters)
 
             // 添加参数
@@ -81,15 +82,21 @@ abstract class BaseUseCase<Model> {
         }
     }
 
-    // ============================ toSingle ============================
+    // ============================ toMaybe ============================
 
-    fun toSingle(lifecycleOwner: LifecycleOwner): Single<SimpleResponse<Model>> {
+    fun toMaybe(lifecycleOwner: LifecycleOwner): Maybe<Model> {
         val xml = buildXml()
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), xml)
         return ComponentHolder.appComponent.getGeneralApi().post(requestBody)
                 .compose(MainThreadTransformer())
                 .compose(RxLifecycle.disposeOnDestroy(lifecycleOwner))
                 .map(this::toSimpleResponse)
+                .filter { response ->
+                    val success = response.code == Key.SUCCESS_CODE
+                    if (!success) ToastUtils.showShort(response.msg)
+                    return@filter success
+                }
+                .map { it.result }
     }
 
     private fun toSimpleResponse(original: Response) = SimpleResponse<Model>(original.code, original.msg).apply {
@@ -103,13 +110,5 @@ abstract class BaseUseCase<Model> {
     }
 
     abstract fun toModel(json: String): Model
-//    {
-//        val gson = ComponentHolder.appComponent.getGson()
-//        val token = object : TypeToken<Model>() {
-//
-//        }.type
-//        val t = gson.fromJson<Model>(result, token)
-//        return t
-//    }
 
 }
