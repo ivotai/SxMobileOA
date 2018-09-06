@@ -8,7 +8,7 @@ import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.model.Response
 import com.unicorn.sxmobileoa.app.network.model.SimpleResponse
-import com.unicorn.sxmobileoa.app.union.CommonTransformer
+import com.unicorn.sxmobileoa.app.union.MainThreadTransformer
 import com.unicorn.sxmobileoa.app.union.RandomGeneter
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Single
@@ -22,7 +22,7 @@ abstract class BaseUseCase<Model> {
 
     abstract val busiCode: String
 
-    abstract fun addParameters()
+    protected abstract fun addParameters()
 
     // ============================ buildXml ============================
 
@@ -52,11 +52,8 @@ abstract class BaseUseCase<Model> {
             // parameters toSingle
             startTag("", Key.parameters)
 
-            // 添加自定义参数
+            // 添加参数
             addParameters()
-
-//             TODO 获取用户选择的法院编码
-//            addParameter(Key.fydm, "R00")
 
             // parameters end
             endTag("", Key.parameters)
@@ -90,7 +87,7 @@ abstract class BaseUseCase<Model> {
         val xml = buildXml()
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), xml)
         return ComponentHolder.appComponent.getGeneralApi().post(requestBody)
-                .compose(CommonTransformer())
+                .compose(MainThreadTransformer())
                 .compose(RxLifecycle.disposeOnDestroy(lifecycleOwner))
                 .map(this::toSimpleResponse)
     }

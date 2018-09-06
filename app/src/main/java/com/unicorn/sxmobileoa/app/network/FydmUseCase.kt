@@ -6,7 +6,7 @@ import com.unicorn.sxmobileoa.app.Key
 abstract class FydmUseCase<Model> : BaseUseCase<Model>() {
 
     override fun addParameters() {
-        addParameter(Key.fydm, Global.court!!.dm)
+        Global.court?.let { addParameter(Key.fydm, it.dm) }
     }
 
 }

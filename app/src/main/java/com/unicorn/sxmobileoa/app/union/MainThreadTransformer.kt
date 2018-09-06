@@ -6,7 +6,7 @@ import io.reactivex.SingleTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class CommonTransformer<Up>: SingleTransformer<Up, Up> {
+class MainThreadTransformer<Up>: SingleTransformer<Up, Up> {
 
     override fun apply(upstream: Single<Up>): SingleSource<Up> {
         return upstream.subscribeOn(Schedulers.io())

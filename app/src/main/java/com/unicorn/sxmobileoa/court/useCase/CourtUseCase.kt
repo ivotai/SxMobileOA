@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.court
+package com.unicorn.sxmobileoa.court.useCase
 
 import com.google.gson.reflect.TypeToken
 import com.unicorn.sxmobileoa.app.Key
