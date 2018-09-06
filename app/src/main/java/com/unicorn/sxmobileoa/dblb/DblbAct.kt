@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.app.ui.PageActOrFra
+import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.app.utils.MainThreadTransformer
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.Observable
@@ -18,13 +18,13 @@ class DblbAct : BaseAct(), PageActOrFra<Int> {
 
     override val layoutId: Int = R.layout.act_dblb
 
-    override val recyclerView1: RecyclerView
+    override val mRecyclerView: RecyclerView
         get() = recyclerView
 
-    override val swipeRefreshLayout1: SwipeRefreshLayout
+    override val mSwipeRefreshLayout: SwipeRefreshLayout
         get() = swipeRefreshLayout
 
-    override val adapter1 = DblbAdapter()
+    override val mAdapter = DblbAdapter()
 
     override fun loadPage(page: Int, rows: Int): Single<List<Int>> {
         return Observable.just(1, 2).toList()

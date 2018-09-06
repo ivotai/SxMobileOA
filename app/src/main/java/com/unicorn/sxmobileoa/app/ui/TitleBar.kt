@@ -13,7 +13,7 @@ class TitleBar(context: Context, attrs: AttributeSet?) : FrameLayout(context, at
         initViews(context)
     }
 
-     private lateinit var tvTitle: TextView
+    private lateinit var tvTitle: TextView
 
     fun initViews(context: Context) {
         LayoutInflater.from(context).inflate(R.layout.title_bar, this, true)
