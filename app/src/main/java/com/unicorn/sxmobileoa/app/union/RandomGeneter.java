@@ -5,7 +5,7 @@ import java.util.Random;
 public class RandomGeneter {
 	private static final String allChar = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	private static final String letterChar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	public static final String numberChar = "0123456789";
+//	public static final String numberChar = "0123456789";
 
 	/***************************************************************************
 	 * * 返回一个定长的随机字符串(只包含大小写字母、数字) *
@@ -15,13 +15,13 @@ public class RandomGeneter {
 	 * @return 随机字符串
 	 */
 	public static String generateString(int length) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder stringBuffer = new StringBuilder();
 		Random random = new Random(System.currentTimeMillis());
 		for (int i = 0; i < length; i++) {
-			sb.append(allChar.charAt(random.nextInt(allChar.length())));
+			stringBuffer.append(allChar.charAt(random.nextInt(allChar.length())));
 		}
 
-		return sb.toString();
+		return stringBuffer.toString();
 	}
 
 	/**
@@ -32,35 +32,23 @@ public class RandomGeneter {
 	 * @return 随机字符串
 	 */
 	private static String generateMixString(int length) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder stringBuffer = new StringBuilder();
 		Random random = new Random(System.currentTimeMillis());
 		for (int i = 0; i < length; i++) {
-			sb.append(allChar.charAt(random.nextInt(letterChar.length())));
+			stringBuffer.append(allChar.charAt(random.nextInt(letterChar.length())));
 		}
-		return sb.toString();
+		return stringBuffer.toString();
 	}
 
-	/**
-	 * * 返回一个定长的随机纯大写字母字符串(只包含大小写字母) * *
-	 * 
-	 * @param length *
-	 *            随机字符串长度 *
-	 * @return 随机字符串
-	 */
-	public static String generateLowerString(int length) {
-		return generateMixString(length).toLowerCase();
-	}
 
-	/**
-	 * * 返回一个定长的随机纯小写字母字符串(只包含大小写字母) * *
-	 * 
-	 * @param length *
-	 *            随机字符串长度 *
-	 * @return 随机字符串
-	 */
-	public static String generateUpperString(int length) {
-		return generateMixString(length).toUpperCase();
-	}
+//	public static String generateLowerString(int length) {
+//		return generateMixString(length).toLowerCase();
+//	}
+
+
+//	public static String generateUpperString(int length) {
+//		return generateMixString(length).toUpperCase();
+//	}
 
 	/**
 	 * * 生成一个定长的纯0字符串 * *
@@ -70,56 +58,40 @@ public class RandomGeneter {
 	 * @return 纯0字符串
 	 */
 	private static String generateZeroString(int length) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder stringBuffer = new StringBuilder();
 		for (int i = 0; i < length; i++) {
-			sb.append('0');
+			stringBuffer.append('0');
 		}
-		return sb.toString();
+		return stringBuffer.toString();
 	}
 
-	/**
-	 * * 根据数字生成一个定长的字符串，长度不够前面补0 * *
-	 * 
-	 * @param num *
-	 *            数字 *
-	 * @param fixdlenth *
-	 *            字符串长度 *
-	 * @return 定长的字符串
-	 */
-	public static String toFixdLengthString(long num, int fixdlenth) {
-		StringBuffer sb = new StringBuffer();
-		String strNum = String.valueOf(num);
-		if (fixdlenth - strNum.length() >= 0) {
-			sb.append(generateZeroString(fixdlenth - strNum.length()));
-		} else {
-			throw new RuntimeException("将数字" + num + "转化为长度为" + fixdlenth
-					+ "的字符串发生异常！");
-		}
-		sb.append(strNum);
-		return sb.toString();
-	}
 
-	/**
-	 * * 根据数字生成一个定长的字符串，长度不够前面补0 * *
-	 * 
-	 * @param num *
-	 *            数字 *
-	 * @param fixdlenth *
-	 *            字符串长度 *
-	 * @return 定长的字符串
-	 */
-	public static String toFixdLengthString(int num, int fixdlenth) {
-		StringBuffer sb = new StringBuffer();
-		String strNum = String.valueOf(num);
-		if (fixdlenth - strNum.length() >= 0) {
-			sb.append(generateZeroString(fixdlenth - strNum.length()));
-		} else {
-			throw new RuntimeException("将数字" + num + "转化为长度为" + fixdlenth
-					+ "的字符串发生异常！");
-		}
-		sb.append(strNum);
-		return sb.toString();
-	}
+//	public static String toFixdLengthString(long num, int fixdlenth) {
+//		StringBuffer sb = new StringBuffer();
+//		String strNum = String.valueOf(num);
+//		if (fixdlenth - strNum.length() >= 0) {
+//			sb.append(generateZeroString(fixdlenth - strNum.length()));
+//		} else {
+//			throw new RuntimeException("将数字" + num + "转化为长度为" + fixdlenth
+//					+ "的字符串发生异常！");
+//		}
+//		sb.append(strNum);
+//		return sb.toString();
+//	}
+
+
+//	public static String toFixdLengthString(int num, int fixdlenth) {
+//		StringBuffer sb = new StringBuffer();
+//		String strNum = String.valueOf(num);
+//		if (fixdlenth - strNum.length() >= 0) {
+//			sb.append(generateZeroString(fixdlenth - strNum.length()));
+//		} else {
+//			throw new RuntimeException("将数字" + num + "转化为长度为" + fixdlenth
+//					+ "的字符串发生异常！");
+//		}
+//		sb.append(strNum);
+//		return sb.toString();
+//	}
 
 	public static void main(String[] args) {
 		System.out.println(generateString(6));

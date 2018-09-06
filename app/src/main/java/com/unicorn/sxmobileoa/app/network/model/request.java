@@ -34,7 +34,7 @@ public class request {
     public String UUID = "";
 
     @Element
-    public String busiCode;
+    public  String busiCode;
 
     @Element
     public String loginName = Global.INSTANCE.getLoginInfo() == null ? "" : Global.INSTANCE.getLoginInfo().getLoginName();

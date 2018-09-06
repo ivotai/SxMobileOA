@@ -1,8 +1,5 @@
 package com.unicorn.sxmobileoa.detail
 
-import android.view.ViewGroup
-import android.widget.LinearLayout
-import com.blankj.utilcode.util.ConvertUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.base.BaseAct
 
@@ -15,17 +12,17 @@ class JddbDetailAct : BaseAct() {
 
     override fun bindIntent() {
         listOf(
-                Advice("部门领导意见", "我觉得可以"),
-                Advice("主管办公室领导意见", "我觉得不行")
+                Advice("部门领导意见"),
+                Advice("主管办公室领导意见")
         ).forEach {  }
 
-        val container = LinearLayout(this)
+//        val container = LinearLayout(this)
     }
 
-    private fun addAdvice(container:LinearLayout,advice:Advice){
-        val linearLayout = LinearLayout(this)
-        val mlp = ViewGroup.MarginLayoutParams(ViewGroup.MarginLayoutParams.MATCH_PARENT,ConvertUtils.dp2px(80f))
-
-    }
+//    private fun addAdvice(container:LinearLayout,advice:Advice){
+//        val linearLayout = LinearLayout(this)
+//        val mlp = ViewGroup.MarginLayoutParams(ViewGroup.MarginLayoutParams.MATCH_PARENT,ConvertUtils.dp2px(80f))
+//
+//    }
 
 }
