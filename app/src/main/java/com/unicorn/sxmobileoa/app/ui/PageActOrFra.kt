@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.app.base
+package com.unicorn.sxmobileoa.app.ui
 
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
@@ -6,20 +6,20 @@ import android.support.v7.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
-import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Single
 
-abstract class PageFra<Model> : BaseFra() {
+interface PageActOrFra<Model> : ActOrFra {
 
-    abstract val adapter1: BaseQuickAdapter<Model, BaseViewHolder>
+    val recyclerView1: RecyclerView
 
-    abstract val recyclerView1: RecyclerView
+    val swipeRefreshLayout1: SwipeRefreshLayout
 
-    abstract val swipeRefreshLayout1: SwipeRefreshLayout
+    val adapter1: BaseQuickAdapter<Model, BaseViewHolder>
 
-    abstract fun loadPage(page: Int, rows: Int): Single<List<Model>>
+    fun loadPage(page: Int, rows: Int): Single<List<Model>>
 
-    private val rows = 5
+    private val rows
+        get() = 5
 
     private val pageNo
         get() = adapter1.data.size / rows
@@ -42,7 +42,7 @@ abstract class PageFra<Model> : BaseFra() {
 
     private fun loadFirstPage() {
         loadPage(page = pageNo, rows = rows)
-                .compose(RxLifecycle.disposeOnDestroy(this))
+//                .compose(RxLifecycle.disposeOnDestroy(this))
                 .subscribe({
                     swipeRefreshLayout1.isRefreshing = false
 //                        adapter1.data.clear()
@@ -59,7 +59,7 @@ abstract class PageFra<Model> : BaseFra() {
 
     private fun loadNextPage() {
         loadPage(page = pageNo, rows = rows)
-                .compose(RxLifecycle.disposeOnDestroy(this))
+//                .compose(RxLifecycle.disposeOnDestroy(this))
                 .subscribe({
                     adapter1.loadMoreComplete()
                     adapter1.addData(it)

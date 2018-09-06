@@ -1,7 +1,7 @@
 package com.unicorn.sxmobileoa.detail
 
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.base.BaseAct
+import com.unicorn.sxmobileoa.app.ui.BaseAct
 
 class JddbDetailAct : BaseAct() {
 

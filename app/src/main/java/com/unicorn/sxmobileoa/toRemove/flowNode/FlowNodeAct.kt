@@ -5,7 +5,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.toRemove.TestHelper
-import com.unicorn.sxmobileoa.app.base.BaseAct
+import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.toRemove.checked.CheckedWrapper
 import com.unicorn.sxmobileoa.toRemove.flowNode.model.FlowNode
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration

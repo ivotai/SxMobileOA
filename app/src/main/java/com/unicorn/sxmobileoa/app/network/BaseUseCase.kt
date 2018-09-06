@@ -8,7 +8,7 @@ import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.model.Response
 import com.unicorn.sxmobileoa.app.network.model.SimpleResponse
 import com.unicorn.sxmobileoa.app.network.model.request
-import com.unicorn.sxmobileoa.app.union.MainThreadTransformer
+import com.unicorn.sxmobileoa.app.utils.MainThreadTransformer
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Maybe
 import okhttp3.MediaType

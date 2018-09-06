@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.app.union
+package com.unicorn.sxmobileoa.app.utils
 
 import io.reactivex.Single
 import io.reactivex.SingleSource

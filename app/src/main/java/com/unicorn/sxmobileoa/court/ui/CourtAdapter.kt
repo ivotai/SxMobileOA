@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.app.union.RxBus
+import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.court.event.CourtSelectEvent
 import com.unicorn.sxmobileoa.court.model.Court
 

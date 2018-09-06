@@ -4,8 +4,8 @@ import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
-import com.unicorn.sxmobileoa.app.base.BaseAct
-import com.unicorn.sxmobileoa.app.union.RxBus
+import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.court.event.CourtSelectEvent
 import com.unicorn.sxmobileoa.court.useCase.CourtUseCase
 import com.unicorn.sxmobileoa.login.LoginAct
