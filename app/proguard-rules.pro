@@ -34,19 +34,19 @@
 -dontwarn okhttp3.internal.platform.ConscryptPlatform
 
 # retrofit
-## Retain generic type information for use by reflection by converters and adapters.
-#-keepattributes Signature
-#
-## Retain service method Parameters when optimizing.
-#-keepclassmembers,allowshrinking,allowobfuscation interface * {
-#    @retrofit2.http.* <methods>;
-#}
-#
-## Ignore annotation used for build tooling.
-#-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
-#
-## Ignore JSR 305 annotations for embedding nullability information.
-#-dontwarn javax.annotation.**
+# Retain generic type information for use by reflection by converters and adapters.
+-keepattributes Signature
+
+# Retain service method Parameters when optimizing.
+-keepclassmembers,allowshrinking,allowobfuscation interface * {
+    @retrofit2.http.* <methods>;
+}
+
+# Ignore annotation used for build tooling.
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+
+# Ignore JSR 305 annotations for embedding nullability information.
+-dontwarn javax.annotation.**
 
 #moshi
 #-dontwarn okio.**
@@ -68,9 +68,9 @@
 #-keep class com.unicorn.prepare.test.model.**{*;}
 
 #RxCache
--dontwarn io.rx_cache2.internal.**
--keepclassmembers enum io.rx_cache2.Source { *; }
--keepclassmembernames class * { @io.rx_cache2.* <methods>; }
+#-dontwarn io.rx_cache2.internal.**
+#-keepclassmembers enum io.rx_cache2.Source { *; }
+#-keepclassmembernames class * { @io.rx_cache2.* <methods>; }
 
 # xml may ok
 # https://stackoverflow.com/questions/49936064/getting-error-while-building-signed-apk
@@ -78,3 +78,5 @@
 -dontnote org.xmlpull.v1.**
 -keep class org.xmlpull.** { *; }
 -keepclassmembers class org.xmlpull.** { *; }
+-keep class org.xmlpull.v1.** { *; }
+-keepclassmembers class org.xmlpull.v1.** { *; }

@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <request>
-    <requestFlow>20180906094823JKRrSw</requestFlow>
+    <requestFlow>20180906123532k38zQ5</requestFlow>
     <version>1.0</version>
     <UUID></UUID>
     <busiCode>fyxx</busiCode>
     <loginName></loginName>
     <loginBusiType></loginBusiType>
     <ticket></ticket>
-    <randCode>iKH9wv3IWjCw</randCode>
+    <randCode>85cmj6LvH8To</randCode>
     <randCodeSec></randCodeSec>
-    <time>20180906094823</time>
+    <time>20180906123532</time>
     <phoneType>android</phoneType>
     <parameters>
         <parameter name="type"><![CDATA[0]]></parameter>
-        <parameter name="fydm"><![CDATA[R00]]></parameter>
+        <parameter name="fydm"><![CDATA[]]></parameter>
     </parameters>
 </request>

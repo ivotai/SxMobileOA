@@ -5,10 +5,18 @@ import org.simpleframework.xml.Text;
 
 public class parameter {
 
+    public parameter() {
+    }
+
+    public parameter(String name, String text) {
+        this.name = name;
+        this.text = text;
+    }
+
     @Attribute
     public String name;
 
-    @Text
-    public String text ;
+    @Text(data = true)
+    public String text;
 
 }
