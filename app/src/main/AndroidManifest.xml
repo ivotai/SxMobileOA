@@ -19,15 +19,15 @@
         <activity android:name=".toRemove.flowNode.FlowNodeAct" />
         <!-- <activity android:name=".business.gwgl.detail.ShouWenDetailAct" /> -->
         <activity android:name=".dblb.DblbAct" >
+
+        </activity>
+        <activity android:name=".detail.JddbDetailAct"/>
+        <activity android:name=".court.ui.CourtAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".detail.JddbDetailAct"/>
-        <activity android:name=".court.ui.CourtAct">
-
         </activity>
 
     </application>

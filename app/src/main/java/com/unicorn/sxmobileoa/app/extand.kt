@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa.app
 
-import android.support.v7.app.AppCompatActivity
+import android.arch.lifecycle.LifecycleOwner
 import android.view.View
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.clicks
@@ -14,5 +14,5 @@ fun View.safeClicks(): Observable<Unit> = this.clicks().throttleFirst(1, TimeUni
 
 fun TextView.trimText() = this.text.toString().trim()
 
-fun <T> Maybe<T>.common(act: AppCompatActivity) = this.compose(MainThreadTransformer())
-        .compose(RxLifecycle.with(act).disposeOnDestroy())
+fun <T> Maybe<T>.common(lifecycleOwner: LifecycleOwner): Maybe<T> = this.compose(MainThreadTransformer())
+        .compose(RxLifecycle.with(lifecycleOwner).disposeOnDestroy())
