@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.app.di.config
+package com.unicorn.sxmobileoa.app.config
 
 import dagger.Module
 import dagger.Provides

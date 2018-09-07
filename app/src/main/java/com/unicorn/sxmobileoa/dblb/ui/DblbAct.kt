@@ -26,7 +26,7 @@ class DblbAct : BaseAct(), PageActOrFra<Dblb> {
 
     override val mAdapter = DblbAdapter()
 
-    override fun loadPage(page: Int, rows: Int): Maybe<Page<Dblb>> = DblbUseCase(page).toMaybe(this)
+    override fun loadPage(pageNo: Int): Maybe<Page<Dblb>> = DblbUseCase(pageNo).toMaybe(this)
 
     override fun initViews() {
         titleBar.setTitle("待办列表")

@@ -11,7 +11,7 @@ import org.simpleframework.xml.Root;
 
 import java.util.ArrayList;
 
-@Root(strict = false)
+@Root
 public class request {
 
     protected request(String busiCode) {

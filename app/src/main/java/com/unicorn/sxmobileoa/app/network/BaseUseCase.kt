@@ -24,7 +24,7 @@ abstract class BaseUseCase<Result> {
     fun toMaybe(lifecycleOwner: LifecycleOwner): Maybe<Result> {
         val requestXml = toXml(createRequest())
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), requestXml)
-        return ComponentHolder.appComponent.getGeneralApi().post(requestBody)
+        return ComponentHolder.appComponent.getUniqueApi().post(requestBody)
                 .map(this::toSimpleResponse)
                 .filter { simpleResponse ->
                     val success = simpleResponse.code == Key.SUCCESS_CODE

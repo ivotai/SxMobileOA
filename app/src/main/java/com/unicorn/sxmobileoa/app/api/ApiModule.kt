@@ -10,6 +10,6 @@ class ApiModule {
 
     @Singleton
     @Provides
-    fun provideGeneralApi(retrofit: Retrofit): UniqueApi = retrofit.create(UniqueApi::class.java)
+    fun provideUniqueApi(retrofit: Retrofit): UniqueApi = retrofit.create(UniqueApi::class.java)
 
 }

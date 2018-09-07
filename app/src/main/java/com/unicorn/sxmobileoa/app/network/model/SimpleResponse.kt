@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa.app.network.model
 
-// Response 的简化形式，便于 downstream 处理
+// Response 的简化形式，便于下游处理
 data class SimpleResponse<Model>(
         val code: String,
         val msg: String,

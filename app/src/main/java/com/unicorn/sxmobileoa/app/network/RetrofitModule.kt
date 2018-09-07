@@ -1,10 +1,10 @@
-package com.unicorn.sxmobileoa.app.di
+package com.unicorn.sxmobileoa.app.network
 
 import com.google.gson.Gson
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import com.unicorn.sxmobileoa.BuildConfig
-import com.unicorn.sxmobileoa.app.di.config.BaseUrl
+import com.unicorn.sxmobileoa.app.config.BaseUrl
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
