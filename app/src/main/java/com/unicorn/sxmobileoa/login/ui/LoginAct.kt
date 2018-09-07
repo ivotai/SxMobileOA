@@ -17,7 +17,7 @@ import com.unicorn.sxmobileoa.bgsx.BgsxAct
 import com.unicorn.sxmobileoa.login.model.ValidationResult
 import com.unicorn.sxmobileoa.login.network.LoginUseCase
 import io.reactivex.Observable
-import io.reactivex.functions.BiFunction
+import io.reactivex.functions.Function3
 import kotlinx.android.synthetic.main.act_login.*
 
 class LoginAct : BaseAct() {
@@ -40,14 +40,17 @@ class LoginAct : BaseAct() {
 
     override fun bindIntent() {
         Observable.combineLatest(
+                RxTextView.textChanges(tvCourt),
                 RxTextView.textChanges(etUsername),
                 RxTextView.textChanges(etPassword),
-                BiFunction<CharSequence, CharSequence, ValidationResult> { account, pwd ->
-                    if (TextUtils.isEmpty(account))
-                        return@BiFunction ValidationResult(false, "用户名不能为空")
-                    if (TextUtils.isEmpty(pwd))
-                        return@BiFunction ValidationResult(false, "密码不能为空")
-                    ValidationResult()
+                Function3<CharSequence, CharSequence, CharSequence, ValidationResult> { court, username, password ->
+                    if (TextUtils.isEmpty(court))
+                        return@Function3 ValidationResult(false, "请选择法院")
+                    if (TextUtils.isEmpty(username))
+                        return@Function3 ValidationResult(false, "用户名不能为空")
+                    if (TextUtils.isEmpty(password))
+                        return@Function3 ValidationResult(false, "密码不能为空")
+                    ValidationResult(true)
                 }).subscribe {
             validationResult = it
             btnLogin.isEnabled = it.result
