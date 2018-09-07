@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.dblb
+package com.unicorn.sxmobileoa.dblb.ui
 
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
@@ -10,9 +10,9 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.detail.JddbDetailAct
 
-class DblbAdapter:BaseQuickAdapter<Int,BaseViewHolder>(R.layout.item_dblb){
+class DblbAdapter:BaseQuickAdapter<Any,BaseViewHolder>(R.layout.item_dblb){
 
-    override fun convert(helper: BaseViewHolder, item: Int) {
+    override fun convert(helper: BaseViewHolder, item: Any) {
         helper.apply {
             setText(R.id.tvBt,"主管办公室领导审批<admin于2017-04-13的接待申请请尽快办理>")
 

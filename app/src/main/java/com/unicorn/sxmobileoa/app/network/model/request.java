@@ -20,7 +20,7 @@ public class request {
         parameters.parameterList = new ArrayList<>();
     }
 
-    protected void addParameter(String key, String value) {
+    protected final void addParameter(String key, String value) {
         parameters.parameterList.add(new parameter(key, value));
     }
 
@@ -34,7 +34,7 @@ public class request {
     public String UUID = "";
 
     @Element
-    public  String busiCode;
+    public String busiCode;
 
     @Element
     public String loginName = Global.INSTANCE.getLoginInfo() == null ? "" : Global.INSTANCE.getLoginInfo().getLoginName();

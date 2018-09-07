@@ -45,8 +45,8 @@ class RetrofitModule {
     fun provideOkHttpClient(loggingInterceptor: LoggingInterceptor): OkHttpClient = OkHttpClient.Builder()
             .addNetworkInterceptor(loggingInterceptor)
             // TODO 可能需要配置更多参数
-            .readTimeout(1,TimeUnit.SECONDS)
-            .connectTimeout(1, TimeUnit.SECONDS)
+            .readTimeout(10,TimeUnit.SECONDS)
+            .connectTimeout(10, TimeUnit.SECONDS)
             .build()
 
     @Suppress("DEPRECATION")

@@ -18,7 +18,7 @@
         <activity android:name=".bgsx.BgsxAct" />
         <activity android:name=".toRemove.flowNode.FlowNodeAct" />
         <!-- <activity android:name=".business.gwgl.detail.ShouWenDetailAct" /> -->
-        <activity android:name=".dblb.DblbAct" >
+        <activity android:name=".dblb.ui.DblbAct" >
 
         </activity>
         <activity android:name=".detail.JddbDetailAct"/>

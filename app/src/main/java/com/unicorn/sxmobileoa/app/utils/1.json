@@ -1,0 +1,39 @@
+[
+  {
+    "order": "",
+    "rows": [
+      {
+        "primaryId":"57d27d02-6b8c-47e0-a2d8-d0707a576b3b",
+
+        primaryId=57d27d02-6b8c-47e0-a2d8-d0707a576b3b& // 审批单ID
+        processInstancesId=8ddca31a-acc2-11e8-b183-3a8427a833fb&  // 流程实例ID
+        taskId=199babae-acc4-11e8-b183-3a8427a833fb&  // 流程任务ID
+//        jsrId=360000000&  // userId
+        taskKey=OA_FLOW_GWGL_NBFW_GD" // 流程节点
+        "spdxx": "归档_并行节点测试1111111"
+      },
+      {
+        "param": "primaryId=191ce5d2-41cd-4abe-91ff-319d6ed836a0&moduleCode=OA_FUN_GWGL&processInstancesId=33b50d65-acbd-11e8-b183-3a8427a833fb&taskId=0c580299-acc1-11e8-b183-3a8427a833fb&jsrId=360000000&taskKey=OA_FLOW_GWGL_NBFW_GD",
+        "spdxx": "归档_测试会签节点11111"
+      },
+      {
+        "param": "primaryId=8586c4e5-a2a3-4693-ba11-fcc0cd34edb7&moduleCode=OA_FUN_GWGL&processInstancesId=697c8224-ac3d-11e8-b183-3a8427a833fb&taskId=eca3fd82-ac3e-11e8-b183-3a8427a833fb&jsrId=360000000&taskKey=OA_FLOW_GWGL_NBFW_NGRB",
+        "spdxx": "拟稿人办_流程测试1111"
+      },
+      {
+        "param": "primaryId=ec82ae1a-4980-4722-b868-5c8f229068f7&moduleCode=OA_FUN_GWGL&processInstancesId=a6fae168-7ff3-11e8-b52d-3a8427a833fb&taskId=034f7204-a03c-11e8-a829-3a8427a833fb&jsrId=360000000&taskKey=OA_FLOW_GWGL_NBFW_HG",
+        "spdxx": "核稿_sssssssssssssssssssssssssssssssssssssssss"
+      },
+      {
+        "param": "primaryId=6df4c821-0028-44ca-8a17-40dcc6936399&moduleCode=OA_FUN_GWGL&processInstancesId=1081dde0-6ef1-11e8-b04c-3010b3c972b4&taskId=e884df82-739a-11e8-acdb-3a8427a833fb&jsrId=360000000&taskKey=OA_FLOW_GWGL_NBFW_NGRB",
+        "spdxx": "拟稿人办_31231"
+      },
+      {
+        "param": "primaryId=eeee23ae-2ede-4455-82d1-d4c9b25f28e4&moduleCode=OA_FUN_GWGL&processInstancesId=d0471251-6b04-11e8-af6e-b4d5bdd1a0e3&taskId=e20c2cc1-6b04-11e8-af6e-b4d5bdd1a0e3&jsrId=360000000&taskKey=OA_FLOW_GWGL_NBFW_NGRB",
+        "spdxx": "拟稿人办_测试试"
+      }
+    ],
+    "sort": "",
+    "total": 6
+  }
+]
