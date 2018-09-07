@@ -3,6 +3,7 @@ package com.unicorn.sxmobileoa.app.network.model;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Text;
 
+@SuppressWarnings("ALL")
 public class parameter {
 
     public parameter() {

@@ -11,6 +11,7 @@ import org.simpleframework.xml.Root;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 @Root
 public class request {
 

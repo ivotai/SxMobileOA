@@ -13,11 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".login.LoginAct">
-             </activity>
+        <activity android:name=".login.LoginAct"/>
         <activity android:name=".bgsx.BgsxAct" />
-        <activity android:name=".toRemove.flowNode.FlowNodeAct" />
-        <!-- <activity android:name=".business.gwgl.detail.ShouWenDetailAct" /> -->
         <activity android:name=".dblb.ui.DblbAct" >
 
         </activity>
