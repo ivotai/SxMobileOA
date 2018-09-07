@@ -9,7 +9,7 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.court.event.CourtSelectEvent
 import com.unicorn.sxmobileoa.court.useCase.CourtUseCase
-import com.unicorn.sxmobileoa.login.LoginAct
+import com.unicorn.sxmobileoa.login.ui.LoginAct
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import florent37.github.com.rxlifecycle.RxLifecycle
 import kotlinx.android.synthetic.main.act_court.*
