@@ -7,6 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.ui.ActOrFra
+import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import io.reactivex.Maybe
 
 interface PageActOrFra<Model> : ActOrFra {
@@ -44,33 +45,24 @@ interface PageActOrFra<Model> : ActOrFra {
     }
 
     private fun loadFirstPage() {
-        loadPage(pageNo = pageNo)
-                .subscribe({
-                    mSwipeRefreshLayout.isRefreshing = false
-//                        mAdapter.data.clear()
-//  val response = it.response!!
-                    mAdapter.setNewData(it.rows)
-                    if (mAdapter.data.size == it.total) {
-                        mAdapter.loadMoreEnd()
-                    }
-                }, {
-                    mSwipeRefreshLayout.isRefreshing = false
-
-                })
+        loadPage(pageNo).subscribe({ page ->
+            mSwipeRefreshLayout.isRefreshing = false
+            mAdapter.setNewData(page.rows)
+            if (mAdapter.data.size == page.total) mAdapter.loadMoreEnd()
+        }, {
+            mSwipeRefreshLayout.isRefreshing = false
+        })
     }
 
     private fun loadNextPage() {
-        loadPage(pageNo = pageNo)
-                .subscribe({
-                    mAdapter.loadMoreComplete()
-                    mAdapter.addData(it.rows)
-                    mAdapter.notifyDataSetChanged()
-                    if (mAdapter.data.size == it.total) {
-                        mAdapter.loadMoreEnd()
-                    }
-                }, {
-                    mAdapter.loadMoreComplete()
-                })
+        loadPage(pageNo).subscribe({ page ->
+            mAdapter.loadMoreComplete()
+            mAdapter.addData(page.rows)
+            mAdapter.notifyDataSetChanged()
+            if (mAdapter.data.size == page.total) mAdapter.loadMoreEnd()
+        }, {
+            mAdapter.loadMoreComplete()
+        })
     }
 
 }

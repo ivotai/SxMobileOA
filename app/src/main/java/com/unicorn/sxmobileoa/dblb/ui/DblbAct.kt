@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.app.ui.page.Page
+import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.dblb.model.Dblb
 import com.unicorn.sxmobileoa.dblb.network.DblbUseCase
