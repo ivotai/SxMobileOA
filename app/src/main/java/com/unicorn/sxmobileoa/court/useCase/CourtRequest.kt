@@ -1,9 +1,9 @@
 package com.unicorn.sxmobileoa.court.useCase
 
-import com.unicorn.sxmobileoa.app.network.model.FydmRequest
+import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
 
 //@Root(name = "request")
-class CourtRequest : FydmRequest(busiCode = "fyxx", fydm = "") {
+class CourtRequest : MaybeRequest(busiCode = "fyxx") {
 
     init {
         // type 0 表示查询所有法院

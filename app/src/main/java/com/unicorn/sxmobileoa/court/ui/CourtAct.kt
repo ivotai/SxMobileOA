@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.startActivityAndFinish
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.court.event.CourtSelectEvent
@@ -40,8 +41,7 @@ class CourtAct : BaseAct() {
                 .compose(RxLifecycle.disposeOnDestroy(this))
                 .subscribe { event ->
                     Global.court = event.court
-                    startActivity(Intent(this, LoginAct::class.java))
-                    finish()
+                    startActivityAndFinish(Intent(this, LoginAct::class.java))
                 }
     }
 

@@ -8,11 +8,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.dblb.model.Dblb
 import com.unicorn.sxmobileoa.detail.JddbDetailAct
 
-class DblbAdapter:BaseQuickAdapter<Any,BaseViewHolder>(R.layout.item_dblb){
+class DblbAdapter:BaseQuickAdapter<Dblb,BaseViewHolder>(R.layout.item_dblb){
 
-    override fun convert(helper: BaseViewHolder, item: Any) {
+    override fun convert(helper: BaseViewHolder, item: Dblb) {
         helper.apply {
             setText(R.id.tvBt,"主管办公室领导审批<admin于2017-04-13的接待申请请尽快办理>")
 

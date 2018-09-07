@@ -53,7 +53,6 @@ class LoginAct : BaseAct() {
                 .subscribe({
                     Global.loginInfo = it
                     startActivity(Intent(this@LoginAct, BgsxAct::class.java))
-                    Logger.e(it.toString())
                 }, {
                     Logger.e(it.toString())
                 })

@@ -9,7 +9,7 @@ class CourtUseCase : BaseUseCase<List<Court>>() {
 
     override fun createRequest() = CourtRequest()
 
-    override fun toModel(json: String): List<Court> {
+    override fun toResult(json: String): List<Court> {
         val type = object : TypeToken<List<Court>>() {}.type
         return ComponentHolder.appComponent.getGson().fromJson<List<Court>>(json, type)
     }

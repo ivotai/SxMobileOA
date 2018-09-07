@@ -15,13 +15,13 @@ import okhttp3.RequestBody
 import org.simpleframework.xml.core.Persister
 import java.io.StringWriter
 
-abstract class BaseUseCase<Model> {
+abstract class BaseUseCase<Result> {
 
     abstract fun createRequest(): request
 
-    abstract fun toModel(json: String): Model
+    abstract fun toResult(json: String): Result
 
-    fun toMaybe(lifecycleOwner: LifecycleOwner): Maybe<Model> {
+    fun toMaybe(lifecycleOwner: LifecycleOwner): Maybe<Result> {
         val requestXml = toXml(createRequest())
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), requestXml)
         return ComponentHolder.appComponent.getGeneralApi().post(requestBody)
@@ -37,12 +37,12 @@ abstract class BaseUseCase<Model> {
 
     private fun toXml(source: Any) = StringWriter().apply { Persister().write(source, this) }.toString()
 
-    private fun toSimpleResponse(response: Response) = SimpleResponse<Model>(response.code, response.msg).apply {
+    private fun toSimpleResponse(response: Response) = SimpleResponse<Result>(response.code, response.msg).apply {
         response.parameters?.parameterList?.forEach { parameter ->
             when (parameter.name) {
                 "key" -> Global.ticket = parameter.text
                 "message" -> message = parameter.text
-                "result" -> result = toModel(parameter.text)
+                "result" -> result = toResult(parameter.text)
             }
         }
     }

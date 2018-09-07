@@ -1,6 +1,8 @@
 package com.unicorn.sxmobileoa.app
 
+import android.app.Activity
 import android.arch.lifecycle.LifecycleOwner
+import android.content.Intent
 import android.view.View
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.clicks
@@ -16,3 +18,8 @@ fun TextView.trimText() = this.text.toString().trim()
 
 fun <T> Maybe<T>.common(lifecycleOwner: LifecycleOwner): Maybe<T> = this.compose(MainThreadTransformer())
         .compose(RxLifecycle.with(lifecycleOwner).disposeOnDestroy())
+
+fun Activity.startActivityAndFinish(intent: Intent) {
+    this.startActivity(intent)
+    finish()
+}

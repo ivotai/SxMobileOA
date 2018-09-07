@@ -18,10 +18,12 @@ interface PageActOrFra<Model> : ActOrFra {
     val mAdapter: BaseQuickAdapter<Model, BaseViewHolder>
 
     // loadPage 需要处理线程切换以及销毁时dispose的问题
-    fun loadPage(page: Int, rows: Int): Maybe<List<Model>>
+    fun loadPage(page: Int, rows: Int): Maybe<Page<Model>>
 
-    private val rows
-        get() = 5
+    companion object {
+        val rows
+            get() = 5
+    }
 
     private val pageNo
         get() = mAdapter.data.size / rows
@@ -48,10 +50,10 @@ interface PageActOrFra<Model> : ActOrFra {
                     mSwipeRefreshLayout.isRefreshing = false
 //                        mAdapter.data.clear()
 //  val response = it.response!!
-                    mAdapter.setNewData(it)
-//                        if (mAdapter.data.size == response.data.total) {
-//                            mAdapter.loadMoreEnd()
-//                        }
+                    mAdapter.setNewData(it.rows)
+                    if (mAdapter.data.size == it.total) {
+                        mAdapter.loadMoreEnd()
+                    }
                 }, {
                     mSwipeRefreshLayout.isRefreshing = false
 
@@ -62,11 +64,11 @@ interface PageActOrFra<Model> : ActOrFra {
         loadPage(page = pageNo, rows = rows)
                 .subscribe({
                     mAdapter.loadMoreComplete()
-                    mAdapter.addData(it)
+                    mAdapter.addData(it.rows)
                     mAdapter.notifyDataSetChanged()
-//                        if (mAdapter.data.size == response.data.total) {
-//                            mAdapter.loadMoreEnd()
-//                        }
+                    if (mAdapter.data.size == it.total) {
+                        mAdapter.loadMoreEnd()
+                    }
                 }, {
                     mAdapter.loadMoreComplete()
                 })

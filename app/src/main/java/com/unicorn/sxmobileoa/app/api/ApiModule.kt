@@ -1,6 +1,5 @@
-package com.unicorn.sxmobileoa.app.di
+package com.unicorn.sxmobileoa.app.api
 
-import com.unicorn.sxmobileoa.app.api.UniqueApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

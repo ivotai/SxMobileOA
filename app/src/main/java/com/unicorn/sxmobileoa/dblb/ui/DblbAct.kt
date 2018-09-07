@@ -6,13 +6,15 @@ import android.support.v7.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.app.ui.page.Page
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
+import com.unicorn.sxmobileoa.dblb.model.Dblb
 import com.unicorn.sxmobileoa.dblb.network.DblbUseCase
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.Maybe
 import kotlinx.android.synthetic.main.act_dblb.*
 
-class DblbAct : BaseAct(), PageActOrFra<Any> {
+class DblbAct : BaseAct(), PageActOrFra<Dblb> {
 
     override val layoutId: Int = R.layout.act_dblb
 
@@ -24,15 +26,7 @@ class DblbAct : BaseAct(), PageActOrFra<Any> {
 
     override val mAdapter = DblbAdapter()
 
-    override fun loadPage(page: Int, rows: Int): Maybe<List<Any>> {
-       return DblbUseCase(page).toMaybe(this)
-
-
-//        return Observable.just(1, 2).toList()
-//                .delay(2, TimeUnit.SECONDS)
-//                .toMaybe()
-//                .common(this)
-    }
+    override fun loadPage(page: Int, rows: Int): Maybe<Page<Dblb>> = DblbUseCase(page).toMaybe(this)
 
     override fun initViews() {
         titleBar.setTitle("待办列表")
