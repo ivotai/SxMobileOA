@@ -11,7 +11,7 @@ class DblbUseCase(private val pageNo: Int) : BaseUseCase<Page<Dblb>>() {
     override fun createRequest() = DblbRequest(pageNo)
 
     override fun toResult(json: String): Page<Dblb> {
-        val type = object : TypeToken<Page<List<Dblb>>>() {}.type
+        val type = object : TypeToken<Page<Dblb>>() {}.type
         return ComponentHolder.appComponent.getGson().fromJson<Page<Dblb>>(json, type)
     }
 
