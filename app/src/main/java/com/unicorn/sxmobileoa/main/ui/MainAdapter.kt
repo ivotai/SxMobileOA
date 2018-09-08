@@ -25,7 +25,7 @@ class MainAdapter : BaseSectionQuickAdapter<MainSection, BaseViewHolder>(R.layou
         helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
             if (item.t.flowCode == "") return@subscribe
             Intent(mContext, DblbAct::class.java).apply {
-                putExtra(Key.mainItem, item)
+                putExtra(Key.mainItem, item.t)
             }.let { mContext.startActivity(it) }
         }
     }
