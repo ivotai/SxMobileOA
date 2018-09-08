@@ -20,7 +20,6 @@ class Faker {
         list.add(MainSection(MainItem(text = "督查联络3")))
         list.add(MainSection(MainItem(text = "督查联络4")))
 
-
         return Maybe.just(list)
     }
 
