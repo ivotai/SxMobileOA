@@ -16,7 +16,7 @@ class HeaderView(context: Context) : FrameLayout(context) {
     lateinit var banner: Banner
 
     fun initViews(context: Context) {
-        LayoutInflater.from(context).inflate(R.layout.header_main, this, true)
+        LayoutInflater.from(context).inflate(R.layout.header_view_main, this, true)
         initBanner()
     }
 
