@@ -8,7 +8,8 @@ class LoginUseCase(private val username: String, private val password: String) :
 
     override fun createRequest() = LoginRequest(username, password)
 
-    override fun toResult(json: String): LoginInfo = ComponentHolder.appComponent.getGson()
-            .fromJson(json, LoginInfo::class.java)
+    override fun toResult(json: String): LoginInfo {
+        return ComponentHolder.appComponent.getGson().fromJson(json, LoginInfo::class.java)
+    }
 
 }

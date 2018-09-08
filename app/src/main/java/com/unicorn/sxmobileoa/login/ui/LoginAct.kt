@@ -27,6 +27,7 @@ class LoginAct : BaseAct() {
 
     @SuppressLint("SetTextI18n")
     override fun initViews() {
+        // TODO DELETE
         etUsername.setText("0000")
         etPassword.setText("withub4l")
 
