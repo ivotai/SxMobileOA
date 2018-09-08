@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.login.ui
+package com.unicorn.sxmobileoa.login.login.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -14,8 +14,8 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.startActivityAndFinish
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
-import com.unicorn.sxmobileoa.court.model.Court
-import com.unicorn.sxmobileoa.court.ui.CourtAct
+import com.unicorn.sxmobileoa.login.court.model.Court
+import com.unicorn.sxmobileoa.login.court.ui.CourtAct
 import com.unicorn.sxmobileoa.main.MainAct
 import io.reactivex.Observable
 import io.reactivex.functions.Consumer

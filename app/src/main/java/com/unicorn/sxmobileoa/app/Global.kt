@@ -1,7 +1,7 @@
 package com.unicorn.sxmobileoa.app
 
-import com.unicorn.sxmobileoa.court.model.Court
-import com.unicorn.sxmobileoa.login.model.LoginInfo
+import com.unicorn.sxmobileoa.login.court.model.Court
+import com.unicorn.sxmobileoa.login.login.model.LoginInfo
 
 object Global {
 

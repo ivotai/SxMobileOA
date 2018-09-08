@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.court.ui
+package com.unicorn.sxmobileoa.login.court.ui
 
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.Faker

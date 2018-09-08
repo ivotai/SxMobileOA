@@ -66,7 +66,7 @@
 
 #model
 -keep class com.unicorn.sxmobileoa.app.network.model.**{*;}
--keep class com.unicorn.sxmobileoa.court.model.**{*;}
+-keep class com.unicorn.sxmobileoa.login.court.model.**{*;}
 -keep class com.unicorn.sxmobileoa.login.model.**{*;}
 
 #RxCache

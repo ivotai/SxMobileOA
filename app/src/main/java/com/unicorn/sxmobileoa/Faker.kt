@@ -1,7 +1,7 @@
 package com.unicorn.sxmobileoa
 
-import com.unicorn.sxmobileoa.court.model.Court
-import com.unicorn.sxmobileoa.court.useCase.CourtUseCase
+import com.unicorn.sxmobileoa.login.court.model.Court
+import com.unicorn.sxmobileoa.login.court.network.CourtUseCase
 import io.reactivex.Maybe
 
 class Faker {

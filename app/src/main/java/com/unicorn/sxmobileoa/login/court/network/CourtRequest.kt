@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.court.useCase
+package com.unicorn.sxmobileoa.login.court.network
 
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
 

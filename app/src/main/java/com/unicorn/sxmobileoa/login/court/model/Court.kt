@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.court.model
+package com.unicorn.sxmobileoa.login.court.model
 
 data class Court(
     val area: String,
