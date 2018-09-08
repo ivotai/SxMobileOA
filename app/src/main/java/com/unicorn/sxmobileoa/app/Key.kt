@@ -9,5 +9,6 @@ object Key {
     const val type = "type"
     const val start = "start"
     const val count = "count"
+    const val mainItem = "mainItem"
 
 }

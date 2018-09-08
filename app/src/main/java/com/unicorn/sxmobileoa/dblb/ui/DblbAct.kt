@@ -5,11 +5,13 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
+import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.dblb.model.Dblb
 import com.unicorn.sxmobileoa.dblb.network.DblbUseCase
+import com.unicorn.sxmobileoa.main.model.MainItem
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.Maybe
 import kotlinx.android.synthetic.main.act_dblb.*
@@ -26,7 +28,15 @@ class DblbAct : BaseAct(), PageActOrFra<Dblb> {
 
     override val mAdapter = DblbAdapter()
 
-    override fun loadPage(pageNo: Int): Maybe<Page<Dblb>> = DblbUseCase(pageNo).toMaybe(this)
+    override fun loadPage(pageNo: Int): Maybe<Page<Dblb>> =
+            DblbUseCase(pageNo, mainItem).toMaybe(this)
+
+    lateinit var mainItem: MainItem
+
+    override fun bindIntent() {
+        mainItem = intent.getSerializableExtra(Key.mainItem) as MainItem
+        super.bindIntent()
+    }
 
     override fun initViews() {
         titleBar.setTitle("待办列表")
