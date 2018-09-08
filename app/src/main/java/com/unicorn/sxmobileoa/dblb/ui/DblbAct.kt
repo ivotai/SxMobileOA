@@ -1,6 +1,5 @@
 package com.unicorn.sxmobileoa.dblb.ui
 
-import android.graphics.Color
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
@@ -43,7 +42,7 @@ class DblbAct : BaseAct(), PageActOrFra<Dblb> {
         titleBar.setTitle("待办列表")
         super.initViews()
         HorizontalDividerItemDecoration.Builder(this)
-                .color(Color.WHITE)
+                .colorResId(R.color.md_grey_100)
                 .size(ConvertUtils.dp2px(10f))
                 .build().let { mRecyclerView.addItemDecoration(it) }
     }
