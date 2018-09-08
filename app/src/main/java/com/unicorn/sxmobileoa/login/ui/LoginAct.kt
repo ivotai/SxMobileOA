@@ -11,11 +11,12 @@ import com.unicorn.sxmobileoa.Faker
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.app.startActivityAndFinish
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
-import com.unicorn.sxmobileoa.bgsx.BgsxAct
 import com.unicorn.sxmobileoa.court.model.Court
 import com.unicorn.sxmobileoa.court.ui.CourtAct
+import com.unicorn.sxmobileoa.main.MainAct
 import io.reactivex.Observable
 import io.reactivex.functions.Consumer
 import io.reactivex.functions.Function3
@@ -55,14 +56,14 @@ class LoginAct : BaseAct() {
 //                .toMaybe(this)
 //                .subscribe({
 //                    Global.loginInfo = it
-//                    startActivity(Intent(this@LoginAct, BgsxAct::class.java))
+//                    startActivity(Intent(this@LoginAct, MainAct::class.java))
 //                }, {
 //                    Logger.e(it.toString())
 //                })
 
         // TODO DELETE FAKER METHOD
         Faker().getLoginMaybe().subscribe {
-            startActivity(Intent(this@LoginAct, BgsxAct::class.java))
+            startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))
         }
     }
 

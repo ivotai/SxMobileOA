@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".court.ui.CourtAct" />
-        <activity android:name=".bgsx.BgsxAct" />
+        <activity android:name=".main.MainAct" />
         <activity android:name=".dblb.ui.DblbAct" />
         <activity android:name=".detail.JddbDetailAct" />
 

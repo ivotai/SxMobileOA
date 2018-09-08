@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.bgsx
+package com.unicorn.sxmobileoa.main
 
 import android.content.Intent
 import com.unicorn.sxmobileoa.R
@@ -7,7 +7,7 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.dblb.ui.DblbAct
 import kotlinx.android.synthetic.main.act_bgsx.*
 
-class BgsxAct : BaseAct() {
+class MainAct : BaseAct() {
 
     override val layoutId = R.layout.act_bgsx
 
