@@ -2,7 +2,6 @@ package com.unicorn.sxmobileoa.login.court.network
 
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
 
-//@Root(name = "request")
 class CourtRequest : MaybeRequest(busiCode = "fyxx") {
 
     init {
