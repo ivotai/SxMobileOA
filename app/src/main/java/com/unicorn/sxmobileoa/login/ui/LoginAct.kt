@@ -7,16 +7,17 @@ import android.support.v4.content.ContextCompat
 import android.text.TextUtils
 import com.blankj.utilcode.util.ConvertUtils
 import com.jakewharton.rxbinding2.widget.RxTextView
-import com.orhanobut.logger.Logger
+import com.unicorn.sxmobileoa.Faker
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.app.trimText
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.bgsx.BgsxAct
-import com.unicorn.sxmobileoa.login.model.ValidationResult
-import com.unicorn.sxmobileoa.login.network.LoginUseCase
+import com.unicorn.sxmobileoa.court.model.Court
+import com.unicorn.sxmobileoa.court.ui.CourtAct
 import io.reactivex.Observable
+import io.reactivex.functions.Consumer
 import io.reactivex.functions.Function3
 import kotlinx.android.synthetic.main.act_login.*
 
@@ -36,38 +37,39 @@ class LoginAct : BaseAct() {
         }.let { btnLogin.background = it }
     }
 
-    private lateinit var validationResult: ValidationResult
-
     override fun bindIntent() {
         Observable.combineLatest(
-                RxTextView.textChanges(tvCourt),
-                RxTextView.textChanges(etUsername),
-                RxTextView.textChanges(etPassword),
-                Function3<CharSequence, CharSequence, CharSequence, ValidationResult> { court, username, password ->
-                    if (TextUtils.isEmpty(court))
-                        return@Function3 ValidationResult(false, "请选择法院")
-                    if (TextUtils.isEmpty(username))
-                        return@Function3 ValidationResult(false, "用户名不能为空")
-                    if (TextUtils.isEmpty(password))
-                        return@Function3 ValidationResult(false, "密码不能为空")
-                    ValidationResult(true)
-                }).subscribe {
-            validationResult = it
-            btnLogin.isEnabled = it.result
-        }
-
+                RxTextView.textChanges(tvCourt).map { !TextUtils.isEmpty(it) },
+                RxTextView.textChanges(etUsername).map { !TextUtils.isEmpty(it) },
+                RxTextView.textChanges(etPassword).map { !TextUtils.isEmpty(it) },
+                Function3<Boolean, Boolean, Boolean, Boolean> { court, username, password -> return@Function3 court && username && password })
+                .subscribe { btnLogin.isEnabled = it }
+        tvCourt.safeClicks().subscribe { startActivity(Intent(this@LoginAct, CourtAct::class.java)) }
         btnLogin.safeClicks().subscribe { login() }
+        registerEvent()
     }
 
     private fun login() {
-        LoginUseCase(etUsername.trimText(), etPassword.trimText())
-                .toMaybe(this)
-                .subscribe({
-                    Global.loginInfo = it
-                    startActivity(Intent(this@LoginAct, BgsxAct::class.java))
-                }, {
-                    Logger.e(it.toString())
-                })
+//        LoginUseCase(etUsername.trimText(), etPassword.trimText())
+//                .toMaybe(this)
+//                .subscribe({
+//                    Global.loginInfo = it
+//                    startActivity(Intent(this@LoginAct, BgsxAct::class.java))
+//                }, {
+//                    Logger.e(it.toString())
+//                })
+
+        // TODO DELETE FAKER METHOD
+        Faker().getLoginMaybe().subscribe {
+            startActivity(Intent(this@LoginAct, BgsxAct::class.java))
+        }
+    }
+
+    private fun registerEvent() {
+        RxBus.get().registerEvent(Court::class.java, this, Consumer { court ->
+            Global.court = court
+            tvCourt.text = court.dmms
+        })
     }
 
 }

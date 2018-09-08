@@ -1,17 +1,10 @@
 package com.unicorn.sxmobileoa.court.ui
 
-import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import com.unicorn.sxmobileoa.Faker
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Global
-import com.unicorn.sxmobileoa.app.startActivityAndFinish
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.app.utils.RxBus
-import com.unicorn.sxmobileoa.court.event.CourtSelectEvent
-import com.unicorn.sxmobileoa.court.useCase.CourtUseCase
-import com.unicorn.sxmobileoa.login.ui.LoginAct
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
-import florent37.github.com.rxlifecycle.RxLifecycle
 import kotlinx.android.synthetic.main.act_court.*
 
 class CourtAct : BaseAct() {
@@ -33,16 +26,12 @@ class CourtAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        CourtUseCase()
-                .toMaybe(this)
-                .subscribe { t -> courtAdapter.setNewData(t) }
+//        CourtUseCase()
+//                .toMaybe(this)
+//                .subscribe { t -> courtAdapter.setNewData(t) }
 
-        RxBus.get().toObservable(CourtSelectEvent::class.java)
-                .compose(RxLifecycle.disposeOnDestroy(this))
-                .subscribe { event ->
-                    Global.court = event.court
-                    startActivityAndFinish(Intent(this, LoginAct::class.java))
-                }
+        // TODO DELETE FAKER METHOD
+        Faker().getCourtMaybe().subscribe { t -> courtAdapter.setNewData(t) }
     }
 
 }
