@@ -3,8 +3,8 @@ package com.unicorn.sxmobileoa.main.ui
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import com.unicorn.sxmobileoa.R
-import com.youth.banner.Banner
 
 class HeaderView(context: Context) : FrameLayout(context) {
 
@@ -12,11 +12,11 @@ class HeaderView(context: Context) : FrameLayout(context) {
         initViews(context)
     }
 
-    lateinit var banner: Banner
-
+    lateinit var root: LinearLayout
     fun initViews(context: Context) {
         LayoutInflater.from(context).inflate(R.layout.header_view_main, this, true)
 //        initBanner()
+        root = findViewById(R.id.root)
     }
 
     private fun initBanner() {

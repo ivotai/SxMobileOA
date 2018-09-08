@@ -5,7 +5,7 @@ import android.support.design.widget.TabLayout
 import android.support.design.widget.TabLayout.MODE_SCROLLABLE
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.MotionEvent
+import android.widget.FrameLayout
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.ScreenUtils
 import com.blankj.utilcode.util.ToastUtils
@@ -13,7 +13,6 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.main.data.Faker
-import com.unicorn.sxmobileoa.main.ui.HeaderView
 import com.unicorn.sxmobileoa.main.ui.MainAdapter
 import kotlinx.android.synthetic.main.act_main.*
 
@@ -23,12 +22,15 @@ import kotlinx.android.synthetic.main.act_main.*
 class MainAct : BaseAct() {
 
     override val layoutId = R.layout.act_main
-
+var lastH= 0
     //判读是否是recyclerView主动引起的滑动，true- 是，false- 否，由tablayout引起的
-    private var isRecyclerScroll: Boolean = false
+//    private var isRecyclerScroll: Boolean = false
     //记录上一次位置，防止在同一内容块里滑动 重复定位到tablayout
     private var lastPos: Int = 0
     //用于recyclerView滑动到指定的位置
+
+    var click = false
+
 
     fun getStatusBarHeight(context: Context): Int {
         var result = 0
@@ -52,14 +54,13 @@ class MainAct : BaseAct() {
         val statusBarH = getStatusBarHeight(this)
         val titleBar = ConvertUtils.dp2px(56f)
         val tab = ConvertUtils.dp2px(56f)
-        val items = ConvertUtils.dp2px(100f)
-        val lastH = screenH - statusBarH - titleBar-tab-items
+        val items = ConvertUtils.dp2px(48.toFloat() + 64.toFloat())
+         lastH = screenH - statusBarH - titleBar-tab-items
         ToastUtils.showShort(lastH.toString())
     }
 
     private lateinit var manager: GridLayoutManager
 
-//    private var isRecyclerScroll: Boolean = false
 
     private fun f1(posTab:Int):Int{
         var position = 0
@@ -101,8 +102,9 @@ class MainAct : BaseAct() {
 
 
             override fun onTabSelected(tab: TabLayout.Tab) {
+                click =true
                 val pos = tab.position
-                isRecyclerScroll = false
+//                isRecyclerScroll = false
 
 
 
@@ -147,19 +149,28 @@ class MainAct : BaseAct() {
             mainAdapter.bindToRecyclerView(this)
 //            mainAdapter.addHeaderView(HeaderView(this@MainAct))
         }
-        mainAdapter.addFooterView(HeaderView(this))
+
+        val frameLayout = FrameLayout(this)
+        val root =FrameLayout(this)
+
+        val params = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, lastH)
+        frameLayout.addView(root,params)
+//        params.height = lastH
+//        headerView.root.setLayoutParams(params)
+
+        mainAdapter.addFooterView(frameLayout)
 //
 //        HorizontalDividerItemDecoration.Builder(this)
 //                .colorResId(R.color.md_red_400)
 //                .size(1).build().let { recyclerView.addItemDecoration(it) }
 
-        recyclerView.setOnTouchListener { v, event ->
-            //当滑动由recyclerView触发时，isRecyclerScroll 置true
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                isRecyclerScroll = true
-            }
-            false
-        }
+//        recyclerView.setOnTouchListener { v, event ->
+//            //当滑动由recyclerView触发时，isRecyclerScroll 置true
+//            if (event.action == MotionEvent.ACTION_DOWN) {
+//                isRecyclerScroll = true
+//            }
+//            false
+//        }
 
 
 
@@ -167,15 +178,14 @@ class MainAct : BaseAct() {
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-
-                if (isRecyclerScroll) {
+            if (click){click=false
+            return}
                     //第一个可见的view的位置，即tablayou需定位的位置
                     val position = manager.findFirstVisibleItemPosition()
                     if (lastPos != position) {
                         tabLayout.setScrollPosition(f2(position), 0f, true)
                     }
                     lastPos = position
-                }
 
             }
 
