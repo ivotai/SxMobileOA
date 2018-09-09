@@ -1,19 +1,243 @@
-[
-  {
-    "name": "公文管理",
-    "list": [
-      {
-        "moduleCode": "",
-        "spdCode": "",
-        "text": "内部发文",
-        "court": 13
-      },
-      {
-        "mCode": "",
-        "spdCode": "",
-        "text": "外部发文",
-        "court": 13
-      }
-    ]
+{
+  "spdData": [
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "csmc_input",
+      "spdValue": ""
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "ngr_input",
+      "spdValue": "OA系统管理员"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "jbbm_input",
+      "spdValue": "立案庭"
+    },
+    {
+      "spdKey": "zsmc_input",
+      "spdValue": ""
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "fwsj_input",
+      "spdValue": ""
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "fydm_hq",
+      "spdValue": "R00"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    }
+  ],
+  "spdXx": {
+    "assignName": "",
+    "blsj": "",
+    "bmbm": "3",
+    "bmmc": "立案庭",
+    "bt": "并行节点测试1111111",
+    "column1": "",
+    "column10": "",
+    "column2": "",
+    "column3": "",
+    "column4": "",
+    "column5": "",
+    "column6": "",
+    "column7": "",
+    "column8": "",
+    "column9": "",
+    "createUserId": "360000000",
+    "createUserName": "OA系统管理员",
+    "dbNodeId": "",
+    "dbsprId": "",
+    "dbsprmc": "",
+    "dcllqtfyspdBfyCt": 0,
+    "dcllqtfyspdCt": 0,
+    "dcllqtfyspwcCt": 0,
+    "dqh": 0,
+    "dycount": 0,
+    "fbrid": "",
+    "fbrmc": "",
+    "fbsj": "",
+    "flowCode": "OA_FLOW_GWGL_NBFW",
+    "flowName": "",
+    "flowParams": null,
+    "funCode": "OA_FUN_GWGL_NBFW",
+    "fydm": "R00",
+    "fyjc": "陕",
+    "fymc": "陕西省高级人民法院",
+    "gdbz": 0,
+    "gdlx": "",
+    "gdrId": "",
+    "gdrmc": "",
+    "gdsj": "",
+    "gdzt": 0,
+    "hisNodeId": "",
+    "hisNodeName": "",
+    "hjjexx": 0,
+    "htmlPath": "",
+    "id": "57d27d02-6b8c-47e0-a2d8-d0707a576b3b",
+    "imgPath": "",
+    "isUpdateIndex": "",
+    "isfb": 0,
+    "jsrId": "",
+    "jssj": "",
+    "lcmc": "",
+    "moduleCode": "OA_FUN_GWGL",
+    "ndh": "",
+    "nodeId": "OA_FLOW_GWGL_NBFW_GD",
+    "nodeName": "归档",
+    "processInstancesId": "8ddca31a-acc2-11e8-b183-3a8427a833fb",
+    "qhfs": "",
+    "qybz": 0,
+    "remoteTaskName": "",
+    "sdwh": "",
+    "sfbl": "",
+    "sfdy": 0,
+    "sfth": "0",
+    "sfyxgq": 0,
+    "sfzdgd": 0,
+    "sjrdz": "",
+    "sjrlxfs": "",
+    "sjrmc": "",
+    "sort": "",
+    "spdCode": "OA_SPD_GWGL_NBFW",
+    "spdJson": "",
+    "spdNodeName": "",
+    "spdSprmc": "",
+    "spdTaskNodeHis": "启动#拟稿人#部门办理#拟稿人办#其他部门办理#院领导审批#拟稿人办#其他部门办理#部门再办",
+    "spdVersion": 1,
+    "spdid": "",
+    "sprid": "360000000",
+    "sprmc": "OA系统管理员",
+    "startFlow": "",
+    "status": "1",
+    "sysTime": "2018-08-31 10:07:03.0",
+    "taskId": "",
+    "updateTime": "",
+    "url": "",
+    "wh": "",
+    "whid": "",
+    "wjcjfs": 0,
+    "xtlx": "",
+    "ycid": "",
+    "ycrs_input": "",
+    "ycspdid": "",
+    "ytbm_input": "",
+    "ytmc_input": "",
+    "ytspdid": "",
+    "zfbz": 0,
+    "zhmc": ""
   }
-]
+}

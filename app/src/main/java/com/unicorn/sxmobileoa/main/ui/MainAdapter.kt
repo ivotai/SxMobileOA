@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.dblb.ui.DblbAct
+import com.unicorn.sxmobileoa.dbxx.ui.DbxxAct
 import com.unicorn.sxmobileoa.main.model.MainSection
 
 class MainAdapter : BaseSectionQuickAdapter<MainSection, BaseViewHolder>(R.layout.item_main, R.layout.header_main, null) {
@@ -24,7 +24,7 @@ class MainAdapter : BaseSectionQuickAdapter<MainSection, BaseViewHolder>(R.layou
 
         helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
             if (item.t.flowCode == "") return@subscribe
-            Intent(mContext, DblbAct::class.java).apply {
+            Intent(mContext, DbxxAct::class.java).apply {
                 putExtra(Key.mainItem, item.t)
             }.let { mContext.startActivity(it) }
         }

@@ -1,8 +1,8 @@
 package com.unicorn.sxmobileoa
 
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
-import com.unicorn.sxmobileoa.dblb.model.Dblb
-import com.unicorn.sxmobileoa.dblb.network.DblbUseCase
+import com.unicorn.sxmobileoa.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.dbxx.network.DbxxUseCase
 import com.unicorn.sxmobileoa.login.court.model.Court
 import com.unicorn.sxmobileoa.login.court.network.CourtUseCase
 import com.unicorn.sxmobileoa.main.model.MainItem
@@ -102,9 +102,9 @@ class Faker {
         return Maybe.just(Unit)
     }
 
-    fun getDblbMaybe(): Maybe<Page<Dblb>> {
+    fun getDblbMaybe(): Maybe<Page<Dbxx>> {
         val mainItem = MainItem(text = "内部发文", resId = R.mipmap.bangong_01, moduleCode = "OA_FUN_GWGL", flowCode = "OA_FLOW_GWGL_NBFW", spdCode = "OA_SPD_GWGL_NBFW")
-        return Maybe.just(DblbUseCase(mainItem = mainItem, pageNo = 0).toResult(dblbJson))
+        return Maybe.just(DbxxUseCase(mainItem = mainItem, pageNo = 0).toResult(dblbJson))
     }
 
 }

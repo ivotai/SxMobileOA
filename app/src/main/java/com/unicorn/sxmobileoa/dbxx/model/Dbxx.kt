@@ -1,6 +1,8 @@
-package com.unicorn.sxmobileoa.dblb.model
+package com.unicorn.sxmobileoa.dbxx.model
 
-data class Dblb(
+import java.io.Serializable
+
+data class Dbxx(
         val bt: String,
         val cjrq: String,
         val ngrDept: String,
@@ -16,4 +18,4 @@ data class Param(
         val processInstancesId: String,
         val taskId: String,
         val taskKey: String
-)
+):Serializable

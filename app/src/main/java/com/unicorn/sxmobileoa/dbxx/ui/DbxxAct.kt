@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.dblb.ui
+package com.unicorn.sxmobileoa.dbxx.ui
 
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
@@ -8,16 +8,16 @@ import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
-import com.unicorn.sxmobileoa.dblb.model.Dblb
-import com.unicorn.sxmobileoa.dblb.network.DblbUseCase
+import com.unicorn.sxmobileoa.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.dbxx.network.DbxxUseCase
 import com.unicorn.sxmobileoa.main.model.MainItem
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.Maybe
-import kotlinx.android.synthetic.main.act_dblb.*
+import kotlinx.android.synthetic.main.act_dbxx.*
 
-class DblbAct : BaseAct(), PageActOrFra<Dblb> {
+class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
 
-    override val layoutId: Int = R.layout.act_dblb
+    override val layoutId: Int = R.layout.act_dbxx
 
     override val mRecyclerView: RecyclerView
         get() = recyclerView
@@ -25,22 +25,26 @@ class DblbAct : BaseAct(), PageActOrFra<Dblb> {
     override val mSwipeRefreshLayout: SwipeRefreshLayout
         get() = swipeRefreshLayout
 
-    override val mAdapter = DblbAdapter()
+    override val mAdapter: DbxxAdapter
+        get() = realAdapter
 
-    override fun loadPage(pageNo: Int): Maybe<Page<Dblb>> =
+    lateinit var realAdapter: DbxxAdapter
+
+    override fun loadPage(pageNo: Int): Maybe<Page<Dbxx>> =
 // Faker().getDblbMaybe()
-        // TODO DELETE FAKER METHOD
-            DblbUseCase(pageNo, mainItem).toMaybe(this)
+    // TODO DELETE FAKER METHOD
+            DbxxUseCase(pageNo, mainItem).toMaybe(this)
 
     lateinit var mainItem: MainItem
 
     override fun bindIntent() {
-        mainItem = intent.getSerializableExtra(Key.mainItem) as MainItem
         super.bindIntent()
     }
 
     override fun initViews() {
+        mainItem = intent.getSerializableExtra(Key.mainItem) as MainItem
         titleBar.setTitle("待办列表")
+        realAdapter = DbxxAdapter(mainItem.moduleCode)
         super.initViews()
         HorizontalDividerItemDecoration.Builder(this)
                 .colorResId(R.color.md_grey_100)

@@ -1,10 +1,10 @@
-package com.unicorn.sxmobileoa.dblb.network
+package com.unicorn.sxmobileoa.dbxx.network
 
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.network.model.PageRequest
 import com.unicorn.sxmobileoa.main.model.MainItem
 
-class DblbRequest(pageNo: Int, mainItem: MainItem) : PageRequest(busiCode = "dbxx", pageNo = pageNo) {
+class DbxxRequest(pageNo: Int, mainItem: MainItem) : PageRequest(busiCode = "dbxx", pageNo = pageNo) {
 
     init {
         addParameter("moduleCode", mainItem.moduleCode)
