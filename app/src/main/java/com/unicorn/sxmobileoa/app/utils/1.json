@@ -1,2 +1,19 @@
-com.unicorn.sxmobileoa.main.model.MainSection cannot be cast to com.unicorn.sxmobileoa.main.model.MainItem
-at
+[
+  {
+    "name": "公文管理",
+    "list": [
+      {
+        "moduleCode": "",
+        "spdCode": "",
+        "text": "内部发文",
+        "court": 13
+      },
+      {
+        "mCode": "",
+        "spdCode": "",
+        "text": "外部发文",
+        "court": 13
+      }
+    ]
+  }
+]

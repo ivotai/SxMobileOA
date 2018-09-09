@@ -4,7 +4,7 @@ import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.network.model.PageRequest
 import com.unicorn.sxmobileoa.main.model.MainItem
 
-class DblbRequest(pageNo: Int, mainItem: MainItem) : PageRequest(busiCode = "fw", pageNo = pageNo) {
+class DblbRequest(pageNo: Int, mainItem: MainItem) : PageRequest(busiCode = "dbxx", pageNo = pageNo) {
 
     init {
         addParameter("moduleCode", mainItem.moduleCode)

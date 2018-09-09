@@ -11,4 +11,6 @@ object Global {
 
     var court: Court? =null
 
+    var intranet = false
+
 }
