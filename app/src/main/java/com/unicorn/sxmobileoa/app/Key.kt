@@ -15,5 +15,7 @@ object Key {
     const val nodeId = "nodeId"
     const val dbxx = "dbxx"
     const val mainItem = "mainItem"
+    const val username = "username"
+    const val courtStr = "courtStr"
 
 }

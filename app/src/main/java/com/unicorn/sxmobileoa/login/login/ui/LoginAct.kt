@@ -6,10 +6,13 @@ import android.graphics.drawable.GradientDrawable
 import android.support.v4.content.ContextCompat
 import android.text.TextUtils
 import com.blankj.utilcode.util.ConvertUtils
+import com.github.florent37.rxsharedpreferences.RxSharedPreferences
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.trimText
 import com.unicorn.sxmobileoa.app.ui.BaseAct
@@ -30,7 +33,6 @@ class LoginAct : BaseAct() {
     @SuppressLint("SetTextI18n")
     override fun initViews() {
         // TODO DELETE
-        etUsername.setText("0000")
         etPassword.setText("withub4l")
 
         GradientDrawable().apply {
@@ -49,6 +51,8 @@ class LoginAct : BaseAct() {
                 .subscribe { btnLogin.isEnabled = it }
         tvCourt.safeClicks().subscribe { startActivity(Intent(this@LoginAct, CourtAct::class.java)) }
         btnLogin.safeClicks().subscribe { login() }
+
+        restoreInputInfo()
     }
 
     private fun login() {
@@ -56,6 +60,7 @@ class LoginAct : BaseAct() {
                 .toMaybe(this)
                 .subscribe({
                     Global.loginInfo = it
+                    saveInputInfo()
                     startActivity(Intent(this@LoginAct, MainAct::class.java))
                 }, {
                     Logger.e(it.toString())
@@ -66,6 +71,26 @@ class LoginAct : BaseAct() {
 //            startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))
 //        }
     }
+
+    private fun restoreInputInfo() {
+        val rxSharedPreferences = RxSharedPreferences.with(this)
+        rxSharedPreferences.getString(Key.courtStr, "")
+                .map { ComponentHolder.appComponent.getGson().fromJson(it, Court::class.java) }
+                .subscribe {
+                    Global.court = it
+                    tvCourt.text = it.dmms
+                }
+        rxSharedPreferences.getString(Key.username, "")
+                .subscribe { etUsername.setText(it) }
+     }
+
+    private fun saveInputInfo() {
+        RxSharedPreferences.with(this).apply {
+            putString(Key.courtStr, ComponentHolder.appComponent.getGson().toJson(Global.court))
+            putString(Key.username, etUsername.trimText())
+        }
+    }
+
 
     override fun registerEvent() {
         RxBus.get().registerEvent(Court::class.java, this, Consumer { court ->

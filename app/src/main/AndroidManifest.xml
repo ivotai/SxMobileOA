@@ -14,17 +14,16 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".login.login.ui.LoginAct">
-          </activity>
-        <activity android:name="com.unicorn.sxmobileoa.login.court.ui.CourtAct" />
-        <activity android:name="com.unicorn.sxmobileoa.main.main.ui.MainAct" />
-        <activity android:name="com.unicorn.sxmobileoa.main.dbxx.ui.DbxxAct" />
-        <activity android:name=".detail.ui.DetailAct" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.unicorn.sxmobileoa.login.court.ui.CourtAct" />
+        <activity android:name="com.unicorn.sxmobileoa.main.main.ui.MainAct" />
+        <activity android:name="com.unicorn.sxmobileoa.main.dbxx.ui.DbxxAct" />
+        <activity android:name=".detail.ui.DetailAct"/>
     </application>
 
 </manifest>
