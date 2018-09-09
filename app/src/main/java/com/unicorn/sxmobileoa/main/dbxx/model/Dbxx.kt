@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.dbxx.model
+package com.unicorn.sxmobileoa.main.dbxx.model
 
 import java.io.Serializable
 
@@ -17,5 +17,6 @@ data class Param(
         val primaryId: String,
         val processInstancesId: String,
         val taskId: String,
-        val taskKey: String
+        val taskKey: String,
+        var moduleCode:String
 ):Serializable

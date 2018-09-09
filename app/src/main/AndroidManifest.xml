@@ -21,8 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.unicorn.sxmobileoa.login.court.ui.CourtAct" />
-        <activity android:name=".main.ui.MainAct" />
-        <activity android:name=".dbxx.ui.DbxxAct" />
+        <activity android:name="com.unicorn.sxmobileoa.main.main.ui.MainAct" />
+        <activity android:name="com.unicorn.sxmobileoa.main.dbxx.ui.DbxxAct" />
         <activity android:name=".detail.ui.DetailAct" />
 
     </application>

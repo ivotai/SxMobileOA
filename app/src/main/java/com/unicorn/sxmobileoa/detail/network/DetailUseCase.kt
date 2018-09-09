@@ -4,8 +4,8 @@ import com.google.gson.reflect.TypeToken
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
-import com.unicorn.sxmobileoa.dbxx.model.Dbxx
-import com.unicorn.sxmobileoa.dbxx.model.Param
+import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.main.dbxx.model.Param
 
 class DetailUseCase(private val moduleCode: String, private val param: Param) : BaseUseCase<Any>() {
 
