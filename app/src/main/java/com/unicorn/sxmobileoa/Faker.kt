@@ -86,6 +86,10 @@ class Faker {
             "    \"total\": 6\n" +
             "  }\n"
 
+    val loginJson = "{\"deptId\":\"069\",\"deptName\":\"立案庭\",\"fydm\":\"\",\"imei\":\"\",\"lastDate\":\"2018-09-09\",\"loginBusiType\":\"1\",\"loginName\":\"0000\",\"spUserName\":\"\",\"userId\":\"360000000\",\"userName\":\"OA系统管理员\",\"userTel\":\"\"}"
+
+    val mainJson = "[{\"mlxx\":[{\"court\":\"11\",\"flowCode\":\"OA_FLOW_GWGL_NBFW\",\"moduleCode\":\"OA_FUN_GWGL\",\"spdCode\":\"OA_SPD_GWGL_NBFW\",\"text\":\"内部发文\"},{\"court\":\"11\",\"flowCode\":\"OA_FLOW_GWGL_WBFW\",\"moduleCode\":\"OA_FUN_GWGL\",\"spdCode\":\"OA_SPD_GWGL_WBFW\",\"text\":\"外部发文\"}],\"name\":\"公文管理\"},{\"mlxx\":[{\"court\":\"11\",\"flowCode\":\"OA_FLOW_XZZB_SBLY\",\"moduleCode\":\"OA_FUN_XZZB\",\"spdCode\":\"OA_SPD_XZZB_SBLY\",\"text\":\"设备领用\"},{\"court\":\"9\",\"flowCode\":\"OA_FLOW_XZZB_SBBF\",\"moduleCode\":\"OA_FUN_XZZB\",\"spdCode\":\"OA_SPD_XZZB_SBBF\",\"text\":\"设备报废\"},{\"court\":\"11\",\"flowCode\":\"OA_FLOW_XZZB_SBWX\",\"moduleCode\":\"OA_FUN_XZZB\",\"spdCode\":\"OA_SPD_XZZB_SBWX\",\"text\":\"设备维修\"}],\"name\":\"行政装备\"},{\"mlxx\":[{\"court\":\"5\",\"flowCode\":\"OA_FLOW_HQGL_YCSQ\",\"moduleCode\":\"OA_FUN_HQGL\",\"spdCode\":\"OA_SPD_HQGL_YCSQ\",\"text\":\"用车申请\"},{\"court\":\"4\",\"flowCode\":\"OA_FLOW_HQGL_WPLY\",\"moduleCode\":\"OA_FUN_HQGL\",\"spdCode\":\"OA_SPD_HQGL_WPLY\",\"text\":\"物品领用\"}],\"name\":\"后勤管理\"},{\"mlxx\":[{\"court\":\"3\",\"flowCode\":\"OA_FLOW_QJGL_GCGL\",\"moduleCode\":\"OA_FUN_QJGL\",\"spdCode\":\"OA_SPD_QJGL_GCSQ\",\"text\":\"公出申请\"},{\"court\":\"6\",\"flowCode\":\"OA_FLOW_QJGL_QJGL\",\"moduleCode\":\"OA_FUN_QJGL\",\"spdCode\":\"OA_SPD_QJGL_QJSQ\",\"text\":\"请假申请\"}],\"name\":\"请假管理\"},{\"mlxx\":[{\"court\":\"12\",\"flowCode\":\"OA_FLOW_JDGL_JDJLSQ\",\"moduleCode\":\"OA_FUN_JDGL\",\"spdCode\":\"OA_SPD_JDGL_JDJLSQ\",\"text\":\"接待申请\"}],\"name\":\"接待管理\"}]"
+
 
     fun getCourtMaybe(): Maybe<List<Court>> {
         return Maybe.create<List<Court>> {

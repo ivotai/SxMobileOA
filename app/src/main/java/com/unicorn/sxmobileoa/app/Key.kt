@@ -9,11 +9,11 @@ object Key {
     const val type = "type"
     const val start = "start"
     const val count = "count"
-    const val mainItem = "mainItem"
-    const val primaryId = "primaryId"
     const val moduleCode = "moduleCode"
+    const val primaryId = "primaryId"
     const val taskId = "taskId"
     const val nodeId = "nodeId"
-    const val param = "param"
+    const val dbxx = "dbxx"
+    const val mainItem = "mainItem"
 
 }

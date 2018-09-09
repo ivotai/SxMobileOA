@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.main.dbxx.model
 
+import com.unicorn.sxmobileoa.main.main.model.MainItem
 import java.io.Serializable
 
 data class Dbxx(
@@ -9,14 +10,14 @@ data class Dbxx(
         val ngrName: String,
         val nodeName: String,
         val param: Param,
-        val wh: String
-)
+        val wh: String,
+        var mainItem:MainItem? =null
+) : Serializable
 
 data class Param(
         val nodeId: String,
         val primaryId: String,
         val processInstancesId: String,
         val taskId: String,
-        val taskKey: String,
-        var moduleCode:String
-):Serializable
+        val taskKey: String
+) : Serializable

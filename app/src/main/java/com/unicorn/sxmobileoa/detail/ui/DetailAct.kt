@@ -4,8 +4,9 @@ import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.main.dbxx.model.Param
 import com.unicorn.sxmobileoa.detail.network.DetailUseCase
+import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
+import kotlinx.android.synthetic.main.act_detail.*
 
 class DetailAct : BaseAct() {
 
@@ -16,9 +17,9 @@ class DetailAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        val moduleCode = intent.getStringExtra(Key.moduleCode)
-        val param = intent.getSerializableExtra(Key.param) as Param
-        DetailUseCase(moduleCode, param).toMaybe(this).subscribe {
+        val dbxx = intent.getSerializableExtra(Key.dbxx) as Dbxx
+        titleBar.setTitle(dbxx.mainItem!!.text)
+        DetailUseCase(dbxx).toMaybe(this).subscribe {
             Logger.e(it.toString())
         }
     }

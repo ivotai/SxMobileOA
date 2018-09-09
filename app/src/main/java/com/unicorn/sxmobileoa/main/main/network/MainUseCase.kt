@@ -7,7 +7,7 @@ import com.unicorn.sxmobileoa.main.main.model.Menu
 
 class MainUseCase : BaseUseCase<List<Menu>>() {
 
-    override fun createRequest() = MainRequest()
+    override fun createRequest() = MenuRequest()
 
     override fun toResult(json: String): List<Menu> {
         val type = object : TypeToken<List<Menu>>() {}.type

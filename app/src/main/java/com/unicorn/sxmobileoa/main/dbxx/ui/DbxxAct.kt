@@ -25,18 +25,11 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
     override val mSwipeRefreshLayout: SwipeRefreshLayout
         get() = swipeRefreshLayout
 
-    override val mAdapter: DbxxAdapter
-        get() = realAdapter
-
-    lateinit var realAdapter: DbxxAdapter
-
-    lateinit var moduleCode: String
+    override val mAdapter: DbxxAdapter = DbxxAdapter()
 
     override fun loadPage(pageNo: Int): Maybe<Page<Dbxx>> =
-// Faker().getDblbMaybe()
-    // TODO DELETE FAKER METHOD
             DbxxUseCase(pageNo, mainItem).toMaybe(this)
-                    .doAfterSuccess { it.rows.forEach { dbxx -> dbxx.param.moduleCode = moduleCode } }
+                    .doAfterSuccess { it.rows.forEach { dbxx -> dbxx.mainItem = mainItem } }
 
     lateinit var mainItem: MainItem
 
@@ -45,11 +38,8 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
     }
 
     override fun initViews() {
-
         mainItem = intent.getSerializableExtra(Key.mainItem) as MainItem
-        moduleCode = mainItem.moduleCode
-        titleBar.setTitle("待办列表")
-        realAdapter = DbxxAdapter(mainItem.moduleCode)
+        titleBar.setTitle(mainItem.text)
         super.initViews()
         HorizontalDividerItemDecoration.Builder(this)
                 .colorResId(R.color.md_grey_100)

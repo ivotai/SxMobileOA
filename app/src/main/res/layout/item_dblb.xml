@@ -80,7 +80,7 @@
         app:layout_constraintTop_toTopOf="@+id/tvWh" />
 
     <TextView
-        android:id="@+id/tvSj"
+        android:id="@+id/tvCjrq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -100,7 +100,7 @@
         android:textColor="@color/md_grey_400"
         android:textSize="14dp"
         app:layout_constraintStart_toStartOf="@+id/tvNgrName"
-        app:layout_constraintTop_toTopOf="@+id/tvSj" />
+        app:layout_constraintTop_toTopOf="@+id/tvCjrq" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
