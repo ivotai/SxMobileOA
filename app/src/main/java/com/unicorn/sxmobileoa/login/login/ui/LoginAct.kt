@@ -49,7 +49,6 @@ class LoginAct : BaseAct() {
                 .subscribe { btnLogin.isEnabled = it }
         tvCourt.safeClicks().subscribe { startActivity(Intent(this@LoginAct, CourtAct::class.java)) }
         btnLogin.safeClicks().subscribe { login() }
-        registerEvent()
     }
 
     private fun login() {
@@ -68,7 +67,7 @@ class LoginAct : BaseAct() {
 //        }
     }
 
-    private fun registerEvent() {
+    override fun registerEvent() {
         RxBus.get().registerEvent(Court::class.java, this, Consumer { court ->
             Global.court = court
             tvCourt.text = court.dmms
