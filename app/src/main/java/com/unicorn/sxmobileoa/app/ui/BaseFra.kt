@@ -11,8 +11,16 @@ abstract class BaseFra : Fragment(), ActOrFra {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = inflater.inflate(layoutId, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initArguments()
         initViews()
         bindIntent()
+        registerEvent()
+    }
+
+    override fun initArguments() {
+    }
+
+    override fun registerEvent() {
     }
 
 }

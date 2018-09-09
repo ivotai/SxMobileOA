@@ -36,7 +36,6 @@ interface PageActOrFra<Model> : ActOrFra {
             mAdapter.bindToRecyclerView(this)
             mAdapter.setEnableLoadMore(true)
             mAdapter.setOnLoadMoreListener({ loadNextPage() }, mRecyclerView)
-//            mAdapter.setLoadMoreView(SimpleLoadMoreView())
         }
     }
 

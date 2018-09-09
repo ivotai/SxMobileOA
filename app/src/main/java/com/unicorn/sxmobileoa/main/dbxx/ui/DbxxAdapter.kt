@@ -10,7 +10,7 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.detail.ui.DetailAct
 import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
 
-class DbxxAdapter() : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dblb) {
+class DbxxAdapter() : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx) {
 
     override fun convert(helper: BaseViewHolder, item: Dbxx) {
         helper.apply {
