@@ -51,9 +51,6 @@ class SpdAct : BaseAct() {
 
         Faker().getDetailMaybe().subscribe {
             Global.detail = it
-//            it.flowNodeList.forEach { flowNode ->
-//                                flowNode.dbxx = dbxx
-//            }
             flowNodeAdapter.setNewData(it.flowNodeList)
             val oh = OperationHeaderView(this)
             flowNodeAdapter.addHeaderView(oh)

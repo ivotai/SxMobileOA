@@ -11,7 +11,6 @@ import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.get
 import com.unicorn.sxmobileoa.app.set
-import com.unicorn.sxmobileoa.detail.Editable
 
 class NbfwHeaderView(context: Context) : FrameLayout(context) {
 
@@ -39,14 +38,14 @@ class NbfwHeaderView(context: Context) : FrameLayout(context) {
         Global.detail.get(Key.csmc_input).let { etCsmc.setText(it) }
 
         //
-        val currentNodeId = Global.dbxx.param.nodeId
-        Editable().firstCould(currentNodeId).subscribe { enable ->
-            etJbbm.isEnabled = enable
-            etNgr.isEnabled = enable
-            etZsmc.isEnabled = enable
-            etCsmc.isEnabled = enable
-            if (enable) watch()
-        }
+//        val currentNodeId = Global.dbxx.param.nodeId
+//        Editable().firstCould(currentNodeId).subscribe { enable ->
+//            etJbbm.isEnabled = enable
+//            etNgr.isEnabled = enable
+//            etZsmc.isEnabled = enable
+//            etCsmc.isEnabled = enable
+//            if (enable) watch()
+//        }
     }
 
     private fun watch() {

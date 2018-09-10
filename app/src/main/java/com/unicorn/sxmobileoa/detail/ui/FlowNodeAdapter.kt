@@ -14,9 +14,9 @@ class FlowNodeAdapter : BaseQuickAdapter<FlowNode, BaseViewHolder>(R.layout.item
     override fun convert(helper: BaseViewHolder, item: FlowNode) {
         helper.setText(R.id.tvSpyjNodeName, item.spyjNodeName)
 
-        if (item.spyjList.isEmpty()) return
+//        if (item.spyjList.isEmpty()) return
 
-        helper.getView<View>(R.id.ivArrow).visibility = View.VISIBLE
+//        helper.getView<View>(R.id.ivArrow).visibility = View.VISIBLE
         helper.getView<View>(R.id.root).safeClicks().subscribe {
             // todo qiguai
             RxBus.get().post(SpyjActEvent(helper.adapterPosition - 1))
