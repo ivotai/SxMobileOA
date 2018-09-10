@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.blankj.utilcode.util.ConvertUtils
 import com.unicorn.sxmobileoa.R
 
-class HeaderView(context: Context) : FrameLayout(context) {
+class CourtHeaderView(context: Context) : FrameLayout(context) {
 
     init {
         initViews(context)

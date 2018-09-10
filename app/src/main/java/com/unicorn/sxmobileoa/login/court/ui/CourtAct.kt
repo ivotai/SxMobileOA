@@ -33,7 +33,7 @@ class CourtAct : BaseAct() {
                     .build().let { this@apply.addItemDecoration(it) }
         }
 
-        val headerView = HeaderView(this)
+        val headerView = CourtHeaderView(this)
         etKeyword = headerView.etKeyword
         courtAdapter.addHeaderView(headerView)
     }

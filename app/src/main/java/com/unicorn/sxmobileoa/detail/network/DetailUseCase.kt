@@ -1,6 +1,5 @@
 package com.unicorn.sxmobileoa.detail.network
 
-import com.google.gson.reflect.TypeToken
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 import com.unicorn.sxmobileoa.detail.model.Detail
@@ -16,8 +15,7 @@ class DetailUseCase(private val dbxx: Dbxx) : BaseUseCase<Detail>() {
     )
 
     override fun toResult(json: String): Detail {
-        val type = object : TypeToken<Any>() {}.type
-        return ComponentHolder.appComponent.getGson().fromJson<Detail>(json, type)
+        return ComponentHolder.appComponent.getGson().fromJson(json, Detail::class.java)
     }
 
 }

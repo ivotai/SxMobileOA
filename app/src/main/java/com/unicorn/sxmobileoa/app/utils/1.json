@@ -1,60 +1,32 @@
 {
   "spdData": [
     {
-      "spdKey": "spdCode_qh",
-      "spdValue": "OA_SPD_QJGL_QJSQ"
+      "spdKey": "fwsj_input",
+      "spdValue": "2018-09-09"
     },
     {
       "spdKey": "fydm_hq",
       "spdValue": "R00"
     },
     {
-      "spdKey": "spdCode_qh",
-      "spdValue": "OA_SPD_QJGL_QJSQ"
-    },
-    {
-      "spdKey": "spdCode_qh",
-      "spdValue": "OA_SPD_QJGL_QJSQ"
-    },
-    {
-      "spdKey": "qjr_input",
-      "spdValue": "OA系统管理员"
-    },
-    {
-      "spdKey": "fydm_hq",
-      "spdValue": "R00"
-    },
-    {
-      "spdKey": "spdCode_qh",
-      "spdValue": "OA_SPD_QJGL_QJSQ"
-    },
-    {
-      "spdKey": "bz_textarea",
-      "spdValue": ""
-    },
-    {
-      "spdKey": "xjzljsy_select",
-      "spdValue": "产假"
-    },
-    {
-      "spdKey": "qjsy_textarea",
-      "spdValue": "332"
-    },
-    {
-      "spdKey": "szbm_input",
+      "spdKey": "jbbm_input",
       "spdValue": "立案庭"
     },
     {
-      "spdKey": "zw_input",
+      "spdKey": "zsmc_input",
+      "spdValue": "办公室"
+    },
+    {
+      "spdKey": "spdCode_qh",
+      "spdValue": "OA_SPD_GWGL_NBFW"
+    },
+    {
+      "spdKey": "csmc_input",
       "spdValue": ""
     },
     {
-      "spdKey": "fydm_hq",
-      "spdValue": "R00"
-    },
-    {
-      "spdKey": "fydm_hq",
-      "spdValue": "R00"
+      "spdKey": "ngr_input",
+      "spdValue": "OA系统管理员"
     }
   ],
   "spdXx": {
@@ -62,12 +34,12 @@
     "blsj": "",
     "bmbm": "3",
     "bmmc": "立案庭",
-    "bt": "2018年06月29日_OA系统管理员_请假申请",
+    "bt": "test",
     "column1": "",
     "column10": "",
-    "column2": "2018-06-29",
-    "column3": "2018-06-12 00:00",
-    "column4": "2018-06-13 00:00",
+    "column2": "",
+    "column3": "",
+    "column4": "",
     "column5": "",
     "column6": "",
     "column7": "",
@@ -86,10 +58,10 @@
     "fbrid": "",
     "fbrmc": "",
     "fbsj": "",
-    "flowCode": "OA_FLOW_QJGL_QJGL",
+    "flowCode": "OA_FLOW_GWGL_NBFW",
     "flowName": "",
     "flowParams": null,
-    "funCode": "OA_FUN_QJGL_QJSQ",
+    "funCode": "OA_FUN_GWGL_NBFW",
     "fydm": "R00",
     "fyjc": "陕",
     "fymc": "陕西省高级人民法院",
@@ -103,18 +75,18 @@
     "hisNodeName": "",
     "hjjexx": 0,
     "htmlPath": "",
-    "id": "6d15add2-eeb2-4883-99bd-ee91e8dd05a0",
+    "id": "e53488f7-e29b-4e03-9d78-8c8b29c69637",
     "imgPath": "",
     "isUpdateIndex": "",
     "isfb": 0,
     "jsrId": "",
     "jssj": "",
     "lcmc": "",
-    "moduleCode": "OA_FUN_QJGL",
+    "moduleCode": "OA_FUN_GWGL",
     "ndh": "",
-    "nodeId": "OA_FLOW_QJGL_QJGL_SQR",
-    "nodeName": "申请人",
-    "processInstancesId": "fd454556-7b77-11e8-92ce-3a8427a833fb",
+    "nodeId": "OA_FLOW_GWGL_NBFW_NGR",
+    "nodeName": "拟稿人",
+    "processInstancesId": "5c51c081-b413-11e8-b525-28d244522fdb",
     "qhfs": "",
     "qybz": 0,
     "remoteTaskName": "",
@@ -128,18 +100,18 @@
     "sjrlxfs": "",
     "sjrmc": "",
     "sort": "",
-    "spdCode": "OA_SPD_QJGL_QJSQ",
+    "spdCode": "OA_SPD_GWGL_NBFW",
     "spdJson": "",
     "spdNodeName": "",
     "spdSprmc": "",
-    "spdTaskNodeHis": "启动#申请人#部门领导审批",
+    "spdTaskNodeHis": "启动",
     "spdVersion": 1,
     "spdid": "",
     "sprid": "360000000",
     "sprmc": "OA系统管理员",
     "startFlow": "",
-    "status": "2",
-    "sysTime": "2018-06-29 16:39:51.0",
+    "status": "1",
+    "sysTime": "2018-09-09 17:33:08.0",
     "taskId": "",
     "updateTime": "",
     "url": "",

@@ -10,11 +10,8 @@ import com.github.florent37.rxsharedpreferences.RxSharedPreferences
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Global
-import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
-import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.app.trimText
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.login.court.model.Court
@@ -61,7 +58,7 @@ class LoginAct : BaseAct() {
                 .subscribe({
                     Global.loginInfo = it
                     saveInputInfo()
-                    startActivity(Intent(this@LoginAct, MainAct::class.java))
+                    startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))
                 }, {
                     Logger.e(it.toString())
                 })
@@ -86,8 +83,8 @@ class LoginAct : BaseAct() {
 
     private fun saveInputInfo() {
         RxSharedPreferences.with(this).apply {
-            putString(Key.courtStr, ComponentHolder.appComponent.getGson().toJson(Global.court))
-            putString(Key.username, etUsername.trimText())
+            putString(Key.courtStr, ComponentHolder.appComponent.getGson().toJson(Global.court)).subscribe {  }
+            putString(Key.username, etUsername.trimText()).subscribe {  }
         }
     }
 
