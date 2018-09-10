@@ -47,15 +47,6 @@ class DetailAct : BaseAct() {
             adviceAdapter.addHeaderView(nbfwHeaderView)
         }
 
-//        Faker().getDetail().subscribe {
-//                        adviceAdapter.setNewData()
-//            detail = it
-//            val oh = OperationHeaderView(this)
-//            adviceAdapter.addHeaderView(oh)
-//            val nbfwHeaderView = NbfwHeaderView(this, detail)
-//            adviceAdapter.addHeaderView(nbfwHeaderView)
-//
-//           }
 
     }
 

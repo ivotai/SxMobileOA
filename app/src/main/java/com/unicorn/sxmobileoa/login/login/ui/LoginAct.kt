@@ -2,10 +2,7 @@ package com.unicorn.sxmobileoa.login.login.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.drawable.GradientDrawable
-import android.support.v4.content.ContextCompat
 import android.text.TextUtils
-import com.blankj.utilcode.util.ConvertUtils
 import com.github.florent37.rxsharedpreferences.RxSharedPreferences
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.orhanobut.logger.Logger
@@ -31,12 +28,6 @@ class LoginAct : BaseAct() {
     override fun initViews() {
         // TODO DELETE
         etPassword.setText("withub4l")
-
-        GradientDrawable().apply {
-            val colorPrimary = ContextCompat.getColor(this@LoginAct, R.color.colorPrimary)
-            setColor(colorPrimary)
-            cornerRadius = ConvertUtils.dp2px(5f).toFloat()
-        }.let { btnLogin.background = it }
     }
 
     override fun bindIntent() {
