@@ -35,8 +35,7 @@ class NbfwHeaderView(context: Context, private val detail: Detail) : FrameLayout
         tvCsmc = findViewById(R.id.tvCsmc)
         tvCsmc.text = detail.get("csmc_input")
         tvFwwh = findViewById(R.id.tvFwwh)
-        // TODO 发文文号
-//        tvFwsj.text = detail.get("fwsj_input")
+        tvFwwh.text = detail.get("sdwh")
         tvFwsj = findViewById(R.id.tvFwsj)
         tvFwsj.text = detail.get("fwsj_input")
     }

@@ -44,7 +44,7 @@ interface PageActOrFra<Model> : ActOrFra {
     }
 
     private fun loadFirstPage() {
-        loadPage(pageNo).subscribe({ page ->
+        loadPage(0).subscribe({ page ->
             mSwipeRefreshLayout.isRefreshing = false
             mAdapter.setNewData(page.rows)
             if (mAdapter.data.size == page.total) mAdapter.loadMoreEnd()

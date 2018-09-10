@@ -25,12 +25,12 @@ class DetailAct : BaseAct() {
         initRecyclerView()
     }
 
-    private val adviceAdapter = AdviceAdapter()
+    private val flowNodeAdapter = FlowNodeAdapter()
 
     private fun initRecyclerView() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@DetailAct)
-            adviceAdapter.bindToRecyclerView(this)
+            flowNodeAdapter.bindToRecyclerView(this)
         }
     }
 
@@ -41,10 +41,14 @@ class DetailAct : BaseAct() {
     private fun getDetail() {
         DetailUseCase(dbxx).toMaybe(this).subscribe {
             detail = it
+            it.flowNodeList.forEach { flowNode -> flowNode.dbxx = dbxx }
+            flowNodeAdapter.setNewData(it.flowNodeList)
             val oh = OperationHeaderView(this)
-            adviceAdapter.addHeaderView(oh)
+            flowNodeAdapter.addHeaderView(oh)
             val nbfwHeaderView = NbfwHeaderView(this, detail)
-            adviceAdapter.addHeaderView(nbfwHeaderView)
+            flowNodeAdapter.addHeaderView(nbfwHeaderView)
+            val fv = ButtonFooterView(this)
+            flowNodeAdapter.addFooterView(fv)
         }
 
 

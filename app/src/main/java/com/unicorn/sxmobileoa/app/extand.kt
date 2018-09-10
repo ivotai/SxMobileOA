@@ -25,6 +25,7 @@ fun Activity.startActivityAndFinish(intent: Intent) {
     finish()
 }
 
-fun Detail.get(spdKey: String):String {
-    return this.spdData.filter { it.spdKey == spdKey }[0].spdValue
+fun Detail.get(spdKey: String): String {
+    val list = this.spdData.filter { it.spdKey == spdKey }
+    return if (list.isEmpty()) "" else list[0].spdValue
 }
