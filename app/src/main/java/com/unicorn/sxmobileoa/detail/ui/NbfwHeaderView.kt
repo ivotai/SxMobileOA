@@ -19,7 +19,7 @@ class NbfwHeaderView(context: Context, private val detail: Detail) : FrameLayout
     lateinit var etJbbm: EditText
     lateinit var etNgr: EditText
     lateinit var etZsmc: EditText
-    lateinit var tvCsmc: TextView
+    lateinit var etCsmc: EditText
 
     fun initViews(context: Context) {
         LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
@@ -31,8 +31,10 @@ class NbfwHeaderView(context: Context, private val detail: Detail) : FrameLayout
         detail.get("ngr_input").let { etNgr.setText(it) }
         etZsmc = findViewById(R.id.etZsmc)
         detail.get("zsmc_input").let { etZsmc.setText(it) }
-        tvCsmc = findViewById(R.id.tvCsmc)
-        tvCsmc.text = detail.get("csmc_input")
+        etCsmc = findViewById(R.id.etCsmc)
+        detail.get("csmc_input").let { etCsmc.setText(it) }
+
+        //
     }
 
 }

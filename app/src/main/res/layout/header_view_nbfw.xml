@@ -148,8 +148,10 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
-            android:id="@+id/tvCsmc"
+        <EditText
+            android:background="@null"
+            android:inputType="text"
+            android:id="@+id/etCsmc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
