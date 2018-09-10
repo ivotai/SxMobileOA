@@ -2,13 +2,13 @@ package com.unicorn.sxmobileoa.detail.ui
 
 import android.support.v7.widget.LinearLayoutManager
 import com.orhanobut.logger.Logger
+import com.unicorn.sxmobileoa.Faker
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.detail.model.Detail
-import com.unicorn.sxmobileoa.detail.network.DetailUseCase
 import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import kotlinx.android.synthetic.main.act_detail.*
 
 class DetailAct : BaseAct() {
@@ -17,13 +17,13 @@ class DetailAct : BaseAct() {
     private lateinit var detail: Detail
 
     override fun initArguments() {
-        dbxx = intent.getSerializableExtra(Key.dbxx) as Dbxx
+//        dbxx = intent.getSerializableExtra(Key.dbxx) as Dbxx
     }
 
     override val layoutId = R.layout.act_detail
 
     override fun initViews() {
-        titleBar.setTitle(dbxx.mainItem!!.text)
+//        titleBar.setTitle(dbxx.mainItem!!.text)
         initRecyclerView()
     }
 
@@ -34,6 +34,10 @@ class DetailAct : BaseAct() {
             layoutManager = LinearLayoutManager(this@DetailAct)
             flowNodeAdapter.bindToRecyclerView(this)
         }
+        HorizontalDividerItemDecoration.Builder(this@DetailAct)
+                .colorResId(R.color.md_grey_300)
+                .size(1)
+                .build().let { recyclerView.addItemDecoration(it) }
     }
 
     override fun bindIntent() {
@@ -41,11 +45,13 @@ class DetailAct : BaseAct() {
     }
 
     private fun getDetail() {
-        DetailUseCase(dbxx).toMaybe(this).subscribe {
+//        DetailUseCase(dbxx).toMaybe(this)
+
+
+        Faker().getDetailMaybe().subscribe {
             detail = it
-            it.flowNodeList.forEach {
-                flowNode -> flowNode.dbxx = dbxx
-                flowNode.subItems = flowNode.spyjList
+            it.flowNodeList.forEach { flowNode ->
+                //                flowNode.dbxx = dbxx
             }
             flowNodeAdapter.setNewData(it.flowNodeList)
             val oh = OperationHeaderView(this)
@@ -59,8 +65,6 @@ class DetailAct : BaseAct() {
                 Logger.e(detail.toString())
             }
         }
-
-
     }
 
 }

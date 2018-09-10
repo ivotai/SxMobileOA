@@ -1,8 +1,5 @@
 package com.unicorn.sxmobileoa.detail.model
 
-import com.chad.library.adapter.base.entity.AbstractExpandableItem
-import com.chad.library.adapter.base.entity.MultiItemEntity
-import com.unicorn.sxmobileoa.detail.ui.FlowNodeAdapter
 import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
 
 data class Detail(
@@ -173,17 +170,9 @@ data class FlowNode(
         val spyjsfbt: String,
         val whsfbt: Int,
         val yjsfzwlj: String,
+        // TODO
         var dbxx: Dbxx? = null
-) : AbstractExpandableItem<Spyj>(), MultiItemEntity {
-
-    override fun getLevel(): Int {
-        return itemType
-    }
-
-    override fun getItemType() = FlowNodeAdapter.type_level_0
-
-}
-
+)
 
 data class Spyj(
         val createUserId: String,
@@ -222,8 +211,4 @@ data class Spyj(
         val whsfbt: Int,
         val xtlx: String,
         val yjsfzwlj: Int
-) : MultiItemEntity {
-    override fun getItemType(): Int {
-        return FlowNodeAdapter.type_level_1
-    }
-}
+)

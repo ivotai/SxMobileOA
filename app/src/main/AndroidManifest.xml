@@ -13,17 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".login.login.ui.LoginAct">
+        <activity android:name=".login.login.ui.LoginAct"></activity>
+        <activity android:name=".login.court.ui.CourtAct" />
+        <activity android:name=".main.main.ui.MainAct" />
+        <activity android:name=".main.dbxx.ui.DbxxAct" />
+        <activity android:name=".detail.ui.DetailAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.unicorn.sxmobileoa.login.court.ui.CourtAct" />
-        <activity android:name="com.unicorn.sxmobileoa.main.main.ui.MainAct" />
-        <activity android:name="com.unicorn.sxmobileoa.main.dbxx.ui.DbxxAct" />
-        <activity android:name=".detail.ui.DetailAct"/>
+        <activity android:name=".spyj.Spyj"></activity>
     </application>
 
 </manifest>

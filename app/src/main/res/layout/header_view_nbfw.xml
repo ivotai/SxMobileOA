@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/md_grey_300"
     android:orientation="vertical"
-    android:paddingBottom="1px"
     tools:ignore="HardcodedText,RtlSymmetry,SpUsage,LabelFor">
 
     <View
@@ -15,10 +14,9 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:background="@color/md_white"
         android:gravity="center"
-        android:padding="24dp"
         android:text="陕西省高级人民法院内部发文"
         android:textColor="@color/md_red_500"
         android:textSize="17dp" />
@@ -74,6 +72,7 @@
             android:layout_weight="1"
             android:background="@null"
             android:inputType="text"
+            android:enabled="false"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -99,6 +98,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:enabled="false"
             android:background="@null"
             android:inputType="text"
             android:textColor="@color/md_grey_400"
@@ -125,6 +125,7 @@
             android:id="@+id/etZsmc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:layout_weight="1"
             android:background="@null"
             android:inputType="text"
@@ -149,6 +150,7 @@
             android:textSize="14dp" />
 
         <EditText
+            android:enabled="false"
             android:background="@null"
             android:inputType="text"
             android:id="@+id/etCsmc"
