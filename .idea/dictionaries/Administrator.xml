@@ -6,6 +6,7 @@
       <w>bgsx</w>
       <w>busi</w>
       <w>cjrq</w>
+      <w>csmc</w>
       <w>czbz</w>
       <w>daiban</w>
       <w>dblb</w>
@@ -17,6 +18,8 @@
       <w>flexbox</w>
       <w>fullname</w>
       <w>fwlc</w>
+      <w>fwsj</w>
+      <w>fwwh</w>
       <w>fydm</w>
       <w>fydz</w>
       <w>fyjb</w>
@@ -30,6 +33,7 @@
       <w>gwgl</w>
       <w>hmmss</w>
       <w>imei</w>
+      <w>jbbm</w>
       <w>jddb</w>
       <w>liucheng</w>
       <w>mainxx</w>
@@ -63,6 +67,7 @@
       <w>yiban</w>
       <w>zhengwen</w>
       <w>zsfw</w>
+      <w>zsmc</w>
     </words>
   </dictionary>
 </component>

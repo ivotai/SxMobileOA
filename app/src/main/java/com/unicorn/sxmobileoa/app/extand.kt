@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.clicks
 import com.unicorn.sxmobileoa.app.utils.MainThreadTransformer
+import com.unicorn.sxmobileoa.detail.model.Detail
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Maybe
 import io.reactivex.Observable
@@ -22,4 +23,8 @@ fun <T> Maybe<T>.common(lifecycleOwner: LifecycleOwner): Maybe<T> = this.compose
 fun Activity.startActivityAndFinish(intent: Intent) {
     this.startActivity(intent)
     finish()
+}
+
+fun Detail.get(spdKey: String):String {
+    return this.spdData.filter { it.spdKey == spdKey }[0].spdValue
 }

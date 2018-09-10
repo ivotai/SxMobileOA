@@ -43,10 +43,10 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tvBt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="签名处9000号审批"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -68,10 +68,10 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tvJbbm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="签名处9000号审批"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -93,6 +93,7 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tvNgr"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -118,6 +119,7 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tvZsmc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -143,6 +145,7 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tvCsmc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -168,6 +171,7 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tvFwwh"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -193,6 +197,7 @@
             android:textSize="14dp" />
 
         <TextView
+            android:id="@+id/tvFwsj"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
