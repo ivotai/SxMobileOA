@@ -5,9 +5,9 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.detail.ui.DetailAct
+import com.unicorn.sxmobileoa.detail.ui.SpdAct
 import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
 
 class DbxxAdapter() : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx) {
@@ -23,8 +23,8 @@ class DbxxAdapter() : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx)
             setText(R.id.tvNgrDept, "拟稿部门：${item.ngrDept}")
 
             getView<View>(R.id.root).safeClicks().subscribe { _ ->
-                Intent(mContext, DetailAct::class.java).apply {
-                    putExtra(Key.dbxx, item)
+                Intent(mContext, SpdAct::class.java).apply {
+                    Global.dbxx = item
                 }.let { mContext.startActivity(it) }
             }
         }

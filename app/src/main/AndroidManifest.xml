@@ -17,7 +17,7 @@
         <activity android:name=".login.court.ui.CourtAct" />
         <activity android:name=".main.main.ui.MainAct" />
         <activity android:name=".main.dbxx.ui.DbxxAct" />
-        <activity android:name=".detail.ui.DetailAct">
+        <activity android:name=".detail.ui.SpdAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

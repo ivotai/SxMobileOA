@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.clicks
 import com.unicorn.sxmobileoa.app.utils.MainThreadTransformer
-import com.unicorn.sxmobileoa.detail.model.Detail
+import com.unicorn.sxmobileoa.detail.model.Spd
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Maybe
 import io.reactivex.Observable
@@ -25,7 +25,7 @@ fun Activity.startActivityAndFinish(intent: Intent) {
     finish()
 }
 
-fun Detail.get(spdKey: String): String {
+fun Spd.get(spdKey: String): String {
     val list = this.spdData.filter { it.spdKey == spdKey }
     return if (list.isEmpty()) "" else list[0].spdValue
 }

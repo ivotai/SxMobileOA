@@ -26,7 +26,7 @@ class SpyjFra : BaseFra() {
 
     private val spyjAdapter = SpyjAdapter()
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             spyjAdapter.bindToRecyclerView(this)
@@ -34,7 +34,10 @@ class SpyjFra : BaseFra() {
     }
 
     override fun bindIntent() {
+
         flowNode.spyjList.let { spyjAdapter.setNewData(it) }
     }
+
+
 
 }

@@ -12,21 +12,16 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.detail.SpyjActEvent
-import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.spyj.SpyjAct
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.functions.Consumer
-import kotlinx.android.synthetic.main.act_detail.*
+import kotlinx.android.synthetic.main.act_spd.*
+import kotlinx.android.synthetic.main.footer_view_button.view.*
 
-class DetailAct : BaseAct() {
+class SpdAct : BaseAct() {
 
-    private lateinit var dbxx: Dbxx
 
-    override fun initArguments() {
-//        dbxx = intent.getSerializableExtra(Key.dbxx) as Dbxx
-    }
-
-    override val layoutId = R.layout.act_detail
+    override val layoutId = R.layout.act_spd
 
     override fun initViews() {
 //        titleBar.setTitle(dbxx.mainItem!!.text)
@@ -37,20 +32,20 @@ class DetailAct : BaseAct() {
 
     private fun initRecyclerView() {
         recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@DetailAct)
+            layoutManager = LinearLayoutManager(this@SpdAct)
             flowNodeAdapter.bindToRecyclerView(this)
         }
-        HorizontalDividerItemDecoration.Builder(this@DetailAct)
+        HorizontalDividerItemDecoration.Builder(this@SpdAct)
                 .colorResId(R.color.md_grey_300)
                 .size(1)
                 .build().let { recyclerView.addItemDecoration(it) }
     }
 
     override fun bindIntent() {
-        getDetail()
+        getSpd()
     }
 
-    private fun getDetail() {
+    private fun getSpd() {
 //        DetailUseCase(dbxx).toMaybe(this)
 
 
@@ -62,21 +57,34 @@ class DetailAct : BaseAct() {
             flowNodeAdapter.setNewData(it.flowNodeList)
             val oh = OperationHeaderView(this)
             flowNodeAdapter.addHeaderView(oh)
-                    val nbfwHeaderView = NbfwHeaderView(this)
+            val nbfwHeaderView = NbfwHeaderView(this)
             flowNodeAdapter.addHeaderView(nbfwHeaderView)
             val fv = ButtonFooterView(this)
             flowNodeAdapter.addFooterView(fv)
 
-            fv.btnSave.safeClicks().subscribe {
+            fv.btnSave.safeClicks().subscribe { _ ->
                 Logger.e(Global.detail.toString())
+            }
+
+            fv.btnNextStep.safeClicks().subscribe { _ ->
+                val list = Global.detail.flowNodeList.filter { flowNode ->
+                    Global.dbxx.param.nodeId in flowNode.flowNodeId.split(",")
+                }
+
+                if (list[0].spyjList.any { spyj -> spyj.spyjStatus == 1 }) {
+                    Global.spyj = list[0].spyjList.filter { spyj -> spyj.spyjStatus == 1 }[0]
+                } else {
+                    list[0].spyjList.add(SpyjBuilder().build())
+                }
+
             }
         }
     }
 
     override fun registerEvent() {
-        RxBus.get().registerEvent(SpyjActEvent::class.java,this, Consumer { event ->
+        RxBus.get().registerEvent(SpyjActEvent::class.java, this, Consumer { event ->
             startActivity(Intent(this, SpyjAct::class.java).apply {
-                putExtra(Key.position,event.position)
+                putExtra(Key.position, event.position)
                 ToastUtils.showShort(event.position.toString())
             })
         })
