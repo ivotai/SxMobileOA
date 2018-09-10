@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.app
 
+import com.unicorn.sxmobileoa.detail.model.Detail
 import com.unicorn.sxmobileoa.login.court.model.Court
 import com.unicorn.sxmobileoa.login.login.model.LoginInfo
 
@@ -9,8 +10,8 @@ object Global {
 
     var loginInfo: LoginInfo? = null
 
-    var court: Court? =null
+    var court: Court? = null
 
-    var intranet = false
+    lateinit var detail: Detail
 
 }

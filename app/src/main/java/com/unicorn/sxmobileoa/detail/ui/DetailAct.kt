@@ -6,12 +6,12 @@ import com.blankj.utilcode.util.ToastUtils
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.Faker
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.detail.SpyjActEvent
-import com.unicorn.sxmobileoa.detail.model.Detail
 import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.spyj.SpyjAct
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.act_detail.*
 class DetailAct : BaseAct() {
 
     private lateinit var dbxx: Dbxx
-    private lateinit var detail: Detail
 
     override fun initArguments() {
 //        dbxx = intent.getSerializableExtra(Key.dbxx) as Dbxx
@@ -56,20 +55,20 @@ class DetailAct : BaseAct() {
 
 
         Faker().getDetailMaybe().subscribe {
-            detail = it
-            it.flowNodeList.forEach { flowNode ->
-                //                flowNode.dbxx = dbxx
-            }
+            Global.detail = it
+//            it.flowNodeList.forEach { flowNode ->
+//                                flowNode.dbxx = dbxx
+//            }
             flowNodeAdapter.setNewData(it.flowNodeList)
             val oh = OperationHeaderView(this)
             flowNodeAdapter.addHeaderView(oh)
-            val nbfwHeaderView = NbfwHeaderView(this, detail)
+                    val nbfwHeaderView = NbfwHeaderView(this)
             flowNodeAdapter.addHeaderView(nbfwHeaderView)
             val fv = ButtonFooterView(this)
             flowNodeAdapter.addFooterView(fv)
 
             fv.btnSave.safeClicks().subscribe {
-                Logger.e(detail.toString())
+                Logger.e(Global.detail.toString())
             }
         }
     }
@@ -79,7 +78,6 @@ class DetailAct : BaseAct() {
             startActivity(Intent(this, SpyjAct::class.java).apply {
                 putExtra(Key.position,event.position)
                 ToastUtils.showShort(event.position.toString())
-                putExtra(Key.detail,detail)
             })
         })
     }

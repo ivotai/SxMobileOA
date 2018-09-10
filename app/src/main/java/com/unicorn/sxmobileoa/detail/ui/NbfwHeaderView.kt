@@ -6,10 +6,10 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.get
-import com.unicorn.sxmobileoa.detail.model.Detail
 
-class NbfwHeaderView(context: Context, private val detail: Detail) : FrameLayout(context) {
+class NbfwHeaderView(context: Context) : FrameLayout(context) {
 
     init {
         initViews(context)
@@ -24,15 +24,15 @@ class NbfwHeaderView(context: Context, private val detail: Detail) : FrameLayout
     fun initViews(context: Context) {
         LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
         tvBt = findViewById(R.id.tvBt)
-        tvBt.text = detail.spdXx.bt
+        tvBt.text = Global.detail.spdXx.bt
         etJbbm = findViewById(R.id.etJbbm)
-        detail.get("jbbm_input").let { etJbbm.setText(it) }
+        Global.detail.get("jbbm_input").let { etJbbm.setText(it) }
         etNgr = findViewById(R.id.etNgr)
-        detail.get("ngr_input").let { etNgr.setText(it) }
+        Global.detail.get("ngr_input").let { etNgr.setText(it) }
         etZsmc = findViewById(R.id.etZsmc)
-        detail.get("zsmc_input").let { etZsmc.setText(it) }
+        Global.detail.get("zsmc_input").let { etZsmc.setText(it) }
         etCsmc = findViewById(R.id.etCsmc)
-        detail.get("csmc_input").let { etCsmc.setText(it) }
+        Global.detail.get("csmc_input").let { etCsmc.setText(it) }
 
         //
     }
