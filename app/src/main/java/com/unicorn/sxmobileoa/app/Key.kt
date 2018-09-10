@@ -17,5 +17,8 @@ object Key {
     const val mainItem = "mainItem"
     const val username = "username"
     const val courtStr = "courtStr"
+    const val position = "position"
+    const val detail = "detail"
+    const val flowNode = "flowNode"
 
 }

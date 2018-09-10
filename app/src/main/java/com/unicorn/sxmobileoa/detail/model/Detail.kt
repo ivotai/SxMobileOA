@@ -1,6 +1,7 @@
 package com.unicorn.sxmobileoa.detail.model
 
 import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
+import java.io.Serializable
 
 data class Detail(
         val cyy: List<Cyy>,
@@ -8,12 +9,12 @@ data class Detail(
         val spdData: List<SpdData>,
         val spdXx: SpdXx,
         val nodeModel: NodeModel
-)
+): Serializable
 
 data class SpdData(
         val spdKey: String,
         val spdValue: String
-)
+): Serializable
 
 data class SpdXx(
         val assignName: String,
@@ -113,7 +114,7 @@ data class SpdXx(
         val ytspdid: String,
         val zfbz: Int,
         val zhmc: String
-)
+): Serializable
 
 data class NodeModel(
         val flowCode: String,
@@ -137,7 +138,7 @@ data class NodeModel(
         val spyjsfbt: String,
         val whsfbt: Int,
         val yjsfzwlj: String
-)
+): Serializable
 
 data class Cyy(
         val content: String,
@@ -146,7 +147,7 @@ data class Cyy(
         val system: String,
         val userId: String,
         val xssx: String
-)
+): Serializable
 
 data class FlowNode(
         val flowCode: String,
@@ -172,7 +173,7 @@ data class FlowNode(
         val yjsfzwlj: String,
         // TODO
         var dbxx: Dbxx? = null
-)
+): Serializable
 
 data class Spyj(
         val createUserId: String,
@@ -211,4 +212,4 @@ data class Spyj(
         val whsfbt: Int,
         val xtlx: String,
         val yjsfzwlj: Int
-)
+): Serializable

@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".spyj.Spyj"></activity>
+        <activity android:name=".spyj.SpyjAct"></activity>
     </application>
 
 </manifest>
