@@ -6,7 +6,7 @@
     android:background="@color/md_grey_300"
     android:orientation="vertical"
     android:paddingBottom="1px"
-    tools:ignore="HardcodedText,RtlSymmetry,SpUsage">
+    tools:ignore="HardcodedText,RtlSymmetry,SpUsage,LabelFor">
 
     <View
         android:layout_width="match_parent"
@@ -67,11 +67,13 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
-            android:id="@+id/tvJbbm"
+        <EditText
+            android:id="@+id/etJbbm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -92,11 +94,13 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
-            android:id="@+id/tvNgr"
+        <EditText
+            android:id="@+id/etNgr"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -117,11 +121,13 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
-            android:id="@+id/tvZsmc"
+        <EditText
+            android:id="@+id/etZsmc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -151,56 +157,5 @@
             android:textSize="14dp" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1px"
-        android:background="@color/md_white"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <TextView
-            android:layout_width="@dimen/detail_width"
-            android:layout_height="wrap_content"
-            android:text="发文文号"
-            android:textColor="@color/md_grey_700"
-            android:textSize="14dp" />
-
-        <TextView
-            android:id="@+id/tvFwwh"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/md_grey_400"
-            android:textSize="14dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1px"
-        android:background="@color/md_white"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <TextView
-            android:layout_width="@dimen/detail_width"
-            android:layout_height="wrap_content"
-            android:text="发文时间"
-            android:textColor="@color/md_grey_700"
-            android:textSize="14dp" />
-
-        <TextView
-            android:id="@+id/tvFwsj"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/md_grey_400"
-            android:textSize="14dp" />
-
-    </LinearLayout>
-
 
 </LinearLayout>
