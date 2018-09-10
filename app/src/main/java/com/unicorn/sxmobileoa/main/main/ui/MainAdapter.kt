@@ -20,6 +20,7 @@ class MainAdapter : BaseSectionQuickAdapter<Section, BaseViewHolder>(R.layout.it
         item.t.apply {
             helper.setText(R.id.tvText, text)
             helper.setImageResource(R.id.ivImage, resId)
+            helper.setText(R.id.tvCount,count.toString())
         }
 
         helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
@@ -28,6 +29,8 @@ class MainAdapter : BaseSectionQuickAdapter<Section, BaseViewHolder>(R.layout.it
                 putExtra(Key.mainItem, item.t)
             }.let { mContext.startActivity(it) }
         }
+
+
     }
 
 }

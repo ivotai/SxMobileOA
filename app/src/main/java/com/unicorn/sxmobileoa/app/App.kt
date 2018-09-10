@@ -5,6 +5,7 @@ import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
+import com.zzhoujay.richtext.RichText
 import io.reactivex.plugins.RxJavaPlugins
 import net.danlew.android.joda.JodaTimeAndroid
 import java.net.SocketTimeoutException
@@ -21,6 +22,7 @@ class App : Application() {
         JodaTimeAndroid.init(this)
         Logger.addLogAdapter(AndroidLogAdapter())
         Utils.init(this)
+        RichText.initCacheDir(this)
     }
 
     private fun setGlobalErrorHandler() {

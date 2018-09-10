@@ -34,10 +34,13 @@ class NbfwHeaderView(context: Context, private val detail: Detail) : FrameLayout
         tvZsmc.text = detail.get("zsmc_input")
         tvCsmc = findViewById(R.id.tvCsmc)
         tvCsmc.text = detail.get("csmc_input")
-        tvFwwh = findViewById(R.id.tvFwwh)
-        tvFwwh.text = detail.get("sdwh")
         tvFwsj = findViewById(R.id.tvFwsj)
         tvFwsj.text = detail.get("fwsj_input")
+
+        //
+        tvFwwh = findViewById(R.id.tvFwwh)
+        tvFwwh.text = detail.spdXx.sdwh
+
     }
 
 }

@@ -1,8 +1,10 @@
 package com.unicorn.sxmobileoa.detail.ui
 
 import android.support.v7.widget.LinearLayoutManager
+import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.detail.model.Detail
 import com.unicorn.sxmobileoa.detail.network.DetailUseCase
@@ -41,7 +43,10 @@ class DetailAct : BaseAct() {
     private fun getDetail() {
         DetailUseCase(dbxx).toMaybe(this).subscribe {
             detail = it
-            it.flowNodeList.forEach { flowNode -> flowNode.dbxx = dbxx }
+            it.flowNodeList.forEach {
+                flowNode -> flowNode.dbxx = dbxx
+                flowNode.subItems = flowNode.spyjList
+            }
             flowNodeAdapter.setNewData(it.flowNodeList)
             val oh = OperationHeaderView(this)
             flowNodeAdapter.addHeaderView(oh)
@@ -49,6 +54,10 @@ class DetailAct : BaseAct() {
             flowNodeAdapter.addHeaderView(nbfwHeaderView)
             val fv = ButtonFooterView(this)
             flowNodeAdapter.addFooterView(fv)
+
+            fv.btnSave.safeClicks().subscribe {
+                Logger.e(detail.toString())
+            }
         }
 
 
