@@ -29,3 +29,10 @@ fun Spd.get(spdKey: String): String {
     val list = this.spdData.filter { it.spdKey == spdKey }
     return if (list.isEmpty()) "" else list[0].spdValue
 }
+
+fun Spd.set(spdKey: String,spdValue:String) {
+    val list = this.spdData.filter { it.spdKey == spdKey }
+    if (!list.isEmpty()){
+        list[0].spdValue = spdValue
+    }
+}

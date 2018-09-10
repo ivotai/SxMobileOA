@@ -67,16 +67,18 @@ class SpdAct : BaseAct() {
             }
 
             fv.btnNextStep.safeClicks().subscribe { _ ->
-                val list = Global.detail.flowNodeList.filter { flowNode ->
-                    Global.dbxx.param.nodeId in flowNode.flowNodeId.split(",")
+                // 这个挪到写入意见取做
+                val currentNodeId = Global.dbxx.param.nodeId
+                val currentFlowNodeList = Global.detail.flowNodeList.filter { flowNode ->
+                    currentNodeId in flowNode.flowNodeId.split(",")
                 }
-
-                if (list[0].spyjList.any { spyj -> spyj.spyjStatus == 1 }) {
-                    Global.spyj = list[0].spyjList.filter { spyj -> spyj.spyjStatus == 1 }[0]
+                val currentFlowNode = currentFlowNodeList[0]
+                val currentSpyjList = currentFlowNode.spyjList.filter { spyj -> spyj.spyjStatus == 1 }
+                if (currentSpyjList.isEmpty()) {
+                    currentFlowNode.spyjList.add(SpyjBuilder().build())
                 } else {
-                    list[0].spyjList.add(SpyjBuilder().build())
+                    Global.spyj = currentSpyjList[0]
                 }
-
             }
         }
     }

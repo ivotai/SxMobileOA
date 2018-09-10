@@ -34,10 +34,7 @@ class SpyjFra : BaseFra() {
     }
 
     override fun bindIntent() {
-
         flowNode.spyjList.let { spyjAdapter.setNewData(it) }
     }
-
-
 
 }

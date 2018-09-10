@@ -12,7 +12,7 @@ data class Spd(
 
 data class SpdData(
         val spdKey: String,
-        val spdValue: String
+        var spdValue: String
 )
 
 data class SpdXx(

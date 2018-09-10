@@ -10,13 +10,12 @@ class SpyjAct : BaseAct() {
 
     override val layoutId = R.layout.act_spyj
 
-
-
     override fun initViews() {
-        viewPager.offscreenPageLimit = Global.detail.flowNodeList.size - 1
-        viewPager.adapter = SpyjPagerAdapter( supportFragmentManager)
-        val currentItem = intent.getIntExtra(Key.position, 0)
-        viewPager.currentItem = currentItem
+        viewPager.apply {
+            offscreenPageLimit = Global.detail.flowNodeList.size - 1
+            adapter = SpyjPagerAdapter(supportFragmentManager)
+            currentItem = intent.getIntExtra(Key.position, 0)
+        }
     }
 
     override fun bindIntent() {
