@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.utils.RxBus
-import com.unicorn.sxmobileoa.dept.model.DeptResult
+import com.unicorn.sxmobileoa.dept.model.DeptSelectResult
 import com.unicorn.sxmobileoa.dept.ui.DeptAct
 import com.unicorn.sxmobileoa.detail.Editable
 import io.reactivex.functions.Consumer
@@ -69,7 +69,7 @@ class NbfwHeaderView(context: Context) : FrameLayout(context) {
                     putExtra(Key.tag, Key.csmc_input)
                 })
             }
-            RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
+            RxBus.get().registerEvent(DeptSelectResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
                 val textView = if (deptResult.tag == Key.zsmc_input) tvZsmc else tvCsmc
                 deptResult.deptList.joinToString(",") { dept -> dept.text }.let {
                     textView.text = it

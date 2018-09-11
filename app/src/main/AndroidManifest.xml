@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.court.ui.CourtAct" />
+        <activity android:name="com.unicorn.sxmobileoa.simple.court.ui.CourtAct" />
         <activity android:name=".main.main.ui.MainAct" />
         <activity android:name=".main.dbxx.ui.DbxxAct" />
         <activity android:name=".detail.ui.SpdAct" />

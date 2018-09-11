@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.login.court.ui
+package com.unicorn.sxmobileoa.simple.court.ui
 
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.TextView
@@ -6,9 +6,9 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecotation
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.keyword.KeywordHeaderView
-import com.unicorn.sxmobileoa.login.court.model.Court
-import com.unicorn.sxmobileoa.login.court.network.GetCourt
+import com.unicorn.sxmobileoa.g.KeywordHeaderView
+import com.unicorn.sxmobileoa.simple.court.model.Court
+import com.unicorn.sxmobileoa.simple.court.network.GetCourt
 import kotlinx.android.synthetic.main.act_titlebar_recyclerview.*
 
 class CourtAct : BaseAct() {

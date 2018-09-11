@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.keyword
+package com.unicorn.sxmobileoa.g
 
 import android.content.Context
 import android.graphics.drawable.GradientDrawable

@@ -11,8 +11,8 @@ import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
-import com.unicorn.sxmobileoa.login.court.model.Court
-import com.unicorn.sxmobileoa.login.court.ui.CourtAct
+import com.unicorn.sxmobileoa.simple.court.model.Court
+import com.unicorn.sxmobileoa.simple.court.ui.CourtAct
 import com.unicorn.sxmobileoa.login.login.network.LoginUseCase
 import com.unicorn.sxmobileoa.main.main.ui.MainAct
 import io.reactivex.Observable

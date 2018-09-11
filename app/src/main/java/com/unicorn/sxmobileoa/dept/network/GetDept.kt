@@ -2,14 +2,14 @@ package com.unicorn.sxmobileoa.dept.network
 
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
-import com.unicorn.sxmobileoa.dept.model.DeptResponse
+import com.unicorn.sxmobileoa.dept.model.DeptData
 
-class GetDept : BaseUseCase<DeptResponse>(){
+class GetDept : BaseUseCase<DeptData>() {
 
     override fun createRequest() = DeptRequest()
 
-    override fun toResult(json: String): DeptResponse {
-        return ComponentHolder.appComponent.getGson().fromJson(json,DeptResponse::class.java)
+    override fun toResult(json: String): DeptData {
+        return ComponentHolder.appComponent.getGson().fromJson(json, DeptData::class.java)
     }
 
 }
