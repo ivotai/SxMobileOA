@@ -43,7 +43,7 @@ class CourtAct : BaseAct() {
     override fun bindIntent() {
         GetCourt().toMaybe(this)
                 .doOnSuccess { observeKeyword(it) }
-                .subscribe { t -> courtAdapter.setNewData(t) }
+                .subscribe { courtAdapter.setNewData(it) }
     }
 
     private fun observeKeyword(courtList: List<Court>) {

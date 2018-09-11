@@ -2,7 +2,7 @@ package com.unicorn.sxmobileoa.simple.court.network
 
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
 
-class FyxxRequest : MaybeRequest(busiCode = "fyxx") {
+class CourtRequest : MaybeRequest(busiCode = "fyxx") {
 
     init {
         // 查询所有法院
