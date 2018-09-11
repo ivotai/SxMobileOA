@@ -47,7 +47,7 @@ class SpdAct : BaseAct() {
 
     private fun getSpd() {
         SpdUseCase(Global.dbxx).toMaybe(this).subscribe {
-            Global.detail = it
+            Global.spd = it
             flowNodeAdapter.setNewData(it.flowNodeList)
             val oh = OperationHeaderView(this)
             flowNodeAdapter.addHeaderView(oh)
@@ -57,22 +57,11 @@ class SpdAct : BaseAct() {
             flowNodeAdapter.addFooterView(fv)
 
             fv.btnSave.safeClicks().subscribe { _ ->
-                Logger.e(Global.detail.toString())
+                Logger.e(Global.spd.toString())
             }
 
             fv.btnNextStep.safeClicks().subscribe { _ ->
-                // 这个挪到写入意见取做
-                val currentNodeId = Global.dbxx.param.nodeId
-                val currentFlowNodeList = Global.detail.flowNodeList.filter { flowNode ->
-                    currentNodeId in flowNode.flowNodeId.split(",")
-                }
-                val currentFlowNode = currentFlowNodeList[0]
-                val currentSpyjList = currentFlowNode.spyjList.filter { spyj -> spyj.spyjStatus == 1 }
-                if (currentSpyjList.isEmpty()) {
-                    currentFlowNode.spyjList.add(SpyjBuilder().build())
-                } else {
-                    Global.spyj = currentSpyjList[0]
-                }
+
             }
         }
     }

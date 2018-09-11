@@ -23,9 +23,13 @@
         <activity android:name=".login.court.ui.CourtAct" />
         <activity android:name=".main.main.ui.MainAct" />
         <activity android:name=".main.dbxx.ui.DbxxAct" />
-        <activity android:name=".detail.ui.SpdAct"></activity>
+        <activity android:name=".detail.ui.SpdAct" />
         <activity android:name=".spyj.pager.SpyjPagerAct" />
-        <activity android:name=".spyj.SpyjAct"></activity>
+        <activity android:name=".spyj.SpyjAct" />
+        <activity
+            android:name=".department.ui.DeptAct"
+            android:label="@string/title_activity_department"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

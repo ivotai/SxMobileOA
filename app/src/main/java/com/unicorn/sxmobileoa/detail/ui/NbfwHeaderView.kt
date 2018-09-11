@@ -28,15 +28,15 @@ class NbfwHeaderView(context: Context) : FrameLayout(context) {
     fun initViews(context: Context) {
         LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
         tvBt = findViewById(R.id.tvBt)
-        tvBt.text = Global.detail.spdXx.bt
+        tvBt.text = Global.spd.spdXx.bt
         etJbbm = findViewById(R.id.etJbbm)
-        Global.detail.get(Key.jbbm_input).let { etJbbm.setText(it) }
+        Global.spd.get(Key.jbbm_input).let { etJbbm.setText(it) }
         etNgr = findViewById(R.id.etNgr)
-        Global.detail.get(Key.ngr_input).let { etNgr.setText(it) }
+        Global.spd.get(Key.ngr_input).let { etNgr.setText(it) }
         etZsmc = findViewById(R.id.etZsmc)
-        Global.detail.get(Key.zsmc_input).let { etZsmc.setText(it) }
+        Global.spd.get(Key.zsmc_input).let { etZsmc.setText(it) }
         etCsmc = findViewById(R.id.etCsmc)
-        Global.detail.get(Key.csmc_input).let { etCsmc.setText(it) }
+        Global.spd.get(Key.csmc_input).let { etCsmc.setText(it) }
 
         //
         val currentNodeId = Global.dbxx.param.nodeId
@@ -51,16 +51,16 @@ class NbfwHeaderView(context: Context) : FrameLayout(context) {
 
     private fun watch() {
 //        RxTextView.textChanges(etJbbm).subscribe {
-//            Global.detail.set(Key.jbbm_input, it.toString())
+//            Global.spd.set(Key.jbbm_input, it.toString())
 //        }
 //        RxTextView.textChanges(etNgr).subscribe {
-//            Global.detail.set(Key.ngr_input, it.toString())
+//            Global.spd.set(Key.ngr_input, it.toString())
 //        }
         RxTextView.textChanges(etZsmc).subscribe {
-            Global.detail.set(Key.zsmc_input, it.toString())
+            Global.spd.set(Key.zsmc_input, it.toString())
         }
         RxTextView.textChanges(etCsmc).subscribe {
-            Global.detail.set(Key.csmc_input, it.toString())
+            Global.spd.set(Key.csmc_input, it.toString())
         }
     }
 

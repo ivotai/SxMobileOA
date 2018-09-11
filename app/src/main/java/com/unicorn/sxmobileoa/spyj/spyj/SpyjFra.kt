@@ -16,7 +16,7 @@ class SpyjFra : BaseFra() {
 
     override fun initArguments() {
         val position = arguments!!.getInt(Key.position)
-        flowNode = Global.detail.flowNodeList[position]
+        flowNode = Global.spd.flowNodeList[position]
     }
 
     override fun initViews() {

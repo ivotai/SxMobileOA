@@ -12,7 +12,7 @@ class SpyjPagerAct : BaseAct() {
 
     override fun initViews() {
         viewPager.apply {
-            offscreenPageLimit = Global.detail.flowNodeList.size - 1
+            offscreenPageLimit = Global.spd.flowNodeList.size - 1
             adapter = SpyjPagerAdapter(supportFragmentManager)
             currentItem = intent.getIntExtra(Key.position, 0)
         }

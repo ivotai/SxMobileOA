@@ -9,7 +9,7 @@ import com.unicorn.sxmobileoa.spyj.spyj.SpyjFra
 
 class SpyjPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
-    override fun getCount() = Global.detail.flowNodeList.size
+    override fun getCount() = Global.spd.flowNodeList.size
 
     override fun getItem(position: Int) = SpyjFra().apply {
         arguments = Bundle().apply {

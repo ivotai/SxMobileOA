@@ -14,7 +14,7 @@ object Global {
 
     var court: Court? = null
 
-    lateinit var detail: Spd
+    lateinit var spd: Spd
 
     lateinit var dbxx:Dbxx
 
