@@ -5,11 +5,11 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
+import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
+import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.app.mess.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
-import com.unicorn.sxmobileoa.app.mess.SelectWrapper
 import com.unicorn.sxmobileoa.simple.dept.model.Dept
 import com.unicorn.sxmobileoa.simple.dept.model.DeptSelectResult
 import com.unicorn.sxmobileoa.simple.dept.network.GetDept
@@ -38,12 +38,12 @@ class DeptAct : BaseAct() {
             deptAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
         }
-        initKeyHeaderView()
+        addHeaderView()
     }
 
     private lateinit var headerView: KeywordHeaderView
 
-    private fun initKeyHeaderView() {
+    private fun addHeaderView() {
         headerView = KeywordHeaderView(this)
         headerView.setHint("请输入部门")
         deptAdapter.addHeaderView(headerView)

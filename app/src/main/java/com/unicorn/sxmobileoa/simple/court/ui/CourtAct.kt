@@ -27,12 +27,12 @@ class CourtAct : BaseAct() {
             courtAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
         }
-        initKeyHeaderView()
+        addHeaderView()
     }
 
     private lateinit var headerView: KeywordHeaderView
 
-    private fun initKeyHeaderView() {
+    private fun addHeaderView() {
         headerView = KeywordHeaderView(this)
         headerView.setHint("请输入法院全称")
         courtAdapter.addHeaderView(headerView)
