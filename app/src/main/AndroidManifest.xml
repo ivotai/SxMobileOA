@@ -26,10 +26,7 @@
         <activity android:name=".detail.ui.SpdAct" />
         <activity android:name=".spyj.pager.SpyjPagerAct" />
         <activity android:name=".spyj.SpyjAct" />
-        <activity
-            android:name=".dept.ui.DeptAct"
-            android:label="@string/title_activity_department"
-            android:theme="@style/AppTheme"></activity>
+        <activity android:name="com.unicorn.sxmobileoa.simple.dept.ui.DeptAct" />
     </application>
 
 </manifest>

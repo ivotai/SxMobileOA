@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.dept.ui
+package com.unicorn.sxmobileoa.simple.dept.ui
 
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.TextView
@@ -9,11 +9,11 @@ import com.unicorn.sxmobileoa.app.addDefaultItemDecotation
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
-import com.unicorn.sxmobileoa.dept.model.Dept
-import com.unicorn.sxmobileoa.dept.model.DeptSelectResult
-import com.unicorn.sxmobileoa.dept.network.GetDept
 import com.unicorn.sxmobileoa.g.KeywordHeaderView
 import com.unicorn.sxmobileoa.g.SelectWrapper
+import com.unicorn.sxmobileoa.simple.dept.model.Dept
+import com.unicorn.sxmobileoa.simple.dept.model.DeptSelectResult
+import com.unicorn.sxmobileoa.simple.dept.network.GetDept
 import kotlinx.android.synthetic.main.act_titlebar_recyclerview.*
 import kotlinx.android.synthetic.main.title_bar.view.*
 

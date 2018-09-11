@@ -10,8 +10,8 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.utils.RxBus
-import com.unicorn.sxmobileoa.dept.model.DeptSelectResult
-import com.unicorn.sxmobileoa.dept.ui.DeptAct
+import com.unicorn.sxmobileoa.simple.dept.model.DeptSelectResult
+import com.unicorn.sxmobileoa.simple.dept.ui.DeptAct
 import com.unicorn.sxmobileoa.detail.Editable
 import io.reactivex.functions.Consumer
 
