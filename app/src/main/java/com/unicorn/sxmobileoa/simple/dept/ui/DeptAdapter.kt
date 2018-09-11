@@ -3,7 +3,6 @@ package com.unicorn.sxmobileoa.simple.dept.ui
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.widget.TextView
-import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
@@ -18,14 +17,13 @@ class DeptAdapter : BaseQuickAdapter<SelectWrapper<Dept>, BaseViewHolder>(R.layo
         tvText.text = item.t.text
 
         // 选中效果
-        tvText.setBackgroundColor(if (item.isSelected) ContextCompat.getColor(mContext, R.color.colorPrimary) else Color.WHITE)
         tvText.setTextColor(if (item.isSelected) Color.WHITE else Color.BLACK)
+        tvText.setBackgroundColor(if (item.isSelected) ContextCompat.getColor(mContext, R.color.colorPrimary) else Color.WHITE)
 
         // 点击后刷新对应条目
         tvText.safeClicks().subscribe {
             item.isSelected = !item.isSelected
             notifyItemChanged(helper.adapterPosition)
-            ToastUtils.showShort(helper.adapterPosition.toString())
         }
     }
 

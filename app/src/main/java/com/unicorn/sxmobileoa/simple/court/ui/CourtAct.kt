@@ -1,7 +1,6 @@
 package com.unicorn.sxmobileoa.simple.court.ui
 
 import android.support.v7.widget.LinearLayoutManager
-import android.widget.TextView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecotation
@@ -28,16 +27,15 @@ class CourtAct : BaseAct() {
             courtAdapter.bindToRecyclerView(this)
             addDefaultItemDecotation()
         }
-        addKeyHeaderView()
+        initKeyHeaderView()
     }
 
-    private lateinit var etKeyword: TextView
+    private lateinit var headerView: KeywordHeaderView
 
-    private fun addKeyHeaderView() {
-        val keywordHeaderView = KeywordHeaderView(this)
-        courtAdapter.addHeaderView(keywordHeaderView)
-        etKeyword = keywordHeaderView.etKeyword
-        keywordHeaderView.setHint("请输入法院全称")
+    private fun initKeyHeaderView() {
+        headerView = KeywordHeaderView(this)
+        headerView.setHint("请输入法院全称")
+        courtAdapter.addHeaderView(headerView)
     }
 
     override fun bindIntent() {
@@ -47,7 +45,7 @@ class CourtAct : BaseAct() {
     }
 
     private fun observeKeyword(courtList: List<Court>) {
-        RxTextView.textChanges(etKeyword)
+        RxTextView.textChanges(headerView.etKeyword)
                 .map { it.toString() }
                 .subscribe { keyword ->
                     courtList.filter { court -> court.dmms.contains(keyword) }

@@ -1,7 +1,6 @@
 package com.unicorn.sxmobileoa.simple.dept.ui
 
 import android.support.v7.widget.LinearLayoutManager
-import android.widget.TextView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
@@ -19,7 +18,7 @@ import kotlinx.android.synthetic.main.title_bar.view.*
 
 class DeptAct : BaseAct() {
 
-    lateinit var tag: String
+    private lateinit var tag: String
 
     override fun initArguments() {
         tag = intent.getStringExtra(Key.tag)
@@ -40,16 +39,15 @@ class DeptAct : BaseAct() {
             deptAdapter.bindToRecyclerView(this)
             addDefaultItemDecotation()
         }
-        addKeyHeaderView()
+        initKeyHeaderView()
     }
 
-    private lateinit var etKeyword: TextView
+    private lateinit var headerView: KeywordHeaderView
 
-    private fun addKeyHeaderView() {
-        val keywordHeaderView = KeywordHeaderView(this)
-        deptAdapter.addHeaderView(keywordHeaderView)
-        etKeyword = keywordHeaderView.etKeyword
-        keywordHeaderView.setHint("请输入部门")
+    private fun initKeyHeaderView() {
+        headerView = KeywordHeaderView(this)
+        headerView.setHint("请输入部门")
+        deptAdapter.addHeaderView(headerView)
     }
 
     override fun bindIntent() {
@@ -62,22 +60,22 @@ class DeptAct : BaseAct() {
                     }
                 }
                 .subscribe { deptAdapter.setNewData(it) }
-        // TODO
-        observeSth()
+
+        observeConfirm()
     }
 
-    private fun observeSth() {
+    private fun observeConfirm() {
         titleBar.tvTitle.safeClicks().subscribe {
             deptAdapter.data
                     .filter { wrapper -> wrapper.isSelected }
                     .map { wrapperSelected -> wrapperSelected.t }
-                    .let { deptListSelected -> RxBus.get().post(DeptSelectResult(tag, deptListSelected)) }
+                    .let { deptSelected -> RxBus.get().post(DeptSelectResult(tag, deptSelected)) }
             finish()
         }
     }
 
     private fun observeKeyword(deptList: List<Dept>) {
-        RxTextView.textChanges(etKeyword)
+        RxTextView.textChanges(headerView.etKeyword)
                 .map { it.toString() }
                 .subscribe { keyword ->
                     deptList.filter { dept -> dept.text.contains(keyword) }
