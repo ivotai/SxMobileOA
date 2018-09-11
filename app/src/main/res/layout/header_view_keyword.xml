@@ -8,12 +8,11 @@
         android:id="@+id/etKeyword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:hint="输入法院全称"
+        android:layout_margin="16dp"
         android:inputType="text"
-        android:padding="16dp"
+        android:padding="12dp"
         android:textColor="@color/md_black"
         android:textSize="16dp"
-        tools:ignore="HardcodedText,RtlSymmetry,SpUsage" />
+        tools:ignore="HardcodedText,LabelFor,RtlSymmetry,SpUsage" />
 
 </FrameLayout>

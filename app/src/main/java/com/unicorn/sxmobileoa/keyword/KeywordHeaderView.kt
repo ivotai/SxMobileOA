@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.login.court.ui
+package com.unicorn.sxmobileoa.keyword
 
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
@@ -8,8 +8,9 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.blankj.utilcode.util.ConvertUtils
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Key
 
-class CourtHeaderView(context: Context) : FrameLayout(context) {
+class KeywordHeaderView(context: Context) : FrameLayout(context) {
 
     init {
         initViews(context)
@@ -18,13 +19,18 @@ class CourtHeaderView(context: Context) : FrameLayout(context) {
     lateinit var etKeyword: TextView
 
     fun initViews(context: Context) {
-        LayoutInflater.from(context).inflate(R.layout.header_view_court, this, true)
+        LayoutInflater.from(context).inflate(R.layout.header_view_keyword, this, true)
+
         etKeyword = findViewById(R.id.etKeyword)
 
         GradientDrawable().apply {
-            setColor(ContextCompat.getColor(context, R.color.md_grey_200))
-            cornerRadius = ConvertUtils.dp2px(5f).toFloat()
+            setColor(ContextCompat.getColor(context, R.color.md_grey_100))
+            cornerRadius = ConvertUtils.dp2px(Key.cornerRadiusDp).toFloat()
         }.let { etKeyword.background = it }
+    }
+
+    fun setHint(hint:String){
+        etKeyword.hint = hint
     }
 
 }

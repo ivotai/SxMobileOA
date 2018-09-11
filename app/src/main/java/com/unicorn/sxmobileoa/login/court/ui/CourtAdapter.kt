@@ -14,14 +14,12 @@ class CourtAdapter : BaseQuickAdapter<Court, BaseViewHolder>(R.layout.item_court
     override fun convert(helper: BaseViewHolder, item: Court) {
         helper.setText(R.id.tvDmms, item.dmms)
 
-        val root = helper.getView<View>(R.id.tvDmms)
-        root.safeClicks().subscribe { postCourtAndFinish(item) }
-    }
-
-    private fun postCourtAndFinish(court: Court) {
-        RxBus.get().post(court)
-        val activity = mContext as AppCompatActivity
-        activity.finish()
+        val tvDmms = helper.getView<View>(R.id.tvDmms)
+        tvDmms.safeClicks().subscribe {
+            RxBus.get().post(item)
+            val activity = mContext as AppCompatActivity
+            activity.finish()
+        }
     }
 
 }

@@ -5,9 +5,9 @@ import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 import com.unicorn.sxmobileoa.login.court.model.Court
 
-class CourtUseCase : BaseUseCase<List<Court>>() {
+class GetCourt : BaseUseCase<List<Court>>() {
 
-    override fun createRequest() = CourtRequest()
+    override fun createRequest() = FyxxRequest()
 
     override fun toResult(json: String): List<Court> {
         val type = object : TypeToken<List<Court>>() {}.type

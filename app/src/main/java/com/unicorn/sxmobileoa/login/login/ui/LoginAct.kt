@@ -80,7 +80,6 @@ class LoginAct : BaseAct() {
         }
     }
 
-
     override fun registerEvent() {
         RxBus.get().registerEvent(Court::class.java, this, Consumer { court ->
             Global.court = court

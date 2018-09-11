@@ -19,6 +19,8 @@ object Key {
     const val courtStr = "courtStr"
     const val position = "position"
     const val tag = "tag"
+    const val cornerRadiusDp = 5f
+
 
     // nbfw
     const val jbbm_input = "jbbm_input"
