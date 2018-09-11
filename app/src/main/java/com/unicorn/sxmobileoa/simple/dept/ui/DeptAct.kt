@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
-import com.unicorn.sxmobileoa.app.addDefaultItemDecotation
+import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.mess.RxBus
@@ -36,7 +36,7 @@ class DeptAct : BaseAct() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@DeptAct)
             deptAdapter.bindToRecyclerView(this)
-            addDefaultItemDecotation()
+            addDefaultItemDecoration()
         }
         initKeyHeaderView()
     }

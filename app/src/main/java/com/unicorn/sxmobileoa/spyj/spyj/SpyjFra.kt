@@ -5,7 +5,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.ui.BaseFra
-import com.unicorn.sxmobileoa.detail.model.FlowNode
+import com.unicorn.sxmobileoa.spd.model.FlowNode
 import kotlinx.android.synthetic.main.fra_spyj.*
 
 class SpyjFra : BaseFra() {

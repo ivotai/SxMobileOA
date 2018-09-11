@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.detail.ui
+package com.unicorn.sxmobileoa.spd.ui
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner
@@ -12,7 +12,7 @@ import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.simple.dept.model.DeptSelectResult
 import com.unicorn.sxmobileoa.simple.dept.ui.DeptAct
-import com.unicorn.sxmobileoa.detail.Editable
+import com.unicorn.sxmobileoa.spd.Editable
 import io.reactivex.functions.Consumer
 
 class NbfwHeaderView(context: Context) : FrameLayout(context) {

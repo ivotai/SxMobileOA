@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.jakewharton.rxbinding2.view.clicks
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.MainThreadTransformer
-import com.unicorn.sxmobileoa.detail.model.Spd
+import com.unicorn.sxmobileoa.spd.model.Spd
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Maybe
@@ -40,7 +40,7 @@ fun Spd.set(spdKey: String, spdValue: String) {
     }
 }
 
-fun RecyclerView.addDefaultItemDecotation() {
+fun RecyclerView.addDefaultItemDecoration() {
     HorizontalDividerItemDecoration.Builder(context)
             .colorResId(R.color.md_grey_300)
             .size(1)

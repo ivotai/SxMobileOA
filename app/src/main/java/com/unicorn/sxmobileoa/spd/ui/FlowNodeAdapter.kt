@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.detail.ui
+package com.unicorn.sxmobileoa.spd.ui
 
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -6,8 +6,8 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.detail.SpyjActEvent
-import com.unicorn.sxmobileoa.detail.model.FlowNode
+import com.unicorn.sxmobileoa.spd.SpyjActEvent
+import com.unicorn.sxmobileoa.spd.model.FlowNode
 
 class FlowNodeAdapter : BaseQuickAdapter<FlowNode, BaseViewHolder>(R.layout.item_flow_node) {
 

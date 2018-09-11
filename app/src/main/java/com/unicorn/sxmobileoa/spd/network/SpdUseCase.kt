@@ -1,8 +1,8 @@
-package com.unicorn.sxmobileoa.detail.network
+package com.unicorn.sxmobileoa.spd.network
 
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
-import com.unicorn.sxmobileoa.detail.model.Spd
+import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
 
 class SpdUseCase(private val dbxx: Dbxx) : BaseUseCase<Spd>() {

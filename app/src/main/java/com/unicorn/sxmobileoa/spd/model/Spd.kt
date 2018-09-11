@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.detail.model
+package com.unicorn.sxmobileoa.spd.model
 
 data class Spd(
         val cyy: List<Cyy>,

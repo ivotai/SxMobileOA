@@ -1,7 +1,7 @@
 package com.unicorn.sxmobileoa
 
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
-import com.unicorn.sxmobileoa.detail.model.Spd
+import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.Maybe
 
 
@@ -100,6 +100,5 @@ Faker {
 
         return Maybe.just(detail)
     }
-
 
 }

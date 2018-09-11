@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.detail.ui
+package com.unicorn.sxmobileoa.spd.ui
 
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
@@ -6,12 +6,12 @@ import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
-import com.unicorn.sxmobileoa.app.addDefaultItemDecotation
+import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.detail.SpyjActEvent
-import com.unicorn.sxmobileoa.detail.network.SpdUseCase
+import com.unicorn.sxmobileoa.spd.SpyjActEvent
+import com.unicorn.sxmobileoa.spd.network.SpdUseCase
 import com.unicorn.sxmobileoa.spyj.network.SaveSpd
 import com.unicorn.sxmobileoa.spyj.pager.SpyjPagerAct
 import io.reactivex.functions.Consumer
@@ -34,7 +34,7 @@ class SpdAct : BaseAct() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@SpdAct)
             flowNodeAdapter.bindToRecyclerView(this)
-            addDefaultItemDecotation()
+            addDefaultItemDecoration()
         }
     }
 

@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.detail.network
+package com.unicorn.sxmobileoa.spd.network
 
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest

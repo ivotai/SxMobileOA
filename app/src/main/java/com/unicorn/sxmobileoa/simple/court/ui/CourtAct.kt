@@ -3,9 +3,9 @@ package com.unicorn.sxmobileoa.simple.court.ui
 import android.support.v7.widget.LinearLayoutManager
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.addDefaultItemDecotation
-import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
+import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.court.model.Court
 import com.unicorn.sxmobileoa.simple.court.network.GetCourt
 import kotlinx.android.synthetic.main.act_titlebar_recyclerview.*
@@ -25,7 +25,7 @@ class CourtAct : BaseAct() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             courtAdapter.bindToRecyclerView(this)
-            addDefaultItemDecotation()
+            addDefaultItemDecoration()
         }
         initKeyHeaderView()
     }

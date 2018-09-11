@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.detail
+package com.unicorn.sxmobileoa.spd
 
 import io.reactivex.Observable
 

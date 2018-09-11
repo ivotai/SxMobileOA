@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.detail.model.Spyj
+import com.unicorn.sxmobileoa.spd.model.Spyj
 
 class SpyjAdapter : BaseQuickAdapter<Spyj, BaseViewHolder>(R.layout.item_spyj) {
 

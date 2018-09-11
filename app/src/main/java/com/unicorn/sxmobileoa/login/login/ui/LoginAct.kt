@@ -8,8 +8,8 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
-import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.login.login.network.LoginUseCase
 import com.unicorn.sxmobileoa.main.main.ui.MainAct
 import com.unicorn.sxmobileoa.simple.court.model.Court
@@ -23,45 +23,45 @@ class LoginAct : BaseAct() {
 
     override val layoutId = R.layout.act_login
 
+    // TODO DELETE
     @SuppressLint("SetTextI18n")
     override fun initViews() {
-        // TODO DELETE
 //        etPassword.setText("withub4l")
         etPassword.setText("zyadmin")
     }
 
     override fun bindIntent() {
+        observeInput()
+        tvCourt.safeClicks().subscribe { startActivity(Intent(this@LoginAct, CourtAct::class.java)) }
+        btnLogin.safeClicks().subscribe {
+            LoginUseCase(etUsername.trimText(), etPassword.trimText()).toMaybe(this).subscribe { loginInfo ->
+                Global.loginInfo = loginInfo
+                saveInputInfo()
+                startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))
+            }
+        }
+        restoreInputInfo()
+    }
+
+    private fun observeInput() {
         Observable.combineLatest(
                 RxTextView.textChanges(tvCourt).map { !TextUtils.isEmpty(it) },
                 RxTextView.textChanges(etUsername).map { !TextUtils.isEmpty(it) },
                 RxTextView.textChanges(etPassword).map { !TextUtils.isEmpty(it) },
                 Function3<Boolean, Boolean, Boolean, Boolean> { court, username, password -> return@Function3 court && username && password })
                 .subscribe { btnLogin.isEnabled = it }
-        tvCourt.safeClicks().subscribe { startActivity(Intent(this@LoginAct, CourtAct::class.java)) }
-        btnLogin.safeClicks().subscribe { login() }
-
-        restoreInputInfo()
-    }
-
-    private fun login() {
-        LoginUseCase(etUsername.trimText(), etPassword.trimText()).toMaybe(this)
-                .subscribe {
-                    Global.loginInfo = it
-                    saveInputInfo()
-                    startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))
-                }
     }
 
     private fun restoreInputInfo() {
-        val rxSharedPreferences = RxSharedPreferences.with(this)
-        rxSharedPreferences.getString(Key.courtStr, "")
-                .map { ComponentHolder.appComponent.getGson().fromJson(it, Court::class.java) }
-                .subscribe {
-                    Global.court = it
-                    tvCourt.text = it.dmms
-                }
-        rxSharedPreferences.getString(Key.username, "")
-                .subscribe { etUsername.setText(it) }
+        RxSharedPreferences.with(this).apply {
+            getString(Key.courtStr, "")
+                    .map { ComponentHolder.appComponent.getGson().fromJson(it, Court::class.java) }
+                    .subscribe { court ->
+                        Global.court = court
+                        tvCourt.text = court.dmms
+                    }
+            getString(Key.username, "").subscribe { etUsername.setText(it) }
+        }
     }
 
     private fun saveInputInfo() {

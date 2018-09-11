@@ -1,7 +1,7 @@
-package com.unicorn.sxmobileoa.detail.ui
+package com.unicorn.sxmobileoa.spd.ui
 
 import com.unicorn.sxmobileoa.app.Global
-import com.unicorn.sxmobileoa.detail.model.Spyj
+import com.unicorn.sxmobileoa.spd.model.Spyj
 import org.joda.time.DateTime
 import java.util.*
 

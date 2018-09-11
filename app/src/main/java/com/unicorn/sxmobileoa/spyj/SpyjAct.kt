@@ -4,7 +4,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.detail.ui.SpyjBuilder
+import com.unicorn.sxmobileoa.spd.ui.SpyjBuilder
 import kotlinx.android.synthetic.main.act_spyj.*
 
 class SpyjAct : BaseAct() {

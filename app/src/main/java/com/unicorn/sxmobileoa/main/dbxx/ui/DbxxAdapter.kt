@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.detail.ui.SpdAct
+import com.unicorn.sxmobileoa.spd.ui.SpdAct
 import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
 
 class DbxxAdapter() : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx) {
