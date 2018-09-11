@@ -11,7 +11,7 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.spd.SpyjActEvent
-import com.unicorn.sxmobileoa.spd.network.SpdUseCase
+import com.unicorn.sxmobileoa.spd.network.ToSpt
 import com.unicorn.sxmobileoa.spyj.network.SaveSpd
 import com.unicorn.sxmobileoa.spyj.pager.SpyjPagerAct
 import io.reactivex.functions.Consumer
@@ -43,7 +43,7 @@ class SpdAct : BaseAct() {
     }
 
     private fun getSpd() {
-        SpdUseCase(Global.dbxx).toMaybe(this).subscribe {
+        ToSpt(Global.dbxx).toMaybe(this).subscribe {
             Global.spd = it
 
             // 处理审批意见

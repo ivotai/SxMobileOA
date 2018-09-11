@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.login.login.model
+package com.unicorn.sxmobileoa.login.model
 
 data class LoginInfo(
         val deptId: String,

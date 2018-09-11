@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.login.login.network
+package com.unicorn.sxmobileoa.login.network
 
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
 

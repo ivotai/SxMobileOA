@@ -11,7 +11,8 @@ data class Dbxx(
         val nodeName: String,
         val param: Param,
         val wh: String,
-        var mainItem:MainItem? =null
+        // TODO
+        var mainItem: MainItem? = null
 ) : Serializable
 
 data class Param(

@@ -2,12 +2,12 @@ package com.unicorn.sxmobileoa.spd.network
 
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
-import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.spd.model.Spd
 
-class SpdUseCase(private val dbxx: Dbxx) : BaseUseCase<Spd>() {
+class ToSpt(private val dbxx: Dbxx) : BaseUseCase<Spd>() {
 
-    override fun createRequest() = SpdRequest(
+    override fun createRequest() = ToSpdRequest(
             moduleCode = dbxx.mainItem!!.moduleCode,
             primaryId = dbxx.param.primaryId,
             nodeId = dbxx.param.nodeId,

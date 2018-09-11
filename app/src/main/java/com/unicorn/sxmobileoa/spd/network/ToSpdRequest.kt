@@ -3,8 +3,8 @@ package com.unicorn.sxmobileoa.spd.network
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
 
-class SpdRequest(primaryId: String, moduleCode: String,
-                 taskId: String, nodeId: String) : MaybeRequest("tospd") {
+class ToSpdRequest(primaryId: String, moduleCode: String,
+                   taskId: String, nodeId: String) : MaybeRequest("tospd") {
 
     init {
         addParameter(Key.primaryId, primaryId)
