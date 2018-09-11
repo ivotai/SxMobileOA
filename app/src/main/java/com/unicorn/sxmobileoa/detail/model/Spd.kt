@@ -1,7 +1,5 @@
 package com.unicorn.sxmobileoa.detail.model
 
-import java.io.Serializable
-
 data class Spd(
         val cyy: List<Cyy>,
         val flowNodeList: List<FlowNode>,
@@ -137,7 +135,7 @@ data class NodeModel(
         val spyjsfbt: String,
         val whsfbt: Int,
         val yjsfzwlj: String
-): Serializable
+)
 
 data class Cyy(
         val content: String,

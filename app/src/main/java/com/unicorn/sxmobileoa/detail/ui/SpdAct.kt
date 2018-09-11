@@ -3,7 +3,6 @@ package com.unicorn.sxmobileoa.detail.ui
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ToastUtils
-import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
@@ -12,6 +11,7 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.detail.SpyjActEvent
 import com.unicorn.sxmobileoa.detail.network.SpdUseCase
+import com.unicorn.sxmobileoa.spyj.network.SaveSpd
 import com.unicorn.sxmobileoa.spyj.pager.SpyjPagerAct
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.functions.Consumer
@@ -24,7 +24,7 @@ class SpdAct : BaseAct() {
     override val layoutId = R.layout.act_spd
 
     override fun initViews() {
-//        titleBar.setTitle(dbxx.mainItem!!.text)
+        titleBar.setTitle(Global.dbxx.mainItem!!.text)
         initRecyclerView()
     }
 
@@ -57,7 +57,10 @@ class SpdAct : BaseAct() {
             flowNodeAdapter.addFooterView(fv)
 
             fv.btnSave.safeClicks().subscribe { _ ->
-                Logger.e(Global.spd.toString())
+
+                SaveSpd().toMaybe(this).subscribe {
+
+                }
             }
 
             fv.btnNextStep.safeClicks().subscribe { _ ->

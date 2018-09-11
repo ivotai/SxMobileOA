@@ -27,7 +27,7 @@
         <activity android:name=".spyj.pager.SpyjPagerAct" />
         <activity android:name=".spyj.SpyjAct" />
         <activity
-            android:name=".department.ui.DeptAct"
+            android:name=".dept.ui.DeptAct"
             android:label="@string/title_activity_department"
             android:theme="@style/AppTheme"></activity>
     </application>

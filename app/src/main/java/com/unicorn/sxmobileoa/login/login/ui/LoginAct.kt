@@ -27,6 +27,7 @@ class LoginAct : BaseAct() {
     @SuppressLint("SetTextI18n")
     override fun initViews() {
         // TODO DELETE
+//        etPassword.setText("withub4l")
         etPassword.setText("zyadmin")
     }
 
