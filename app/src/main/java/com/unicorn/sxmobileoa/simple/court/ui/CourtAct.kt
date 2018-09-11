@@ -5,7 +5,7 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecotation
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.g.KeywordHeaderView
+import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
 import com.unicorn.sxmobileoa.simple.court.model.Court
 import com.unicorn.sxmobileoa.simple.court.network.GetCourt
 import kotlinx.android.synthetic.main.act_titlebar_recyclerview.*

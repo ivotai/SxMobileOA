@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.app.utils.RxBus
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.simple.court.model.Court
 
 class CourtAdapter : BaseQuickAdapter<Court, BaseViewHolder>(R.layout.item_court) {

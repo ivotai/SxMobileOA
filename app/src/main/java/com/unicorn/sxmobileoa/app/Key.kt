@@ -14,13 +14,17 @@ object Key {
     const val taskId = "taskId"
     const val nodeId = "nodeId"
     const val dbxx = "dbxx"
+
+    // login
     const val mainItem = "mainItem"
     const val username = "username"
     const val courtStr = "courtStr"
-    const val position = "position"
-    const val tag = "tag"
-    const val cornerRadiusDp = 5f
 
+    //
+    const val position = "position"
+
+    // dept
+    const val tag = "tag"
 
     // nbfw
     const val jbbm_input = "jbbm_input"
@@ -28,5 +32,7 @@ object Key {
     const val zsmc_input = "zsmc_input"
     const val csmc_input = "csmc_input"
 
+    // const
+    const val cornerRadiusDp = 5f
 
 }

@@ -5,16 +5,15 @@ import android.content.Intent
 import android.text.TextUtils
 import com.github.florent37.rxsharedpreferences.RxSharedPreferences
 import com.jakewharton.rxbinding2.widget.RxTextView
-import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.app.utils.RxBus
-import com.unicorn.sxmobileoa.simple.court.model.Court
-import com.unicorn.sxmobileoa.simple.court.ui.CourtAct
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.login.login.network.LoginUseCase
 import com.unicorn.sxmobileoa.main.main.ui.MainAct
+import com.unicorn.sxmobileoa.simple.court.model.Court
+import com.unicorn.sxmobileoa.simple.court.ui.CourtAct
 import io.reactivex.Observable
 import io.reactivex.functions.Consumer
 import io.reactivex.functions.Function3
@@ -45,20 +44,12 @@ class LoginAct : BaseAct() {
     }
 
     private fun login() {
-        LoginUseCase(etUsername.trimText(), etPassword.trimText())
-                .toMaybe(this)
-                .subscribe({
+        LoginUseCase(etUsername.trimText(), etPassword.trimText()).toMaybe(this)
+                .subscribe {
                     Global.loginInfo = it
                     saveInputInfo()
                     startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))
-                }, {
-                    Logger.e(it.toString())
-                })
-
-        // TODO DELETE FAKER METHOD
-//        Faker().getLoginMaybe().subscribe {
-//            startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))
-//        }
+                }
     }
 
     private fun restoreInputInfo() {
@@ -71,12 +62,12 @@ class LoginAct : BaseAct() {
                 }
         rxSharedPreferences.getString(Key.username, "")
                 .subscribe { etUsername.setText(it) }
-     }
+    }
 
     private fun saveInputInfo() {
         RxSharedPreferences.with(this).apply {
-            putString(Key.courtStr, ComponentHolder.appComponent.getGson().toJson(Global.court)).subscribe {  }
-            putString(Key.username, etUsername.trimText()).subscribe {  }
+            putString(Key.courtStr, ComponentHolder.appComponent.getGson().toJson(Global.court)).subscribe { }
+            putString(Key.username, etUsername.trimText()).subscribe { }
         }
     }
 

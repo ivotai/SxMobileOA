@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.app.utils
+package com.unicorn.sxmobileoa.app.mess
 
 import android.arch.lifecycle.LifecycleOwner
 import florent37.github.com.rxlifecycle.RxLifecycle

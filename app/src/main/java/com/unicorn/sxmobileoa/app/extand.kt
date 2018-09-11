@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.clicks
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.utils.MainThreadTransformer
+import com.unicorn.sxmobileoa.app.mess.MainThreadTransformer
 import com.unicorn.sxmobileoa.detail.model.Spd
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import florent37.github.com.rxlifecycle.RxLifecycle

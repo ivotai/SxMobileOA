@@ -3,7 +3,7 @@ package com.unicorn.sxmobileoa.app.network.model;
 import com.blankj.utilcode.util.AppUtils;
 import com.unicorn.sxmobileoa.app.Global;
 import com.unicorn.sxmobileoa.app.Key;
-import com.unicorn.sxmobileoa.app.utils.RandomGeneter;
+import com.unicorn.sxmobileoa.app.mess.RandomGeneter;
 
 import org.joda.time.DateTime;
 import org.simpleframework.xml.Element;
