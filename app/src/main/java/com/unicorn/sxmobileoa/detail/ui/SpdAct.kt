@@ -4,7 +4,6 @@ import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ToastUtils
 import com.orhanobut.logger.Logger
-import com.unicorn.sxmobileoa.Faker
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
@@ -12,7 +11,8 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.detail.SpyjActEvent
-import com.unicorn.sxmobileoa.spyj.SpyjAct
+import com.unicorn.sxmobileoa.detail.network.SpdUseCase
+import com.unicorn.sxmobileoa.spyj.pager.SpyjPagerAct
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_spd.*
@@ -46,10 +46,7 @@ class SpdAct : BaseAct() {
     }
 
     private fun getSpd() {
-//        DetailUseCase(dbxx).toMaybe(this)
-
-
-        Faker().getDetailMaybe().subscribe {
+        SpdUseCase(Global.dbxx).toMaybe(this).subscribe {
             Global.detail = it
             flowNodeAdapter.setNewData(it.flowNodeList)
             val oh = OperationHeaderView(this)
@@ -82,7 +79,7 @@ class SpdAct : BaseAct() {
 
     override fun registerEvent() {
         RxBus.get().registerEvent(SpyjActEvent::class.java, this, Consumer { event ->
-            startActivity(Intent(this, SpyjAct::class.java).apply {
+            startActivity(Intent(this, SpyjPagerAct::class.java).apply {
                 putExtra(Key.position, event.position)
                 ToastUtils.showShort(event.position.toString())
             })

@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spyj
+package com.unicorn.sxmobileoa.spyj.spyj
 
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
