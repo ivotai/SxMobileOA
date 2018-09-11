@@ -1,9 +1,9 @@
-package com.unicorn.sxmobileoa.main.main.network
+package com.unicorn.sxmobileoa.main.network
 
 import com.google.gson.reflect.TypeToken
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
-import com.unicorn.sxmobileoa.main.main.model.Menu
+import com.unicorn.sxmobileoa.main.model.Menu
 
 class MainUseCase : BaseUseCase<List<Menu>>() {
 

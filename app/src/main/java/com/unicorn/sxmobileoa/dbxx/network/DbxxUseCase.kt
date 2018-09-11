@@ -1,11 +1,11 @@
-package com.unicorn.sxmobileoa.main.dbxx.network
+package com.unicorn.sxmobileoa.dbxx.network
 
 import com.google.gson.reflect.TypeToken
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
-import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
-import com.unicorn.sxmobileoa.main.main.model.MainItem
+import com.unicorn.sxmobileoa.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.main.model.MainItem
 
 class DbxxUseCase(private val pageNo: Int, private val mainItem: MainItem) : BaseUseCase<Page<Dbxx>>() {
 

@@ -4,7 +4,7 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.Spyj
 import com.unicorn.sxmobileoa.simple.court.model.Court
 import com.unicorn.sxmobileoa.login.model.LoginInfo
-import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.dbxx.model.Dbxx
 
 object Global {
 

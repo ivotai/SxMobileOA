@@ -1,6 +1,6 @@
-package com.unicorn.sxmobileoa.main.dbxx.model
+package com.unicorn.sxmobileoa.dbxx.model
 
-import com.unicorn.sxmobileoa.main.main.model.MainItem
+import com.unicorn.sxmobileoa.main.model.MainItem
 import java.io.Serializable
 
 data class Dbxx(

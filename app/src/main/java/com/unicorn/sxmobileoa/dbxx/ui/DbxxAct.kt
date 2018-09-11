@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.main.dbxx.ui
+package com.unicorn.sxmobileoa.dbxx.ui
 
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
@@ -8,9 +8,9 @@ import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
-import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
-import com.unicorn.sxmobileoa.main.dbxx.network.DbxxUseCase
-import com.unicorn.sxmobileoa.main.main.model.MainItem
+import com.unicorn.sxmobileoa.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.dbxx.network.DbxxUseCase
+import com.unicorn.sxmobileoa.main.model.MainItem
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.Maybe
 import kotlinx.android.synthetic.main.act_dbxx.*

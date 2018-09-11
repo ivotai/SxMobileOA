@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.main.main.model
+package com.unicorn.sxmobileoa.main.model
 
 import com.chad.library.adapter.base.entity.SectionEntity
 

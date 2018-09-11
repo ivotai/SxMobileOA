@@ -1,11 +1,11 @@
-package com.unicorn.sxmobileoa.main.main.ui
+package com.unicorn.sxmobileoa.main.ui
 
 import android.support.v7.widget.GridLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.main.main.model.Menu
-import com.unicorn.sxmobileoa.main.main.model.Section
-import com.unicorn.sxmobileoa.main.main.network.MainUseCase
+import com.unicorn.sxmobileoa.main.model.Menu
+import com.unicorn.sxmobileoa.main.model.Section
+import com.unicorn.sxmobileoa.main.network.MainUseCase
 import kotlinx.android.synthetic.main.act_main.*
 
 

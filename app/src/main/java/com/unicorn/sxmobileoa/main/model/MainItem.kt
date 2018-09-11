@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.main.main.model
+package com.unicorn.sxmobileoa.main.model
 
 import java.io.Serializable
 

@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.main.dbxx.ui
+package com.unicorn.sxmobileoa.dbxx.ui
 
 import android.content.Intent
 import android.view.View
@@ -8,7 +8,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.spd.ui.SpdAct
-import com.unicorn.sxmobileoa.main.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.dbxx.model.Dbxx
 
 class DbxxAdapter() : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx) {
 
