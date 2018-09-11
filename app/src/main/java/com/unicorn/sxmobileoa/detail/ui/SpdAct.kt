@@ -12,7 +12,6 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.detail.SpyjActEvent
 import com.unicorn.sxmobileoa.detail.network.SpdUseCase
-import com.unicorn.sxmobileoa.spyj.SpyjAct
 import com.unicorn.sxmobileoa.spyj.network.SaveSpd
 import com.unicorn.sxmobileoa.spyj.pager.SpyjPagerAct
 import io.reactivex.functions.Consumer
@@ -66,7 +65,7 @@ class SpdAct : BaseAct() {
             }
 
             fv.btnNextStep.safeClicks().subscribe { _ ->
-                startActivity(Intent(this@SpdAct, SpyjAct::class.java))
+//                startActivity(Intent(this@SpdAct, SpyjAct::class.java))
             }
         }
     }
