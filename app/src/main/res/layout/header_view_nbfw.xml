@@ -65,14 +65,11 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <EditText
-            android:id="@+id/etJbbm"
+        <TextView
+            android:id="@+id/tvJbbm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@null"
-            android:inputType="text"
-            android:enabled="false"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -93,14 +90,11 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <EditText
-            android:id="@+id/etNgr"
+        <TextView
+            android:id="@+id/tvNgr"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:enabled="false"
-            android:background="@null"
-            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 

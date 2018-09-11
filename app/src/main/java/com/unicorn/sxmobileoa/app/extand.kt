@@ -3,11 +3,14 @@ package com.unicorn.sxmobileoa.app
 import android.app.Activity
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Intent
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.clicks
+import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.utils.MainThreadTransformer
 import com.unicorn.sxmobileoa.detail.model.Spd
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Maybe
 import io.reactivex.Observable
@@ -30,9 +33,16 @@ fun Spd.get(spdKey: String): String {
     return if (list.isEmpty()) "" else list[0].spdValue
 }
 
-fun Spd.set(spdKey: String,spdValue:String) {
+fun Spd.set(spdKey: String, spdValue: String) {
     val list = this.spdData.filter { it.spdKey == spdKey }
-    if (!list.isEmpty()){
+    if (!list.isEmpty()) {
         list[0].spdValue = spdValue
     }
+}
+
+fun RecyclerView.addDefaultItemDecotation() {
+    HorizontalDividerItemDecoration.Builder(context)
+            .colorResId(R.color.md_grey_300)
+            .size(1)
+            .build().let { this.addItemDecoration(it) }
 }
