@@ -54,8 +54,10 @@ class DeptAct : BaseAct() {
     private fun getDept() {
         GetDept().toMaybe(this)
                 .map { deptResponse ->
+                    // 过滤父节点
+                    val deptList = deptResponse.deptData.filter { it.value.length != 1 }
                     ArrayList<SelectWrapper<Dept>>().apply {
-                        deptResponse.deptData.forEach { dept -> this.add(SelectWrapper(dept)) }
+                        deptList.forEach { dept -> this.add(SelectWrapper(dept)) }
                     }
                 }
                 .subscribe { deptAdapter.setNewData(it) }

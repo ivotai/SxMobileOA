@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.detail.ui
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.content.Intent
@@ -7,10 +8,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Global
-import com.unicorn.sxmobileoa.app.Key
-import com.unicorn.sxmobileoa.app.get
-import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.dept.model.DeptResult
 import com.unicorn.sxmobileoa.dept.ui.DeptAct
@@ -23,6 +21,7 @@ class NbfwHeaderView(context: Context) : FrameLayout(context) {
         initViews(context)
     }
 
+    lateinit var tvTitle: TextView
     lateinit var tvBt: TextView
     lateinit var tvJbbm: TextView
     lateinit var tvNgr: TextView
@@ -37,6 +36,7 @@ class NbfwHeaderView(context: Context) : FrameLayout(context) {
     }
 
     private fun findViews() {
+        tvTitle = findViewById(R.id.tvTitle)
         tvBt = findViewById(R.id.tvBt)
         tvJbbm = findViewById(R.id.tvJbbm)
         tvNgr = findViewById(R.id.tvNgr)
@@ -44,7 +44,9 @@ class NbfwHeaderView(context: Context) : FrameLayout(context) {
         tvCsmc = findViewById(R.id.tvCsmc)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun renderViews() {
+        tvTitle.text = "${Global.court!!.dmms}内部发文"
         tvBt.text = Global.spd.spdXx.bt
         Global.spd.get(Key.jbbm_input).let { tvJbbm.text = it }
         Global.spd.get(Key.ngr_input).let { tvNgr.text = it }
@@ -69,7 +71,10 @@ class NbfwHeaderView(context: Context) : FrameLayout(context) {
             }
             RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
                 val textView = if (deptResult.tag == Key.zsmc_input) tvZsmc else tvCsmc
-                deptResult.deptList.joinToString(",") { dept -> dept.text }.let { textView.text = it }
+                deptResult.deptList.joinToString(",") { dept -> dept.text }.let {
+                    textView.text = it
+                    Global.spd.set(deptResult.tag, it)
+                }
             })
         }
     }

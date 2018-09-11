@@ -13,11 +13,11 @@
         android:background="@color/md_grey_100" />
 
     <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@color/md_white"
         android:gravity="center"
-        android:text="陕西省高级人民法院内部发文"
         android:textColor="@color/md_red_500"
         android:textSize="17dp" />
 
