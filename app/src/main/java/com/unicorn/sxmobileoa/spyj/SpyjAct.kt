@@ -12,6 +12,7 @@ class SpyjAct : BaseAct() {
     override val layoutId = R.layout.act_spyj
 
     override fun initViews() {
+        titleBar.setTitle("审批意见")
     }
 
     override fun bindIntent() {
@@ -22,11 +23,11 @@ class SpyjAct : BaseAct() {
     }
 
     private fun saveSpyj(){
-        // 这个挪到写入意见取做
         val currentNodeId = Global.dbxx.param.nodeId
         val currentFlowNodeList = Global.spd.flowNodeList.filter { flowNode ->
             currentNodeId in flowNode.flowNodeId.split(",")
         }
+        if (currentFlowNodeList.isEmpty()) return
         val currentFlowNode = currentFlowNodeList[0]
         val currentSpyjList = currentFlowNode.spyjList.filter { spyj -> spyj.spyjStatus == 1 }
         if (currentSpyjList.isEmpty()) {

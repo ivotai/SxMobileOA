@@ -6,14 +6,15 @@ import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.addDefaultItemDecotation
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.utils.RxBus
 import com.unicorn.sxmobileoa.detail.SpyjActEvent
 import com.unicorn.sxmobileoa.detail.network.SpdUseCase
+import com.unicorn.sxmobileoa.spyj.SpyjAct
 import com.unicorn.sxmobileoa.spyj.network.SaveSpd
 import com.unicorn.sxmobileoa.spyj.pager.SpyjPagerAct
-import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_spd.*
 import kotlinx.android.synthetic.main.footer_view_button.view.*
@@ -34,11 +35,8 @@ class SpdAct : BaseAct() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@SpdAct)
             flowNodeAdapter.bindToRecyclerView(this)
+            addDefaultItemDecotation()
         }
-        HorizontalDividerItemDecoration.Builder(this@SpdAct)
-                .colorResId(R.color.md_grey_300)
-                .size(1)
-                .build().let { recyclerView.addItemDecoration(it) }
     }
 
     override fun bindIntent() {
@@ -48,6 +46,10 @@ class SpdAct : BaseAct() {
     private fun getSpd() {
         SpdUseCase(Global.dbxx).toMaybe(this).subscribe {
             Global.spd = it
+
+            // 处理审批意见
+            SpdHelper().copeSpyjList()
+
             flowNodeAdapter.setNewData(it.flowNodeList)
             val oh = OperationHeaderView(this)
             flowNodeAdapter.addHeaderView(oh)
@@ -64,7 +66,7 @@ class SpdAct : BaseAct() {
             }
 
             fv.btnNextStep.safeClicks().subscribe { _ ->
-
+                startActivity(Intent(this@SpdAct, SpyjAct::class.java))
             }
         }
     }
