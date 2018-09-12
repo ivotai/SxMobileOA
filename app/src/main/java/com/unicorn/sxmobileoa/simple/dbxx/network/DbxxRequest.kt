@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.dbxx.network
+package com.unicorn.sxmobileoa.simple.dbxx.network
 
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.network.model.PageRequest

@@ -10,15 +10,16 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dept.model.DeptSelectResult
 import com.unicorn.sxmobileoa.simple.dept.ui.DeptAct
 import com.unicorn.sxmobileoa.spd.Editable
 import io.reactivex.functions.Consumer
 
-class NbfwHeaderView(context: Context) : FrameLayout(context) {
+class NbfwHeaderView(context: Context, dbxx:Dbxx) : FrameLayout(context) {
 
     init {
-        initViews(context)
+        initViews(context,dbxx)
     }
 
     lateinit var tvTitle: TextView
@@ -28,11 +29,11 @@ class NbfwHeaderView(context: Context) : FrameLayout(context) {
     lateinit var tvZsmc: TextView
     lateinit var tvCsmc: TextView
 
-    fun initViews(context: Context) {
+    fun initViews(context: Context,dbxx: Dbxx) {
         LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
         findViews()
         renderViews()
-        checkCanEdit()
+        checkCanEdit(dbxx)
     }
 
     private fun findViews() {
@@ -54,8 +55,8 @@ class NbfwHeaderView(context: Context) : FrameLayout(context) {
         Global.spd.get(Key.csmc_input).let { tvCsmc.text = it }
     }
 
-    private fun checkCanEdit() {
-        val currentNodeId = Global.dbxx.param.nodeId
+    private fun checkCanEdit(dbxx: Dbxx) {
+        val currentNodeId = dbxx.param.nodeId
         Editable().couldEdit(currentNodeId).subscribe { canEdit ->
             if (!canEdit) return@subscribe
 

@@ -4,9 +4,13 @@ import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 import com.unicorn.sxmobileoa.login.model.LoginInfo
 
-class GetLoginInfo(private val username: String, private val password: String) : BaseUseCase<LoginInfo>() {
+class GetLoginInfo(username: String,  password: String) : BaseUseCase<LoginInfo>() {
 
-    override fun createRequest() = LoginRequest(username, password)
+    init {
+        request = LoginRequest(username,password)
+    }
+
+//    override fun createRequest() = LoginRequest(username, password)
 
     override fun toResult(json: String): LoginInfo {
         return ComponentHolder.appComponent.getGson().fromJson(json, LoginInfo::class.java)

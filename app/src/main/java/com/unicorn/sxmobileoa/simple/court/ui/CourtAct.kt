@@ -8,11 +8,11 @@ import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.court.model.Court
 import com.unicorn.sxmobileoa.simple.court.network.GetCourt
-import kotlinx.android.synthetic.main.act_titlebar_recyclerview.*
+import kotlinx.android.synthetic.main.act_title_recycler.*
 
 class CourtAct : BaseAct() {
 
-    override val layoutId = R.layout.act_titlebar_recyclerview
+    override val layoutId = R.layout.act_title_recycler
 
     override fun initViews() {
         titleBar.setTitle("选择法院")

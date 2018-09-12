@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.dbxx.ui.DbxxAct
+import com.unicorn.sxmobileoa.simple.dbxx.ui.DbxxAct
 import com.unicorn.sxmobileoa.simple.main.model.section.MenuSection
 
 class MenuAdapter : BaseSectionQuickAdapter<MenuSection, BaseViewHolder>(R.layout.item_menu, R.layout.header_menu, null) {
@@ -29,6 +29,8 @@ class MenuAdapter : BaseSectionQuickAdapter<MenuSection, BaseViewHolder>(R.layou
             })
         }
         helper.getView<View>(R.id.flCount).visibility = if (item.t.count == "0") View.INVISIBLE else View.VISIBLE
+
+        // TODO 超审限 新闻中心 消息公告
     }
 
 }

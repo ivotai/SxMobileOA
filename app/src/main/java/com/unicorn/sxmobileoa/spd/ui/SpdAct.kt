@@ -10,7 +10,7 @@ import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.SpyjActEvent
 import com.unicorn.sxmobileoa.spd.network.ToSpt
@@ -63,7 +63,7 @@ class SpdAct : BaseAct() {
             flowNodeAdapter.setNewData(it.flowNodeList)
             val oh = OperationHeaderView(this)
             flowNodeAdapter.addHeaderView(oh)
-            val nbfwHeaderView = NbfwHeaderView(this)
+            val nbfwHeaderView = NbfwHeaderView(this,dbxx)
             flowNodeAdapter.addHeaderView(nbfwHeaderView)
             val fv = ButtonFooterView(this)
             flowNodeAdapter.addFooterView(fv)

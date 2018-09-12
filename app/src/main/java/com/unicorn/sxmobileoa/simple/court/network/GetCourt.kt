@@ -7,7 +7,9 @@ import com.unicorn.sxmobileoa.simple.court.model.Court
 
 class GetCourt : BaseUseCase<List<Court>>() {
 
-    override fun createRequest() = CourtRequest()
+    init {
+        request = CourtRequest()
+    }
 
     override fun toResult(json: String): List<Court> {
         val type = object : TypeToken<List<Court>>() {}.type

@@ -17,12 +17,12 @@ import java.io.StringWriter
 
 abstract class BaseUseCase<Result> {
 
-    abstract fun createRequest(): request
+    lateinit var request:request
 
     abstract fun toResult(json: String): Result
 
     fun toMaybe(lifecycleOwner: LifecycleOwner): Maybe<Result> {
-        val requestXml = toXml(createRequest())
+        val requestXml = toXml(request)
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), requestXml)
         return ComponentHolder.appComponent.getUniqueApi().post(requestBody)
                 .map(this::toSimpleResponse)

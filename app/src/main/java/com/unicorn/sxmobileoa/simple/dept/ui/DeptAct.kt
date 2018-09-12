@@ -14,7 +14,7 @@ import com.unicorn.sxmobileoa.simple.dept.model.Dept
 import com.unicorn.sxmobileoa.simple.dept.model.DeptSelectResult
 import com.unicorn.sxmobileoa.simple.dept.network.GetDept
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.act_titlebar_recyclerview.*
+import kotlinx.android.synthetic.main.act_title_recycler.*
 
 class DeptAct : BaseAct() {
 
@@ -24,7 +24,7 @@ class DeptAct : BaseAct() {
         tag = intent.getStringExtra(Key.tag)
     }
 
-    override val layoutId = R.layout.act_titlebar_recyclerview
+    override val layoutId = R.layout.act_title_recycler
 
     override fun initViews() {
         titleBar.setTitle("选择部门")

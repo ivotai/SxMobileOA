@@ -6,7 +6,9 @@ import com.unicorn.sxmobileoa.simple.dept.model.DeptData
 
 class GetDept : BaseUseCase<DeptData>() {
 
-    override fun createRequest() = DeptRequest()
+    init {
+        request = DeptRequest()
+    }
 
     override fun toResult(json: String): DeptData {
         return ComponentHolder.appComponent.getGson().fromJson(json, DeptData::class.java)

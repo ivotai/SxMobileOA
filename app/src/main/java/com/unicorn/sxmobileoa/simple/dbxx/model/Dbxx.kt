@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.dbxx.model
+package com.unicorn.sxmobileoa.simple.dbxx.model
 
 import java.io.Serializable
 

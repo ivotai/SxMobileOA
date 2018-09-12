@@ -5,7 +5,9 @@ import com.unicorn.sxmobileoa.app.network.BaseUseCase
 
 class SaveSpd : BaseUseCase<Any>() {
 
-    override fun createRequest() = SaveSpdRequest()
+    init {
+        request = SaveSpdRequest()
+    }
 
     override fun toResult(json: String): Any {
         return ComponentHolder.appComponent.getGson().fromJson(json, Any::class.java)

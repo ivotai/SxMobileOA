@@ -6,11 +6,11 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.main.model.ParentMenu
 import com.unicorn.sxmobileoa.simple.main.model.section.MenuSection
 import com.unicorn.sxmobileoa.simple.main.network.GetMenu
-import kotlinx.android.synthetic.main.act_titlebar_recyclerview.*
+import kotlinx.android.synthetic.main.act_title_recycler.*
 
 class MainAct : BaseAct() {
 
-    override val layoutId = R.layout.act_titlebar_recyclerview
+    override val layoutId = R.layout.act_title_recycler
 
     override fun initViews() {
         titleBar.setTitle("陕西省高级人民法院移动办公")

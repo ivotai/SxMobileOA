@@ -8,7 +8,8 @@ import java.util.*
 class SpdHelper {
 
     fun copeSpyjList() {
-        val currentNodeId = Global.dbxx.param.nodeId
+//        val currentNodeId = Global.dbxx.param.nodeId
+        val currentNodeId =""
         val currentFlowNodeList = Global.spd.flowNodeList.filter { flowNode ->
             currentNodeId in flowNode.flowNodeId.split(",")
         }

@@ -2,7 +2,7 @@ package com.unicorn.sxmobileoa.spd.network
 
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
-import com.unicorn.sxmobileoa.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 
 class ToSpdRequest(menu: Menu, dbxx: Dbxx) : MaybeRequest("tospd") {
