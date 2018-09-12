@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa.dbxx.model
 
-import com.unicorn.sxmobileoa.main.model.MainItem
+import com.unicorn.sxmobileoa.simple.main.model.Menu
 import java.io.Serializable
 
 data class Dbxx(
@@ -12,7 +12,7 @@ data class Dbxx(
         val param: Param,
         val wh: String,
         // TODO
-        var mainItem: MainItem? = null
+        var mainItem: Menu? = null
 ) : Serializable
 
 data class Param(

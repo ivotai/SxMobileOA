@@ -10,7 +10,7 @@ import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.dbxx.network.DbxxUseCase
-import com.unicorn.sxmobileoa.main.model.MainItem
+import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.Maybe
 import kotlinx.android.synthetic.main.act_dbxx.*
@@ -31,14 +31,14 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
             DbxxUseCase(pageNo, mainItem).toMaybe(this)
                     .doAfterSuccess { it.rows.forEach { dbxx -> dbxx.mainItem = mainItem } }
 
-    lateinit var mainItem: MainItem
+    lateinit var mainItem: Menu
 
     override fun bindIntent() {
         super.bindIntent()
     }
 
     override fun initViews() {
-        mainItem = intent.getSerializableExtra(Key.mainItem) as MainItem
+        mainItem = intent.getSerializableExtra(Key.menu) as Menu
         titleBar.setTitle(mainItem.text)
         super.initViews()
         HorizontalDividerItemDecoration.Builder(this)

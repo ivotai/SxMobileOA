@@ -5,9 +5,9 @@ import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.dbxx.model.Dbxx
-import com.unicorn.sxmobileoa.main.model.MainItem
+import com.unicorn.sxmobileoa.simple.main.model.Menu
 
-class DbxxUseCase(private val pageNo: Int, private val mainItem: MainItem) : BaseUseCase<Page<Dbxx>>() {
+class DbxxUseCase(private val pageNo: Int, private val mainItem: Menu) : BaseUseCase<Page<Dbxx>>() {
 
     override fun createRequest() = DbxxRequest(pageNo, mainItem)
 

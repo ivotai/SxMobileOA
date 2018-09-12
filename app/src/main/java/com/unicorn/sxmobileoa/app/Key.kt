@@ -16,7 +16,7 @@ object Key {
     const val dbxx = "dbxx"
 
     // login
-    const val mainItem = "mainItem"
+    const val menu = "menu"
     const val username = "username"
     const val courtStr = "courtStr"
 

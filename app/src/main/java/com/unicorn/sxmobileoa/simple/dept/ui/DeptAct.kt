@@ -13,6 +13,7 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.dept.model.Dept
 import com.unicorn.sxmobileoa.simple.dept.model.DeptSelectResult
 import com.unicorn.sxmobileoa.simple.dept.network.GetDept
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.act_titlebar_recyclerview.*
 
 class DeptAct : BaseAct() {
@@ -50,15 +51,18 @@ class DeptAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        GetDept().toMaybe(this)
-                .doOnSuccess { observeKeyword(it.deptData) }
-                .map { deptData ->
-                    val childDeptList = deptData.deptData.filter { dept -> dept.value.length != 1 }
+        GetDept().toMaybe(this).toObservable()
+                .flatMap { Observable.fromIterable(it.deptData) }
+                // 过滤父节点
+                .filter { it.value.length != 1 }
+                .toList()
+                .doOnSuccess { observeKeyword(it) }
+                .map { deptList ->
                     ArrayList<SelectWrapper<Dept>>().apply {
-                        childDeptList.forEach { dept -> this.add(SelectWrapper(dept)) }
+                        deptList.forEach { dept -> this.add(SelectWrapper(dept)) }
                     }
                 }
-                .subscribe { deptAdapter.setNewData(it) }
+                .subscribe { t -> deptAdapter.setNewData(t) }
 
         observeConfirm()
     }
