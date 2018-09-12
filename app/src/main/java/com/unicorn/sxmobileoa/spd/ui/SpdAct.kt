@@ -9,6 +9,7 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
+import com.unicorn.sxmobileoa.spd.helper.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.network.SaveSpd
 import com.unicorn.sxmobileoa.spd.network.ToSpd
@@ -51,14 +52,12 @@ class SpdAct : BaseAct() {
     override fun bindIntent() {
         ToSpd(menu, dbxx).toMaybe(this).subscribe {
             spd = it
+            // 添加 taskId
             spd.spdXx.taskId = dbxx.param.taskId
-            // 处理审批意见
-//            SpdHelper().addSpyjIfNeed(dbxx, spd)
 
-            // for expandable
-//            spd.flowNodeList.forEach { flowNode ->
-//                flowNode.subItems = flowNode.spyjList
-//            }
+//             处理审批意见
+            SpdHelper().addSpyjIfNeed(dbxx, spd)
+
             flowNodeAdapter.setNewData(spd.flowNodeList)
 
             //
@@ -81,12 +80,12 @@ class SpdAct : BaseAct() {
     private fun addFooterView() {
         val footerView = ButtonFooterView(this)
         footerView.btnSave.safeClicks().subscribe { _ ->
+            // 展开会向 flowNodeList 里添加东西
             SaveSpd(spd).toMaybe(this).subscribe {
                 ToastUtils.showShort("保存成功")
             }
         }
         footerView.btnNextStep.safeClicks().subscribe { _ ->
-            ToastUtils.showShort("保存成功")
 //            ToastUtils.showShort(sp、d.toString())
         }
         flowNodeAdapter.addFooterView(footerView)
