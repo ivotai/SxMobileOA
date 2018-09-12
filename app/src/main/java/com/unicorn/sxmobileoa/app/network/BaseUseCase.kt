@@ -17,7 +17,7 @@ import java.io.StringWriter
 
 abstract class BaseUseCase<Result> {
 
-    lateinit var request:request
+    lateinit var request: request
 
     abstract fun toResult(json: String): Result
 

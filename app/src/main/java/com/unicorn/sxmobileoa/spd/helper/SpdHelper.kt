@@ -4,27 +4,28 @@ import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.Spyj
+import io.reactivex.Observable
+import io.reactivex.Single
 import org.joda.time.DateTime
 import java.util.*
 
 class SpdHelper {
 
-    fun copeSpyjList(dbxx:Dbxx,spd:Spd) {
-//        val currentNodeId = Global.dbxx.param.nodeId
+    fun addSpyjIfNeed(dbxx: Dbxx, spd: Spd) {
         val currentNodeId = dbxx.param.nodeId
         val currentFlowNodeList = spd.flowNodeList.filter { flowNode ->
             currentNodeId in flowNode.flowNodeId.split(",")
         }
+
         // 归档，不做任何处理
         if (currentFlowNodeList.isEmpty()) return
 
+        // 当前流程节点
         val currentFlowNode = currentFlowNodeList[0]
+        // 当前可编辑审批意见
         val currentSpyjList = currentFlowNode.spyjList.filter { spyj -> spyj.spyjStatus == 0 }
-
-
-        // 如果不为空，则不做任何处理
-        if (!currentSpyjList.isEmpty()) {
-        } else {
+        // 如果为空，则创建审批意见
+        if (currentSpyjList.isEmpty()) {
             val spyj = Spyj(
                     createUserId = Global.loginInfo!!.userId,
                     createUserName = Global.loginInfo!!.userName,
@@ -44,5 +45,9 @@ class SpdHelper {
         }
     }
 
+    fun canEdit(nodeId: String): Single<Boolean> = Observable.fromArray("_SQR", "_NGR", "_QC", "_YBGS", "_LYR",
+            "_TXJDSQ", "_BGSWS", "_NGRB", "_NBYJ", "_SFZBCSP"
+            , "_CBQK", "_SWDJ", "_NGYJ")
+            .any { nodeId.contains(it) }
 
 }

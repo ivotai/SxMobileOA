@@ -13,15 +13,15 @@ import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dept.model.DeptSelectResult
 import com.unicorn.sxmobileoa.simple.dept.ui.DeptAct
-import com.unicorn.sxmobileoa.spd.Editable
+import com.unicorn.sxmobileoa.spd.helper.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
 
 @SuppressLint("ViewConstructor")
-class NbfwHeaderView(context: Context,dbxx:Dbxx,spd:Spd) : FrameLayout(context) {
+class NbfwHeaderView(context: Context, dbxx: Dbxx, spd: Spd) : FrameLayout(context) {
 
     init {
-        initViews(context,dbxx,spd)
+        initViews(context, dbxx, spd)
     }
 
     lateinit var tvTitle: TextView
@@ -31,11 +31,11 @@ class NbfwHeaderView(context: Context,dbxx:Dbxx,spd:Spd) : FrameLayout(context) 
     lateinit var tvZsmc: TextView
     lateinit var tvCsmc: TextView
 
-    fun initViews(context: Context,dbxx: Dbxx,spd:Spd) {
+    fun initViews(context: Context, dbxx: Dbxx, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
         findViews()
         renderViews(spd)
-        checkCanEdit(dbxx,spd )
+        canEdit(dbxx, spd)
     }
 
     private fun findViews() {
@@ -48,7 +48,7 @@ class NbfwHeaderView(context: Context,dbxx:Dbxx,spd:Spd) : FrameLayout(context) 
     }
 
     @SuppressLint("SetTextI18n")
-    private fun renderViews(spd:Spd) {
+    private fun renderViews(spd: Spd) {
         tvTitle.text = "${Global.court!!.dmms}内部发文"
         tvBt.text = spd.spdXx.bt
         spd.get(Key.jbbm_input).let { tvJbbm.text = it }
@@ -57,9 +57,9 @@ class NbfwHeaderView(context: Context,dbxx:Dbxx,spd:Spd) : FrameLayout(context) 
         spd.get(Key.csmc_input).let { tvCsmc.text = it }
     }
 
-    private fun checkCanEdit(dbxx: Dbxx,spd:Spd) {
+    private fun canEdit(dbxx: Dbxx, spd: Spd) {
         val currentNodeId = dbxx.param.nodeId
-        Editable().couldEdit(currentNodeId).subscribe { canEdit ->
+        SpdHelper().canEdit(currentNodeId).subscribe { canEdit ->
             if (!canEdit) return@subscribe
 
             tvZsmc.safeClicks().subscribe {

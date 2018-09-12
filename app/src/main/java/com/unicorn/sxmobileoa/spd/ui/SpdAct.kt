@@ -53,20 +53,29 @@ class SpdAct : BaseAct() {
             spd = it
 
             // 处理审批意见
-            SpdHelper().copeSpyjList(dbxx, spd)
+            SpdHelper().addSpyjIfNeed(dbxx, spd)
 
             // for expandable
             spd.flowNodeList.forEach { flowNode ->
                 flowNode.subItems = flowNode.spyjList
             }
-
             flowNodeAdapter.setNewData(spd.flowNodeList)
-            val oh = OperationHeaderView(this)
-            flowNodeAdapter.addHeaderView(oh)
-            val nbfwHeaderView = NbfwHeaderView(this, dbxx, spd)
-            flowNodeAdapter.addHeaderView(nbfwHeaderView)
+
+            //
+            addOperationHeaderView()
+            addNbfwHeaderView()
             addFooterView()
         }
+    }
+
+    private fun addOperationHeaderView() {
+        val headerView = OperationHeaderView(this)
+        flowNodeAdapter.addHeaderView(headerView)
+    }
+
+    private fun addNbfwHeaderView() {
+        val headerView = NbfwHeaderView(this, dbxx, spd)
+        flowNodeAdapter.addHeaderView(headerView)
     }
 
     private fun addFooterView() {
