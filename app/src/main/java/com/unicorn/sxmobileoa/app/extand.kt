@@ -14,6 +14,7 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Maybe
 import io.reactivex.Observable
+import org.joda.time.DateTime
 import java.util.concurrent.TimeUnit
 
 fun View.safeClicks(): Observable<Unit> = this.clicks().throttleFirst(1, TimeUnit.SECONDS)
@@ -34,9 +35,13 @@ fun Spd.get(spdKey: String): String {
 }
 
 fun Spd.set(spdKey: String, spdValue: String) {
-    val list = this.spdData.filter { it.spdKey == spdKey }
-    if (!list.isEmpty()) {
-        list[0].spdValue = spdValue
+    val spdDataList = this.spdData.filter { it.spdKey == spdKey }
+    if (!spdDataList.isEmpty()) {
+        spdDataList[0].apply {
+            this.spdValue = spdValue
+            update = true
+            updateTime = DateTime().toString("yyyy-MM-dd HH:mm:ss")
+        }
     }
 }
 

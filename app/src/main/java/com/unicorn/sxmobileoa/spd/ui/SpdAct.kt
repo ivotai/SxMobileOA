@@ -82,12 +82,12 @@ class SpdAct : BaseAct() {
         val footerView = ButtonFooterView(this)
         footerView.btnSave.safeClicks().subscribe { _ ->
             SaveSpd(spd).toMaybe(this).subscribe {
-
+                ToastUtils.showShort("保存成功")
             }
         }
         footerView.btnNextStep.safeClicks().subscribe { _ ->
-
-            ToastUtils.showShort(spd.toString())
+            ToastUtils.showShort("保存成功")
+//            ToastUtils.showShort(sp、d.toString())
         }
         flowNodeAdapter.addFooterView(footerView)
     }

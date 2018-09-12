@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa.spd.model
 
-import com.chad.library.adapter.base.entity.AbstractExpandableItem
+import com.chad.library.adapter.base.entity.IExpandable
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.unicorn.sxmobileoa.spd.ui.FlowNodeAdapter
 
@@ -34,11 +34,26 @@ data class FlowNode(
         val spyjsfbt: String,
         val whsfbt: Int,
         val yjsfzwlj: String
-) : AbstractExpandableItem<Spyj>(), MultiItemEntity {
+) : IExpandable<Spyj>,MultiItemEntity {
+    override fun getSubItems(): MutableList<Spyj> {
+        return spyjList
+    }
 
-    override fun getLevel() = 0
+    var b = false
 
-    override fun getItemType() = FlowNodeAdapter.type_flow_node
+    override fun isExpanded(): Boolean {
+        return b
+    }
+
+    override fun getLevel(): Int {
+        return 0
+    }
+
+    override fun setExpanded(expanded: Boolean) {
+        b = expanded
+    }
+
+    override fun getItemType() =            FlowNodeAdapter.type_flow_node
 
 }
 
@@ -186,8 +201,8 @@ data class SpdData(
         var spdValue: String,
         val spdid: String,
         val sysTime: String,
-        val update: Boolean,
-        val updateTime: String,
+        var update: Boolean,
+        var updateTime: String,
         val xtlx: String
 )
 
@@ -229,5 +244,6 @@ data class Spyj(
         val xtlx: String = "",
         val yjsfzwlj: Int = 0
 ) : MultiItemEntity {
-    override fun getItemType() = FlowNodeAdapter.type_spyj
+    override fun getItemType() =
+            FlowNodeAdapter.type_spyj
 }
