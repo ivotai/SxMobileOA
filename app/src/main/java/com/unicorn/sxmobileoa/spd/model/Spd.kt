@@ -12,10 +12,35 @@ data class Spd(
         val nodeModel: NodeModel
 )
 
-data class SpdData(
-        val spdKey: String,
-        var spdValue: String
-)
+data class FlowNode(
+        val flowCode: String,
+        val flowNodeId: String,
+        val formIndex: Int,
+        val gdlx: String,
+        val jdsfmrxz: String,
+        val nodeid: String,
+        val sfngr: Int,
+        val sfqy: Int,
+        val sftxspyj: Int,
+        val sfzdgd: Int,
+        val smsTepId: String,
+        val spdCode: String,
+        val spyjId: String,
+        val spyjList: MutableList<Spyj>,
+        val spyjNodeId: String,
+        val spyjNodeName: String,
+        val spyjSort: Int,
+        val spyjStatus: Int,
+        val spyjsfbt: String,
+        val whsfbt: Int,
+        val yjsfzwlj: String
+) : AbstractExpandableItem<Spyj>(), MultiItemEntity {
+
+    override fun getLevel() = 0
+
+    override fun getItemType() = FlowNodeAdapter.type_flow_node
+
+}
 
 data class SpdXx(
         val assignName: String,
@@ -100,7 +125,7 @@ data class SpdXx(
         val startFlow: String,
         val status: String,
         val sysTime: String,
-        val taskId: String,
+        var taskId: String,
         val updateTime: String,
         val url: String,
         val wh: String,
@@ -150,35 +175,21 @@ data class Cyy(
         val xssx: String
 )
 
-data class FlowNode(
-        val flowCode: String,
-        val flowNodeId: String,
-        val formIndex: Int,
-        val gdlx: String,
-        val jdsfmrxz: String,
-        val nodeid: String,
-        val sfngr: Int,
-        val sfqy: Int,
-        val sftxspyj: Int,
-        val sfzdgd: Int,
-        val smsTepId: String,
-        val spdCode: String,
-        val spyjId: String,
-        val spyjList: MutableList<Spyj>,
-        val spyjNodeId: String,
-        val spyjNodeName: String,
-        val spyjSort: Int,
-        val spyjStatus: Int,
-        val spyjsfbt: String,
-        val whsfbt: Int,
-        val yjsfzwlj: String
-) : AbstractExpandableItem<Spyj>(), MultiItemEntity {
-
-    override fun getLevel() = 0
-
-    override fun getItemType() = FlowNodeAdapter.type_flow_node
-
-}
+data class SpdData(
+        val create: Boolean,
+        val createUserId: String,
+        val createUserName: String,
+        val dataType: String,
+        val id: String,
+        val qybz: Int,
+        val spdKey: String,
+        var spdValue: String,
+        val spdid: String,
+        val sysTime: String,
+        val update: Boolean,
+        val updateTime: String,
+        val xtlx: String
+)
 
 data class Spyj(
         var createUserId: String,

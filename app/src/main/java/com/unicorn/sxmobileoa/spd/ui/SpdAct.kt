@@ -51,14 +51,14 @@ class SpdAct : BaseAct() {
     override fun bindIntent() {
         ToSpd(menu, dbxx).toMaybe(this).subscribe {
             spd = it
-
+            spd.spdXx.taskId = dbxx.param.taskId
             // 处理审批意见
 //            SpdHelper().addSpyjIfNeed(dbxx, spd)
 
             // for expandable
-            spd.flowNodeList.forEach { flowNode ->
-                flowNode.subItems = flowNode.spyjList
-            }
+//            spd.flowNodeList.forEach { flowNode ->
+//                flowNode.subItems = flowNode.spyjList
+//            }
             flowNodeAdapter.setNewData(spd.flowNodeList)
 
             //
