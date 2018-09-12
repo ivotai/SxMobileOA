@@ -12,18 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name="com.unicorn.sxmobileoa.login.ui.LoginAct">
+        <activity android:name=".login.ui.LoginAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.unicorn.sxmobileoa.simple.court.ui.CourtAct" />
-        <activity android:name="com.unicorn.sxmobileoa.simple.main.ui.MainAct" />
-        <activity android:name="com.unicorn.sxmobileoa.simple.dbxx.ui.DbxxAct" />
-        <activity android:name="com.unicorn.sxmobileoa.simple.dept.ui.DeptAct" />
-        <activity android:name=".spd.ui.SpdAct" />
+        <activity android:name=".simple.court.ui.CourtAct" />
+        <activity android:name=".simple.main.ui.MainAct" />
+        <activity android:name=".simple.dbxx.ui.DbxxAct" />
+        <activity android:name=".simple.dept.ui.DeptAct" />
+        <activity android:name=".header.nbfw.NbfwAct" />
+        <activity android:name=".flow.FlowAct"/>
     </application>
 
 </manifest>

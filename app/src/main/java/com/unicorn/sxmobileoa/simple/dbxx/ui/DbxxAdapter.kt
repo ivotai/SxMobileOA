@@ -7,9 +7,9 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.header.nbfw.NbfwAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
-import com.unicorn.sxmobileoa.spd.ui.SpdAct
 
 class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx) {
 
@@ -23,7 +23,15 @@ class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolde
             setText(R.id.tvNgrDept, "拟稿部门：${item.ngrDept}")
 
             getView<View>(R.id.root).safeClicks().subscribe { _ ->
-                mContext.startActivity(Intent(mContext, SpdAct::class.java).apply {
+
+                var cls: Class<*>? = null
+                when (menu.text) {
+                    "內部文" -> cls = NbfwAct::class.java
+                }
+
+                if (cls == null) return@subscribe
+
+                mContext.startActivity(Intent(mContext, cls).apply {
                     putExtra(Key.menu, menu)
                     putExtra(Key.dbxx, item)
                 })

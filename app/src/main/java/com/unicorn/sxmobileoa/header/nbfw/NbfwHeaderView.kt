@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spd.ui.headerView
+package com.unicorn.sxmobileoa.header.nbfw
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner

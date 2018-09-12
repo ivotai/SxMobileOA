@@ -14,12 +14,11 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.network.SaveSpd
 import com.unicorn.sxmobileoa.spd.network.ToSpd
 import com.unicorn.sxmobileoa.spd.ui.headerView.ButtonFooterView
-import com.unicorn.sxmobileoa.spd.ui.headerView.NbfwHeaderView
 import com.unicorn.sxmobileoa.spd.ui.headerView.OperationHeaderView
 import kotlinx.android.synthetic.main.act_title_recycler.*
 import kotlinx.android.synthetic.main.footer_view_button.view.*
 
-class SpdAct : BaseAct() {
+abstract class SpdAct : BaseAct() {
 
     override val layoutId = R.layout.act_title_recycler
 
@@ -39,7 +38,7 @@ class SpdAct : BaseAct() {
         initRecyclerView()
     }
 
-    private val flowNodeAdapter = FlowNodeAdapter()
+     val flowNodeAdapter = FlowNodeAdapter()
 
     private fun initRecyclerView() {
         recyclerView.apply {
@@ -62,7 +61,7 @@ class SpdAct : BaseAct() {
 
             //
             addOperationHeaderView()
-            addNbfwHeaderView()
+            addCustomHeaderView()
             addFooterView()
         }
     }
@@ -72,10 +71,10 @@ class SpdAct : BaseAct() {
         flowNodeAdapter.addHeaderView(headerView)
     }
 
-    private fun addNbfwHeaderView() {
-        val headerView = NbfwHeaderView(this, dbxx, spd)
-        flowNodeAdapter.addHeaderView(headerView)
-    }
+    abstract fun addCustomHeaderView()
+
+//
+//    }
 
     private fun addFooterView() {
         val footerView = ButtonFooterView(this)
