@@ -64,10 +64,10 @@ class DeptAct : BaseAct() {
                 }
                 .subscribe { t -> deptAdapter.setNewData(t) }
 
-        observeConfirm()
+        clickConfirm()
     }
 
-    private fun observeConfirm() {
+    private fun clickConfirm() {
         titleBar.setOperation("确认").safeClicks().subscribe {
             deptAdapter.data
                     .filter { wrapper -> wrapper.isSelected }

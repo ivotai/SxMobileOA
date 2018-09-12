@@ -28,6 +28,7 @@ class MenuAdapter : BaseSectionQuickAdapter<MenuSection, BaseViewHolder>(R.layou
                 putExtra(Key.menu, item.t)
             })
         }
+        helper.getView<View>(R.id.flCount).visibility = if (item.t.count == "0") View.INVISIBLE else View.VISIBLE
     }
 
 }
