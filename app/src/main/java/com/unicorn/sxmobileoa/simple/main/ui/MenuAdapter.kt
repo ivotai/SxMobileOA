@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.main.ui
+package com.unicorn.sxmobileoa.simple.main.ui
 
 import android.content.Intent
 import android.view.View
@@ -8,29 +8,26 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.dbxx.ui.DbxxAct
-import com.unicorn.sxmobileoa.main.model.Section
+import com.unicorn.sxmobileoa.simple.main.model.section.MenuSection
 
-class MainAdapter : BaseSectionQuickAdapter<Section, BaseViewHolder>(R.layout.item_main, R.layout.header_main, null) {
+class MenuAdapter : BaseSectionQuickAdapter<MenuSection, BaseViewHolder>(R.layout.item_menu, R.layout.header_menu, null) {
 
-    override fun convertHead(helper: BaseViewHolder, item: Section) {
+    override fun convertHead(helper: BaseViewHolder, item: MenuSection) {
         helper.setText(R.id.tvText, item.header)
     }
 
-    override fun convert(helper: BaseViewHolder, item: Section) {
+    override fun convert(helper: BaseViewHolder, item: MenuSection) {
         item.t.apply {
             helper.setText(R.id.tvText, text)
+            helper.setText(R.id.tvCount, count)
             helper.setImageResource(R.id.ivImage, resId)
-            helper.setText(R.id.tvCount,count.toString())
         }
 
         helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
-            if (item.t.flowCode == "") return@subscribe
-            Intent(mContext, DbxxAct::class.java).apply {
-                putExtra(Key.mainItem, item.t)
-            }.let { mContext.startActivity(it) }
+            mContext.startActivity(Intent(mContext, DbxxAct::class.java).apply {
+                putExtra(Key.menu, item.t)
+            })
         }
-
-
     }
 
 }
