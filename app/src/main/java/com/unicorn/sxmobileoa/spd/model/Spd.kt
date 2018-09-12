@@ -1,5 +1,9 @@
 package com.unicorn.sxmobileoa.spd.model
 
+import com.chad.library.adapter.base.entity.AbstractExpandableItem
+import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.unicorn.sxmobileoa.spd.ui.FlowNodeAdapter
+
 data class Spd(
         val cyy: List<Cyy>,
         val flowNodeList: List<FlowNode>,
@@ -168,26 +172,32 @@ data class FlowNode(
         val spyjsfbt: String,
         val whsfbt: Int,
         val yjsfzwlj: String
-)
+) : AbstractExpandableItem<Spyj>(), MultiItemEntity {
+
+    override fun getLevel() = 0
+
+    override fun getItemType() = FlowNodeAdapter.type_flow_node
+
+}
 
 data class Spyj(
         var createUserId: String,
         var createUserName: String,
         var flowCode: String,
-        val flowName: String="",
-        val formIndex: Int=0,
-        val gdlx: String="",
-        val id: String="",
-        val jdsfmrxz: Int=0,
-        val qybz: Int=0,
-        val sfdxtz: Int=0,
-        val sfngr: Int=0,
-        val sfqy: Int=0,
-        val sftxspyj: Int=0,
-        val sfyjtz: Int=0,
-        val sfzdgd: Int=0,
-        val smsTepId: String="",
-        val spdCode: String="",
+        val flowName: String = "",
+        val formIndex: Int = 0,
+        val gdlx: String = "",
+        val id: String = "",
+        val jdsfmrxz: Int = 0,
+        val qybz: Int = 0,
+        val sfdxtz: Int = 0,
+        val sfngr: Int = 0,
+        val sfqy: Int = 0,
+        val sftxspyj: Int = 0,
+        val sfyjtz: Int = 0,
+        val sfzdgd: Int = 0,
+        val smsTepId: String = "",
+        val spdCode: String = "",
         var spyj: String,
         var spyjId: String,
         val spyjNodeId: String,
@@ -197,14 +207,16 @@ data class Spyj(
         var spyjSprName: String,
         var spyjStatus: Int,
         var spyjYwid: String,
-        val spyjsfbt: Int=0,
+        val spyjsfbt: Int = 0,
         var sysTime: String,
-        val tzbt: String="",
-        val tzfw: Int=0,
-        val tzjd: String="",
-        val tznr: String="",
-        val updateTime: String="",
-        val whsfbt: Int=0,
-        val xtlx: String="",
-        val yjsfzwlj: Int=0
-)
+        val tzbt: String = "",
+        val tzfw: Int = 0,
+        val tzjd: String = "",
+        val tznr: String = "",
+        val updateTime: String = "",
+        val whsfbt: Int = 0,
+        val xtlx: String = "",
+        val yjsfzwlj: Int = 0
+) : MultiItemEntity {
+    override fun getItemType() = FlowNodeAdapter.type_spyj
+}

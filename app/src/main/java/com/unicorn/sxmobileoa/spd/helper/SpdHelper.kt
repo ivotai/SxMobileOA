@@ -1,16 +1,18 @@
-package com.unicorn.sxmobileoa.spd.ui
+package com.unicorn.sxmobileoa.spd.helper
 
 import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.Spyj
 import org.joda.time.DateTime
 import java.util.*
 
 class SpdHelper {
 
-    fun copeSpyjList() {
+    fun copeSpyjList(dbxx:Dbxx,spd:Spd) {
 //        val currentNodeId = Global.dbxx.param.nodeId
-        val currentNodeId =""
-        val currentFlowNodeList = Global.spd.flowNodeList.filter { flowNode ->
+        val currentNodeId = dbxx.param.nodeId
+        val currentFlowNodeList = spd.flowNodeList.filter { flowNode ->
             currentNodeId in flowNode.flowNodeId.split(",")
         }
         // 归档，不做任何处理
@@ -26,7 +28,7 @@ class SpdHelper {
             val spyj = Spyj(
                     createUserId = Global.loginInfo!!.userId,
                     createUserName = Global.loginInfo!!.userName,
-                    flowCode = Global.spd.spdXx.flowCode,
+                    flowCode = spd.spdXx.flowCode,
                     spyj = "",
                     spyjId = UUID.randomUUID().toString(),
                     spyjNodeId = currentFlowNode.spyjNodeId,
@@ -35,7 +37,7 @@ class SpdHelper {
                     spyjSprId = Global.loginInfo!!.userId,
                     spyjSprName = Global.loginInfo!!.userName,
                     spyjStatus = 0,
-                    spyjYwid = Global.spd.spdXx.id,
+                    spyjYwid = spd.spdXx.id,
                     sysTime = DateTime().toString("yyyy-MM-dd HH:mm:ss")
             )
             currentFlowNode.spyjList.add(spyj)

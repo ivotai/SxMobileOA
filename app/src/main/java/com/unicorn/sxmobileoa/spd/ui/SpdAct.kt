@@ -1,33 +1,32 @@
 package com.unicorn.sxmobileoa.spd.ui
 
-import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
-import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
-import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
-import com.unicorn.sxmobileoa.spd.SpyjActEvent
-import com.unicorn.sxmobileoa.spd.network.ToSpt
-import com.unicorn.sxmobileoa.spyj.network.SaveSpd
-import com.unicorn.sxmobileoa.spyj.pager.SpyjPagerAct
-import io.reactivex.functions.Consumer
-import kotlinx.android.synthetic.main.act_spd.*
+import com.unicorn.sxmobileoa.spd.helper.SpdHelper
+import com.unicorn.sxmobileoa.spd.model.Spd
+import com.unicorn.sxmobileoa.spd.network.SaveSpd
+import com.unicorn.sxmobileoa.spd.network.ToSpd
+import com.unicorn.sxmobileoa.spd.ui.headerView.ButtonFooterView
+import com.unicorn.sxmobileoa.spd.ui.headerView.NbfwHeaderView
+import com.unicorn.sxmobileoa.spd.ui.headerView.OperationHeaderView
+import kotlinx.android.synthetic.main.act_title_recycler.*
 import kotlinx.android.synthetic.main.footer_view_button.view.*
 
 class SpdAct : BaseAct() {
 
-
-    override val layoutId = R.layout.act_spd
+    override val layoutId = R.layout.act_title_recycler
 
     lateinit var menu: Menu
 
     lateinit var dbxx: Dbxx
+
+    lateinit var spd: Spd
 
     override fun initArguments() {
         menu = intent.getSerializableExtra(Key.menu) as Menu
@@ -50,43 +49,37 @@ class SpdAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        getSpd()
-    }
-
-    private fun getSpd() {
-        ToSpt(menu = menu, dbxx = dbxx).toMaybe(this).subscribe {
-            Global.spd = it
+        ToSpd(menu, dbxx).toMaybe(this).subscribe {
+            spd = it
 
             // 处理审批意见
-            SpdHelper().copeSpyjList()
+            SpdHelper().copeSpyjList(dbxx, spd)
 
-            flowNodeAdapter.setNewData(it.flowNodeList)
+            // for expandable
+            spd.flowNodeList.forEach { flowNode ->
+                flowNode.subItems = flowNode.spyjList
+            }
+
+            flowNodeAdapter.setNewData(spd.flowNodeList)
             val oh = OperationHeaderView(this)
             flowNodeAdapter.addHeaderView(oh)
-            val nbfwHeaderView = NbfwHeaderView(this,dbxx)
+            val nbfwHeaderView = NbfwHeaderView(this, dbxx, spd)
             flowNodeAdapter.addHeaderView(nbfwHeaderView)
-            val fv = ButtonFooterView(this)
-            flowNodeAdapter.addFooterView(fv)
-
-            fv.btnSave.safeClicks().subscribe { _ ->
-
-                SaveSpd().toMaybe(this).subscribe {
-
-                }
-            }
-
-            fv.btnNextStep.safeClicks().subscribe { _ ->
-                //                startActivity(Intent(this@SpdAct, SpyjAct::class.java))
-            }
+            addFooterView()
         }
     }
 
-    override fun registerEvent() {
-        RxBus.get().registerEvent(SpyjActEvent::class.java, this, Consumer { event ->
-            startActivity(Intent(this, SpyjPagerAct::class.java).apply {
-                putExtra(Key.position, event.position)
-                ToastUtils.showShort(event.position.toString())
-            })
-        })
+    private fun addFooterView() {
+        val footerView = ButtonFooterView(this)
+        footerView.btnSave.safeClicks().subscribe { _ ->
+            SaveSpd(spd).toMaybe(this).subscribe {
+
+            }
+        }
+        footerView.btnNextStep.safeClicks().subscribe { _ ->
+            //
+        }
+        flowNodeAdapter.addFooterView(footerView)
     }
+
 }

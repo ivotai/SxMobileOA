@@ -6,7 +6,7 @@ import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
 
-class ToSpt(menu: Menu, dbxx: Dbxx) : BaseUseCase<Spd>() {
+class ToSpd(menu: Menu, dbxx: Dbxx) : BaseUseCase<Spd>() {
 
     init {
         request = ToSpdRequest(menu, dbxx)

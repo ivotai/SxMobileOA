@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spd.ui
+package com.unicorn.sxmobileoa.spd.ui.headerView
 
 import android.content.Context
 import android.view.LayoutInflater

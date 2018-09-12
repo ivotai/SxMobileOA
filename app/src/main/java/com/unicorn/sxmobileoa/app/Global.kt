@@ -2,7 +2,6 @@ package com.unicorn.sxmobileoa.app
 
 import com.unicorn.sxmobileoa.login.model.LoginInfo
 import com.unicorn.sxmobileoa.simple.court.model.Court
-import com.unicorn.sxmobileoa.spd.model.Spd
 
 object Global {
 
@@ -12,6 +11,6 @@ object Global {
 
     var court: Court? = null
 
-    lateinit var spd: Spd
+//    lateinit var spd: Spd
 
 }

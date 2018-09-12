@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spd.ui
+package com.unicorn.sxmobileoa.spd.ui.headerView
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner
@@ -14,12 +14,14 @@ import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dept.model.DeptSelectResult
 import com.unicorn.sxmobileoa.simple.dept.ui.DeptAct
 import com.unicorn.sxmobileoa.spd.Editable
+import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
 
-class NbfwHeaderView(context: Context, dbxx:Dbxx) : FrameLayout(context) {
+@SuppressLint("ViewConstructor")
+class NbfwHeaderView(context: Context,dbxx:Dbxx,spd:Spd) : FrameLayout(context) {
 
     init {
-        initViews(context,dbxx)
+        initViews(context,dbxx,spd)
     }
 
     lateinit var tvTitle: TextView
@@ -29,11 +31,11 @@ class NbfwHeaderView(context: Context, dbxx:Dbxx) : FrameLayout(context) {
     lateinit var tvZsmc: TextView
     lateinit var tvCsmc: TextView
 
-    fun initViews(context: Context,dbxx: Dbxx) {
+    fun initViews(context: Context,dbxx: Dbxx,spd:Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
         findViews()
-        renderViews()
-        checkCanEdit(dbxx)
+        renderViews(spd)
+        checkCanEdit(dbxx,spd )
     }
 
     private fun findViews() {
@@ -46,16 +48,16 @@ class NbfwHeaderView(context: Context, dbxx:Dbxx) : FrameLayout(context) {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun renderViews() {
+    private fun renderViews(spd:Spd) {
         tvTitle.text = "${Global.court!!.dmms}内部发文"
-        tvBt.text = Global.spd.spdXx.bt
-        Global.spd.get(Key.jbbm_input).let { tvJbbm.text = it }
-        Global.spd.get(Key.ngr_input).let { tvNgr.text = it }
-        Global.spd.get(Key.zsmc_input).let { tvZsmc.text = it }
-        Global.spd.get(Key.csmc_input).let { tvCsmc.text = it }
+        tvBt.text = spd.spdXx.bt
+        spd.get(Key.jbbm_input).let { tvJbbm.text = it }
+        spd.get(Key.ngr_input).let { tvNgr.text = it }
+        spd.get(Key.zsmc_input).let { tvZsmc.text = it }
+        spd.get(Key.csmc_input).let { tvCsmc.text = it }
     }
 
-    private fun checkCanEdit(dbxx: Dbxx) {
+    private fun checkCanEdit(dbxx: Dbxx,spd:Spd) {
         val currentNodeId = dbxx.param.nodeId
         Editable().couldEdit(currentNodeId).subscribe { canEdit ->
             if (!canEdit) return@subscribe
@@ -74,7 +76,7 @@ class NbfwHeaderView(context: Context, dbxx:Dbxx) : FrameLayout(context) {
                 val textView = if (deptResult.tag == Key.zsmc_input) tvZsmc else tvCsmc
                 deptResult.deptList.joinToString(",") { dept -> dept.text }.let {
                     textView.text = it
-                    Global.spd.set(deptResult.tag, it)
+                    spd.set(deptResult.tag, it)
                 }
             })
         }
