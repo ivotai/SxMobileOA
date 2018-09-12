@@ -20,6 +20,8 @@ import kotlinx.android.synthetic.main.footer_view_button.view.*
 
 abstract class SpdAct : BaseAct() {
 
+    abstract fun addCustomHeaderView()
+
     override val layoutId = R.layout.act_title_recycler
 
     lateinit var menu: Menu
@@ -38,7 +40,7 @@ abstract class SpdAct : BaseAct() {
         initRecyclerView()
     }
 
-     val flowNodeAdapter = FlowNodeAdapter()
+    val flowNodeAdapter = FlowNodeAdapter()
 
     private fun initRecyclerView() {
         recyclerView.apply {
@@ -67,27 +69,24 @@ abstract class SpdAct : BaseAct() {
     }
 
     private fun addOperationHeaderView() {
-        val headerView = OperationHeaderView(this)
-        flowNodeAdapter.addHeaderView(headerView)
+        OperationHeaderView(this).apply {
+            flowNodeAdapter.addHeaderView(this)
+        }
     }
 
-    abstract fun addCustomHeaderView()
-
-//
-//    }
-
     private fun addFooterView() {
-        val footerView = ButtonFooterView(this)
-        footerView.btnSave.safeClicks().subscribe { _ ->
-            // 展开会向 flowNodeList 里添加东西
-            SaveSpd(spd).toMaybe(this).subscribe {
-                ToastUtils.showShort("保存成功")
+        ButtonFooterView(this).apply {
+            btnSave.safeClicks().subscribe { _ ->
+                // TODO QUESTION! 展开会向 flowNodeList 里添 sub
+                SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
+                    ToastUtils.showShort("保存成功")
+                }
             }
+            btnNextStep.safeClicks().subscribe { _ ->
+                //            ToastUtils.showShort(sp、d.toString())
+            }
+            flowNodeAdapter.addFooterView(this)
         }
-        footerView.btnNextStep.safeClicks().subscribe { _ ->
-//            ToastUtils.showShort(sp、d.toString())
-        }
-        flowNodeAdapter.addFooterView(footerView)
     }
 
 }

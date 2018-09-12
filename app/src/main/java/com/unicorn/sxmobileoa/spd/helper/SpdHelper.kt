@@ -27,6 +27,21 @@ class SpdHelper {
         return currentSpyjList[0].spyj
     }
 
+    fun addSpyjIfNeed2(spd:Spd){
+        val spyjNodeId = spd.nodeModel.spyjNodeId
+        var count = 0
+        spd.flowNodeList.forEach { flowNode ->
+            flowNode.spyjList.forEach { spyj ->
+                if(spyj.spyjNodeId == spyjNodeId && spyj.spyjStatus == 0){
+                    count++
+                }
+            }
+        }
+        if (count==1){
+            // add
+        }
+    }
+
     fun addSpyjIfNeed(dbxx: Dbxx, spd: Spd) {
         val currentNodeId = dbxx.param.nodeId
         val currentFlowNodeList = spd.flowNodeList.filter { flowNode ->
