@@ -11,6 +11,22 @@ import java.util.*
 
 class SpdHelper {
 
+    fun getCurrentSpyj(dbxx: Dbxx, spd: Spd): String {
+        val currentNodeId = dbxx.param.nodeId
+        val currentFlowNodeList = spd.flowNodeList.filter { flowNode ->
+            currentNodeId in flowNode.flowNodeId.split(",")
+        }
+
+        // 归档，不做任何处理
+        if (currentFlowNodeList.isEmpty()) return ""
+
+        // 当前流程节点
+        val currentFlowNode = currentFlowNodeList[0]
+        // 当前可编辑审批意见
+        val currentSpyjList = currentFlowNode.spyjList.filter { spyj -> spyj.spyjStatus == 0 }
+        return currentSpyjList[0].spyj
+    }
+
     fun addSpyjIfNeed(dbxx: Dbxx, spd: Spd) {
         val currentNodeId = dbxx.param.nodeId
         val currentFlowNodeList = spd.flowNodeList.filter { flowNode ->

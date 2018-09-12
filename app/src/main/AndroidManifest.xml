@@ -9,7 +9,6 @@
         android:name=".app.App"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
@@ -23,10 +22,8 @@
         <activity android:name="com.unicorn.sxmobileoa.simple.court.ui.CourtAct" />
         <activity android:name="com.unicorn.sxmobileoa.simple.main.ui.MainAct" />
         <activity android:name="com.unicorn.sxmobileoa.simple.dbxx.ui.DbxxAct" />
-        <activity android:name=".spd.ui.SpdAct" />
-        <activity android:name=".spyj.pager.SpyjPagerAct" />
-        <activity android:name=".spyj.SpyjAct" />
         <activity android:name="com.unicorn.sxmobileoa.simple.dept.ui.DeptAct" />
+        <activity android:name=".spd.ui.SpdAct" />
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@ import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 
-class GetDbxx(private val pageNo: Int, private val menu: Menu) : BaseUseCase<Page<Dbxx>>() {
+class GetDbxx(pageNo: Int, menu: Menu) : BaseUseCase<Page<Dbxx>>() {
 
     init {
         request = DbxxRequest(pageNo,menu)

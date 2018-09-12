@@ -1,6 +1,7 @@
 package com.unicorn.sxmobileoa.spd.ui
 
 import android.support.v7.widget.LinearLayoutManager
+import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
@@ -8,7 +9,6 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
-import com.unicorn.sxmobileoa.spd.helper.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.network.SaveSpd
 import com.unicorn.sxmobileoa.spd.network.ToSpd
@@ -53,7 +53,7 @@ class SpdAct : BaseAct() {
             spd = it
 
             // 处理审批意见
-            SpdHelper().addSpyjIfNeed(dbxx, spd)
+//            SpdHelper().addSpyjIfNeed(dbxx, spd)
 
             // for expandable
             spd.flowNodeList.forEach { flowNode ->
@@ -86,7 +86,8 @@ class SpdAct : BaseAct() {
             }
         }
         footerView.btnNextStep.safeClicks().subscribe { _ ->
-            //
+
+            ToastUtils.showShort(spd.toString())
         }
         flowNodeAdapter.addFooterView(footerView)
     }

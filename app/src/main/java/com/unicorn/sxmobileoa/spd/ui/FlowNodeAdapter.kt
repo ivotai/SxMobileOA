@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.spd.ui
 
+import android.text.Html
 import android.view.View
 import android.widget.EditText
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
@@ -27,6 +28,11 @@ class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
             type_flow_node -> {
                 item as FlowNode
                 helper.setText(R.id.tvSpyjNodeName, item.spyjNodeName)
+
+                helper.getView<View>(R.id.ivArrow).visibility =
+                        if (item.spyjList.isEmpty()) View.INVISIBLE
+                        else View.VISIBLE
+
                 helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
                     if (item.isExpanded) collapse(helper.adapterPosition)
                     else expand(helper.adapterPosition)
@@ -36,7 +42,7 @@ class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                 item as Spyj
                 helper.setText(R.id.tvSpyjSprName, item.spyjSprName)
                 helper.setText(R.id.tvSysTime, item.sysTime)
-                helper.setText(R.id.etSpyj, item.spyj)
+                helper.setText(R.id.etSpyj, Html.fromHtml(item.spyj))
 
                 val canEdit = item.spyjStatus == 0
                 val etSpyj = helper.getView<EditText>(R.id.etSpyj)
