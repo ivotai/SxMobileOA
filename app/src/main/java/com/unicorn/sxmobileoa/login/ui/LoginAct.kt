@@ -10,7 +10,7 @@ import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.login.network.LoginUseCase
+import com.unicorn.sxmobileoa.login.network.GetLoginInfo
 import com.unicorn.sxmobileoa.simple.main.ui.MainAct
 import com.unicorn.sxmobileoa.simple.court.model.Court
 import com.unicorn.sxmobileoa.simple.court.ui.CourtAct
@@ -34,7 +34,7 @@ class LoginAct : BaseAct() {
         observeInput()
         tvCourt.safeClicks().subscribe { startActivity(Intent(this@LoginAct, CourtAct::class.java)) }
         btnLogin.safeClicks().subscribe {
-            LoginUseCase(etUsername.trimText(), etPassword.trimText()).toMaybe(this).subscribe { loginInfo ->
+            GetLoginInfo(etUsername.trimText(), etPassword.trimText()).toMaybe(this).subscribe { loginInfo ->
                 Global.loginInfo = loginInfo
                 saveInputInfo()
                 startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))

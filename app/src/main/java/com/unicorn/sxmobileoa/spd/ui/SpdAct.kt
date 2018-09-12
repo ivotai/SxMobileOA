@@ -7,9 +7,11 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.SpyjActEvent
 import com.unicorn.sxmobileoa.spd.network.ToSpt
 import com.unicorn.sxmobileoa.spyj.network.SaveSpd
@@ -23,8 +25,17 @@ class SpdAct : BaseAct() {
 
     override val layoutId = R.layout.act_spd
 
+    lateinit var menu: Menu
+
+    lateinit var dbxx: Dbxx
+
+    override fun initArguments() {
+        menu = intent.getSerializableExtra(Key.menu) as Menu
+        dbxx = intent.getSerializableExtra(Key.dbxx) as Dbxx
+    }
+
     override fun initViews() {
-        titleBar.setTitle(Global.dbxx.mainItem!!.text)
+        titleBar.setTitle(menu.text)
         initRecyclerView()
     }
 
@@ -43,7 +54,7 @@ class SpdAct : BaseAct() {
     }
 
     private fun getSpd() {
-        ToSpt(Global.dbxx).toMaybe(this).subscribe {
+        ToSpt(menu = menu, dbxx = dbxx).toMaybe(this).subscribe {
             Global.spd = it
 
             // 处理审批意见
@@ -65,7 +76,7 @@ class SpdAct : BaseAct() {
             }
 
             fv.btnNextStep.safeClicks().subscribe { _ ->
-//                startActivity(Intent(this@SpdAct, SpyjAct::class.java))
+                //                startActivity(Intent(this@SpdAct, SpyjAct::class.java))
             }
         }
     }

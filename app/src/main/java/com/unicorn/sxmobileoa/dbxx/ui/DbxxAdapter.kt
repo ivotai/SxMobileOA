@@ -6,11 +6,13 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.spd.ui.SpdAct
 import com.unicorn.sxmobileoa.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.simple.main.model.Menu
+import com.unicorn.sxmobileoa.spd.ui.SpdAct
 
-class DbxxAdapter() : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx) {
+class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx) {
 
     override fun convert(helper: BaseViewHolder, item: Dbxx) {
         helper.apply {
@@ -23,9 +25,12 @@ class DbxxAdapter() : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx)
             setText(R.id.tvNgrDept, "拟稿部门：${item.ngrDept}")
 
             getView<View>(R.id.root).safeClicks().subscribe { _ ->
-                Intent(mContext, SpdAct::class.java).apply {
+                mContext.startActivity(Intent(mContext, SpdAct::class.java).apply {
+                    // TODO DELETE
                     Global.dbxx = item
-                }.let { mContext.startActivity(it) }
+                    putExtra(Key.menu, menu)
+                    putExtra(Key.dbxx, item)
+                })
             }
         }
     }

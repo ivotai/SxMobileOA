@@ -16,7 +16,8 @@ interface PageActOrFra<Model> : ActOrFra {
 
     val mSwipeRefreshLayout: SwipeRefreshLayout
 
-    val mAdapter: BaseQuickAdapter<Model, BaseViewHolder>
+    // can't use late init
+    var mAdapter: BaseQuickAdapter<Model, BaseViewHolder>?
 
     // loadPage 需要处理线程切换以及销毁时dispose的问题
     fun loadPage(pageNo: Int): Maybe<Page<Model>>
@@ -26,16 +27,16 @@ interface PageActOrFra<Model> : ActOrFra {
     }
 
     private val pageNo
-        get() = mAdapter.data.size / rows
+        get() = mAdapter!!.data.size / rows
 
     override fun initViews() {
         mSwipeRefreshLayout.setOnRefreshListener { loadFirstPage() }
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary)
         mRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            mAdapter.bindToRecyclerView(this)
-            mAdapter.setEnableLoadMore(true)
-            mAdapter.setOnLoadMoreListener({ loadNextPage() }, mRecyclerView)
+            mAdapter!!.bindToRecyclerView(this)
+            mAdapter!!.setEnableLoadMore(true)
+            mAdapter!!.setOnLoadMoreListener({ loadNextPage() }, mRecyclerView)
         }
     }
 
@@ -46,8 +47,8 @@ interface PageActOrFra<Model> : ActOrFra {
     private fun loadFirstPage() {
         loadPage(0).subscribe({ page ->
             mSwipeRefreshLayout.isRefreshing = false
-            mAdapter.setNewData(page.rows)
-            if (mAdapter.data.size == page.total) mAdapter.loadMoreEnd()
+            mAdapter!!.setNewData(page.rows)
+            if (mAdapter!!.data.size == page.total) mAdapter!!.loadMoreEnd()
         }, {
             mSwipeRefreshLayout.isRefreshing = false
         })
@@ -55,12 +56,12 @@ interface PageActOrFra<Model> : ActOrFra {
 
     private fun loadNextPage() {
         loadPage(pageNo).subscribe({ page ->
-            mAdapter.loadMoreComplete()
-            mAdapter.addData(page.rows)
-            mAdapter.notifyDataSetChanged()
-            if (mAdapter.data.size == page.total) mAdapter.loadMoreEnd()
+            mAdapter!!.loadMoreComplete()
+            mAdapter!!.addData(page.rows)
+            mAdapter!!.notifyDataSetChanged()
+            if (mAdapter!!.data.size == page.total) mAdapter!!.loadMoreEnd()
         }, {
-            mAdapter.loadMoreComplete()
+            mAdapter!!.loadMoreComplete()
         })
     }
 

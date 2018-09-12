@@ -7,9 +7,9 @@ import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 
-class DbxxUseCase(private val pageNo: Int, private val mainItem: Menu) : BaseUseCase<Page<Dbxx>>() {
+class GetDbxx(private val pageNo: Int, private val menu: Menu) : BaseUseCase<Page<Dbxx>>() {
 
-    override fun createRequest() = DbxxRequest(pageNo, mainItem)
+    override fun createRequest() = DbxxRequest(pageNo, menu)
 
     override fun toResult(json: String): Page<Dbxx> {
         val type = object : TypeToken<Page<Dbxx>>() {}.type

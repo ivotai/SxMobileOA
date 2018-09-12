@@ -1,6 +1,5 @@
 package com.unicorn.sxmobileoa.dbxx.model
 
-import com.unicorn.sxmobileoa.simple.main.model.Menu
 import java.io.Serializable
 
 data class Dbxx(
@@ -10,9 +9,7 @@ data class Dbxx(
         val ngrName: String,
         val nodeName: String,
         val param: Param,
-        val wh: String,
-        // TODO
-        var mainItem: Menu? = null
+        val wh: String
 ) : Serializable
 
 data class Param(
