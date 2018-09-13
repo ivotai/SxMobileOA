@@ -9,7 +9,7 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
-import com.unicorn.sxmobileoa.spdNext.network.SpdNext
+import com.unicorn.sxmobileoa.spdNext.network.user.GetUser
 import kotlinx.android.synthetic.main.act_spd_next.*
 
 class SpdNextAct : BaseAct() {
@@ -48,8 +48,12 @@ class SpdNextAct : BaseAct() {
         adapter1.setNewData(listOf(1, 2, 3, 5, 6, 7, 8))
         adapter2.setNewData(listOf(1, 2, 3, 5, 6, 7, 8))
 
-        SpdNext(menu,dbxx,spd).toMaybe(this).subscribe {
+//        SpdNext(menu,dbxx,spd).toMaybe(this).subscribe {
+//        }
+
+        GetUser().toMaybe(this).subscribe {
             Logger.e(it.toString())
+
         }
     }
 
