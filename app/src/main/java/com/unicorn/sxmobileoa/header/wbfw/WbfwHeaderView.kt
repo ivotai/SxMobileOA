@@ -32,6 +32,8 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     lateinit var tvMj: TextView
     lateinit var tvJdr: TextView
     lateinit var tvYssl: TextView
+    lateinit var tvHj: TextView
+    lateinit var tvYsdw: TextView
     private lateinit var pairList: ArrayList<Pair<TextView, String>>
 
     fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
@@ -49,11 +51,16 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         tvMj = findViewById(R.id.tvMj)
         tvJdr = findViewById(R.id.tvJdr)
         tvYssl = findViewById(R.id.tvYssl)
+        tvHj = findViewById(R.id.tvHj)
+        tvYsdw = findViewById(R.id.tvYsdw)
         pairList = ArrayList<Pair<TextView, String>>().apply {
             add(Pair(tvNgr, Key.ngr_input))
             add(Pair(tvNgdw, Key.ngdw_input))
+            add(Pair(tvMj, Key.mjcd_input))
             add(Pair(tvJdr, Key.jdr_input))
             add(Pair(tvYssl, Key.yssl_input))
+            add(Pair(tvHj, Key.hjcd_input))
+            add(Pair(tvYsdw, Key.ysdw_input))
         }
     }
 
@@ -61,10 +68,7 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     private fun renderViews(menu: Menu, spd: Spd) {
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
         spd.spdXx.bt.let { tvBt.text = it }
-        spd.get(Key.mjcd_input).let { tvMj.text = it }
-        pairList.forEach { pair ->
-            spd.get(pair.second).let { pair.first.text = it }
-        }
+        pairList.forEach { pair -> spd.get(pair.second).let { pair.first.text = it } }
     }
 
     private fun canEdit(dbxx: Dbxx, spd: Spd) {
@@ -75,17 +79,17 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                 isEnabled = true
                 textChanges().subscribe { spd.spdXx.bt = it }
             }
-            // TODO 密级 SELECT NOT DEPT
-            tvMj.safeClicks().subscribe {
-                context.startActivity(Intent(context, DeptAct::class.java).apply {
-                    putExtra(Key.tag, Key.zsmc_input)
-                })
-            }
             pairList.forEach { pair ->
                 pair.first.apply {
                     isEnabled = true
                     textChanges().subscribe { spd.set(pair.second, it) }
                 }
+            }
+            // TODO 密级 缓急
+            tvMj.safeClicks().subscribe {
+                context.startActivity(Intent(context, DeptAct::class.java).apply {
+                    putExtra(Key.tag, Key.zsmc_input)
+                })
             }
             RxBus.get().registerEvent(DeptSelectResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
                 val textView = if (deptResult.tag == Key.zsmc_input) tvMj else tvJdr
