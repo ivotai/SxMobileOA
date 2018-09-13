@@ -29,8 +29,9 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     lateinit var etBt: TextView
     lateinit var etNgr: TextView
     lateinit var etNgdw: TextView
-    lateinit var tvZsmc: TextView
-    lateinit var tvCsmc: TextView
+    lateinit var tvMj: TextView
+    lateinit var tvJdr: TextView
+    lateinit var tvYssl: TextView
 
     fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_wbfw, this, true)
@@ -44,8 +45,9 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         etBt = findViewById(R.id.etBt)
         etNgr = findViewById(R.id.etNgr)
         etNgdw = findViewById(R.id.etNgdw)
-        tvZsmc = findViewById(R.id.tvZsmc)
-        tvCsmc = findViewById(R.id.tvCsmc)
+        tvMj = findViewById(R.id.tvMj)
+        tvJdr = findViewById(R.id.tvJdr)
+        tvYssl = findViewById(R.id.tvYssl)
     }
 
     @SuppressLint("SetTextI18n")
@@ -54,8 +56,9 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         spd.spdXx.bt.let { etBt.text = it }
         spd.get(Key.ngr_input).let { etNgr.text = it }
         spd.get(Key.ngdw_input).let { etNgdw.text = it }
-        spd.get(Key.zsmc_input).let { tvZsmc.text = it }
-        spd.get(Key.csmc_input).let { tvCsmc.text = it }
+        spd.get(Key.mjcd_input).let { tvMj.text = it }
+        spd.get(Key.jdr_input).let { tvJdr.text = it }
+        spd.get(Key.yssl_input).let { tvYssl.text = it }
     }
 
     private fun canEdit(dbxx: Dbxx, spd: Spd) {
@@ -74,19 +77,27 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                 isEnabled = true
                 textChanges().subscribe { spd.set(Key.ngdw_input, it) }
             }
-
-            tvZsmc.safeClicks().subscribe {
+            // TODO MJ SELECT NOT DEPT
+            tvMj.safeClicks().subscribe {
                 context.startActivity(Intent(context, DeptAct::class.java).apply {
                     putExtra(Key.tag, Key.zsmc_input)
                 })
             }
-            tvCsmc.safeClicks().subscribe {
-                context.startActivity(Intent(context, DeptAct::class.java).apply {
-                    putExtra(Key.tag, Key.csmc_input)
-                })
+            tvJdr.apply {
+                isEnabled = true
+                textChanges().subscribe { spd.set(Key.jdr_input, it) }
             }
+            tvYssl.apply {
+                isEnabled = true
+                textChanges().subscribe { spd.set(Key.yssl_input, it) }
+            }
+//            tvJdr.safeClicks().subscribe {
+//                context.startActivity(Intent(context, DeptAct::class.java).apply {
+//                    putExtra(Key.tag, Key.csmc_input)
+//                })
+//            }
             RxBus.get().registerEvent(DeptSelectResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
-                val textView = if (deptResult.tag == Key.zsmc_input) tvZsmc else tvCsmc
+                val textView = if (deptResult.tag == Key.zsmc_input) tvMj else tvJdr
                 deptResult.deptList.joinToString(",") { dept -> dept.text }.let {
                     textView.text = it
                     spd.set(deptResult.tag, it)

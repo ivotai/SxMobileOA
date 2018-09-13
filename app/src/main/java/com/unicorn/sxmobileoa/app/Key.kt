@@ -40,8 +40,14 @@ object Key {
 
     // wbfw
     const val ngdw_input = "ngdw_input"
-//    ngr_input
-
+    const val mjcd_input = "mjcd_input"
+    const val jdr_input = "jdr_input"
+    const val yssl_input = "yssl_input"
+//    const val ngdw_input = "ngdw_input"
+//    const val mjcd_input = "mjcd_input"
+//    const val jdr_input = "jdr_input"
+//    const val yssl_input = "yssl_input"
+//
     // const
     const val cornerRadiusDp = 5f
 
