@@ -98,7 +98,7 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             // TODO 密级 缓急
             // TODO 印刷时间 发文时间
             // TODO 主送机关...
-            tvZsjg.startDeptSelect(Key.zsjgmc_input)
+            tvZsjg.startDeptAct(Key.zsjgmc_input)
             RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
                 val target: TextView = when (deptResult.key) {
                     Key.zsjgmc_input -> tvZsjg

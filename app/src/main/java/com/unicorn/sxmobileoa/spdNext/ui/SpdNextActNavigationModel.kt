@@ -6,9 +6,7 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 import dart.BindExtra
 import dart.DartModel
 
-
 @DartModel
-//use this annotation on all your models
 class SpdNextActNavigationModel {
 
     @BindExtra

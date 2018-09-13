@@ -56,7 +56,7 @@ fun RecyclerView.addDefaultItemDecoration() {
             .build().let { this.addItemDecoration(it) }
 }
 
-fun TextView.startDeptSelect(key: String) {
+fun TextView.startDeptAct(key: String) {
     this.safeClicks().subscribe {
         context.startActivity(Intent(context, DeptAct::class.java).apply {
             putExtra(Key.key, key)

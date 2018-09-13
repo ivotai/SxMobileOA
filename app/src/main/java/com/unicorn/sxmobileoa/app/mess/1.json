@@ -7,32 +7,41 @@
   },
   "nextTaskPersonModel": [
     {
-      "taskType": "forkTask",
-      "taskDefKey": "OA_FLOW_GWGL_NBFW_BMLDSP_FORK",
-      "approveType": "0",
-      "nextPersonCode": "R00_360001033",
-      "nextPersonName": "王小平",
-      "nextLine": "sequenceFlow"
+      "taskType": "userTask", //   选中的左侧nextTaskType
+      "taskDefKey": "OA_FLOW_GWGL_NBFW_NGRB", //nextTaskKey
+      "approveType": "0", // approveType
+      "nextPersonCode": "R00_360000000",  // 选中人员拼
+      "nextPersonName": "OA系统管理员",     // 选中人员拼
+      "nextLine": "sequenceFlow"  // nextLine
     }
   ],
   "approved": true,
-  "catagoryCode": "OA_FLOW_GWGL_NBFW",
+  "catagoryCode": "OA_FLOW_GWGL_NBFW",  // flowCode
   "approveConent": "审判意见",
-  "spdId": "0afa3524-ca9a-478f-b8ee-0afec141f970",
-  "fydm": "R00",
-  "moduleCode": "OA_FUN_GWGL",
-  "flowCode": "OA_FLOW_GWGL_NBFW",
-  "nodeId": "OA_FLOW_GWGL_NBFW_NGR",
-  "spyjId": "6cee8d80-e627-4c28-ab49-116214705ab2",
-  "gd": -1,
-  "nextTaskKey": "OA_FLOW_GWGL_NBFW_BMLDSP_FORK,",
-  "tasktype": "forkTask",
-  "spdCode": "OA_SPD_GWGL_NBFW",
-  "endTaskType": "",
-  "reject": "",
-  "sfjsjd": false,
-  "tzstate": false,
-  "buinessCallBackParams": {
+  "spdId": "0afa3524-ca9a-478f-b8ee-0afec141f970",  // primaryId
+  "fydm": "R00",    // SpdInfo
+  "moduleCode": "OA_FUN_GWGL",  //
+  "flowCode": "OA_FLOW_GWGL_NBFW",  //
+  "nodeId": "OA_FLOW_GWGL_NBFW_NGR",  //
+  "spyjId": "6cee8d80-e627-4c28-ab49-116214705ab2", //
+  "gd": 0, // dingsi
+
+  "nextTaskKey": "OA_FLOW_GWGL_NBFW_BMLDSP_FORK,",// 一樣
+  "tasktype": "forkTask",                         // 一樣
+
+  "spdCode": "OA_SPD_GWGL_NBFW",                //
+
+  "endTaskType": "",              // 選中
+  "reject": "",                 // 定死
+  "sfjsjd": false,              //
+// 遍歷選中
+//  if (taskDefKey.toLowerCase() == "end" || taskDefKey == '结束') {
+//  sfjsjd = true;
+//}
+//
+  "tzstate": false,             // 是否通知 否
+
+  "buinessCallBackParams": {    // ""
     "tdyy": ""
   }
 }

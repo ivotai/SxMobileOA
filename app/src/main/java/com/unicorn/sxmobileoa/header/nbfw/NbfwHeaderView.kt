@@ -69,8 +69,8 @@ class NbfwHeaderView(context: Context, dbxx: Dbxx, spd: Spd) : FrameLayout(conte
                     textChanges().subscribe { spd.set(pair.second, it) }
                 }
             }
-            tvZsmc.startDeptSelect(Key.zsmc_input)
-            tvCsmc.startDeptSelect(Key.csmc_input)
+            tvZsmc.startDeptAct(Key.zsmc_input)
+            tvCsmc.startDeptAct(Key.csmc_input)
             RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
                 val target: TextView = when (deptResult.key) {
                     Key.zsmc_input -> tvZsmc

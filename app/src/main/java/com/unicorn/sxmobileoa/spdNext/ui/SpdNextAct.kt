@@ -25,7 +25,7 @@ class SpdNextAct : BaseAct() {
     @DartModel
     lateinit var model: SpdNextActNavigationModel
 
-    private val nextTaskAdapter = NextTaskSequenceFlowAdapter()
+    private val sequenceFlowAdapter = NextTaskSequenceFlowAdapter()
     private val userAdapter = UserAdapter()
 
     override fun initViews() {
@@ -33,7 +33,7 @@ class SpdNextAct : BaseAct() {
         titleBar.setOperation("确认")
         recyclerView1.apply {
             layoutManager = LinearLayoutManager(this@SpdNextAct)
-            nextTaskAdapter.bindToRecyclerView(this)
+            sequenceFlowAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
         }
         recyclerView2.apply {
@@ -64,7 +64,7 @@ class SpdNextAct : BaseAct() {
                     }
                 }
                 .subscribe {
-                    nextTaskAdapter.setNewData(it)
+                    sequenceFlowAdapter.setNewData(it)
                 }
     }
 
