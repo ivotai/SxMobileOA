@@ -2,17 +2,17 @@ package com.unicorn.sxmobileoa.spd.network
 
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
-import com.unicorn.sxmobileoa.spd.model.SaveSptResponse
+import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd
 
-class SaveSpd(spd:Spd) : BaseUseCase<SaveSptResponse>() {
+class SaveSpd(spd:Spd) : BaseUseCase<SaveSpdResponse>() {
 
     init {
         request = SaveSpdRequest(spd)
     }
 
-    override fun toResult(json: String): SaveSptResponse {
-        return ComponentHolder.appComponent.getGson().fromJson(json, SaveSptResponse::class.java)
+    override fun toResult(json: String): SaveSpdResponse {
+        return ComponentHolder.appComponent.getGson().fromJson(json, SaveSpdResponse::class.java)
     }
 
 }

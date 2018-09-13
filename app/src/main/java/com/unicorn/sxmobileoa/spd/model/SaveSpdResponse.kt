@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa.spd.model
 
-data class SaveSptResponse(
+data class SaveSpdResponse(
     val taskId: String,
     val nodeId: String,
     val fydm: String,
