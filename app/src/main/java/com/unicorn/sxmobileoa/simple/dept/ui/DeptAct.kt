@@ -30,20 +30,20 @@ class DeptAct : BaseAct() {
             deptAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
         }
-        addKeywordHeaderView()
-    }
-
-    private lateinit var headerView: KeywordHeaderView
-
-    private fun addKeywordHeaderView() {
-        headerView = KeywordHeaderView(this)
-        headerView.setHint("请输入部门")
-        deptAdapter.addHeaderView(headerView)
     }
 
     override fun bindIntent() {
         getDept()
         clickConfirm()
+    }
+
+    private lateinit var headerView: KeywordHeaderView
+
+    private fun addKeywordHeaderView() {
+        headerView = KeywordHeaderView(this).apply {
+            setHint("请输入部门")
+            deptAdapter.addHeaderView(this)
+        }
     }
 
     private fun getDept() {
@@ -53,7 +53,19 @@ class DeptAct : BaseAct() {
                 .map { it.filter { dept -> dept.value.length != 1 } }
                 .doOnSuccess { observeKeyword(it) }
                 .map { it.map { dept -> SelectWrapper(dept) } }
-                .subscribe { t -> deptAdapter.setNewData(t) }
+                .subscribe { t ->
+                    addKeywordHeaderView()
+                    deptAdapter.setNewData(t)
+                }
+    }
+
+    private fun observeKeyword(deptList: List<Dept>) {
+        headerView.etKeyword.textChanges()
+                .subscribe { keyword ->
+                    deptList.filter { dept -> dept.text.contains(keyword) }
+                            .map { dept -> SelectWrapper(dept) }
+                            .let { deptAdapter.setNewData(it) }
+                }
     }
 
     private fun clickConfirm() {
@@ -67,15 +79,6 @@ class DeptAct : BaseAct() {
                     }
             finish()
         }
-    }
-
-    private fun observeKeyword(deptList: List<Dept>) {
-        headerView.etKeyword.textChanges()
-                .subscribe { keyword ->
-                    deptList.filter { dept -> dept.text.contains(keyword) }
-                            .map { dept -> SelectWrapper(dept) }
-                            .let { deptAdapter.setNewData(it) }
-                }
     }
 
     @DartModel
