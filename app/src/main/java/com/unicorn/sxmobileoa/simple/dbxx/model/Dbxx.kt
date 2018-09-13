@@ -15,7 +15,6 @@ data class Dbxx(
 data class Param(
         val nodeId: String,
         val primaryId: String,
-        val processInstancesId: String,
         val taskId: String,
         val taskKey: String
 ) : Serializable
