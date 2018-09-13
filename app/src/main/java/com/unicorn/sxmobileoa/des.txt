@@ -28,3 +28,9 @@ record：
 
 9/6 手机如何连接内网
 连接内网的电脑开个 wifi 就行。
+
+
+焦鑫 15:17:12
+_data.processInstancesId, _data.currentTaskId,
+                        _data.flowCode, _data.primaryId, _data.moduleCode, _data.currentTaskName,
+                        _data.fydm, formData.spdCode, _data.spyjId,-1,_data.nodeId, formData.jdsfmrxz

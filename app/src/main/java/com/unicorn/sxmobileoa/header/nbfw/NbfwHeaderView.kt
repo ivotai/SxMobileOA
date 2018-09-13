@@ -8,10 +8,13 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.*
+import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.get
 import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
-import com.unicorn.sxmobileoa.simple.dept.model.DeptSelectResult
+import com.unicorn.sxmobileoa.simple.dept.model.DeptResult
 import com.unicorn.sxmobileoa.simple.dept.ui.DeptAct
 import com.unicorn.sxmobileoa.spd.helper.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
@@ -64,20 +67,17 @@ class NbfwHeaderView(context: Context, dbxx: Dbxx, spd: Spd) : FrameLayout(conte
 
             tvZsmc.safeClicks().subscribe {
                 context.startActivity(Intent(context, DeptAct::class.java).apply {
-                    putExtra(Key.tag, Key.zsmc_input)
+                    putExtra(Key.key, Key.zsmc_input)
                 })
             }
             tvCsmc.safeClicks().subscribe {
                 context.startActivity(Intent(context, DeptAct::class.java).apply {
-                    putExtra(Key.tag, Key.csmc_input)
+                    putExtra(Key.key, Key.csmc_input)
                 })
             }
-            RxBus.get().registerEvent(DeptSelectResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
-                val textView = if (deptResult.tag == Key.zsmc_input) tvZsmc else tvCsmc
-                deptResult.deptList.joinToString(",") { dept -> dept.text }.let {
-                    textView.text = it
-                    spd.set(deptResult.tag, it)
-                }
+            RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
+                val textView = if (deptResult.key == Key.zsmc_input) tvZsmc else tvCsmc
+                    textView.text = deptResult.result
             })
         }
     }

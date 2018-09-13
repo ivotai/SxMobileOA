@@ -30,7 +30,7 @@ object Key {
     const val position = "position"
 
     // dept
-    const val tag = "tag"
+    const val key = "key"
 
     // nbfw
     const val jbbm_input = "jbbm_input"
@@ -46,8 +46,13 @@ object Key {
     const val hjcd_input = "hjcd_input"
     const val ysdw_input = "ysdw_input"
     const val yssj_input = "yssj_input"
-//    const val yssl_input = "yssl_input"
-//
+    const val fwsj_input = "fwsj_input"
+    const val zsjgmc_input = "zsjgmc_input"
+//    const val ysdw_input = "ysdw_input"
+//    const val yssj_input = "yssj_input"
+//    const val fwsj_input = "fwsj_input"
+
+
     // const
     const val cornerRadiusDp = 5f
 
