@@ -11,30 +11,37 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
+import com.unicorn.sxmobileoa.spdNext.model.NextTaskSequenceFlow
 import com.unicorn.sxmobileoa.spdNext.model.User
 import com.unicorn.sxmobileoa.spdNext.network.SpdNext
 import com.unicorn.sxmobileoa.spdNext.network.user.GetUser
+import dart.BindExtra
+import dart.DartModel
 import kotlinx.android.synthetic.main.act_spd_next.*
 
+@DartModel
 class SpdNextAct : BaseAct() {
 
     override val layoutId = R.layout.act_spd_next
 
+    @BindExtra(Key.menu)
     lateinit var menu: Menu
+
     lateinit var dbxx: Dbxx
     lateinit var spd: Spd
 
     override fun initArguments() {
-        menu = intent.getSerializableExtra(Key.menu) as Menu
         dbxx = intent.getSerializableExtra(Key.dbxx) as Dbxx
         spd = intent.getSerializableExtra(Key.spd) as Spd
     }
 
 
-    val nextTaskAdapter = NextTaskAdapter()
-    val userAdapter = UserAdapter()
+    private val nextTaskAdapter = NextTaskAdapter()
+    private val userAdapter = UserAdapter()
 
     override fun initViews() {
+        titleBar.setTitle("选择审批流程")
+        titleBar.setOperation("确认")
         recyclerView1.apply {
             layoutManager = LinearLayoutManager(this@SpdNextAct)
             nextTaskAdapter.bindToRecyclerView(this)
@@ -44,7 +51,6 @@ class SpdNextAct : BaseAct() {
             layoutManager = LinearLayoutManager(this@SpdNextAct)
             userAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
-            addHeaderView()
         }
     }
 
@@ -60,9 +66,17 @@ class SpdNextAct : BaseAct() {
 
         getUser()
 
-        SpdNext(menu, dbxx, spd).toMaybe(this).subscribe {
-            nextTaskAdapter.setNewData(it.nextTask_sequenceFlow)
-        }
+        SpdNext(menu, dbxx, spd).toMaybe(this)
+                .map {
+                    ArrayList<SelectWrapper<NextTaskSequenceFlow>>().apply {
+                        it.nextTask_sequenceFlow.forEach { nextTaskSequenceFlow ->
+                            add(SelectWrapper(nextTaskSequenceFlow))
+                        }
+                    }
+                }
+                .subscribe {
+                    nextTaskAdapter.setNewData(it)
+                }
     }
 
 
@@ -78,7 +92,10 @@ class SpdNextAct : BaseAct() {
                         }
                     }
                 }
-                .doOnSuccess { observeKeyword(it) }
+                .doOnSuccess {
+                    addHeaderView()
+                    observeKeyword(it)
+                }
                 .map { userList ->
                     ArrayList<SelectWrapper<User>>().apply {
                         userList.forEach { user -> this.add(SelectWrapper(user)) }
