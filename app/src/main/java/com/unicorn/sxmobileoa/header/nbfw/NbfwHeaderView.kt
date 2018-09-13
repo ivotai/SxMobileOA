@@ -3,19 +3,14 @@ package com.unicorn.sxmobileoa.header.nbfw
 import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Global
-import com.unicorn.sxmobileoa.app.Key
-import com.unicorn.sxmobileoa.app.get
+import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dept.model.DeptResult
-import com.unicorn.sxmobileoa.simple.dept.ui.DeptAct
 import com.unicorn.sxmobileoa.spd.helper.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
@@ -33,6 +28,7 @@ class NbfwHeaderView(context: Context, dbxx: Dbxx, spd: Spd) : FrameLayout(conte
     lateinit var tvNgr: TextView
     lateinit var tvZsmc: TextView
     lateinit var tvCsmc: TextView
+    private lateinit var pairList: ArrayList<Pair<TextView, String>>
 
     fun initViews(context: Context, dbxx: Dbxx, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
@@ -48,36 +44,39 @@ class NbfwHeaderView(context: Context, dbxx: Dbxx, spd: Spd) : FrameLayout(conte
         tvNgr = findViewById(R.id.tvNgr)
         tvZsmc = findViewById(R.id.tvZsmc)
         tvCsmc = findViewById(R.id.tvCsmc)
+        pairList = ArrayList<Pair<TextView, String>>().apply {
+            add(Pair(tvJbbm, Key.jbbm_input))
+            add(Pair(tvNgr, Key.ngr_input))
+            add(Pair(tvZsmc, Key.zsmc_input))
+            add(Pair(tvCsmc, Key.csmc_input))
+        }
     }
 
     @SuppressLint("SetTextI18n")
     private fun renderViews(spd: Spd) {
         tvTitle.text = "${Global.court!!.dmms}内部发文"
         tvBt.text = spd.spdXx.bt
-        spd.get(Key.jbbm_input).let { tvJbbm.text = it }
-        spd.get(Key.ngr_input).let { tvNgr.text = it }
-        spd.get(Key.zsmc_input).let { tvZsmc.text = it }
-        spd.get(Key.csmc_input).let { tvCsmc.text = it }
+        pairList.forEach { pair -> spd.get(pair.second).let { pair.first.text = it } }
     }
 
     private fun canEdit(dbxx: Dbxx, spd: Spd) {
         val currentNodeId = dbxx.param.nodeId
         SpdHelper().canEdit(currentNodeId).subscribe { canEdit ->
             if (!canEdit) return@subscribe
-
-            tvZsmc.safeClicks().subscribe {
-                context.startActivity(Intent(context, DeptAct::class.java).apply {
-                    putExtra(Key.key, Key.zsmc_input)
-                })
+            pairList.forEach { pair ->
+                pair.first.apply {
+                    isEnabled = true
+                    textChanges().subscribe { spd.set(pair.second, it) }
+                }
             }
-            tvCsmc.safeClicks().subscribe {
-                context.startActivity(Intent(context, DeptAct::class.java).apply {
-                    putExtra(Key.key, Key.csmc_input)
-                })
-            }
+            tvZsmc.startDeptSelect(Key.zsmc_input)
+            tvCsmc.startDeptSelect(Key.csmc_input)
             RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
-                val textView = if (deptResult.key == Key.zsmc_input) tvZsmc else tvCsmc
-                    textView.text = deptResult.result
+                val target: TextView = when (deptResult.key) {
+                    Key.zsmc_input -> tvZsmc
+                    else -> tvCsmc
+                }
+                target.text = deptResult.result
             })
         }
     }
