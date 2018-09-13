@@ -27,17 +27,17 @@ class SpdHelper {
         return currentSpyjList[0].spyj
     }
 
-    fun addSpyjIfNeed2(spd:Spd){
+    fun addSpyjIfNeed2(spd: Spd) {
         val spyjNodeId = spd.nodeModel.spyjNodeId
         var count = 0
         spd.flowNodeList.forEach { flowNode ->
             flowNode.spyjList.forEach { spyj ->
-                if(spyj.spyjNodeId == spyjNodeId && spyj.spyjStatus == 0){
+                if (spyj.spyjNodeId == spyjNodeId && spyj.spyjStatus == 0) {
                     count++
                 }
             }
         }
-        if (count==1){
+        if (count == 1) {
             // add
         }
     }
@@ -80,5 +80,10 @@ class SpdHelper {
             "_TXJDSQ", "_BGSWS", "_NGRB", "_NBYJ", "_SFZBCSP"
             , "_CBQK", "_SWDJ", "_NGYJ")
             .any { nodeId.contains(it) }
+
+    fun canEidt2(nodeId: String): Boolean {
+        val list = listOf("_SQR", "_NGR", "_QC", "_YBGS", "_LYR", "_TXJDSQ", "_BGSWS", "_NGRB", "_NBYJ", "_SFZBCSP", "_CBQK", "_SWDJ", "_NGYJ")
+        return list.any { nodeId.contains(it) }
+    }
 
 }

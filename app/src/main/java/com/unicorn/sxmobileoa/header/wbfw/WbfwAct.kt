@@ -4,9 +4,8 @@ import com.unicorn.sxmobileoa.spd.ui.SpdAct
 
 class WbfwAct : SpdAct() {
 
-    override fun addCustomHeaderView() {
-        val headerView = WbfwHeaderView(this,menu , dbxx, spd)
-        flowNodeAdapter.addHeaderView(headerView)
+    override fun addBasicHeaderView() = WbfwHeaderView(this, menu, dbxx, spd).apply {
+        flowNodeAdapter.addHeaderView(this)
     }
 
 }

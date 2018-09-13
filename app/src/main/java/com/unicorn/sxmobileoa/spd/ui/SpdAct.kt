@@ -8,8 +8,7 @@ import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
-import com.unicorn.sxmobileoa.simple.main.model.Menu
+import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.spd.helper.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.network.SaveSpd
@@ -22,23 +21,16 @@ import kotlinx.android.synthetic.main.footer_view_button.view.*
 
 abstract class SpdAct : BaseAct() {
 
-    abstract fun addCustomHeaderView()
+    abstract fun addBasicHeaderView(): BasicHeaderView
 
     override val layoutId = R.layout.act_title_recycler
 
-    lateinit var menu: Menu
-
-    lateinit var dbxx: Dbxx
-
+    lateinit var model: SpdActNavigationModel
     lateinit var spd: Spd
-
-    override fun initArguments() {
-        menu = intent.getSerializableExtra(Key.menu) as Menu
-        dbxx = intent.getSerializableExtra(Key.dbxx) as Dbxx
-    }
+    private lateinit var basicHeaderView: BasicHeaderView
 
     override fun initViews() {
-        titleBar.setTitle(menu.text)
+        titleBar.setTitle(model.menu.text)
         initRecyclerView()
     }
 
@@ -53,19 +45,19 @@ abstract class SpdAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        ToSpd(menu, dbxx).toMaybe(this).subscribe {
+        ToSpd(model.menu, model.dbxx).toMaybe(this).subscribe {
             spd = it
             // 添加 taskId
-            spd.spdXx.taskId = dbxx.param.taskId
+            spd.spdXx.taskId = model.dbxx.param.taskId
 
 //             处理审批意见
-            SpdHelper().addSpyjIfNeed(dbxx, spd)
+            SpdHelper().addSpyjIfNeed(model.dbxx, spd)
 
             flowNodeAdapter.setNewData(spd.flowNodeList)
 
             //
             addOperationHeaderView()
-            addCustomHeaderView()
+            basicHeaderView = addBasicHeaderView()
             addFooterView()
         }
     }
@@ -80,14 +72,16 @@ abstract class SpdAct : BaseAct() {
         ButtonFooterView(this).apply {
             btnSave.safeClicks().subscribe { _ ->
                 // TODO QUESTION! 展开会向 flowNodeList 里添 sub
+                // TODO 不采用 textChange 方式 时刻保存到 spd 而是最后再保存
+                basicHeaderView.saveToSpd(spd)
                 SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
                     ToastUtils.showShort("保存成功")
                 }
             }
             btnNextStep.safeClicks().subscribe { _ ->
                 startActivity(Intent(this@SpdAct, SpdNextAct::class.java).apply {
-                    putExtra(Key.menu, menu)
-                    putExtra(Key.dbxx, dbxx)
+                    putExtra(Key.menu, model.menu)
+                    putExtra(Key.dbxx, model.dbxx)
                     putExtra(Key.spd, spd)
                 })
             }

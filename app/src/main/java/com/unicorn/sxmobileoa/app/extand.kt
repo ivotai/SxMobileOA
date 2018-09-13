@@ -23,7 +23,7 @@ fun View.safeClicks(): Observable<Unit> = this.clicks().throttleFirst(1, TimeUni
 
 fun TextView.trimText() = this.text.toString().trim()
 
-fun TextView.textChanges() = RxTextView.textChanges(this).map { it.toString() }
+fun TextView.textChanges(): Observable<String> = RxTextView.textChanges(this).map { it.toString() }
 
 fun <T> Maybe<T>.common(lifecycleOwner: LifecycleOwner): Maybe<T> = this.compose(MainThreadTransformer())
         .compose(RxLifecycle.with(lifecycleOwner).disposeOnDestroy())
@@ -39,9 +39,9 @@ fun Spd.get(spdKey: String): String {
 }
 
 fun Spd.set(spdKey: String, spdValue: String) {
-    val spdDataList = this.spdData.filter { it.spdKey == spdKey }
-    if (!spdDataList.isEmpty()) {
-        spdDataList[0].apply {
+    val result = this.spdData.filter { it.spdKey == spdKey }
+    if (!result.isEmpty()) {
+        result[0].apply {
             if (this.spdValue == "") create = true else update = true
             this.spdValue = spdValue
             updateTime = DateTime().toString("yyyy-MM-dd HH:mm:ss")
@@ -56,7 +56,7 @@ fun RecyclerView.addDefaultItemDecoration() {
             .build().let { this.addItemDecoration(it) }
 }
 
-fun TextView.startDeptAct(key: String) {
+fun TextView.clickDept(key: String) {
     this.safeClicks().subscribe {
         context.startActivity(Intent(context, DeptAct::class.java).apply {
             putExtra(Key.key, key)
