@@ -41,7 +41,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/etBt"
+            android:id="@+id/tvBt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -69,7 +69,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/etNgr"
+            android:id="@+id/tvNgr"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -97,7 +97,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/etNgdw"
+            android:id="@+id/tvNgdw"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

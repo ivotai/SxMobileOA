@@ -26,12 +26,13 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     }
 
     lateinit var tvTitle: TextView
-    lateinit var etBt: TextView
-    lateinit var etNgr: TextView
-    lateinit var etNgdw: TextView
+    lateinit var tvBt: TextView
+    lateinit var tvNgr: TextView
+    lateinit var tvNgdw: TextView
     lateinit var tvMj: TextView
     lateinit var tvJdr: TextView
     lateinit var tvYssl: TextView
+    private lateinit var pairList: ArrayList<Pair<TextView, String>>
 
     fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_wbfw, this, true)
@@ -42,60 +43,50 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
     private fun findViews() {
         tvTitle = findViewById(R.id.tvTitle)
-        etBt = findViewById(R.id.etBt)
-        etNgr = findViewById(R.id.etNgr)
-        etNgdw = findViewById(R.id.etNgdw)
+        tvBt = findViewById(R.id.tvBt)
+        tvNgr = findViewById(R.id.tvNgr)
+        tvNgdw = findViewById(R.id.tvNgdw)
         tvMj = findViewById(R.id.tvMj)
         tvJdr = findViewById(R.id.tvJdr)
         tvYssl = findViewById(R.id.tvYssl)
+        pairList = ArrayList<Pair<TextView, String>>().apply {
+            add(Pair(tvNgr, Key.ngr_input))
+            add(Pair(tvNgdw, Key.ngdw_input))
+            add(Pair(tvJdr, Key.jdr_input))
+            add(Pair(tvYssl, Key.yssl_input))
+        }
     }
 
     @SuppressLint("SetTextI18n")
     private fun renderViews(menu: Menu, spd: Spd) {
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
-        spd.spdXx.bt.let { etBt.text = it }
-        spd.get(Key.ngr_input).let { etNgr.text = it }
-        spd.get(Key.ngdw_input).let { etNgdw.text = it }
+        spd.spdXx.bt.let { tvBt.text = it }
         spd.get(Key.mjcd_input).let { tvMj.text = it }
-        spd.get(Key.jdr_input).let { tvJdr.text = it }
-        spd.get(Key.yssl_input).let { tvYssl.text = it }
+        pairList.forEach { pair ->
+            spd.get(pair.second).let { pair.first.text = it }
+        }
     }
 
     private fun canEdit(dbxx: Dbxx, spd: Spd) {
         val currentNodeId = dbxx.param.nodeId
         SpdHelper().canEdit(currentNodeId).subscribe { canEdit ->
             if (!canEdit) return@subscribe
-            etBt.apply {
+            tvBt.apply {
                 isEnabled = true
                 textChanges().subscribe { spd.spdXx.bt = it }
             }
-            etNgr.apply {
-                isEnabled = true
-                textChanges().subscribe { spd.set(Key.ngr_input, it) }
-            }
-            etNgdw.apply {
-                isEnabled = true
-                textChanges().subscribe { spd.set(Key.ngdw_input, it) }
-            }
-            // TODO MJ SELECT NOT DEPT
+            // TODO 密级 SELECT NOT DEPT
             tvMj.safeClicks().subscribe {
                 context.startActivity(Intent(context, DeptAct::class.java).apply {
                     putExtra(Key.tag, Key.zsmc_input)
                 })
             }
-            tvJdr.apply {
-                isEnabled = true
-                textChanges().subscribe { spd.set(Key.jdr_input, it) }
+            pairList.forEach { pair ->
+                pair.first.apply {
+                    isEnabled = true
+                    textChanges().subscribe { spd.set(pair.second, it) }
+                }
             }
-            tvYssl.apply {
-                isEnabled = true
-                textChanges().subscribe { spd.set(Key.yssl_input, it) }
-            }
-//            tvJdr.safeClicks().subscribe {
-//                context.startActivity(Intent(context, DeptAct::class.java).apply {
-//                    putExtra(Key.tag, Key.csmc_input)
-//                })
-//            }
             RxBus.get().registerEvent(DeptSelectResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
                 val textView = if (deptResult.tag == Key.zsmc_input) tvMj else tvJdr
                 deptResult.deptList.joinToString(",") { dept -> dept.text }.let {
