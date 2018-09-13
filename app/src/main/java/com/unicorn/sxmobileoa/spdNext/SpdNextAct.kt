@@ -1,15 +1,19 @@
 package com.unicorn.sxmobileoa.spdNext
 
 import android.support.v7.widget.LinearLayoutManager
-import com.orhanobut.logger.Logger
+import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
+import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
+import com.unicorn.sxmobileoa.app.mess.SelectWrapper
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
+import com.unicorn.sxmobileoa.spdNext.model.User
 import com.unicorn.sxmobileoa.spdNext.network.user.GetUser
+import com.unicorn.sxmobileoa.spdNext.ui.UserAdapter
 import kotlinx.android.synthetic.main.act_spd_next.*
 
 class SpdNextAct : BaseAct() {
@@ -29,7 +33,7 @@ class SpdNextAct : BaseAct() {
 
 
     val adapter1 = Adapter1()
-    val adapter2 = Adapter1()
+    val userAdapter = UserAdapter()
 
     override fun initViews() {
         recyclerView1.apply {
@@ -39,22 +43,57 @@ class SpdNextAct : BaseAct() {
         }
         recyclerView2.apply {
             layoutManager = LinearLayoutManager(this@SpdNextAct)
-            adapter2.bindToRecyclerView(this)
+            userAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
+            addHeaderView()
         }
+    }
+
+    private lateinit var headerView: KeywordHeaderView
+
+    private fun addHeaderView() {
+        headerView = KeywordHeaderView(this)
+        headerView.setHint("请输入姓名")
+        userAdapter.addHeaderView(headerView)
     }
 
     override fun bindIntent() {
         adapter1.setNewData(listOf(1, 2, 3, 5, 6, 7, 8))
-        adapter2.setNewData(listOf(1, 2, 3, 5, 6, 7, 8))
 
 //        SpdNext(menu,dbxx,spd).toMaybe(this).subscribe {
 //        }
 
-        GetUser().toMaybe(this).subscribe {
-            Logger.e(it.toString())
+        GetUser().toMaybe(this)
+                .map {
+                    ArrayList<User>().apply {
+                        it[0].children.forEach { deptTree ->
+                            deptTree.children.forEach { user ->
+                                if (user.userFullName != null)
+                                    add(user)
+                            }
+                        }
+                    }
+                }
+                .doOnSuccess { observeKeyword(it) }
+                .map { userList ->
+                    ArrayList<SelectWrapper<User>>().apply {
+                        userList.forEach { user -> this.add(SelectWrapper(user)) }
+                    }
+                }
+                .subscribe {
+                    userAdapter.setNewData(it)
+                }
+    }
 
-        }
+
+    private fun observeKeyword(userList: List<User>) {
+        RxTextView.textChanges(headerView.etKeyword)
+                .map { it.toString() }
+                .subscribe { keyword ->
+                    userList.filter { user -> user.text.contains(keyword) }
+                            .map { user -> SelectWrapper(user) }
+                            .let { userAdapter.setNewData(it) }
+                }
     }
 
 

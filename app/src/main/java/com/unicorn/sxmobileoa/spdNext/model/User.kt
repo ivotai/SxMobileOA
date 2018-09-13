@@ -18,7 +18,7 @@ data class DeptTree(
         val orgCode: String,
         val deptNo: Int,
         val deptName: String,
-        val children: List<User>,
+        val children: List<User>,   // TODO USER DEPT
         val levelCode: String
 )
 
