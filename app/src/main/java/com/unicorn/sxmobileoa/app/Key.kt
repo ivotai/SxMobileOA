@@ -45,7 +45,7 @@ object Key {
     const val yssl_input = "yssl_input"
     const val hjcd_input = "hjcd_input"
     const val ysdw_input = "ysdw_input"
-//    const val jdr_input = "jdr_input"
+    const val yssj_input = "yssj_input"
 //    const val yssl_input = "yssl_input"
 //
     // const

@@ -34,6 +34,7 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     lateinit var tvYssl: TextView
     lateinit var tvHj: TextView
     lateinit var tvYsdw: TextView
+    lateinit var tvYssj: TextView
     private lateinit var pairList: ArrayList<Pair<TextView, String>>
 
     fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
@@ -53,6 +54,7 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         tvYssl = findViewById(R.id.tvYssl)
         tvHj = findViewById(R.id.tvHj)
         tvYsdw = findViewById(R.id.tvYsdw)
+        tvYssj = findViewById(R.id.tvYssj)
         pairList = ArrayList<Pair<TextView, String>>().apply {
             add(Pair(tvNgr, Key.ngr_input))
             add(Pair(tvNgdw, Key.ngdw_input))
@@ -61,6 +63,7 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             add(Pair(tvYssl, Key.yssl_input))
             add(Pair(tvHj, Key.hjcd_input))
             add(Pair(tvYsdw, Key.ysdw_input))
+            add(Pair(tvYssj, Key.yssj_input))
         }
     }
 

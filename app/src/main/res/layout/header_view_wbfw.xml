@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/md_grey_300"
     android:orientation="vertical"
-    tools:ignore="HardcodedText,RtlSymmetry,SpUsage,LabelFor">
+    tools:ignore="HardcodedText,RtlSymmetry,SpUsage,LabelFor,ContentDescription">
 
     <View
         android:layout_width="match_parent"
@@ -247,6 +247,39 @@
             android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:text="印刷时间"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/tvYssj"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:enabled="false"
+            android:inputType="text"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/time" />
 
     </LinearLayout>
 
