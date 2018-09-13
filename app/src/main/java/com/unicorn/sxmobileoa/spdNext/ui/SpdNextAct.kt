@@ -25,7 +25,7 @@ class SpdNextAct : BaseAct() {
     @DartModel
     lateinit var model: SpdNextActNavigationModel
 
-    private val nextTaskAdapter = NextTaskAdapter()
+    private val nextTaskAdapter = NextTaskSequenceFlowAdapter()
     private val userAdapter = UserAdapter()
 
     override fun initViews() {
