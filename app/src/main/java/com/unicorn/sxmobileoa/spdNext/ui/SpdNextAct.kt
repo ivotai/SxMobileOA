@@ -2,39 +2,28 @@ package com.unicorn.sxmobileoa.spdNext.ui
 
 import android.support.v7.widget.LinearLayoutManager
 import com.jakewharton.rxbinding2.widget.RxTextView
+import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SelectWrapper
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
-import com.unicorn.sxmobileoa.simple.main.model.Menu
-import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spdNext.model.NextTaskSequenceFlow
 import com.unicorn.sxmobileoa.spdNext.model.User
-import com.unicorn.sxmobileoa.spdNext.network.SpdNext
+import com.unicorn.sxmobileoa.spdNext.network.nextUser.NextUser
+import com.unicorn.sxmobileoa.spdNext.network.spdNext.SpdNext
 import com.unicorn.sxmobileoa.spdNext.network.user.GetUser
-import dart.BindExtra
 import dart.DartModel
+import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_spd_next.*
 
-@DartModel
 class SpdNextAct : BaseAct() {
 
     override val layoutId = R.layout.act_spd_next
 
-    @BindExtra(Key.menu)
-    lateinit var menu: Menu
-
-    lateinit var dbxx: Dbxx
-    lateinit var spd: Spd
-
-    override fun initArguments() {
-        dbxx = intent.getSerializableExtra(Key.dbxx) as Dbxx
-        spd = intent.getSerializableExtra(Key.spd) as Spd
-    }
-
+    @DartModel
+    lateinit var model: SpdNextActNavigationModel
 
     private val nextTaskAdapter = NextTaskAdapter()
     private val userAdapter = UserAdapter()
@@ -66,7 +55,7 @@ class SpdNextAct : BaseAct() {
 
         getUser()
 
-        SpdNext(menu, dbxx, spd).toMaybe(this)
+        SpdNext(model.menu, model.dbxx, model.spd).toMaybe(this)
                 .map {
                     ArrayList<SelectWrapper<NextTaskSequenceFlow>>().apply {
                         it.nextTask_sequenceFlow.forEach { nextTaskSequenceFlow ->
@@ -85,6 +74,7 @@ class SpdNextAct : BaseAct() {
                 .map {
                     ArrayList<User>().apply {
                         it[0].children.forEach { deptTree ->
+                            // TODO
                             deptTree.children.forEach { user ->
                                 if (user.userFullName != null)
                                     add(user)
@@ -116,5 +106,12 @@ class SpdNextAct : BaseAct() {
                 }
     }
 
+    override fun registerEvent() {
+        RxBus.get().registerEvent(NextTaskSequenceFlow::class.java, this, Consumer {
+            NextUser(model.spd, it).toMaybe(this@SpdNextAct).subscribe {
+                Logger.e(it.toString())
+            }
+        })
+    }
 
 }

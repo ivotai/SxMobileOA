@@ -18,6 +18,8 @@ object Key {
     const val nodeId = "nodeId"
     const val dbxx = "dbxx"
     const val spd = "spd"
+    const val spdid = "spdid"
+
 
     // login
     const val menu = "menu"

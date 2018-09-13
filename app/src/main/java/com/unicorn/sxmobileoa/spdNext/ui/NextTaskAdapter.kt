@@ -6,6 +6,7 @@ import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.spdNext.model.NextTaskSequenceFlow
@@ -22,6 +23,8 @@ class NextTaskAdapter : BaseQuickAdapter<SelectWrapper<NextTaskSequenceFlow>, Ba
 
         // 点击变动所有item
         tvText.safeClicks().subscribe {
+            RxBus.get().post(item.t)
+
             if (item.isSelected) return@subscribe
             data.forEach { wrapper -> wrapper.isSelected = wrapper == item }
             notifyDataSetChanged()

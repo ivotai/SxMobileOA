@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spdNext.network
+package com.unicorn.sxmobileoa.spdNext.network.spdNext
 
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
