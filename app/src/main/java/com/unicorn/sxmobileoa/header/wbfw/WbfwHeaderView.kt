@@ -91,7 +91,7 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     }
 
     private fun canEdit(dbxx: Dbxx, spd: Spd) {
-        if (!SpdHelper().canEidt2(dbxx.param.nodeId)) return
+        if (!SpdHelper().canEdit2(dbxx.param.nodeId)) return
 
         // 标题的编辑无法统一处理
         tvBt.apply {

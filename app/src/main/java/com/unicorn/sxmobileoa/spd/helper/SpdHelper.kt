@@ -1,9 +1,12 @@
 package com.unicorn.sxmobileoa.spd.helper
 
 import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.mess.UserResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.Spyj
+import com.unicorn.sxmobileoa.spdNext.model.*
 import io.reactivex.Observable
 import io.reactivex.Single
 import org.joda.time.DateTime
@@ -81,9 +84,49 @@ class SpdHelper {
             , "_CBQK", "_SWDJ", "_NGYJ")
             .any { nodeId.contains(it) }
 
-    fun canEidt2(nodeId: String): Boolean {
+    fun canEdit2(nodeId: String): Boolean {
         val list = listOf("_SQR", "_NGR", "_QC", "_YBGS", "_LYR", "_TXJDSQ", "_BGSWS", "_NGRB", "_NBYJ", "_SFZBCSP", "_CBQK", "_SWDJ", "_NGYJ")
         return list.any { nodeId.contains(it) }
+    }
+
+    fun bulidSpdNextParam(response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, result: UserResult): SpdNextParam {
+        val taskDefKey = sequenceFlow.nextTaskKey
+        return SpdNextParam(
+                processInstanceId = response.processInstancesId,
+                taskId = response.taskId,
+                taskPerson = TaskPerson(
+                        personCode = Global.loginInfo!!.userId,
+                        personName = Global.loginInfo!!.userName
+                ),
+                nextTaskPersonModel = ArrayList<NextTaskPersonModel>().apply {
+                    NextTaskPersonModel(
+                            taskType = sequenceFlow.nextTaskType,
+                            taskDefKey = sequenceFlow.nextTaskKey,
+                            approveType = sequenceFlow.approveType,
+                            nextPersonCode = result.userIds,
+                            nextPersonName = result.userNames,
+                            nextLine = sequenceFlow.nextLine
+                    ).let { this.add(it) }
+                },
+                approved = true,
+                catagoryCode = response.flowCode,
+                approveConent = "审判意见",
+                spdId = response.primaryId,
+                fydm = Global.court!!.dm,
+                moduleCode = response.moduleCode,
+                flowCode = response.flowCode,
+                nodeId = response.nodeId,
+                spyjId = response.spyjId,
+                gd = 0,
+                nextTaskKey = sequenceFlow.nextTaskKey,
+                tasktype = sequenceFlow.nextTaskType,
+                spdCode = response.spdCode,
+                endTaskType = sequenceFlow.endTaskType,
+                reject = "",
+                sfjsjd = taskDefKey.toLowerCase() == "end" || taskDefKey == "结束",
+                tzstate = false,
+                buinessCallBackParams = BuinessCallBackParams("")
+        )
     }
 
 }

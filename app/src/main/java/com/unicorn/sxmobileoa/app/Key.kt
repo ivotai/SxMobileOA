@@ -19,7 +19,7 @@ object Key {
     const val dbxx = "dbxx"
     const val spd = "spd"
     const val spdid = "spdid"
-
+    const val saveSpdResponse = "saveSpdResponse"
 
     // login
     const val menu = "menu"

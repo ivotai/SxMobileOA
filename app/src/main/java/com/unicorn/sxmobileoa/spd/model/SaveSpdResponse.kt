@@ -1,5 +1,7 @@
 package com.unicorn.sxmobileoa.spd.model
 
+import java.io.Serializable
+
 data class SaveSpdResponse(
     val taskId: String,
     val nodeId: String,
@@ -13,4 +15,4 @@ data class SaveSpdResponse(
     val spyjId: String,
     val moduleCode: String,
     val currentTaskId: String
-)
+): Serializable

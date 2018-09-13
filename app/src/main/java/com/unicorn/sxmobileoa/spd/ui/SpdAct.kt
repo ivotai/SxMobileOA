@@ -79,11 +79,15 @@ abstract class SpdAct : BaseAct() {
                 }
             }
             btnNextStep.safeClicks().subscribe { _ ->
-                startActivity(Intent(this@SpdAct, SpdNextAct::class.java).apply {
-                    putExtra(Key.menu, model.menu)
-                    putExtra(Key.dbxx, model.dbxx)
-                    putExtra(Key.spd, spd)
-                })
+                basicHeaderView.saveToSpd(spd)
+                SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
+                    startActivity(Intent(this@SpdAct, SpdNextAct::class.java).apply {
+                        putExtra(Key.menu, model.menu)
+                        putExtra(Key.dbxx, model.dbxx)
+                        putExtra(Key.spd, spd)
+                        putExtra(Key.saveSpdResponse, it)
+                    })
+                }
             }
             flowNodeAdapter.addFooterView(this)
         }

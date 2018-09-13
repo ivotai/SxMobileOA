@@ -2,6 +2,7 @@ package com.unicorn.sxmobileoa.spdNext.ui
 
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
+import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd
 import dart.BindExtra
 import dart.DartModel
@@ -17,5 +18,8 @@ class SpdNextActNavigationModel {
 
     @BindExtra
     lateinit var spd: Spd
+
+    @BindExtra
+    lateinit var saveSpdResponse:SaveSpdResponse
 
 }

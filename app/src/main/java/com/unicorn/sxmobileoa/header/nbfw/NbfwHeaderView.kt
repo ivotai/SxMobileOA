@@ -72,7 +72,7 @@ class NbfwHeaderView(context: Context,menu: Menu, dbxx: Dbxx, spd: Spd) : FrameL
     }
 
     private fun canEdit(dbxx: Dbxx) {
-        if (!SpdHelper().canEidt2(dbxx.param.nodeId)) return
+        if (!SpdHelper().canEdit2(dbxx.param.nodeId)) return
 
         // 遍历，使其可编辑
         pairs.forEach {
