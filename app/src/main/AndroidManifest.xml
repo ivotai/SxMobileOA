@@ -24,7 +24,7 @@
         <activity android:name=".simple.dbxx.ui.DbxxAct" />
         <activity android:name=".simple.dept.ui.DeptAct" />
         <activity android:name=".header.nbfw.NbfwAct" />
-        <activity android:name=".spdNext.SpdNextAct">
+        <activity android:name=".spdNext.ui.SpdNextAct">
         </activity>
     </application>
 

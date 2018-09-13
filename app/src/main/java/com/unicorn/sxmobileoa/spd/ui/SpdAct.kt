@@ -16,7 +16,7 @@ import com.unicorn.sxmobileoa.spd.network.SaveSpd
 import com.unicorn.sxmobileoa.spd.network.ToSpd
 import com.unicorn.sxmobileoa.spd.ui.headerView.ButtonFooterView
 import com.unicorn.sxmobileoa.spd.ui.headerView.OperationHeaderView
-import com.unicorn.sxmobileoa.spdNext.SpdNextAct
+import com.unicorn.sxmobileoa.spdNext.ui.SpdNextAct
 import kotlinx.android.synthetic.main.act_title_recycler.*
 import kotlinx.android.synthetic.main.footer_view_button.view.*
 
