@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.clicks
+import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.MainThreadTransformer
 import com.unicorn.sxmobileoa.spd.model.Spd
@@ -20,6 +21,8 @@ import java.util.concurrent.TimeUnit
 fun View.safeClicks(): Observable<Unit> = this.clicks().throttleFirst(1, TimeUnit.SECONDS)
 
 fun TextView.trimText() = this.text.toString().trim()
+
+fun TextView.textChanges() = RxTextView.textChanges(this).map { it.toString() }
 
 fun <T> Maybe<T>.common(lifecycleOwner: LifecycleOwner): Maybe<T> = this.compose(MainThreadTransformer())
         .compose(RxLifecycle.with(lifecycleOwner).disposeOnDestroy())
@@ -38,8 +41,8 @@ fun Spd.set(spdKey: String, spdValue: String) {
     val spdDataList = this.spdData.filter { it.spdKey == spdKey }
     if (!spdDataList.isEmpty()) {
         spdDataList[0].apply {
+            if (this.spdValue == "") create = true else update = true
             this.spdValue = spdValue
-            update = true
             updateTime = DateTime().toString("yyyy-MM-dd HH:mm:ss")
         }
     }

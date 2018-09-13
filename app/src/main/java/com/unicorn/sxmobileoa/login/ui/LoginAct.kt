@@ -11,9 +11,9 @@ import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.login.network.GetLoginInfo
-import com.unicorn.sxmobileoa.simple.main.ui.MainAct
 import com.unicorn.sxmobileoa.simple.court.model.Court
 import com.unicorn.sxmobileoa.simple.court.ui.CourtAct
+import com.unicorn.sxmobileoa.simple.main.ui.MainAct
 import io.reactivex.Observable
 import io.reactivex.functions.Consumer
 import io.reactivex.functions.Function3
@@ -55,8 +55,9 @@ class LoginAct : BaseAct() {
     private fun restoreInputInfo() {
         RxSharedPreferences.with(this).apply {
             getString(Key.courtStr, "")
-                    .map { ComponentHolder.appComponent.getGson().fromJson(it, Court::class.java) }
-                    .subscribe { court ->
+                    .subscribe { courtStr ->
+                        if (courtStr == "") return@subscribe
+                        val court = ComponentHolder.appComponent.getGson().fromJson(courtStr, Court::class.java)
                         Global.court = court
                         tvCourt.text = court.dmms
                     }

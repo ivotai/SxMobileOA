@@ -38,6 +38,10 @@ object Key {
     const val zsmc_input = "zsmc_input"
     const val csmc_input = "csmc_input"
 
+    // wbfw
+    const val ngdw_input = "ngdw_input"
+//    ngr_input
+
     // const
     const val cornerRadiusDp = 5f
 

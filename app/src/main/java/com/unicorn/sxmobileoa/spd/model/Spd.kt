@@ -63,7 +63,7 @@ data class SpdXx(
         val blsj: String,
         val bmbm: String,
         val bmmc: String,
-        val bt: String,
+        var bt: String,
         val column1: String,
         val column10: String,
         val column2: String,
@@ -192,7 +192,7 @@ data class Cyy(
 ):Serializable
 
 data class SpdData(
-        val create: Boolean,
+        var create: Boolean,
         val createUserId: String,
         val createUserName: String,
         val dataType: String,
