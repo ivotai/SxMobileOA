@@ -61,7 +61,7 @@ class SpdNextAct : BaseAct() {
                 userIds = list2.joinToString(",") { it.id },
                 userNames = list2.joinToString(",") { it.userFullName }
         )
-        val param = SpdHelper().bulidSpdNextParam(model.saveSpdResponse, list[0], result)
+        val param = SpdHelper().buildSpdNextParam(model.saveSpdResponse, list[0], result)
     }
 
 
@@ -113,6 +113,7 @@ class SpdNextAct : BaseAct() {
     }
 
     override fun registerEvent() {
+        // TODO dealperson  == 1  时  结束节点无需选择人员
         RxBus.get().registerEvent(NextTaskSequenceFlow::class.java, this, Consumer {
             NextUser(model.spd, it).toMaybe(this@SpdNextAct).subscribe {
                 Logger.e(it.toString())

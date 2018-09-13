@@ -6,20 +6,39 @@ import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spdNext.model.NextTaskSequenceFlow
 
-class NextUserRequest(spd: Spd, nextTaskSequenceFlow: NextTaskSequenceFlow) : MaybeRequest("nextUser") {
+class NextUserRequest(spd: Spd, flow: NextTaskSequenceFlow) : MaybeRequest("nextUser") {
 
     init {
-        addParameter("rolesId", nextTaskSequenceFlow.dealPersonRoles)
+        addParameter("rolesId", flow.dealPersonRoles)
+        addParameter("isCjblr", flow.isCjblr)
+        addParameter("lastCourt", flow.lastCourt)
+        addParameter("nextTaskKey", flow.nextTaskKey)
         addParameter("deptDm", Global.loginInfo!!.deptId)
-        addParameter("nextTaskKey", nextTaskSequenceFlow.nextTaskKey)
         addParameter(Key.processInstanceId, spd.spdXx.processInstancesId)
         addParameter(Key.spdid, spd.spdXx.id)
 
-        // 无效参数
-        addParameter("userIds", "")
-        addParameter("lastCourt", "")
+        val userIds = when (flow.dealPerson) {
+            "1" -> ""
+            "2" -> when (flow.dealPersonType) {
+                "1" -> flow.startPersonId
+                "2" -> Global.loginInfo!!.userId
+                "3" -> flow.dealPersonId
+                else -> ""
+            }
+            else -> ""
+        }
+        addParameter("userIds", userIds)
+
+        val orgCodes = if (flow.dealPerson != "3") ""
+        else when (flow.dealPersonRolesWayDep) {
+            "1" -> Global.loginInfo!!.deptId
+            "2" -> flow.dealPersonRolesWayDep
+            "3" -> ""
+            else -> ""
+        }
+        addParameter("orgCodes", orgCodes)
+
         addParameter("lowerCode", "")
-        addParameter("isCjblr", "")
     }
 
 }

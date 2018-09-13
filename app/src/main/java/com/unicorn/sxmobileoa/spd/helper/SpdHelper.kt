@@ -89,7 +89,7 @@ class SpdHelper {
         return list.any { nodeId.contains(it) }
     }
 
-    fun bulidSpdNextParam(response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, result: UserResult): SpdNextParam {
+    fun buildSpdNextParam(response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, result: UserResult): SpdNextParam {
         val taskDefKey = sequenceFlow.nextTaskKey
         return SpdNextParam(
                 processInstanceId = response.processInstancesId,

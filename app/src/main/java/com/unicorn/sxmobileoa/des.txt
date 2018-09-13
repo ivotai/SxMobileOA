@@ -30,12 +30,8 @@ record：
 连接内网的电脑开个 wifi 就行。
 
 
-rolesId，isCjblr，lastCourt,userIds,orgCodes,lowerCode
+userIds,orgCodes,lowerCode
 
-nextTask.dealPersonRoles---->rolesId--*****--
-nextTask.isCjblr------------>isCjblr--*****--
-nextTask.lastCourt---------->lastCourt--*****--
-nextTask_sequenceFlow. nextTaskKey -->nextTaskKey
 ----userIds--*****--
 nextTask.dealPerson ---->dealperson
   dealperson  == 1  时  结束节点无需选择人员
@@ -57,26 +53,3 @@ nextTask.dealPerson == 3 时
 
 lowerCode=""  --*****--
 
-焦鑫 15:17:12
-_data.processInstancesId, _data.currentTaskId,
-                        _data.flowCode, _data.primaryId, _data.moduleCode, _data.currentTaskName,
-                        _data.fydm, formData.spdCode, _data.spyjId,-1,_data.nodeId, formData.jdsfmrxz
-
-                                                                            taskname="${_nextTask.nextTaskName }"
-                                                                          approveType="${_nextTask.approveType}"
-                                                                          waydep="${_nextTask.dealPersonRolesWayDep }"
-                                                                          dealperson="${_nextTask.dealPerson }"
-                                                                          tasktype="${_nextTask.nextTaskType }"
-                                                                          dealtype="${_nextTask.dealPersonType }"
-                                                                          dealcourt="${_nextTask.dealCourt }"
-                                                                          userid="${_nextTask.dealPersonId }"
-                                                                          startpersonid="${_nextTask.startPersonId }"
-                                                                          lastcourt="${_nextTask.lastCourt }"
-                                                                          rolesway="${_nextTask.dealPersonRolesWay }"
-                                                                          roles="${_nextTask.dealPersonRoles }"
-                                                                          flowCode="${_nextTask.flowCode }"
-                                                                          lowerCourt="${_nextTask.lowerCourt }"
-                                                                          nextLine="${_nextTask.nextLine }"
-                                                                          isCjblr="${_nextTask.isCjblr }"
-                                                                          endTaskType="${_nextTask.endTaskType }" jdsfmrxz="${_nextTask.jdsfmrxz}"
-                                                                          value="${_nextTask.nextTaskKey }" type="radio" class="ace">
