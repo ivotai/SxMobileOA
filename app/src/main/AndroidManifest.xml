@@ -14,17 +14,18 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".login.ui.LoginAct">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity android:name=".simple.court.ui.CourtAct" />
         <activity android:name=".simple.main.ui.MainAct" />
         <activity android:name=".simple.dbxx.ui.DbxxAct" />
         <activity android:name=".simple.dept.ui.DeptAct" />
         <activity android:name=".header.nbfw.NbfwAct" />
-        <activity android:name=".flow.FlowAct"/>
+        <activity android:name=".spdNext.SpdNextAct">
+        </activity>
     </application>
 
 </manifest>

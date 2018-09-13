@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.spd.ui
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
@@ -15,6 +16,7 @@ import com.unicorn.sxmobileoa.spd.network.SaveSpd
 import com.unicorn.sxmobileoa.spd.network.ToSpd
 import com.unicorn.sxmobileoa.spd.ui.headerView.ButtonFooterView
 import com.unicorn.sxmobileoa.spd.ui.headerView.OperationHeaderView
+import com.unicorn.sxmobileoa.spdNext.SpdNextAct
 import kotlinx.android.synthetic.main.act_title_recycler.*
 import kotlinx.android.synthetic.main.footer_view_button.view.*
 
@@ -83,7 +85,11 @@ abstract class SpdAct : BaseAct() {
                 }
             }
             btnNextStep.safeClicks().subscribe { _ ->
-                //            ToastUtils.showShort(sp、d.toString())
+                startActivity(Intent(this@SpdAct, SpdNextAct::class.java).apply {
+                    putExtra(Key.menu, menu)
+                    putExtra(Key.dbxx, dbxx)
+                    putExtra(Key.spd, spd)
+                })
             }
             flowNodeAdapter.addFooterView(this)
         }

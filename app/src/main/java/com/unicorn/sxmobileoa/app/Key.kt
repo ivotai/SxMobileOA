@@ -10,10 +10,14 @@ object Key {
     const val start = "start"
     const val count = "count"
     const val moduleCode = "moduleCode"
+    const val flowCode = "flowCode"
     const val primaryId = "primaryId"
+    const val processInstanceId = "processInstanceId"
     const val taskId = "taskId"
+    const val currentTaskId = "currentTaskId"
     const val nodeId = "nodeId"
     const val dbxx = "dbxx"
+    const val spd = "spd"
 
     // login
     const val menu = "menu"

@@ -23,10 +23,9 @@ class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolde
             setText(R.id.tvNgrDept, "拟稿部门：${item.ngrDept}")
 
             getView<View>(R.id.root).safeClicks().subscribe { _ ->
-
                 var cls: Class<*>? = null
                 when (menu.text) {
-                    "內部文" -> cls = NbfwAct::class.java
+                    "内部发文" -> cls = NbfwAct::class.java
                 }
 
                 if (cls == null) return@subscribe

@@ -3,6 +3,7 @@ package com.unicorn.sxmobileoa.spd.model
 import com.chad.library.adapter.base.entity.IExpandable
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.unicorn.sxmobileoa.spd.ui.FlowNodeAdapter
+import java.io.Serializable
 
 data class Spd(
         val cyy: List<Cyy>,
@@ -10,7 +11,7 @@ data class Spd(
         val spdData: List<SpdData>,
         val spdXx: SpdXx,
         val nodeModel: NodeModel
-)
+):Serializable
 
 data class FlowNode(
         val flowCode: String,
@@ -34,7 +35,7 @@ data class FlowNode(
         val spyjsfbt: String,
         val whsfbt: Int,
         val yjsfzwlj: String
-) : IExpandable<Spyj>,MultiItemEntity {
+) : IExpandable<Spyj>,MultiItemEntity,Serializable {
     override fun getSubItems(): MutableList<Spyj> {
         return spyjList
     }
@@ -155,7 +156,7 @@ data class SpdXx(
         val ytspdid: String,
         val zfbz: Int,
         val zhmc: String
-)
+):Serializable
 
 data class NodeModel(
         val flowCode: String,
@@ -179,7 +180,7 @@ data class NodeModel(
         val spyjsfbt: String,
         val whsfbt: Int,
         val yjsfzwlj: String
-)
+):Serializable
 
 data class Cyy(
         val content: String,
@@ -188,7 +189,7 @@ data class Cyy(
         val system: String,
         val userId: String,
         val xssx: String
-)
+):Serializable
 
 data class SpdData(
         val create: Boolean,
@@ -204,7 +205,7 @@ data class SpdData(
         var update: Boolean,
         var updateTime: String,
         val xtlx: String
-)
+):Serializable
 
 data class Spyj(
         var createUserId: String,
@@ -243,7 +244,7 @@ data class Spyj(
         val whsfbt: Int = 0,
         val xtlx: String = "",
         val yjsfzwlj: Int = 0
-) : MultiItemEntity {
+) : MultiItemEntity,Serializable {
     override fun getItemType() =
             FlowNodeAdapter.type_spyj
 }
