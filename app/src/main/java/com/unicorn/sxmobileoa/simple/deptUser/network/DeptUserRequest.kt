@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spdNext.network.deptUser
+package com.unicorn.sxmobileoa.simple.deptUser.network
 
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
 

@@ -1,8 +1,8 @@
-package com.unicorn.sxmobileoa.spdNext.network.deptUser
+package com.unicorn.sxmobileoa.simple.deptUser.network
 
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 
-class GetUserByDept(deptId: String) : BaseUseCase<Any>() {
+class DeptUser(deptId: String) : BaseUseCase<Any>() {
 
     init {
         request = DeptUserRequest(deptId)

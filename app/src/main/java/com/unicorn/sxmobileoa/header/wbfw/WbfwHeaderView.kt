@@ -3,6 +3,7 @@ package com.unicorn.sxmobileoa.header.wbfw
 import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -15,6 +16,7 @@ import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.code.model.CodeResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dept.model.DeptResult
+import com.unicorn.sxmobileoa.simple.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.helper.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
@@ -34,10 +36,10 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     lateinit var tvBt: TextView     // 真正标题
     lateinit var tvNgr: TextView
     lateinit var tvNgdw: TextView
-    lateinit var tvMj: TextView     // CODE
+    lateinit var tvMj: TextView
     lateinit var tvJdr: TextView
     lateinit var tvYssl: TextView
-    lateinit var tvHj: TextView     // CODE
+    lateinit var tvHj: TextView
     lateinit var tvYsdw: TextView
     lateinit var tvYssj: TextView
     lateinit var tvFwzh: TextView
@@ -176,6 +178,11 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         })
 
         // TODO 阅读范围 DEPT USER
+        tvYdfw.safeClicks().subscribe {
+            context.startActivity(Intent(context,DeptUserAct::class.java).apply {
+
+            })
+        }
     }
 
     override fun saveToSpd(spd: Spd) {

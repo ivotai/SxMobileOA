@@ -65,7 +65,7 @@ data class NextTaskSequenceFlow(
         val nextTaskKey: String,
         val nextTaskName: String,
         val nextTaskShowName: String,
-        val nextTaskType: String,
+        val nextTaskType: String,       // userType 单选 其他 多选  end 结束
         val nextTaskUrl: String,
         val otherCourt: String,
         val otherDepId: String,

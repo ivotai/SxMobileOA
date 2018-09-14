@@ -61,7 +61,7 @@ class SpdNextAct : BaseAct() {
                 userIds = list2.joinToString(",") { it.id },
                 userNames = list2.joinToString(",") { it.userFullName }
         )
-        val param = SpdHelper().buildSpdNextParam(model.saveSpdResponse, list[0], result)
+        val param = SpdHelper().buildSpdNextParam(model.spd, model.saveSpdResponse, list[0], result)
     }
 
 
