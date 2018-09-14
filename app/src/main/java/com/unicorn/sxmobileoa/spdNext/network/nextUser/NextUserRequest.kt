@@ -33,7 +33,7 @@ class NextUserRequest(spd: Spd, flow: NextTaskSequenceFlow) : MaybeRequest("next
                 "1" -> Global.loginInfo!!.deptId
                 "2" -> flow.dealPersonRolesWayDep
                 "3" -> ""
-                else -> ""
+                else -> Global.loginInfo!!.deptId   // ...
             }
         else ""
         addParameter("orgCodes", orgCodes)

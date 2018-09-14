@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.code.model.CodeResult
@@ -17,7 +18,9 @@ import com.unicorn.sxmobileoa.simple.dept.model.DeptResult
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.helper.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import io.reactivex.functions.Consumer
+import java.util.*
 
 @SuppressLint("ViewConstructor")
 class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
@@ -125,8 +128,41 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             }.text = codeResult.result
         })
 
-        // TODO 印刷时间 发文时间 TIME
-
+        // DATE
+        tvYssj.safeClicks().subscribe {
+            val now = Calendar.getInstance()
+            val activity = context as BaseAct
+            val dpd = DatePickerDialog.newInstance(
+                    { _, year, monthOfYear, dayOfMonth ->
+                        val month = monthOfYear + 1
+                        val monthStr = if (month > 9) "$month" else "0$month"
+                        val dayStr = if (dayOfMonth > 9) "$dayOfMonth" else "0$dayOfMonth"
+                        val str = "$year-$monthStr-$dayStr"
+                        tvYssj.text = str
+                    },
+                    now.get(Calendar.YEAR), // Initial year selection
+                    now.get(Calendar.MONTH), // Initial month selection
+                    now.get(Calendar.DAY_OF_MONTH) // Inital day selection
+            )
+            dpd.show(activity.fragmentManager, "dpd")
+        }
+        tvFwsj.safeClicks().subscribe {
+            val now = Calendar.getInstance()
+            val activity = context as BaseAct
+            val dpd = DatePickerDialog.newInstance(
+                    { _, year, monthOfYear, dayOfMonth ->
+                        val month = monthOfYear + 1
+                        val monthStr = if (month > 9) "$month" else "0$month"
+                        val dayStr = if (dayOfMonth > 9) "$dayOfMonth" else "0$dayOfMonth"
+                        val str = "$year-$monthStr-$dayStr"
+                        tvFwsj.text = str
+                    },
+                    now.get(Calendar.YEAR), // Initial year selection
+                    now.get(Calendar.MONTH), // Initial month selection
+                    now.get(Calendar.DAY_OF_MONTH) // Inital day selection
+            )
+            dpd.show(activity.fragmentManager, "dpd")
+        }
         // DEPT
         tvZsjg.clickDept(Key.zsjgmc_input)
         tvCsjg.clickDept(Key.csjgmc_input)
