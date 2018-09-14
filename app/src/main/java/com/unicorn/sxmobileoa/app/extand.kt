@@ -40,12 +40,12 @@ fun Spd.get(spdKey: String): String {
 }
 
 fun Spd.set(spdKey: String, spdValue: String) {
-    val result = this.spdData.filter { it.spdKey == spdKey }
-    if (!result.isEmpty()) {
-        result[0].apply {
+    val list = this.spdData.filter { it.spdKey == spdKey }
+    if (!list.isEmpty()) {
+        list[0].apply {
             if (this.spdValue == "") create = true else update = true
             this.spdValue = spdValue
-            updateTime = DateTime().toString("yyyy-MM-dd HH:mm:ss")
+            this.updateTime = DateTime().toString("yyyy-MM-dd HH:mm:ss")
         }
     }
 }

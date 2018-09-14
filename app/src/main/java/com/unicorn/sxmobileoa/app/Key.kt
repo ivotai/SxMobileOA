@@ -54,6 +54,14 @@ object Key {
     const val fsjgmc_input = "fsjgmc_input"
     const val ydfwmc_input = "ydfwmc_input"
 
+    // sbwx
+    const val jbdw_input = "jbdw_input"
+    const val jbr_input = "jbr_input"
+    const val sj_input = "sj_input"
+    const val wxxq_textarea = "wxxq_textarea"
+    const val wxff_textarea = "wxff_textarea"
+    const val wxysjf_input = "wxysjf_input"
+    const val cljg_input = "cljg_input"
 
     // const
     const val cornerRadiusDp = 5f
