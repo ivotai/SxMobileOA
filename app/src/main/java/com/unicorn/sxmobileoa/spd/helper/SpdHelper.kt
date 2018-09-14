@@ -91,7 +91,6 @@ class SpdHelper {
         val list = listOf("_SQR", "_NGR", "_QC", "_YBGS", "_LYR", "_TXJDSQ", "_BGSWS", "_NGRB", "_NBYJ", "_SFZBCSP", "_CBQK", "_SWDJ", "_NGYJ")
         return list.any { nodeId.contains(it) }
     }
-//    OA_FLOW_XZZB_SBWX_XXZXYJ
 
     fun buildSpdNextParam(response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, result: UserResult): SpdNextParam {
         val taskDefKey = sequenceFlow.nextTaskKey
