@@ -8,6 +8,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.header.nbfw.NbfwAct
+import com.unicorn.sxmobileoa.header.sbwx.SbwxAct
 import com.unicorn.sxmobileoa.header.wbfw.WbfwAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
@@ -28,8 +29,8 @@ class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolde
                 when (menu.text) {
                     "内部发文" -> cls = NbfwAct::class.java
                     "外部发文" -> cls = WbfwAct::class.java
+                    "设备维修" -> cls = SbwxAct::class.java
                 }
-
                 if (cls == null) return@subscribe
 
                 mContext.startActivity(Intent(mContext, cls).apply {

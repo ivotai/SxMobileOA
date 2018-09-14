@@ -15,7 +15,7 @@ data class Spd(
 
 data class FlowNode(
         val flowCode: String,
-        val flowNodeId: String,
+        val flowNodeId: String?,
         val formIndex: Int,
         val gdlx: String,
         val jdsfmrxz: String,
