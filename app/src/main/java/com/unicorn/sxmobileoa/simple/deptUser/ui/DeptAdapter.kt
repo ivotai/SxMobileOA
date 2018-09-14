@@ -10,7 +10,7 @@ import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.simple.dept.model.Dept
+import com.unicorn.sxmobileoa.select.dept.model.Dept
 import com.unicorn.sxmobileoa.simple.deptUser.network.DeptUser
 
 class DeptAdapter : BaseQuickAdapter<SelectWrapper<Dept>, BaseViewHolder>(R.layout.item_text) {

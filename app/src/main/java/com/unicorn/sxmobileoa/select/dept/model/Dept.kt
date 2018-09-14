@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.simple.dept.model
+package com.unicorn.sxmobileoa.select.dept.model
 
 data class Dept(
         var text: String,

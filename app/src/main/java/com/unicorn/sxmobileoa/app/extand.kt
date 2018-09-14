@@ -13,7 +13,7 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.MainThreadTransformer
 import com.unicorn.sxmobileoa.select.code.ui.CodeAct
-import com.unicorn.sxmobileoa.simple.dept.ui.DeptAct
+import com.unicorn.sxmobileoa.select.dept.ui.DeptAct
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import florent37.github.com.rxlifecycle.RxLifecycle

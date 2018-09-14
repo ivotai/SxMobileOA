@@ -5,7 +5,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.SelectWrapper
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.simple.dept.network.GetDept
+import com.unicorn.sxmobileoa.select.dept.network.GetDept
 import kotlinx.android.synthetic.main.act_dept_user.*
 
 class DeptUserAct : BaseAct() {

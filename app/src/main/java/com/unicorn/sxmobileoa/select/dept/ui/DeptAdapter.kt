@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.simple.dept.ui
+package com.unicorn.sxmobileoa.select.dept.ui
 
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
@@ -8,7 +8,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.mess.SelectWrapper
-import com.unicorn.sxmobileoa.simple.dept.model.Dept
+import com.unicorn.sxmobileoa.select.dept.model.Dept
 
 class DeptAdapter : BaseQuickAdapter<SelectWrapper<Dept>, BaseViewHolder>(R.layout.item_text) {
 

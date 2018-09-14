@@ -22,7 +22,7 @@
         <activity android:name=".simple.court.ui.CourtAct" />
         <activity android:name=".simple.main.ui.MainAct" />
         <activity android:name=".simple.dbxx.ui.DbxxAct" />
-        <activity android:name=".simple.dept.ui.DeptAct" />
+        <activity android:name="com.unicorn.sxmobileoa.select.dept.ui.DeptAct" />
         <activity android:name="com.unicorn.sxmobileoa.select.code.ui.CodeAct" />
         <activity android:name=".spdNext.ui.SpdNextAct"></activity>
         <activity android:name=".simple.deptUser.ui.DeptUserAct" />
