@@ -51,10 +51,12 @@ class DeptAct : BaseAct() {
                 .map { it.deptData }
                 // 过滤父节点
                 .map { it.filter { dept -> dept.value.length != 1 } }
-                .doOnSuccess { observeKeyword(it) }
+                .doOnSuccess {
+                    addKeywordHeaderView()
+                    observeKeyword(it)
+                }
                 .map { it.map { dept -> SelectWrapper(dept) } }
                 .subscribe { t ->
-                    addKeywordHeaderView()
                     deptAdapter.setNewData(t)
                 }
     }
