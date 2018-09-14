@@ -12,7 +12,7 @@ import com.unicorn.sxmobileoa.simple.court.model.Court
 class CourtAdapter : BaseQuickAdapter<Court, BaseViewHolder>(R.layout.item_text) {
 
     override fun convert(helper: BaseViewHolder, item: Court) {
-        with(helper) {
+        helper.apply{
             val tvText = getView<TextView>(R.id.tvText)
             tvText.text = item.dmms
 

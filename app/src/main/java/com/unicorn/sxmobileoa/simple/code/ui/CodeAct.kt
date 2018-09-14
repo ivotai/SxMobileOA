@@ -15,20 +15,20 @@ class CodeAct : BaseAct() {
         initRecyclerView()
     }
 
-    private lateinit var codeAdapter: CodeAdapter
+    private lateinit var mAdapter: CodeAdapter
 
     private fun initRecyclerView() {
-        codeAdapter = CodeAdapter(model.key)
+        mAdapter = CodeAdapter(model.key)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            codeAdapter.bindToRecyclerView(this)
+            mAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
         }
     }
 
     override fun bindIntent() {
         GetCode(model.code).toMaybe(this)
-                .subscribe { codeAdapter.setNewData(it) }
+                .subscribe { mAdapter.setNewData(it) }
     }
 
     override val layoutId = R.layout.act_title_recycler

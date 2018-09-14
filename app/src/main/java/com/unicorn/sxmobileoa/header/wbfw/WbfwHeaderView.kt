@@ -10,10 +10,10 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.app.mess.SelectResult
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.simple.code.model.CodeResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dept.model.DeptResult
 import com.unicorn.sxmobileoa.simple.deptUser.ui.DeptUserAct
@@ -123,11 +123,11 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         // CODE
         tvMj.clickCode("SPD_MJCD", Key.mjcd_select, "密级")
         tvHj.clickCode("SPD_HJCD", Key.hjcd_select, "缓急")
-        RxBus.get().registerEvent(CodeResult::class.java, context as LifecycleOwner, Consumer { codeResult ->
-            when (codeResult.key) {
+        RxBus.get().registerEvent(SelectResult::class.java, context as LifecycleOwner, Consumer { selectResult ->
+            when (selectResult.key) {
                 Key.mjcd_select -> tvMj
                 else -> tvHj
-            }.text = codeResult.result
+            }.text = selectResult.result
         })
 
         // DATE
