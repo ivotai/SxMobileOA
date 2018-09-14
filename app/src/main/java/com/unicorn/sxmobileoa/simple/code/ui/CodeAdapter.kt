@@ -14,10 +14,10 @@ class CodeAdapter(val key: String) : BaseQuickAdapter<Code, BaseViewHolder>(R.la
 
     override fun convert(helper: BaseViewHolder, item: Code) {
         with(helper) {
-            setText(R.id.tvText, "")
+            setText(R.id.tvText, item.text)
 
             getView<View>(R.id.tvText).safeClicks().subscribe {
-                RxBus.get().post(CodeResult(item, key))
+                RxBus.get().post(CodeResult(item.text, key))
                 (mContext as BaseAct).finish()
             }
         }

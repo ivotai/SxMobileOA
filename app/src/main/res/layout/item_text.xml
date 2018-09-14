@@ -4,9 +4,9 @@
     android:id="@+id/tvText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:padding="16dp"
-    android:background="@color/md_white"
     android:textColor="@color/md_black"
     android:textSize="16dp"
     tools:ignore="SpUsage" />

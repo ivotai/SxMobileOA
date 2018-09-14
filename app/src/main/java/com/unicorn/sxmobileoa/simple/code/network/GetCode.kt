@@ -3,15 +3,16 @@ package com.unicorn.sxmobileoa.simple.code.network
 import com.google.gson.reflect.TypeToken
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
+import com.unicorn.sxmobileoa.simple.code.model.Code
 
-class GetCode(code: String) : BaseUseCase<Any>() {
+class GetCode(code: String) : BaseUseCase<List<Code>>() {
 
     init {
         request = CodeRequest(code)
     }
 
-    override fun toResult(json: String): Any {
-        val type = object : TypeToken<List<Any>>() {}.type
-        return ComponentHolder.appComponent.getGson().fromJson<List<Any>>(json, type)
+    override fun toResult(json: String): List<Code> {
+        val type = object : TypeToken<List<Code>>() {}.type
+        return ComponentHolder.appComponent.getGson().fromJson<List<Code>>(json, type)
     }
 }

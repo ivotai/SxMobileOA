@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa.simple.code.model
 
 data class CodeResult(
-        val code: Code,
+        val result: String,
         val key: String
 )

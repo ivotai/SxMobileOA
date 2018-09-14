@@ -11,6 +11,7 @@ import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
+import com.unicorn.sxmobileoa.simple.code.model.CodeResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dept.model.DeptResult
 import com.unicorn.sxmobileoa.simple.main.model.Menu
@@ -72,10 +73,10 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         pairs = ArrayList<PAIR<TextView, String>>().apply {
             add(PAIR(tvNgr, Key.ngr_input))
             add(PAIR(tvNgdw, Key.ngdw_input))
-            add(PAIR(tvMj, Key.mjcd_input))
+            add(PAIR(tvMj, Key.mjcd_select))
             add(PAIR(tvJdr, Key.jdr_input))
             add(PAIR(tvYssl, Key.yssl_input))
-            add(PAIR(tvHj, Key.hjcd_input))
+            add(PAIR(tvHj, Key.hjcd_select))
             add(PAIR(tvYsdw, Key.ysdw_input))
             add(PAIR(tvYssj, Key.yssj_input))
             add(PAIR(tvFwsj, Key.fwsj_input))
@@ -114,18 +115,31 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             }
         }
 
-        // TODO 密级 缓急 CODE
-        // TODO 印刷时间 发文时间 TIME
-        // TODO 主送机关 抄送机关 发送机关 DEPT
-        // TODO 阅读范围 DEPT USER
-        tvZsjg.clickDept(Key.zsjgmc_input)
-        RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
-            val target: TextView = when (deptResult.key) {
-                Key.zsjgmc_input -> tvZsjg
-                else -> tvZsjg
-            }
-            target.text = deptResult.result
+        // CODE
+        tvMj.clickCode("SPD_MJCD", Key.mjcd_select, "密级")
+        tvHj.clickCode("SPD_HJCD", Key.hjcd_select, "缓急")
+        RxBus.get().registerEvent(CodeResult::class.java, context as LifecycleOwner, Consumer { codeResult ->
+            when (codeResult.key) {
+                Key.mjcd_select -> tvMj
+                else -> tvHj
+            }.text = codeResult.result
         })
+
+        // TODO 印刷时间 发文时间 TIME
+
+        // DEPT
+        tvZsjg.clickDept(Key.zsjgmc_input)
+        tvCsjg.clickDept(Key.csjgmc_input)
+        tvFsjg.clickDept(Key.fsjgmc_input)
+        RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
+            when (deptResult.key) {
+                Key.zsjgmc_input -> tvZsjg
+                Key.csjgmc_input -> tvCsjg
+                else -> tvFsjg
+            }.text = deptResult.result
+        })
+
+        // TODO 阅读范围 DEPT USER
     }
 
     override fun saveToSpd(spd: Spd) {

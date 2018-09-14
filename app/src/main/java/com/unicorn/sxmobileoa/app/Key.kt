@@ -18,8 +18,10 @@ object Key {
     const val nodeId = "nodeId"
     const val dbxx = "dbxx"
     const val spd = "spd"
-    const val spdid = "spdid"
+    const val spdId = "spdId"
     const val saveSpdResponse = "saveSpdResponse"
+    const val code = "code"
+    const val title = "title"
 
     // login
     const val menu = "menu"
@@ -40,10 +42,10 @@ object Key {
 
     // wbfw
     const val ngdw_input = "ngdw_input"
-    const val mjcd_input = "mjcd_input"
+    const val mjcd_select = "mjcd_select"
     const val jdr_input = "jdr_input"
     const val yssl_input = "yssl_input"
-    const val hjcd_input = "hjcd_input"
+    const val hjcd_select = "hjcd_select"
     const val ysdw_input = "ysdw_input"
     const val yssj_input = "yssj_input"
     const val fwsj_input = "fwsj_input"

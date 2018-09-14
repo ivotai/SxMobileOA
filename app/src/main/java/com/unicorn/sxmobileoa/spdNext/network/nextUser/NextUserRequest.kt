@@ -14,7 +14,7 @@ class NextUserRequest(spd: Spd, flow: NextTaskSequenceFlow) : MaybeRequest("next
         addParameter("lastCourt", flow.lastCourt)
         addParameter("nextTaskKey", flow.nextTaskKey)
         addParameter(Key.processInstanceId, spd.spdXx.processInstancesId)
-        addParameter(Key.spdid, spd.spdXx.id)
+        addParameter(Key.spdId, spd.spdXx.id)
 
         val userIds = when (flow.dealPerson) {
             "1" -> ""
