@@ -28,13 +28,14 @@ class NextUserRequest(spd: Spd, flow: NextTaskSequenceFlow) : MaybeRequest("next
         }
         addParameter("userIds", userIds)
 
-        val orgCodes = if (flow.dealPerson != "3") ""
-        else when (flow.dealPersonRolesWayDep) {
-            "1" -> Global.loginInfo!!.deptId
-            "2" -> flow.dealPersonRolesWayDep
-            "3" -> ""
-            else -> ""
-        }
+        val orgCodes = if (flow.dealPerson == "3")
+            when (flow.dealPersonRolesWayDep) {
+                "1" -> Global.loginInfo!!.deptId
+                "2" -> flow.dealPersonRolesWayDep
+                "3" -> ""
+                else -> ""
+            }
+        else ""
         addParameter("orgCodes", orgCodes)
 
         addParameter("lowerCode", "")

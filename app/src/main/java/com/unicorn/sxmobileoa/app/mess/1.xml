@@ -1,0 +1,26 @@
+<nextUserRequest>
+    <UUID></UUID>
+    <busiCode>nextUser</busiCode>
+    <loginBusiType>1</loginBusiType>
+    <loginName>0000</loginName>
+    <parameters>
+        <parameter name="fydm"><![CDATA[R60]]></parameter>
+        <parameter name="userId"><![CDATA[366000000]]></parameter>
+        <parameter name="rolesId"><![CDATA[]]></parameter>
+        <parameter name="isCjblr"><![CDATA[]]></parameter>
+        <parameter name="lastCourt"><![CDATA[n]]></parameter>
+        <parameter name="nextTaskKey"><![CDATA[OA_FLOW_GWGL_NBFW_BBBL]]></parameter>
+        <parameter name="processInstanceId"><![CDATA[ad7d944f-b6ee-11e8-bad5-2e60ce96e903]]></parameter>
+        <parameter name="spdid"><![CDATA[009c9b71-2133-4bdd-8aa2-2b2161ecaab8]]></parameter>
+        <parameter name="userIds"><![CDATA[]]></parameter>
+        <parameter name="orgCodes"><![CDATA[]]></parameter>
+        <parameter name="lowerCode"><![CDATA[]]></parameter>
+    </parameters>
+    <phoneType>android</phoneType>
+    <randCode>2qUYaXc2EZ3i</randCode>
+    <randCodeSec></randCodeSec>
+    <requestFlow>20180914090315eoRcJW</requestFlow>
+    <ticket>6681e130-bbed-451a-9d5a-e54e23ccef23zFYWZ6</ticket>
+    <time>20180914090315</time>
+    <version>1.0</version>
+</nextUserRequest>
