@@ -23,10 +23,8 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
     override fun loadPage(pageNo: Int): Maybe<Page<Dbxx>> = GetDbxx(pageNo, model.menu).toMaybe(this)
 
     override fun initViews() {
-        model.apply {
-            mAdapter = DbxxAdapter(menu)
-            titleBar.setTitle(menu.text)
-        }
+        titleBar.setTitle(model.menu.text)
+        mAdapter = DbxxAdapter(model.menu)
         super.initViews()
         HorizontalDividerItemDecoration.Builder(this)
                 .colorResId(R.color.md_grey_100)

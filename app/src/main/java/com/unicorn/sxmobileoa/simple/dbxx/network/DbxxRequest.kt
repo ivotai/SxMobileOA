@@ -7,9 +7,9 @@ import com.unicorn.sxmobileoa.simple.main.model.Menu
 class DbxxRequest(pageNo: Int, menu: Menu) : PageRequest(busiCode = "dbxx", pageNo = pageNo) {
 
     init {
-        addParameter("moduleCode", menu.moduleCode)
-        addParameter("flowCode", menu.flowCode)
-        addParameter("spdCode", menu.spdCode)
+        addParameter(Key.moduleCode, menu.moduleCode)
+        addParameter(Key.flowCode, menu.flowCode)
+        addParameter(Key.spdCode, menu.spdCode)
         // 查询待办列表
         addParameter(Key.type, "1")
     }

@@ -11,6 +11,8 @@ object Key {
     const val count = "count"
     const val moduleCode = "moduleCode"
     const val flowCode = "flowCode"
+    const val spdCode = "spdCode"
+
     const val primaryId = "primaryId"
     const val processInstanceId = "processInstanceId"
     const val taskId = "taskId"

@@ -28,27 +28,3 @@ record：
 9/6 手机如何连接内网
 连接内网的电脑开个 wifi 就行。
 
-
-userIds,orgCodes,lowerCode
-
-----userIds--*****--
-nextTask.dealPerson ---->dealperson
-  dealperson  == 1  时  结束节点无需选择人员
-  dealperson  == 2  时
-     dealtype--->nextTask.dealPersonType
-     dealtype== 1  时  userIds = nextTask.startPersonId;
-     dealtype== 2  时  userIds = 当前用户ID;
-     dealtype== 3  时  userIds =nextTask.dealPersonId
-
----orgCodes--*****--
-
-nextTask.dealPerson == 3 时
-   nextTask.dealPersonRolesWayDep==1
-     orgCodes  = 本部门编码
-   nextTask.dealPersonRolesWayDep==2
-     orgCodes  = nextTask.dealPersonRolesWayDep
-   nextTask.dealPersonRolesWayDep==3
-     orgCodes  =  ""
-
-lowerCode=""  --*****--
-
