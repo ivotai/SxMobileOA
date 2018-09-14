@@ -83,3 +83,19 @@
 
 -keep class org.simpleframework.xml.core.** { *; }
 -keepclassmembers class org.simpleframework.xml.core.** { *; }
+
+#dart
+-dontwarn dart.internal.**
+-keep class **__ExtraBinder { *; }
+-keep class **__NavigationModelBinder { *; }
+-keepclasseswithmembernames class * {
+    @dart.* <fields>;
+}
+-keep class **Henson { *; }
+-keep class **__IntentBuilder { *; }
+-keep class **HensonNavigator { *; }
+
+-keep class dart.common.** { *; }
+-keepclassmembers class dart.common.** { *; }
+
+

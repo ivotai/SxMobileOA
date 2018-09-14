@@ -9,12 +9,18 @@ import com.unicorn.sxmobileoa.spdNext.model.NextTaskSequenceFlow
 class NextUserRequest(spd: Spd, flow: NextTaskSequenceFlow) : MaybeRequest("nextUser") {
 
     init {
-        addParameter("rolesId", flow.dealPersonRoles)
         addParameter("isCjblr", flow.isCjblr)
         addParameter("lastCourt", flow.lastCourt)
         addParameter("nextTaskKey", flow.nextTaskKey)
         addParameter(Key.processInstanceId, spd.spdXx.processInstancesId)
         addParameter(Key.spdId, spd.spdXx.id)
+
+        val rolesId = when (flow.dealPerson) {
+            "3" -> flow.dealPersonRoles
+            "2" -> ""
+            else -> ""
+        }
+        addParameter("rolesId", rolesId)
 
         val userIds = when (flow.dealPerson) {
             "1" -> ""
@@ -24,6 +30,7 @@ class NextUserRequest(spd: Spd, flow: NextTaskSequenceFlow) : MaybeRequest("next
                 "3" -> flow.dealPersonId
                 else -> ""
             }
+            "3" -> ""
             else -> ""
         }
         addParameter("userIds", userIds)
