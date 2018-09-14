@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.simple.court.ui
+package com.unicorn.sxmobileoa.simple.code.ui
 
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -7,16 +7,17 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.simple.court.model.Court
+import com.unicorn.sxmobileoa.simple.code.model.Code
+import com.unicorn.sxmobileoa.simple.code.model.CodeResult
 
-class CourtAdapter : BaseQuickAdapter<Court, BaseViewHolder>(R.layout.item_text) {
+class CodeAdapter(val key: String) : BaseQuickAdapter<Code, BaseViewHolder>(R.layout.item_text) {
 
-    override fun convert(helper: BaseViewHolder, item: Court) {
+    override fun convert(helper: BaseViewHolder, item: Code) {
         with(helper) {
-            setText(R.id.tvText, item.dmms)
+            setText(R.id.tvText, "")
 
             getView<View>(R.id.tvText).safeClicks().subscribe {
-                RxBus.get().post(item)
+                RxBus.get().post(CodeResult(item, key))
                 (mContext as BaseAct).finish()
             }
         }

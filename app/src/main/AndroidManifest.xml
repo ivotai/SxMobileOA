@@ -23,6 +23,7 @@
         <activity android:name=".simple.main.ui.MainAct" />
         <activity android:name=".simple.dbxx.ui.DbxxAct" />
         <activity android:name=".simple.dept.ui.DeptAct" />
+        <activity android:name=".simple.code.ui.CodeAct" />
         <activity android:name=".spdNext.ui.SpdNextAct">
         </activity>
 
