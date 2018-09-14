@@ -1,5 +1,7 @@
 package com.unicorn.sxmobileoa.spdNext.model
 
+import com.chad.library.adapter.base.entity.IExpandable
+
 data class CourtTree(
         val id: String,
         val text: String,
@@ -7,8 +9,21 @@ data class CourtTree(
         val courtCode: String,
         val courtNo: Int,
         val courtName: String,
-        val children: List<DeptTree>
-)
+        val children: MutableList<DeptTree>
+) : IExpandable<DeptTree> {
+    override fun getSubItems(): MutableList<DeptTree> {
+        return children
+    }
+
+    var b = false
+    override fun isExpanded() = b
+
+    override fun getLevel() = 0
+
+    override fun setExpanded(expanded: Boolean) {
+        b = expanded
+    }
+}
 
 data class DeptTree(
         val id: String,
@@ -18,9 +33,23 @@ data class DeptTree(
         val orgCode: String,
         val deptNo: Int,
         val deptName: String,
-        val children: List<User>,   // TODO USER DEPT
+        val children: MutableList<Any>,   // TODO USER DEPT
         val levelCode: String
-)
+) : IExpandable<Any> {
+
+    override fun getSubItems() = children
+
+    var b = false
+
+    override fun isExpanded() = b
+
+    override fun getLevel() = 1
+
+    override fun setExpanded(expanded: Boolean) {
+        b = expanded
+    }
+
+}
 
 data class User(
         val id: String,

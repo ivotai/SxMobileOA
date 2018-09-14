@@ -11,7 +11,7 @@ import com.unicorn.sxmobileoa.app.mess.UserResult
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.textChanges
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.spd.helper.SpdHelper
+import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.spdNext.model.NextTaskSequenceFlow
 import com.unicorn.sxmobileoa.spdNext.model.User
 import com.unicorn.sxmobileoa.spdNext.network.nextUser.NextUser
@@ -83,10 +83,10 @@ class SpdNextAct : BaseAct() {
                     ArrayList<User>().apply {
                         it[0].children.forEach { deptTree ->
                             // TODO
-                            deptTree.children.forEach { user ->
-                                if (user.userFullName != null)
-                                    add(user)
-                            }
+//                            deptTree.children.forEach { user ->
+//                                if (user.userFullName != null)
+//                                    add(user)
+//                            }
                         }
                     }
                 }

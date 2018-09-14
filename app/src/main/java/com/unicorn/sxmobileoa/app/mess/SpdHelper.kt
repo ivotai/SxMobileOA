@@ -1,49 +1,15 @@
-package com.unicorn.sxmobileoa.spd.helper
+package com.unicorn.sxmobileoa.app.mess
 
 import com.unicorn.sxmobileoa.app.Global
-import com.unicorn.sxmobileoa.app.mess.UserResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.Spyj
 import com.unicorn.sxmobileoa.spdNext.model.*
-import io.reactivex.Observable
-import io.reactivex.Single
 import org.joda.time.DateTime
 import java.util.*
 
 class SpdHelper {
-//
-//    fun getCurrentSpyj(dbxx: Dbxx, spd: Spd): String {
-//        val currentNodeId = dbxx.param.nodeId
-//        val currentFlowNodeList = spd.flowNodeList.filter { flowNode ->
-//            currentNodeId in flowNode.flowNodeId.split(",")
-//        }
-//
-//        // 归档，不做任何处理
-//        if (currentFlowNodeList.isEmpty()) return ""
-//
-//        // 当前流程节点
-//        val currentFlowNode = currentFlowNodeList[0]
-//        // 当前可编辑审批意见
-//        val currentSpyjList = currentFlowNode.spyjList.filter { spyj -> spyj.spyjStatus == 0 }
-//        return currentSpyjList[0].spyj
-//    }
-
-    fun addSpyjIfNeed2(spd: Spd) {
-        val spyjNodeId = spd.nodeModel.spyjNodeId
-        var count = 0
-        spd.flowNodeList.forEach { flowNode ->
-            flowNode.spyjList.forEach { spyj ->
-                if (spyj.spyjNodeId == spyjNodeId && spyj.spyjStatus == 0) {
-                    count++
-                }
-            }
-        }
-        if (count == 1) {
-            // add
-        }
-    }
 
     fun addSpyjIfNeed(dbxx: Dbxx, spd: Spd) {
         val currentNodeId = dbxx.param.nodeId
@@ -81,11 +47,6 @@ class SpdHelper {
             currentFlowNode.spyjList.add(spyj)
         }
     }
-
-    fun canEdit(nodeId: String): Single<Boolean> = Observable.fromArray("_SQR", "_NGR", "_QC", "_YBGS", "_LYR",
-            "_TXJDSQ", "_BGSWS", "_NGRB", "_NBYJ", "_SFZBCSP"
-            , "_CBQK", "_SWDJ", "_NGYJ")
-            .any { nodeId.contains(it) }
 
     fun canEdit2(nodeId: String): Boolean {
         val list = listOf("_SQR", "_NGR", "_QC", "_YBGS", "_LYR", "_TXJDSQ", "_BGSWS", "_NGRB", "_NBYJ", "_SFZBCSP", "_CBQK", "_SWDJ", "_NGYJ")
