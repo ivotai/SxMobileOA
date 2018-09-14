@@ -34,7 +34,7 @@ class DeptAct : BaseAct() {
 
     override fun bindIntent() {
         getDept()
-        clickConfirm()
+        clickOperation()
     }
 
     private lateinit var headerView: KeywordHeaderView
@@ -48,9 +48,16 @@ class DeptAct : BaseAct() {
 
     private fun getDept() {
         GetDept().toMaybe(this)
-                .map { it.deptData }
+                .map { deptData -> deptData.deptData
+                        .map { if(it.isFather) it.text = "父节点 ${it.text}" }
+                        deptData.deptData
+                }
                 // 过滤父节点
-                .map { it.filter { dept -> dept.value.length != 1 } }
+//                .map { deptList ->
+//                    deptList.map { if(it.isFather) it.text = "父节点 ${it.text}" }
+//
+//                    deptList.filter { dept -> dept.isFather }
+//                }
                 .doOnSuccess {
                     addKeywordHeaderView()
                     observeKeyword(it)
@@ -61,16 +68,16 @@ class DeptAct : BaseAct() {
                 }
     }
 
-    private fun observeKeyword(deptList: List<Dept>) {
+    private fun observeKeyword(allDept: List<Dept>) {
         headerView.etKeyword.textChanges()
                 .subscribe { keyword ->
-                    deptList.filter { dept -> dept.text.contains(keyword) }
+                    allDept.filter { dept -> dept.text.contains(keyword) }
                             .map { dept -> SelectWrapper(dept) }
                             .let { deptAdapter.setNewData(it) }
                 }
     }
 
-    private fun clickConfirm() {
+    private fun clickOperation() {
         titleBar.setOperation("确认").safeClicks().subscribe {
             deptAdapter.data
                     .filter { wrapper -> wrapper.isSelected }

@@ -2,7 +2,9 @@ package com.unicorn.sxmobileoa.app
 
 import android.app.Activity
 import android.arch.lifecycle.LifecycleOwner
+import android.content.Context
 import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
@@ -72,5 +74,11 @@ fun TextView.clickCode(code: String, key: String, title: String) {
             putExtra(Key.key, key)
             putExtra(Key.title, title)
         })
+    }
+}
+
+fun Context.finish(){
+    if (this is AppCompatActivity){
+        this.finish()
     }
 }
