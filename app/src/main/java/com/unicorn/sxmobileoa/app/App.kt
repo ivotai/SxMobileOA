@@ -14,7 +14,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         init()
-//        setGlobalErrorHandler()
+        setErrorHandler()
     }
 
     private fun init() {
@@ -23,7 +23,7 @@ class App : Application() {
         Utils.init(this)
     }
 
-    private fun setGlobalErrorHandler() {
+    private fun setErrorHandler() {
         RxJavaPlugins.setErrorHandler {
             if (it is SocketTimeoutException || it.cause is SocketTimeoutException) {
                 ToastUtils.showShort("连接超时")

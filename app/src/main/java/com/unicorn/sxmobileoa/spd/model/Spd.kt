@@ -11,7 +11,7 @@ data class Spd(
         val spdData: List<SpdData>,
         val spdXx: SpdXx,
         val nodeModel: NodeModel
-):Serializable
+) : Serializable
 
 data class FlowNode(
         val flowCode: String,
@@ -29,13 +29,14 @@ data class FlowNode(
         val spyjId: String,
         val spyjList: MutableList<Spyj>,
         val spyjNodeId: String,
-        val spyjNodeName: String,
+        val spyjNodeName: String?,
+        val nodemc: String?,
         val spyjSort: Int,
         val spyjStatus: Int,
         val spyjsfbt: String,
         val whsfbt: Int,
         val yjsfzwlj: String
-) : IExpandable<Spyj>,MultiItemEntity,Serializable {
+) : IExpandable<Spyj>, MultiItemEntity, Serializable {
     override fun getSubItems(): MutableList<Spyj> {
         return spyjList
     }
@@ -54,7 +55,9 @@ data class FlowNode(
         b = expanded
     }
 
-    override fun getItemType() =            FlowNodeAdapter.type_flow_node
+    override fun getItemType() = FlowNodeAdapter.type_flow_node
+
+    val safeSpyjNodeName get() = if (flowNodeId == null) nodemc else spyjNodeName
 
 }
 
@@ -156,7 +159,7 @@ data class SpdXx(
         val ytspdid: String,
         val zfbz: Int,
         val zhmc: String
-):Serializable
+) : Serializable
 
 data class NodeModel(
         val flowCode: String,
@@ -180,7 +183,7 @@ data class NodeModel(
         val spyjsfbt: String,
         val whsfbt: Int,
         val yjsfzwlj: String
-):Serializable
+) : Serializable
 
 data class Cyy(
         val content: String,
@@ -189,7 +192,7 @@ data class Cyy(
         val system: String,
         val userId: String,
         val xssx: String
-):Serializable
+) : Serializable
 
 data class SpdData(
         var create: Boolean,
@@ -205,7 +208,7 @@ data class SpdData(
         var update: Boolean,
         var updateTime: String,
         val xtlx: String
-):Serializable
+) : Serializable
 
 data class Spyj(
         var createUserId: String,
@@ -244,7 +247,7 @@ data class Spyj(
         val whsfbt: Int = 0,
         val xtlx: String = "",
         val yjsfzwlj: Int = 0
-) : MultiItemEntity,Serializable {
+) : MultiItemEntity, Serializable {
     override fun getItemType() =
             FlowNodeAdapter.type_spyj
 }

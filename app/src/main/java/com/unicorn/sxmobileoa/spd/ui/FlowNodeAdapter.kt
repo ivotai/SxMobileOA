@@ -28,7 +28,7 @@ class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
         when (item.itemType) {
             type_flow_node -> {
                 item as FlowNode
-                helper.setText(R.id.tvSpyjNodeName, item.spyjNodeName)
+                helper.setText(R.id.tvSpyjNodeName, item.safeSpyjNodeName)
 
                 helper.getView<View>(R.id.ivArrow).visibility =
                         if (item.spyjList.isEmpty()) View.INVISIBLE

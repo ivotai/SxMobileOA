@@ -47,8 +47,8 @@ class SpdHelper {
 
     fun addSpyjIfNeed(dbxx: Dbxx, spd: Spd) {
         val currentNodeId = dbxx.param.nodeId
-        val custom = spd.flowNodeList[0].flowNodeId != null
-        val currentFlowNodeList = if (custom) spd.flowNodeList.filter { flowNode ->
+        val isCustomNode = spd.flowNodeList[0].flowNodeId != null
+        val currentFlowNodeList = if (isCustomNode) spd.flowNodeList.filter { flowNode ->
             currentNodeId in flowNode.flowNodeId!!.split(",")
         } else {
             spd.flowNodeList.filter { it.nodeid == currentNodeId }
@@ -70,7 +70,7 @@ class SpdHelper {
                     spyj = "",
                     spyjId = UUID.randomUUID().toString(),
                     spyjNodeId = currentFlowNode.spyjNodeId,
-                    spyjNodeName = currentFlowNode.spyjNodeName,
+                    spyjNodeName = currentFlowNode.safeSpyjNodeName!!,
                     spyjSort = currentFlowNode.spyjSort,
                     spyjSprId = Global.loginInfo!!.userId,
                     spyjSprName = Global.loginInfo!!.userName,
@@ -91,6 +91,7 @@ class SpdHelper {
         val list = listOf("_SQR", "_NGR", "_QC", "_YBGS", "_LYR", "_TXJDSQ", "_BGSWS", "_NGRB", "_NBYJ", "_SFZBCSP", "_CBQK", "_SWDJ", "_NGYJ")
         return list.any { nodeId.contains(it) }
     }
+//    OA_FLOW_XZZB_SBWX_XXZXYJ
 
     fun buildSpdNextParam(response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, result: UserResult): SpdNextParam {
         val taskDefKey = sequenceFlow.nextTaskKey

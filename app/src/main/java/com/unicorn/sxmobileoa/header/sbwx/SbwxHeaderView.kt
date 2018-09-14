@@ -79,15 +79,18 @@ class SbwxHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     }
 
     private fun canEdit(dbxx: Dbxx) {
-        val currentNodeId = dbxx.param.nodeId
-        if (!SpdHelper().canEdit2(currentNodeId)) return
-
+        val nodeId = dbxx.param.nodeId
+        if (SpdHelper().canEdit2(nodeId)) {
+            tvCljg.isEnabled = true
+            return
+        }
+        //
         val list = listOf(
                 "OA_FLOW_XZZB_SBWX_XXZXYJ",
                 "OA_FLOW_XZZB_SBWX_XXZXBL",
                 "OA_FLOW_XZZB_SBWX_WXRY"
         )
-        if (currentNodeId in list) {
+        if (nodeId in list) {
             tvCljg.isEnabled = true
         }
     }

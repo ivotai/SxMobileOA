@@ -137,6 +137,7 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:text="设备名称及安装地点"
+            android:paddingEnd="16dp"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
@@ -162,6 +163,7 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:text="故障现象及维修办法"
+            android:paddingEnd="16dp"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
@@ -186,6 +188,7 @@
         <TextView
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
             android:text="设备维修预算经费（单位元）"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
