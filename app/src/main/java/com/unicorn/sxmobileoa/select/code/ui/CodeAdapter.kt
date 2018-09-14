@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.simple.code.ui
+package com.unicorn.sxmobileoa.select.code.ui
 
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -6,9 +6,9 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.finish
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.SelectResult
+import com.unicorn.sxmobileoa.select.model.SelectResult
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.simple.code.model.Code
+import com.unicorn.sxmobileoa.select.code.model.Code
 
 class CodeAdapter(val key: String) : BaseQuickAdapter<Code, BaseViewHolder>(R.layout.item_text) {
 

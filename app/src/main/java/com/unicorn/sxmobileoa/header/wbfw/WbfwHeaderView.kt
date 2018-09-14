@@ -10,12 +10,11 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.SelectResult
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
+import com.unicorn.sxmobileoa.select.model.SelectResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
-import com.unicorn.sxmobileoa.simple.dept.model.DeptResult
 import com.unicorn.sxmobileoa.simple.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.helper.SpdHelper
@@ -120,15 +119,6 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             }
         }
 
-        // CODE
-        tvMj.clickCode("SPD_MJCD", Key.mjcd_select, "密级")
-        tvHj.clickCode("SPD_HJCD", Key.hjcd_select, "缓急")
-        RxBus.get().registerEvent(SelectResult::class.java, context as LifecycleOwner, Consumer { selectResult ->
-            when (selectResult.key) {
-                Key.mjcd_select -> tvMj
-                else -> tvHj
-            }.text = selectResult.result
-        })
 
         // DATE
         tvYssj.safeClicks().subscribe {
@@ -165,16 +155,21 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             )
             dpd.show(activity.fragmentManager, "dpd")
         }
-        // DEPT
+
+        // CODE & DEPT
+        tvMj.clickCode("SPD_MJCD", Key.mjcd_select, "密级")
+        tvHj.clickCode("SPD_HJCD", Key.hjcd_select, "缓急")
         tvZsjg.clickDept(Key.zsjgmc_input)
         tvCsjg.clickDept(Key.csjgmc_input)
         tvFsjg.clickDept(Key.fsjgmc_input)
-        RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
-            when (deptResult.key) {
+        RxBus.get().registerEvent(SelectResult::class.java, context as LifecycleOwner, Consumer { selectResult ->
+            when (selectResult.key) {
+                Key.mjcd_select -> tvMj
+                Key.hjcd_select -> tvHj
                 Key.zsjgmc_input -> tvZsjg
                 Key.csjgmc_input -> tvCsjg
                 else -> tvFsjg
-            }.text = deptResult.result
+            }.text = selectResult.result
         })
 
         // TODO 阅读范围 DEPT USER

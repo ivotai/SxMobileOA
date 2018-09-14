@@ -9,8 +9,8 @@ import com.unicorn.sxmobileoa.app.mess.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.textChanges
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.select.model.SelectResult
 import com.unicorn.sxmobileoa.simple.dept.model.Dept
-import com.unicorn.sxmobileoa.simple.dept.model.DeptResult
 import com.unicorn.sxmobileoa.simple.dept.network.GetDept
 import dart.DartModel
 import kotlinx.android.synthetic.main.act_title_recycler.*
@@ -84,7 +84,7 @@ class DeptAct : BaseAct() {
                     .map { wrapperSelected -> wrapperSelected.t }
                     .let { deptListSelected ->
                         val result = deptListSelected.joinToString(",") { dept -> dept.text }
-                        RxBus.get().post(DeptResult(model.key, result))
+                        RxBus.get().post(SelectResult(model.key, result))
                     }
             finish()
         }

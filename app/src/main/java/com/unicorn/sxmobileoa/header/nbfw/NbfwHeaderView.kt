@@ -11,8 +11,8 @@ import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
+import com.unicorn.sxmobileoa.select.model.SelectResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
-import com.unicorn.sxmobileoa.simple.dept.model.DeptResult
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.helper.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
@@ -84,11 +84,11 @@ class NbfwHeaderView(context: Context,menu: Menu, dbxx: Dbxx, spd: Spd) : FrameL
         // 选择部门
         tvZsmc.clickDept(Key.zsmc_input)
         tvCsmc.clickDept(Key.csmc_input)
-        RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
-            when (deptResult.key) {
+        RxBus.get().registerEvent(SelectResult::class.java, context as LifecycleOwner, Consumer { selectResult ->
+            when (selectResult.key) {
                 Key.zsmc_input -> tvZsmc
                 else -> tvCsmc
-            }.text = deptResult.result
+            }.text = selectResult.result
         })
     }
 

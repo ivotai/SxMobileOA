@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.app.mess
+package com.unicorn.sxmobileoa.select.model
 
 class SelectResult(
         val key: String,

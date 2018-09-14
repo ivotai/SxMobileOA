@@ -1,9 +1,9 @@
-package com.unicorn.sxmobileoa.simple.code.network
+package com.unicorn.sxmobileoa.select.code.network
 
 import com.google.gson.reflect.TypeToken
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
-import com.unicorn.sxmobileoa.simple.code.model.Code
+import com.unicorn.sxmobileoa.select.code.model.Code
 
 class GetCode(code: String) : BaseUseCase<List<Code>>() {
 

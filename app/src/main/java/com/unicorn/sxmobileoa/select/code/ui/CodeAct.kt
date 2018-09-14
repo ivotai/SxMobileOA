@@ -1,10 +1,10 @@
-package com.unicorn.sxmobileoa.simple.code.ui
+package com.unicorn.sxmobileoa.select.code.ui
 
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.simple.code.network.GetCode
+import com.unicorn.sxmobileoa.select.code.network.GetCode
 import dart.DartModel
 import kotlinx.android.synthetic.main.act_title_recycler.*
 

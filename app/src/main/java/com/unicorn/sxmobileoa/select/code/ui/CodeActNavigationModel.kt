@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.simple.code.ui
+package com.unicorn.sxmobileoa.select.code.ui
 
 import dart.BindExtra
 import dart.DartModel
