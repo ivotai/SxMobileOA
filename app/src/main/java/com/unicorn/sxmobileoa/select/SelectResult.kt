@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.select.model
+package com.unicorn.sxmobileoa.select
 
 class SelectResult(
         val key: String,

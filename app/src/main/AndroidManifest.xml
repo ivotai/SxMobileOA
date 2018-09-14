@@ -25,7 +25,7 @@
         <activity android:name="com.unicorn.sxmobileoa.select.dept.ui.DeptAct" />
         <activity android:name="com.unicorn.sxmobileoa.select.code.ui.CodeAct" />
         <activity android:name=".spdNext.ui.SpdNextAct"></activity>
-        <activity android:name=".simple.deptUser.ui.DeptUserAct" />
+        <activity android:name="com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct" />
         <activity android:name=".header.nbfw.NbfwAct" />
         <activity android:name=".header.wbfw.WbfwAct" />
         <activity android:name=".header.sbwx.SbwxAct" />
