@@ -39,6 +39,9 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     lateinit var tvFwzh: TextView
     lateinit var tvFwsj: TextView
     lateinit var tvZsjg: TextView
+    lateinit var tvCsjg: TextView
+    lateinit var tvFsjg: TextView
+    lateinit var tvYdfw: TextView
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
@@ -51,7 +54,7 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
     private fun findView() {
         tvTitle = findViewById(R.id.tvTitle)
-        tvBt = findViewById(R.id.tvBt)          //
+        tvBt = findViewById(R.id.tvBt)
         tvNgr = findViewById(R.id.tvNgr)
         tvNgdw = findViewById(R.id.tvNgdw)
         tvMj = findViewById(R.id.tvMj)
@@ -63,6 +66,9 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         tvFwzh = findViewById(R.id.tvFwzh)
         tvFwsj = findViewById(R.id.tvFwsj)
         tvZsjg = findViewById(R.id.tvZsjg)
+        tvCsjg = findViewById(R.id.tvCsjg)
+        tvFsjg = findViewById(R.id.tvFsjg)
+        tvYdfw = findViewById(R.id.tvYdfw)
         pairs = ArrayList<PAIR<TextView, String>>().apply {
             add(PAIR(tvNgr, Key.ngr_input))
             add(PAIR(tvNgdw, Key.ngdw_input))
@@ -74,6 +80,9 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             add(PAIR(tvYssj, Key.yssj_input))
             add(PAIR(tvFwsj, Key.fwsj_input))
             add(PAIR(tvZsjg, Key.zsjgmc_input))
+            add(PAIR(tvCsjg, Key.csjgmc_input))
+            add(PAIR(tvFsjg, Key.fsjgmc_input))
+            add(PAIR(tvYdfw, Key.ydfwmc_input))
         }
     }
 
@@ -107,8 +116,8 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
         // TODO 密级 缓急 CODE
         // TODO 印刷时间 发文时间 TIME
-        // TODO 主送机关... DEPT
-        // TODO DEPT USER
+        // TODO 主送机关 抄送机关 发送机关 DEPT
+        // TODO 阅读范围 DEPT USER
         tvZsjg.clickDept(Key.zsjgmc_input)
         RxBus.get().registerEvent(DeptResult::class.java, context as LifecycleOwner, Consumer { deptResult ->
             val target: TextView = when (deptResult.key) {

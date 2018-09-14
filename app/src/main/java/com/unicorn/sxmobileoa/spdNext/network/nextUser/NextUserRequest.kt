@@ -13,7 +13,6 @@ class NextUserRequest(spd: Spd, flow: NextTaskSequenceFlow) : MaybeRequest("next
         addParameter("isCjblr", flow.isCjblr)
         addParameter("lastCourt", flow.lastCourt)
         addParameter("nextTaskKey", flow.nextTaskKey)
-        addParameter("deptDm", Global.loginInfo!!.deptId)
         addParameter(Key.processInstanceId, spd.spdXx.processInstancesId)
         addParameter(Key.spdid, spd.spdXx.id)
 

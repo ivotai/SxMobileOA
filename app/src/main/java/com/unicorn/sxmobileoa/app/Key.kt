@@ -48,9 +48,9 @@ object Key {
     const val yssj_input = "yssj_input"
     const val fwsj_input = "fwsj_input"
     const val zsjgmc_input = "zsjgmc_input"
-//    const val ysdw_input = "ysdw_input"
-//    const val yssj_input = "yssj_input"
-//    const val fwsj_input = "fwsj_input"
+    const val csjgmc_input = "csjgmc_input"
+    const val fsjgmc_input = "fsjgmc_input"
+    const val ydfwmc_input = "ydfwmc_input"
 
 
     // const

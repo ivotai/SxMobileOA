@@ -4,7 +4,7 @@ import com.unicorn.sxmobileoa.spd.ui.SpdAct
 
 class NbfwAct : SpdAct() {
 
-    override fun addBasicHeaderView() = NbfwHeaderView(this, menu, dbxx, spd).apply {
+    override fun addBasicHeaderView() = NbfwHeaderView(this, model.menu, model.dbxx, spd).apply {
         flowNodeAdapter.addHeaderView(this)
     }
 
