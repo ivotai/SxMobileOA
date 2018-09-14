@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
-import com.unicorn.sxmobileoa.app.mess.SelectWrapper
+import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.select.dept.network.GetDept
 import com.unicorn.sxmobileoa.select.deptUser.network.DeptUser

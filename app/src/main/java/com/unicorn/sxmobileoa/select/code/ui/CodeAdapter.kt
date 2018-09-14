@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.finish
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.select.SelectResult
+import com.unicorn.sxmobileoa.app.mess.model.SelectResult
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.select.code.model.Code
 

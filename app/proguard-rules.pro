@@ -48,26 +48,18 @@
 # Ignore JSR 305 annotations for embedding nullability information.
 -dontwarn javax.annotation.**
 
-#moshi
-#-dontwarn okio.**
-#-dontwarn javax.annotation.**
-#-keepclasseswithmembers class * {
-#    @com.squareup.moshi.* <methods>;
-#}
-#-keep @com.squareup.moshi.JsonQualifier interface *
-#-keepclassmembers class kotlin.Metadata {
-#    public <methods>;
-#}
-#-keep class **JsonAdapter {
-#    <init>(...);
-#    <fields>;
-#}
-#-keepnames @com.squareup.moshi.JsonClass class *
-
 #model
 -keep class com.unicorn.sxmobileoa.app.network.model.**{*;}
--keep class com.unicorn.sxmobileoa.simple.court.model.**{*;}
+-keep class com.unicorn.sxmobileoa.app.mess.model.**{*;}
+-keep class com.unicorn.sxmobileoa.app.ui.page.model.**{*;}
 -keep class com.unicorn.sxmobileoa.login.model.**{*;}
+-keep class com.unicorn.sxmobileoa.select.code.model.**{*;}
+-keep class com.unicorn.sxmobileoa.select.dept.model.**{*;}
+-keep class com.unicorn.sxmobileoa.simple.court.model.**{*;}
+-keep class com.unicorn.sxmobileoa.simple.dbxx.model.**{*;}
+-keep class com.unicorn.sxmobileoa.simple.main.model.**{*;}
+-keep class com.unicorn.sxmobileoa.spd.model.**{*;}
+-keep class com.unicorn.sxmobileoa.spdNext.model.**{*;}
 
 #RxCache
 #-dontwarn io.rx_cache2.internal.**
@@ -95,7 +87,4 @@
 -keep class **__IntentBuilder { *; }
 -keep class **HensonNavigator { *; }
 
--keep class dart.common.** { *; }
--keepclassmembers class dart.common.** { *; }
-
-
+-dontwarn dart.common.**

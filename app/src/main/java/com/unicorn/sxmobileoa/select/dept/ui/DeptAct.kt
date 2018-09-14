@@ -5,11 +5,11 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.SelectWrapper
+import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.textChanges
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.select.SelectResult
+import com.unicorn.sxmobileoa.app.mess.model.SelectResult
 import com.unicorn.sxmobileoa.select.dept.model.Dept
 import com.unicorn.sxmobileoa.select.dept.network.GetDept
 import dart.DartModel

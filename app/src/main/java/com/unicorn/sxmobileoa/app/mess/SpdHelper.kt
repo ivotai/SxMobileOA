@@ -1,6 +1,7 @@
 package com.unicorn.sxmobileoa.app.mess
 
 import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.mess.model.UserResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd

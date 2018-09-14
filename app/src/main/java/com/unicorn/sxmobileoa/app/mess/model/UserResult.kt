@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.app.mess
+package com.unicorn.sxmobileoa.app.mess.model
 
 data class UserResult(
      val userIds:String,

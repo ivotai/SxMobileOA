@@ -6,10 +6,10 @@ import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
+import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
-import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.network.SaveSpd
 import com.unicorn.sxmobileoa.spd.network.ToSpd
@@ -71,8 +71,9 @@ abstract class SpdAct : BaseAct() {
     }
 
     private fun addFooterView() {
-        ButtonFooterView(this).apply {
-            btnSave.safeClicks().subscribe { _ ->
+        val footer = ButtonFooterView(this)
+        flowNodeAdapter.addFooterView(footer)
+           footer.btnSave.safeClicks().subscribe { _ ->
                 // TODO QUESTION! 展开会向 flowNodeList 里添 sub
                 // TODO 不采用 textChange 方式 时刻保存到 spd 而是最后再保存
                 basicHeaderView.saveToSpd(spd)
@@ -80,7 +81,7 @@ abstract class SpdAct : BaseAct() {
                     ToastUtils.showShort("保存成功")
                 }
             }
-            btnNextStep.safeClicks().subscribe { _ ->
+           footer.btnNextStep.safeClicks().subscribe { _ ->
                 basicHeaderView.saveToSpd(spd)
                 SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
                     startActivity(Intent(this@SpdAct, SpdNextAct::class.java).apply {
@@ -90,8 +91,6 @@ abstract class SpdAct : BaseAct() {
                         putExtra(Key.saveSpdResponse, it)
                     })
                 }
-            }
-            flowNodeAdapter.addFooterView(this)
         }
     }
 

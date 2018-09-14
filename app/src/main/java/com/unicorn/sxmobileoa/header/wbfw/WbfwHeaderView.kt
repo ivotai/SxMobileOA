@@ -13,7 +13,7 @@ import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.select.SelectResult
+import com.unicorn.sxmobileoa.app.mess.model.SelectResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.simple.main.model.Menu

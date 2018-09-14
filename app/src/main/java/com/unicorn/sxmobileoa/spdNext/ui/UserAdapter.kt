@@ -6,7 +6,7 @@ import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.mess.SelectWrapper
+import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.spdNext.model.User
 

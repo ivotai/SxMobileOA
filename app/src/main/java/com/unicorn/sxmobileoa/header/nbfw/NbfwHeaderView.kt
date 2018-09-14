@@ -11,7 +11,7 @@ import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.select.SelectResult
+import com.unicorn.sxmobileoa.app.mess.model.SelectResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
