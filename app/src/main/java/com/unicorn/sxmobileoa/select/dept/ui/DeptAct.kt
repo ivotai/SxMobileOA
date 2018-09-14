@@ -9,9 +9,9 @@ import com.unicorn.sxmobileoa.app.mess.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.textChanges
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.select.model.SelectResult
 import com.unicorn.sxmobileoa.select.dept.model.Dept
 import com.unicorn.sxmobileoa.select.dept.network.GetDept
+import com.unicorn.sxmobileoa.select.model.SelectResult
 import dart.DartModel
 import kotlinx.android.synthetic.main.act_title_recycler.*
 
@@ -22,12 +22,12 @@ class DeptAct : BaseAct() {
         initRecyclerView()
     }
 
-    private val deptAdapter = DeptAdapter()
+    private val mAdapter = DeptAdapter()
 
     private fun initRecyclerView() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@DeptAct)
-            deptAdapter.bindToRecyclerView(this)
+            mAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
         }
     }
@@ -42,48 +42,38 @@ class DeptAct : BaseAct() {
     private fun addKeywordHeaderView() {
         headerView = KeywordHeaderView(this).apply {
             setHint("请输入部门")
-            deptAdapter.addHeaderView(this)
+            mAdapter.addHeaderView(this)
         }
     }
 
     private fun getDept() {
         GetDept().toMaybe(this)
-                .map { deptData -> deptData.deptData
-                        .map { if(it.isFather) it.text = "父节点 ${it.text}" }
-                        deptData.deptData
-                }
-                // 过滤父节点
-//                .map { deptList ->
-//                    deptList.map { if(it.isFather) it.text = "父节点 ${it.text}" }
-//
-//                    deptList.filter { dept -> dept.isFather }
-//                }
+                .map { it.deptData }
+                .doOnSuccess { list -> list.forEach { if (it.isFather) it.text = "${it.text} 父节点" } }
                 .doOnSuccess {
                     addKeywordHeaderView()
-                    observeKeyword(it)
+                    textChangeKeyword(it)
                 }
                 .map { it.map { dept -> SelectWrapper(dept) } }
-                .subscribe { t ->
-                    deptAdapter.setNewData(t)
-                }
+                .subscribe { mAdapter.setNewData(it) }
     }
 
-    private fun observeKeyword(allDept: List<Dept>) {
+    private fun textChangeKeyword(allDept: List<Dept>) {
         headerView.etKeyword.textChanges()
                 .subscribe { keyword ->
                     allDept.filter { dept -> dept.text.contains(keyword) }
                             .map { dept -> SelectWrapper(dept) }
-                            .let { deptAdapter.setNewData(it) }
+                            .let { mAdapter.setNewData(it) }
                 }
     }
 
     private fun clickOperation() {
-        titleBar.setOperation("确认").safeClicks().subscribe {
-            deptAdapter.data
-                    .filter { wrapper -> wrapper.isSelected }
-                    .map { wrapperSelected -> wrapperSelected.t }
-                    .let { deptListSelected ->
-                        val result = deptListSelected.joinToString(",") { dept -> dept.text }
+        titleBar.setOperation("确认").safeClicks().subscribe { _ ->
+            mAdapter.data
+                    .filter { it.isSelected }
+                    .map { it.t }
+                    .let { listSelected ->
+                        val result = listSelected.joinToString(",") { it.text }
                         RxBus.get().post(SelectResult(model.key, result))
                     }
             finish()
