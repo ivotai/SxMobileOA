@@ -10,6 +10,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.select.dept.model.Dept
 import com.unicorn.sxmobileoa.select.deptUser.network.DeptUser
+import counicom.rn.sxmobileoa.select.deptUser.model.RealUser
 
 class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>(null) {
 
@@ -38,12 +39,29 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
 
                 // 点击后请求
                 tvText.safeClicks().subscribe {
-                    DeptUser(item.id).toMaybe(mContext as LifecycleOwner).subscribe {
-                        com.orhanobut.logger.Logger.e(it.toString())
+                    if (item.userList != null) {
+                        if (item.isExpanded) collapse(helper.adapterPosition)
+                        else expand(helper.adapterPosition)
+                        return@subscribe
                     }
+                    getUser(item)
                 }
+            }
+            type_user -> {
+                item as RealUser
+                val tvText = helper.getView<TextView>(R.id.tvText)
+                tvText.text = item.fullname
             }
         }
     }
+
+    private fun getUser(dept: Dept) {
+        DeptUser(dept.id).toMaybe(mContext as LifecycleOwner).subscribe { userList ->
+            if (userList.isEmpty()) return@subscribe
+            dept.userList = userList
+
+        }
+    }
+
 
 }
