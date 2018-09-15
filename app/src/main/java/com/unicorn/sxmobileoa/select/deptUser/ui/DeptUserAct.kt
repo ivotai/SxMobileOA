@@ -3,14 +3,7 @@ package com.unicorn.sxmobileoa.select.deptUser.ui
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
-import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
-import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.model.SelectResult
-import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
-import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.app.textChanges
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.select.dept.model.Dept
 import com.unicorn.sxmobileoa.select.dept.network.GetDept
 import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserActNavigationModel
 import dart.DartModel
@@ -43,34 +36,34 @@ class DeptUserAct : BaseAct() {
                 .map { it.deptData }
                 .map { it.sortedBy { dept -> dept.levelCode } }
 //                .doOnSuccess { textChangeKeyword(it) }
-                .map { it.map { dept -> SelectWrapper(dept) } }
+//                .map { it.map { dept -> SelectWrapper(dept) } }
                 .subscribe { mAdapter.setNewData(it) }
     }
 
-    private fun textChangeKeyword(allDept: List<Dept>) {
-        KeywordHeaderView(this).apply {
-            setHint("请输入部门")
-            mAdapter.addHeaderView(this)
-        }.etKeyword.textChanges()
-                .subscribe { keyword ->
-                    allDept.filter { dept -> dept.text.contains(keyword) }
-                            .map { dept -> SelectWrapper(dept) }
-                            .let { mAdapter.setNewData(it) }
-                }
-    }
-
-    private fun clickOperation() {
-        titleBar.setOperation("确认").safeClicks().subscribe { _ ->
-            mAdapter.data
-                    .filter { it.isSelected }
-                    .map { it.t }
-                    .let { listSelected ->
-                        val result = listSelected.joinToString(",") { it.text }
-                        RxBus.get().post(SelectResult(model.key, result))
-                    }
-            finish()
-        }
-    }
+//    private fun textChangeKeyword(allDept: List<Dept>) {
+//        KeywordHeaderView(this).apply {
+//            setHint("请输入部门")
+//            mAdapter.addHeaderView(this)
+//        }.etKeyword.textChanges()
+//                .subscribe { keyword ->
+//                    allDept.filter { dept -> dept.text.contains(keyword) }
+//                            .map { dept -> SelectWrapper(dept) }
+//                            .let { mAdapter.setNewData(it) }
+//                }
+//    }
+//
+//    private fun clickOperation() {
+//        titleBar.setOperation("确认").safeClicks().subscribe { _ ->
+//            mAdapter.data
+//                    .filter { it.isSelected }
+//                    .map { it.t }
+//                    .let { listSelected ->
+//                        val result = listSelected.joinToString(",") { it.text }
+//                        RxBus.get().post(SelectResult(model.key, result))
+//                    }
+//            finish()
+//        }
+//    }
 
     @DartModel
     lateinit var model: DeptUserActNavigationModel

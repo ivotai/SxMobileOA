@@ -10,14 +10,14 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.app.mess.SpdHelper
+import com.unicorn.sxmobileoa.app.mess.model.SelectResult
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.app.mess.model.SelectResult
-import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
+import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
-import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import io.reactivex.functions.Consumer
@@ -175,7 +175,7 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         // TODO 阅读范围 DEPT USER
         tvYdfw.safeClicks().subscribe {
             context.startActivity(Intent(context,DeptUserAct::class.java).apply {
-
+                    putExtra(Key.key,Key.ydfwmc_input)
             })
         }
     }
