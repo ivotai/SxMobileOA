@@ -11,7 +11,7 @@ import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.spdNext.model.NextTaskSequenceFlow
 
-class NextTaskSequenceFlowAdapter : BaseQuickAdapter<SelectWrapper<NextTaskSequenceFlow>, BaseViewHolder>(R.layout.item_text) {
+class SequenceFlowAdapter : BaseQuickAdapter<SelectWrapper<NextTaskSequenceFlow>, BaseViewHolder>(R.layout.item_text) {
 
     override fun convert(helper: BaseViewHolder, item: SelectWrapper<NextTaskSequenceFlow>) {
         val tvText = helper.getView<TextView>(R.id.tvText)

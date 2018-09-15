@@ -24,13 +24,13 @@
         <activity android:name=".simple.dbxx.ui.DbxxAct" />
         <activity android:name="com.unicorn.sxmobileoa.select.dept.ui.DeptAct" />
         <activity android:name="com.unicorn.sxmobileoa.select.code.ui.CodeAct" />
-        <activity android:name=".spdNext.ui.SpdNextAct"/>
+        <activity android:name=".spdNext.ui.SequenceFlowAct" />
         <activity android:name="com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct" />
         <activity android:name=".header.nbfw.NbfwAct" />
         <activity android:name=".header.wbfw.WbfwAct" />
         <activity android:name=".header.sbwx.SbwxAct" />
         <activity android:name=".header.qjsq.QjsqAct" />
-
+        <activity android:name=".commitTask.ui.CommitTaskAct" />
     </application>
 
 </manifest>

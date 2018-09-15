@@ -1,5 +1,5 @@
 package com.unicorn.sxmobileoa.select.deptUser.model
 
-import counicom.rn.sxmobileoa.select.deptUser.model.RealUser
+import counicom.rn.sxmobileoa.select.deptUser.model.DeptUser
 
-class DeptUserResult(val userList: List<RealUser>)
+class DeptUserResult(val userList: List<DeptUser>)

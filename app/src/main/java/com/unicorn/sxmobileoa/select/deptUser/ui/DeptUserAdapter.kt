@@ -12,8 +12,6 @@ import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.select.dept.model.Dept
 import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserResult
-import com.unicorn.sxmobileoa.select.deptUser.network.DeptUser
-import counicom.rn.sxmobileoa.select.deptUser.model.RealUser
 
 class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>(null) {
 
@@ -51,7 +49,7 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                 }
             }
             type_user -> {
-                item as RealUser
+                item as counicom.rn.sxmobileoa.select.deptUser.model.DeptUser
                 val tvText = helper.getView<TextView>(R.id.tvText)
                 tvText.text = item.fullname
 

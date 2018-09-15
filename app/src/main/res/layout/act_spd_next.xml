@@ -13,16 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="@color/md_white"
         android:orientation="horizontal">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/flowRecyclerView"
+            android:id="@+id/rvSequenceFlow"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/userRecyclerView"
+            android:id="@+id/rvUser"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />

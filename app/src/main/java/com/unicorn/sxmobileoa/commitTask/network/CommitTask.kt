@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spdNext.network
+package com.unicorn.sxmobileoa.commitTask.network
 
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 import com.unicorn.sxmobileoa.spdNext.model.TaskInstance

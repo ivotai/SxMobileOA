@@ -1,7 +1,7 @@
 package com.unicorn.sxmobileoa.spdNext.model
 
-data class User2(
-    val id: String, // 传这个
+data class FlowUser(
+    val id: String,     // 传这个
     val uuid: String,
     val courtCode: String,
     val courtStdNo: String,

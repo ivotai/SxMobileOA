@@ -9,13 +9,13 @@ import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.commitTask.ui.CommitTaskAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.network.SaveSpd
 import com.unicorn.sxmobileoa.spd.network.ToSpd
 import com.unicorn.sxmobileoa.spd.ui.headerView.ButtonFooterView
 import com.unicorn.sxmobileoa.spd.ui.headerView.OperationHeaderView
-import com.unicorn.sxmobileoa.spdNext.ui.SpdNextAct
 import dart.DartModel
 import kotlinx.android.synthetic.main.act_title_recycler.*
 import kotlinx.android.synthetic.main.footer_view_button.view.*
@@ -73,24 +73,24 @@ abstract class SpdAct : BaseAct() {
     private fun addFooterView() {
         val footer = ButtonFooterView(this)
         flowNodeAdapter.addFooterView(footer)
-           footer.btnSave.safeClicks().subscribe { _ ->
-                // TODO QUESTION! 展开会向 flowNodeList 里添 sub
-                // TODO 不采用 textChange 方式 时刻保存到 spd 而是最后再保存
-                basicHeaderView.saveToSpd(spd)
-                SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
-                    ToastUtils.showShort("保存成功")
-                }
+        footer.btnSave.safeClicks().subscribe { _ ->
+            // TODO QUESTION! 展开会向 flowNodeList 里添 sub
+            // TODO 不采用 textChange 方式 时刻保存到 spd 而是最后再保存
+            basicHeaderView.saveToSpd(spd)
+            SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
+                ToastUtils.showShort("保存成功")
             }
-           footer.btnNextStep.safeClicks().subscribe { _ ->
-                basicHeaderView.saveToSpd(spd)
-                SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
-                    startActivity(Intent(this@SpdAct, SpdNextAct::class.java).apply {
-                        putExtra(Key.menu, model.menu)
-                        putExtra(Key.dbxx, model.dbxx)
-                        putExtra(Key.spd, spd)
-                        putExtra(Key.saveSpdResponse, it)
-                    })
-                }
+        }
+        footer.btnNextStep.safeClicks().subscribe { _ ->
+            basicHeaderView.saveToSpd(spd)
+            SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
+                startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
+                    putExtra(Key.menu, model.menu)
+                    putExtra(Key.dbxx, model.dbxx)
+                    putExtra(Key.spd, spd)
+                    putExtra(Key.saveSpdResponse, it)
+                })
+            }
         }
     }
 

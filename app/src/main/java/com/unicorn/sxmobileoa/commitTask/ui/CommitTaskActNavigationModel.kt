@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spdNext.ui
+package com.unicorn.sxmobileoa.commitTask.ui
 
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
@@ -8,7 +8,7 @@ import dart.BindExtra
 import dart.DartModel
 
 @DartModel
-class SpdNextActNavigationModel {
+class CommitTaskActNavigationModel {
 
     @BindExtra
     lateinit var menu: Menu

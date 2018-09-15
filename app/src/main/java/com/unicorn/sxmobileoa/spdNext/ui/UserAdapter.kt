@@ -8,13 +8,13 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.spdNext.model.User
+import com.unicorn.sxmobileoa.spdNext.model.FlowUser
 
-class UserAdapter : BaseQuickAdapter<SelectWrapper<User>, BaseViewHolder>(R.layout.item_text) {
+class UserAdapter : BaseQuickAdapter<SelectWrapper<FlowUser>, BaseViewHolder>(R.layout.item_text) {
 
-    override fun convert(helper: BaseViewHolder, item: SelectWrapper<User>) {
+    override fun convert(helper: BaseViewHolder, item: SelectWrapper<FlowUser>) {
         val tvText = helper.getView<TextView>(R.id.tvText)
-        tvText.text = item.t.userFullName
+        tvText.text = item.t.fullname
 
         // 选中效果
         tvText.setTextColor(if (item.isSelected) Color.WHITE else Color.BLACK)

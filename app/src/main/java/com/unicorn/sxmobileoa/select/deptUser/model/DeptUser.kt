@@ -3,7 +3,7 @@ package counicom.rn.sxmobileoa.select.deptUser.model
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAdapter
 
-data class RealUser(
+data class DeptUser(
         val deptOrgCode: String,
         val courtCode: String,
         val courtStdNo: Int,
