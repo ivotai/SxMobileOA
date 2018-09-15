@@ -70,7 +70,7 @@ object Key {
     const val zw_input = "zw_input"
     const val szbm_input = "szbm_input"
     const val qjsy_textarea = "qjsy_textarea"
-    const val qjdlx = "qjdlx"
+    const val xjzljsy_select = "xjzljsy_select"
     const val bz_textarea = "bz_textarea"
 
     // const

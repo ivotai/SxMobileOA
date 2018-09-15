@@ -58,6 +58,7 @@ data class FlowNode(
     override fun getItemType() = FlowNodeAdapter.type_flow_node
 
     val safeSpyjNodeName get() = if (flowNodeId == null) nodemc else spyjNodeName
+    val safeSpyjNodeId get() = if (flowNodeId == null) nodeid else spyjNodeId
 
 }
 

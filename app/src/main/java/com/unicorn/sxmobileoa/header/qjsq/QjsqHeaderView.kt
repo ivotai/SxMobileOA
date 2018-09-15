@@ -7,7 +7,6 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
-import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
@@ -30,7 +29,7 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     lateinit var tvZw: TextView
     lateinit var tvSzbm: TextView
     lateinit var tvQjsy: TextView
-    lateinit var tvQjzl: TextView
+    lateinit var tvXjzl: TextView
 
     lateinit var tvKsqr: TextView
     lateinit var tvJsqr: TextView
@@ -55,12 +54,12 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         tvZw = findViewById(R.id.tvZw)
         tvSzbm = findViewById(R.id.tvSzbm)
         tvQjsy = findViewById(R.id.tvQjsy)
-        tvQjzl = findViewById(R.id.tvQjzl)
+        tvXjzl = findViewById(R.id.tvXjzl)
 
         tvKsqr = findViewById(R.id.tvKsrq)
         tvJsqr = findViewById(R.id.tvJsrq)
 
-        tvBt = findViewById(R.id.tvBz)
+        tvBz = findViewById(R.id.tvBz)
 
         // 把 textView 和对应 key 放入 pair
         pairs = ArrayList<PAIR<TextView, String>>().apply {
@@ -68,8 +67,8 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             add(PAIR(tvZw, Key.zw_input))
             add(PAIR(tvSzbm, Key.szbm_input))
             add(PAIR(tvQjsy, Key.qjsy_textarea))
-            add(PAIR(tvQjzl, Key.qjdlx))
-            add(PAIR(tvBt, Key.bz_textarea))
+            add(PAIR(tvXjzl, Key.xjzljsy_select))
+            add(PAIR(tvBz, Key.bz_textarea))
         }
     }
 
@@ -91,14 +90,16 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
     private fun canEdit(dbxx: Dbxx) {
         val nodeId = dbxx.param.nodeId
-        if (SpdHelper().canEdit2(nodeId)) {
-            // 遍历，使其可编辑
-            pairs.forEach {
-                it.apply {
-                    textView.isEnabled = true
-                }
-            }
-        } else if (nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")) {
+//        if (SpdHelper().canEdit2(nodeId)) {
+//            // 遍历，使其可编辑
+//            pairs.forEach {
+//                it.apply {
+//                    textView.isEnabled = true
+//                }
+//            }
+//        } else
+//
+            if (nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")) {
             tvBz.isEnabled = true
         }
     }

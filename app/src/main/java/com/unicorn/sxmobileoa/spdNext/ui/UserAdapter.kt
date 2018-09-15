@@ -8,11 +8,11 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.spdNext.model.FlowUser
+import com.unicorn.sxmobileoa.select.deptUser.model.User
 
-class UserAdapter : BaseQuickAdapter<SelectWrapper<FlowUser>, BaseViewHolder>(R.layout.item_text) {
+class UserAdapter : BaseQuickAdapter<SelectWrapper<User>, BaseViewHolder>(R.layout.item_text) {
 
-    override fun convert(helper: BaseViewHolder, item: SelectWrapper<FlowUser>) {
+    override fun convert(helper: BaseViewHolder, item: SelectWrapper<User>) {
         val tvText = helper.getView<TextView>(R.id.tvText)
         tvText.text = item.t.fullname
 
