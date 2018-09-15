@@ -10,7 +10,7 @@ import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.select.dept.model.Dept
 
-class DeptAdapter : BaseQuickAdapter<SelectWrapper<Dept>, BaseViewHolder>(R.layout.item_text) {
+class DeptUserAdapter : BaseQuickAdapter<SelectWrapper<Dept>, BaseViewHolder>(R.layout.item_text) {
 
     override fun convert(helper: BaseViewHolder, item: SelectWrapper<Dept>) {
         val tvText = helper.getView<TextView>(R.id.tvText)

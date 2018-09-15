@@ -20,7 +20,7 @@ class DeptAdapter : BaseQuickAdapter<SelectWrapper<Dept>, BaseViewHolder>(R.layo
         // 子部门设置 32dp
         val dp16 = ConvertUtils.dp2px(16f)
         val dp32 = dp16 * 2
-        val paddingStart = if (item.t.level == 1) dp16 else dp32
+        val paddingStart = if (item.t.level0 == 1) dp16 else dp32
         tvText.setPadding(paddingStart, dp16, dp16, dp16)
 
         // 选中效果
