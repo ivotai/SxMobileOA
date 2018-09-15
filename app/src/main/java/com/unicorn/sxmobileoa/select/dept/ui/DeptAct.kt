@@ -5,8 +5,8 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.model.SelectResult
 import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
+import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.textChanges
 import com.unicorn.sxmobileoa.app.ui.BaseAct
@@ -66,7 +66,7 @@ class DeptAct : BaseAct() {
                     .map { it.t }
                     .let { listSelected ->
                         val result = listSelected.joinToString(",") { it.text }
-                        RxBus.get().post(SelectResult(model.key, result))
+                        RxBus.get().post(TextResult(model.key, result))
                     }
             finish()
         }

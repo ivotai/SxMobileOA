@@ -25,6 +25,6 @@ data class Dept(
         b = expanded
     }
 
-    override fun getItemType() = DeptUserAdapter.type_dept
+    override fun getItemType() = DeptUserAdapter.TYPE_DEPT
 
 }

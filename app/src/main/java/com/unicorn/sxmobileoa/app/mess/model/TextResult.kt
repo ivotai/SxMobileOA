@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa.app.mess.model
 
-class SelectResult(
+class TextResult(
         val key: String,
         val result: String
 )

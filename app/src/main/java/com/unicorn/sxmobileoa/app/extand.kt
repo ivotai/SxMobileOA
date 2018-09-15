@@ -67,18 +67,18 @@ fun TextView.clickDept(key: String) {
     }
 }
 
-fun TextView.clickCode(code: String, key: String, title: String) {
+fun TextView.clickCode(title: String, code: String, key: String) {
     this.safeClicks().subscribe {
         context.startActivity(Intent(context, CodeAct::class.java).apply {
+            putExtra(Key.title, title)
             putExtra(Key.code, code)
             putExtra(Key.key, key)
-            putExtra(Key.title, title)
         })
     }
 }
 
-fun Context.finish(){
-    if (this is AppCompatActivity){
+fun Context.finish() {
+    if (this is AppCompatActivity) {
         this.finish()
     }
 }

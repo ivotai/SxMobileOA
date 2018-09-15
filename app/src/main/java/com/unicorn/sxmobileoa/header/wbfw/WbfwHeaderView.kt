@@ -11,7 +11,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
-import com.unicorn.sxmobileoa.app.mess.model.SelectResult
+import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
@@ -162,7 +162,7 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         tvZsjg.clickDept(Key.zsjgmc_input)
         tvCsjg.clickDept(Key.csjgmc_input)
         tvFsjg.clickDept(Key.fsjgmc_input)
-        RxBus.get().registerEvent(SelectResult::class.java, context as LifecycleOwner, Consumer { selectResult ->
+        RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { selectResult ->
             when (selectResult.key) {
                 Key.mjcd_select -> tvMj
                 Key.hjcd_select -> tvHj

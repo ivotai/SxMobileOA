@@ -18,18 +18,18 @@ import com.unicorn.sxmobileoa.select.deptUser.network.DeptUser
 class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>(null) {
 
     companion object {
-        const val type_dept = 0
+        const val TYPE_DEPT = 0
         const val type_user = 1
     }
 
     init {
-        addItemType(type_dept, R.layout.item_text)
+        addItemType(TYPE_DEPT, R.layout.item_text)
         addItemType(type_user, R.layout.item_text)
     }
 
     override fun convert(helper: BaseViewHolder, item: MultiItemEntity) {
         when (item.itemType) {
-            type_dept -> {
+            TYPE_DEPT -> {
                 item as Dept
                 val tvText = helper.getView<TextView>(R.id.tvText)
                 tvText.text = item.text
