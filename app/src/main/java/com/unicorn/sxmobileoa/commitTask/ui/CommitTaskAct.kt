@@ -1,6 +1,7 @@
 package com.unicorn.sxmobileoa.commitTask.ui
 
 import android.content.Intent
+import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.mess.RxBus
@@ -25,6 +26,7 @@ class CommitTaskAct : BaseAct() {
             val instance = SpdHelper().buildTaskInstance(model.spd, model.saveSpdResponse, flowResult.sequenceFlow, flowResult.userList)
             CommitTask(instance).toMaybe(this).subscribe {
                 com.orhanobut.logger.Logger.e(it.toString())
+                ToastUtils.showShort("提交成功")
             }
         }
     }

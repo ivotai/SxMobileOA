@@ -1,16 +1,18 @@
 package com.unicorn.sxmobileoa.commitTask.network
 
+import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
+import com.unicorn.sxmobileoa.commitTask.model.CommitTaskResponse
 import com.unicorn.sxmobileoa.spdNext.model.TaskInstance
 
-class CommitTask(taskInstantce: TaskInstance) : BaseUseCase<Any>() {
+class CommitTask(taskInstance: TaskInstance) : BaseUseCase<CommitTaskResponse>() {
 
     init {
-        request = CommitTaskRequest(taskInstantce)
+        request = CommitTaskRequest(taskInstance)
     }
 
-    override fun toResult(json: String): Any {
-        return Any()
+    override fun toResult(json: String): CommitTaskResponse {
+        return ComponentHolder.appComponent.getGson().fromJson(json, CommitTaskResponse::class.java)
     }
 
 }
