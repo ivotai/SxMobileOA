@@ -1,11 +1,11 @@
-package com.unicorn.sxmobileoa.spdNext.network.spdNext
+package com.unicorn.sxmobileoa.sequenceFlow.network.spdNext
 
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
-import com.unicorn.sxmobileoa.spdNext.model.SpdNextResponse
+import com.unicorn.sxmobileoa.sequenceFlow.model.SpdNextResponse
 
 class SpdNext(menu: Menu, dbxx: Dbxx,spd:Spd) : BaseUseCase<SpdNextResponse>() {
 

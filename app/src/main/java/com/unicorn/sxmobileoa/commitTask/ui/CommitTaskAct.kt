@@ -9,8 +9,8 @@ import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.commitTask.network.CommitTask
-import com.unicorn.sxmobileoa.spdNext.model.SequenceFlowResult
-import com.unicorn.sxmobileoa.spdNext.ui.SequenceFlowAct
+import com.unicorn.sxmobileoa.sequenceFlow.model.SequenceFlowResult
+import com.unicorn.sxmobileoa.sequenceFlow.ui.SequenceFlowAct
 import dart.DartModel
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_commit_task.*

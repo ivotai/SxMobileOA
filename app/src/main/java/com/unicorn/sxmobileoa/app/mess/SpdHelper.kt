@@ -6,7 +6,7 @@ import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.Spyj
-import com.unicorn.sxmobileoa.spdNext.model.*
+import com.unicorn.sxmobileoa.sequenceFlow.model.*
 import org.joda.time.DateTime
 import java.util.*
 

@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spdNext.ui
+package com.unicorn.sxmobileoa.sequenceFlow.ui
 
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
@@ -7,11 +7,11 @@ import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.spdNext.model.NextTaskSequenceFlow
-import com.unicorn.sxmobileoa.spdNext.model.SequenceFlowActNavigationModel
-import com.unicorn.sxmobileoa.spdNext.model.SequenceFlowResult
-import com.unicorn.sxmobileoa.spdNext.network.nextUser.NextUser
-import com.unicorn.sxmobileoa.spdNext.network.spdNext.SpdNext
+import com.unicorn.sxmobileoa.sequenceFlow.model.NextTaskSequenceFlow
+import com.unicorn.sxmobileoa.sequenceFlow.model.SequenceFlowActNavigationModel
+import com.unicorn.sxmobileoa.sequenceFlow.model.SequenceFlowResult
+import com.unicorn.sxmobileoa.sequenceFlow.network.nextUser.NextUser
+import com.unicorn.sxmobileoa.sequenceFlow.network.spdNext.SpdNext
 import dart.DartModel
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_spd_next.*

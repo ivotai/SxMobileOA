@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spdNext.ui
+package com.unicorn.sxmobileoa.sequenceFlow.ui
 
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
@@ -9,7 +9,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.spdNext.model.NextTaskSequenceFlow
+import com.unicorn.sxmobileoa.sequenceFlow.model.NextTaskSequenceFlow
 
 class SequenceFlowAdapter : BaseQuickAdapter<SelectWrapper<NextTaskSequenceFlow>, BaseViewHolder>(R.layout.item_text) {
 

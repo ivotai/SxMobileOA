@@ -15,18 +15,18 @@ import com.unicorn.sxmobileoa.spd.model.Spyj
 class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>(null) {
 
     companion object {
-        const val type_flow_node = 0
-        const val type_spyj = 1
+        const val TYPE_FLOW_NODE = 0
+        const val TYPE_SPYJ = 1
     }
 
     init {
-        addItemType(type_flow_node, R.layout.item_flow_node)
-        addItemType(type_spyj, R.layout.item_spyj)
+        addItemType(TYPE_FLOW_NODE, R.layout.item_flow_node)
+        addItemType(TYPE_SPYJ, R.layout.item_spyj)
     }
 
     override fun convert(helper: BaseViewHolder, item: MultiItemEntity) {
         when (item.itemType) {
-            type_flow_node -> {
+            TYPE_FLOW_NODE -> {
                 item as FlowNode
                 helper.setText(R.id.tvSpyjNodeName, item.safeSpyjNodeName)
 
@@ -39,7 +39,7 @@ class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                     else expand(helper.adapterPosition)
                 }
             }
-            type_spyj -> {
+            TYPE_SPYJ -> {
                 item as Spyj
                 helper.setText(R.id.tvSpyjSprName, item.spyjSprName)
                 helper.setText(R.id.tvSysTime, item.sysTime)

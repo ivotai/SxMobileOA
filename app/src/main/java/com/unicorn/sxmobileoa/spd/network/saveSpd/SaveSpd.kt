@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spd.network
+package com.unicorn.sxmobileoa.spd.network.saveSpd
 
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase

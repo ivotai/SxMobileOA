@@ -55,7 +55,7 @@ data class FlowNode(
         b = expanded
     }
 
-    override fun getItemType() = FlowNodeAdapter.type_flow_node
+    override fun getItemType() = FlowNodeAdapter.TYPE_FLOW_NODE
 
     val safeSpyjNodeName get() = if (flowNodeId == null) nodemc else spyjNodeName
     val safeSpyjNodeId get() = if (flowNodeId == null) nodeid else spyjNodeId
@@ -250,5 +250,5 @@ data class Spyj(
         val yjsfzwlj: Int = 0
 ) : MultiItemEntity, Serializable {
     override fun getItemType() =
-            FlowNodeAdapter.type_spyj
+            FlowNodeAdapter.TYPE_SPYJ
 }

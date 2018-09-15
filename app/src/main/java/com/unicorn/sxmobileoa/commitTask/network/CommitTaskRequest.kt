@@ -3,7 +3,7 @@ package com.unicorn.sxmobileoa.commitTask.network
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
-import com.unicorn.sxmobileoa.spdNext.model.TaskInstance
+import com.unicorn.sxmobileoa.sequenceFlow.model.TaskInstance
 
 class CommitTaskRequest(taskInstance: TaskInstance) : MaybeRequest("commitTask") {
 

@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spdNext.ui
+package com.unicorn.sxmobileoa.sequenceFlow.ui
 
 import android.graphics.Color
 import android.support.v4.content.ContextCompat

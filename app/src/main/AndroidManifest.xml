@@ -24,7 +24,7 @@
         <activity android:name=".simple.dbxx.ui.DbxxAct" />
         <activity android:name="com.unicorn.sxmobileoa.select.dept.ui.DeptAct" />
         <activity android:name="com.unicorn.sxmobileoa.select.code.ui.CodeAct" />
-        <activity android:name=".spdNext.ui.SequenceFlowAct" />
+        <activity android:name=".sequenceFlow.ui.SequenceFlowAct" />
         <activity android:name="com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct" />
         <activity android:name=".header.nbfw.NbfwAct" />
         <activity android:name=".header.wbfw.WbfwAct" />

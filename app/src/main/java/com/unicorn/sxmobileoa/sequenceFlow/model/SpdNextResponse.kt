@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.spdNext.model
+package com.unicorn.sxmobileoa.sequenceFlow.model
 
 data class SpdNextResponse(
         val spdid: String,
