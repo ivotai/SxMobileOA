@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.commitTask.ui
+package com.unicorn.sxmobileoa.commitTask.model
 
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu

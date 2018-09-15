@@ -8,7 +8,10 @@ import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.commitTask.model.CommitTaskActNavigationModel
 import com.unicorn.sxmobileoa.commitTask.network.CommitTask
+import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserResult
+import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.sequenceFlow.model.SequenceFlowResult
 import com.unicorn.sxmobileoa.sequenceFlow.ui.SequenceFlowAct
 import dart.DartModel
@@ -22,10 +25,10 @@ class CommitTaskAct : BaseAct() {
     override fun initViews() {
         titleBar.setTitle("选择审批流程")
         titleBar.setOperation("确定").safeClicks().subscribe {
-            if (flowResult == null) return@subscribe
-            val instance = SpdHelper().buildTaskInstance(model.spd, model.saveSpdResponse, flowResult.sequenceFlow, flowResult.userList)
-            CommitTask(instance).toMaybe(this).subscribe {
-                com.orhanobut.logger.Logger.e(it.toString())
+            val temp = sequenceFlowResult ?: return@subscribe
+            val instance = SpdHelper().buildTaskInstance(model.spd, model.saveSpdResponse, temp.sequenceFlow, temp.userList)
+            CommitTask(instance).toMaybe(this).subscribe { commitTaskResponse ->
+                com.orhanobut.logger.Logger.e(commitTaskResponse.toString())
                 ToastUtils.showShort("提交成功")
             }
         }
@@ -39,15 +42,27 @@ class CommitTaskAct : BaseAct() {
                 putExtra(Key.spd, model.spd)
             })
         }
+
+        tvUsers.safeClicks().subscribe {
+            startActivity(Intent(this@CommitTaskAct, DeptUserAct::class.java).apply {
+                putExtra(Key.type, Key.deptUserResult)
+//                putExtra(Key.key, "never mind")
+            })
+        }
     }
 
-    lateinit var flowResult: SequenceFlowResult
+    private var sequenceFlowResult: SequenceFlowResult? = null
 
     override fun registerEvent() {
         RxBus.get().registerEvent(SequenceFlowResult::class.java, this, Consumer {
-            flowResult = it
+            sequenceFlowResult = it
             tvSequenceFlow.text = it.sequenceFlow.nextTaskShowName
-            tvUsers.text = it.userList.joinToString(",") { it.fullname }
+            tvUsers.text = it.userList.joinToString(",") { user -> user.fullname }
+        })
+
+        RxBus.get().registerEvent(DeptUserResult::class.java, this, Consumer {
+            sequenceFlowResult!!.userList = it.userList
+            tvUsers.text = it.userList.joinToString(",") { user -> user.fullname }
         })
     }
 
