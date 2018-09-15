@@ -37,31 +37,21 @@ class DeptAct : BaseAct() {
         clickOperation()
     }
 
-    private lateinit var headerView: KeywordHeaderView
-
-    private fun addKeywordHeaderView() {
-        headerView = KeywordHeaderView(this).apply {
-            setHint("请输入部门")
-            mAdapter.addHeaderView(this)
-        }
-    }
 
     private fun getDept() {
         GetDept().toMaybe(this)
                 .map { it.deptData }
-                .doOnSuccess {
-                    list -> list.forEach { if (it.isFather) it.text = "${it.text} 父节点" }
-                }
-                .doOnSuccess {
-                    addKeywordHeaderView()
-                    textChangeKeyword(it)
-                }
+                .map { it.sortedBy { dept -> dept.levelCode } }
+                .doOnSuccess { textChangeKeyword(it) }
                 .map { it.map { dept -> SelectWrapper(dept) } }
                 .subscribe { mAdapter.setNewData(it) }
     }
 
     private fun textChangeKeyword(allDept: List<Dept>) {
-        headerView.etKeyword.textChanges()
+        KeywordHeaderView(this).apply {
+            setHint("请输入部门")
+            mAdapter.addHeaderView(this)
+        }.etKeyword.textChanges()
                 .subscribe { keyword ->
                     allDept.filter { dept -> dept.text.contains(keyword) }
                             .map { dept -> SelectWrapper(dept) }
