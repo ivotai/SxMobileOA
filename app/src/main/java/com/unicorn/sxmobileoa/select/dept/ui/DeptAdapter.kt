@@ -3,7 +3,6 @@ package com.unicorn.sxmobileoa.select.dept.ui
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.widget.TextView
-import com.blankj.utilcode.util.ConvertUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
@@ -17,10 +16,10 @@ class DeptAdapter : BaseQuickAdapter<Dept, BaseViewHolder>(R.layout.item_text) {
         tvText.text = item.text
 
         // 子部门设置 32dp
-        val dp16 = ConvertUtils.dp2px(16f)
-        val dp32 = dp16 * 2
-        val paddingStart = if (item.level0 == 1) dp16 else dp32
-        tvText.setPadding(paddingStart, dp16, dp16, dp16)
+//        val dp16 = ConvertUtils.dp2px(16f)
+//        val dp32 = dp16 * 2
+//        val paddingStart = if (item.level0 == 1) dp16 else dp32
+//        tvText.setPadding(paddingStart, dp16, dp16, dp16)
 
         // 选中效果
         tvText.setTextColor(if (item.isSelected) Color.WHITE else Color.BLACK)

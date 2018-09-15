@@ -24,14 +24,13 @@ object Key {
     const val saveSpdResponse = "saveSpdResponse"
     const val code = "code"
     const val title = "title"
+    const val textResult = "textResult"
+    const val deptUserResult = "deptUserResult"
 
     // login
     const val menu = "menu"
     const val username = "username"
     const val courtStr = "courtStr"
-
-    //
-    const val position = "position"
 
     // dept
     const val key = "key"

@@ -50,20 +50,14 @@ class DeptAct : BaseAct() {
             mAdapter.addHeaderView(this)
         }.etKeyword.textChanges()
                 .subscribe { keyword ->
-                    allDept
-                            .asSequence()
-                            .filter { dept -> dept.text.contains(keyword) }
-                            .toList()
+                    allDept.filter { dept -> dept.text.contains(keyword) }
                             .let { mAdapter.setNewData(it) }
                 }
     }
 
     private fun clickOperation() {
         titleBar.setOperation("确认").safeClicks().subscribe { _ ->
-            mAdapter.data
-                    .asSequence()
-                    .filter { it.isSelected }
-                    .toList()
+            mAdapter.data.filter { it.isSelected }
                     .let { selectors ->
                         val result = selectors.joinToString(",") { it.text }
                         RxBus.get().post(TextResult(key = model.key, result = result))

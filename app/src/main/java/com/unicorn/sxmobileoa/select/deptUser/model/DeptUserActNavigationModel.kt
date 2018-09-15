@@ -7,6 +7,9 @@ import dart.DartModel
 class DeptUserActNavigationModel {
 
     @BindExtra
+    lateinit var type: String
+
+    @BindExtra
     lateinit var key: String
 
 }

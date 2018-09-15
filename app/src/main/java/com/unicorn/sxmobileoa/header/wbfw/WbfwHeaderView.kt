@@ -175,6 +175,7 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         // TODO 阅读范围 DEPT USER
         tvYdfw.safeClicks().subscribe {
             context.startActivity(Intent(context,DeptUserAct::class.java).apply {
+                putExtra(Key.type,Key.textResult)
                     putExtra(Key.key,Key.ydfwmc_input)
             })
         }

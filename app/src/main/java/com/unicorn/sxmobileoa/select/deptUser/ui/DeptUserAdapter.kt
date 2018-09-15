@@ -1,17 +1,15 @@
 package com.unicorn.sxmobileoa.select.deptUser.ui
 
 import android.arch.lifecycle.LifecycleOwner
+import android.graphics.Color
+import android.support.v4.content.ContextCompat
 import android.widget.TextView
-import com.blankj.utilcode.util.ConvertUtils
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.finish
-import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.select.dept.model.Dept
-import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserResult
 import com.unicorn.sxmobileoa.select.deptUser.model.User
 import com.unicorn.sxmobileoa.select.deptUser.network.DeptUser
 
@@ -19,12 +17,12 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
 
     companion object {
         const val TYPE_DEPT = 0
-        const val type_user = 1
+        const val TYPE_USER = 1
     }
 
     init {
         addItemType(TYPE_DEPT, R.layout.item_text)
-        addItemType(type_user, R.layout.item_text)
+        addItemType(TYPE_USER, R.layout.item_text)
     }
 
     override fun convert(helper: BaseViewHolder, item: MultiItemEntity) {
@@ -34,30 +32,29 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                 val tvText = helper.getView<TextView>(R.id.tvText)
                 tvText.text = item.text
 
-                // 子部门设置 32dp
-                val dp16 = ConvertUtils.dp2px(16f)
-                val dp32 = dp16 * 2
-                val paddingStart = if (item.level0 == 1) dp16 else dp32
-                tvText.setPadding(paddingStart, dp16, dp16, dp16)
-
                 // 点击后请求
                 tvText.safeClicks().subscribe {
-                    if (item.userList != null) {
-                        if (item.isExpanded) collapse(helper.adapterPosition)
-                        else expand(helper.adapterPosition)
+                    if (item.userList == null) {
+                        getUser(item)
                         return@subscribe
                     }
-                    getUser(item)
+                    if (item.isExpanded) collapse(helper.adapterPosition)
+                    else expand(helper.adapterPosition)
                 }
             }
-            type_user -> {
+            TYPE_USER -> {
                 item as User
                 val tvText = helper.getView<TextView>(R.id.tvText)
                 tvText.text = item.fullname
 
+                // 选中效果
+                tvText.setTextColor(if (item.isSelected) Color.WHITE else Color.BLACK)
+                tvText.setBackgroundColor(if (item.isSelected) ContextCompat.getColor(mContext, R.color.colorPrimary) else Color.WHITE)
+
+                // 点击后刷新对应条目
                 tvText.safeClicks().subscribe {
-                    RxBus.get().post(DeptUserResult(listOf(item)))
-                    mContext.finish()
+                    item.isSelected = !item.isSelected
+                    notifyItemChanged(helper.adapterPosition)
                 }
             }
         }
@@ -70,6 +67,5 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
             expand(data.indexOf(dept))
         }
     }
-
 
 }
