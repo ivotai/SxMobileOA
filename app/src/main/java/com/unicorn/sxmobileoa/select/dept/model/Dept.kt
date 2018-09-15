@@ -2,16 +2,16 @@ package com.unicorn.sxmobileoa.select.dept.model
 
 import com.chad.library.adapter.base.entity.IExpandable
 import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.unicorn.sxmobileoa.select.deptUser.model.User
 import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAdapter
-import counicom.rn.sxmobileoa.select.deptUser.model.DeptUser
 
 data class Dept(
         val id: String,
         var text: String,
         val level0: Int,
         val levelCode: String,
-        var userList: List<DeptUser>?
-) : IExpandable<DeptUser>, MultiItemEntity {
+        var userList: List<User>?
+) : IExpandable<User>, MultiItemEntity {
 
     override fun getSubItems() = userList
 

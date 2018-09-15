@@ -24,8 +24,6 @@ class UserAdapter : BaseQuickAdapter<SelectWrapper<FlowUser>, BaseViewHolder>(R.
         tvText.safeClicks().subscribe {
             item.isSelected = !item.isSelected
             notifyItemChanged(helper.adapterPosition)
-
-
         }
     }
 

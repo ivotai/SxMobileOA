@@ -1,7 +1,6 @@
 package com.unicorn.sxmobileoa.app.mess
 
 import com.unicorn.sxmobileoa.app.Global
-import com.unicorn.sxmobileoa.app.mess.model.UserResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd
@@ -54,9 +53,8 @@ class SpdHelper {
         return list.any { nodeId.contains(it) }
     }
 
-    fun buildSpdNextParam(spd: Spd, response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, result: UserResult): TaskInstance {
+    fun buildTaskInstance(spd: Spd, response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, userList: List<FlowUser>): TaskInstance {
         val nodeId = spd.spdXx.nodeId
-        val gd = if (nodeId.contains("_GD")) 1 else 0
         val taskDefKey = sequenceFlow.nextTaskKey
         return TaskInstance(
                 processInstanceId = response.processInstancesId,
@@ -70,8 +68,8 @@ class SpdHelper {
                             taskType = sequenceFlow.nextTaskType,
                             taskDefKey = sequenceFlow.nextTaskKey,
                             approveType = sequenceFlow.approveType,
-                            nextPersonCode = result.userIds,
-                            nextPersonName = result.userNames,
+                            nextPersonCode = userList.joinToString(",") { it.id },
+                            nextPersonName = userList.joinToString(",") { it.fullname },
                             nextLine = sequenceFlow.nextLine
                     ).let { this.add(it) }
                 },
@@ -84,7 +82,7 @@ class SpdHelper {
                 flowCode = response.flowCode,
                 nodeId = response.nodeId,
                 spyjId = response.spyjId,
-                gd = gd,
+                gd =  if (nodeId.contains("_GD")) 1 else 0,
                 nextTaskKey = sequenceFlow.nextTaskKey,
                 tasktype = sequenceFlow.nextTaskType,
                 spdCode = response.spdCode,
