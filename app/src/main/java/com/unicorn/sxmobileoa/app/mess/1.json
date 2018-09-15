@@ -1,12 +1,12 @@
 {
-  "deptId": "24",
-  "deptName": "办公室",
   "fydm": "R60",
-  "imei": "",
-  "loginBusiType": "1",
-  "loginName": "0000",
-  "spUserName": "",
+  "fyjb": "3",
   "userId": "366000000",
   "userName": "系统管理员",
-  "userTel": ""
+  "deptId": "24",
+  "deptName": "办公室",
+  "userTel": "",
+  "spUserName": "",
+  "imei": "",
+  "superCourtCode": ""
 }

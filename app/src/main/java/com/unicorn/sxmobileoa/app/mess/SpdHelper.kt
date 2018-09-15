@@ -54,11 +54,11 @@ class SpdHelper {
         return list.any { nodeId.contains(it) }
     }
 
-    fun buildSpdNextParam(spd: Spd, response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, result: UserResult): SpdNextParam {
+    fun buildSpdNextParam(spd: Spd, response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, result: UserResult): TaskInstance {
         val nodeId = spd.spdXx.nodeId
         val gd = if (nodeId.contains("_GD")) 1 else 0
         val taskDefKey = sequenceFlow.nextTaskKey
-        return SpdNextParam(
+        return TaskInstance(
                 processInstanceId = response.processInstancesId,
                 taskId = response.taskId,
                 taskPerson = TaskPerson(

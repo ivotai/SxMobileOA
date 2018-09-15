@@ -65,6 +65,14 @@ object Key {
     const val wxysjf_input = "wxysjf_input"
     const val cljg_input = "cljg_input"
 
+    // qjsq
+    const val qjr_input = "qjr_input"
+    const val zw_input = "zw_input"
+    const val szbm_input = "szbm_input"
+    const val qjsy_textarea = "qjsy_textarea"
+    const val qjdlx = "qjdlx"
+    const val bz_textarea = "bz_textarea"
+
     // const
     const val cornerRadiusDp = 5f
 

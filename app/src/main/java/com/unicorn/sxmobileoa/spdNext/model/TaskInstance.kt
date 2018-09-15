@@ -1,6 +1,6 @@
 package com.unicorn.sxmobileoa.spdNext.model
 
-data class SpdNextParam(
+data class TaskInstance(
     val processInstanceId: String,
     val taskId: String,
     val taskPerson: TaskPerson,

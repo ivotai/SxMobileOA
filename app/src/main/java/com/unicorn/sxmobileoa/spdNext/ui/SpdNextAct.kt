@@ -6,14 +6,15 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
 import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.mess.model.UserResult
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.textChanges
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.spdNext.model.NextTaskSequenceFlow
 import com.unicorn.sxmobileoa.spdNext.model.User
+import com.unicorn.sxmobileoa.spdNext.network.CommitTask
 import com.unicorn.sxmobileoa.spdNext.network.nextUser.NextUser
 import com.unicorn.sxmobileoa.spdNext.network.spdNext.SpdNext
 import com.unicorn.sxmobileoa.spdNext.network.user.GetUser
@@ -61,9 +62,11 @@ class SpdNextAct : BaseAct() {
                 userIds = list2.joinToString(",") { it.id },
                 userNames = list2.joinToString(",") { it.userFullName }
         )
-        val param = SpdHelper().buildSpdNextParam(model.spd, model.saveSpdResponse, list[0], result)
+        val taskInstance = SpdHelper().buildSpdNextParam(model.spd, model.saveSpdResponse, list[0], result)
+        CommitTask(taskInstance).toMaybe(this).subscribe {
+            Logger.e(it.toString())
+        }
     }
-
 
     override fun bindIntent() {
         getSptNext()
@@ -83,10 +86,10 @@ class SpdNextAct : BaseAct() {
                     ArrayList<User>().apply {
                         it[0].children.forEach { deptTree ->
                             // TODO
-//                            deptTree.children.forEach { user ->
-//                                if (user.userFullName != null)
-//                                    add(user)
-//                            }
+                            deptTree.children.forEach { user ->
+                                if (user.userFullName != null)
+                                    add(user)
+                            }
                         }
                     }
                 }

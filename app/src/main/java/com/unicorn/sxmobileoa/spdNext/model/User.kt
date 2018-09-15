@@ -33,7 +33,7 @@ data class DeptTree(
         val orgCode: String,
         val deptNo: Int,
         val deptName: String,
-        val children: MutableList<Any>,   // TODO USER DEPT
+        val children: MutableList<User>,   // TODO USER DEPT
         val levelCode: String
 ) : IExpandable<Any> {
 
