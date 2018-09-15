@@ -7,8 +7,11 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.finish
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.select.dept.model.Dept
+import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserResult
 import com.unicorn.sxmobileoa.select.deptUser.network.DeptUser
 import counicom.rn.sxmobileoa.select.deptUser.model.RealUser
 
@@ -51,6 +54,11 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                 item as RealUser
                 val tvText = helper.getView<TextView>(R.id.tvText)
                 tvText.text = item.fullname
+
+                tvText.safeClicks().subscribe {
+                    RxBus.get().post(DeptUserResult(listOf(item)))
+                    mContext.finish()
+                }
             }
         }
     }
@@ -59,7 +67,7 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
         DeptUser(dept.id).toMaybe(mContext as LifecycleOwner).subscribe { userList ->
             if (userList.isEmpty()) return@subscribe
             dept.userList = userList
-
+            expand(data.indexOf(dept))
         }
     }
 

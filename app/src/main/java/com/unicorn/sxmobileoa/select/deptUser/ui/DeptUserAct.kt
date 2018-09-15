@@ -34,7 +34,8 @@ class DeptUserAct : BaseAct() {
     private fun getDept() {
         GetDept().toMaybe(this)
                 .map { it.deptData }
-                .map { it.sortedBy { dept -> dept.levelCode } }
+                // TODO 手动排序
+//                .map { it.sortedBy { dept -> dept.levelCode } }
 //                .doOnSuccess { textChangeKeyword(it) }
 //                .map { it.map { dept -> SelectWrapper(dept) } }
                 .subscribe { mAdapter.setNewData(it) }
