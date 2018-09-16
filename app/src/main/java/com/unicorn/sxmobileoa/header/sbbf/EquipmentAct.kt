@@ -7,6 +7,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.sbbf.model.Equipment
+import com.unicorn.sxmobileoa.header.sbbf.model.EquipmentActNavigationModel
 import com.unicorn.sxmobileoa.spd.network.saveSpd.SaveSpd
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import dart.DartModel

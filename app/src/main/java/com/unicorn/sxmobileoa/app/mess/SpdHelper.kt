@@ -6,15 +6,20 @@ import com.unicorn.sxmobileoa.commitTask.model.NextTaskPersonModel
 import com.unicorn.sxmobileoa.commitTask.model.TaskInstance
 import com.unicorn.sxmobileoa.commitTask.model.TaskPerson
 import com.unicorn.sxmobileoa.select.deptUser.model.User
+import com.unicorn.sxmobileoa.sequenceFlow.model.NextTaskSequenceFlow
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.Spyj
-import com.unicorn.sxmobileoa.sequenceFlow.model.*
 import org.joda.time.DateTime
 import java.util.*
 
 class SpdHelper {
+
+    fun addSpdData(spd: Spd, spdKey: String, spdValue: String) {
+//        val temp = spd.spdData[0]
+//        val spdData = SpdData()
+    }
 
     fun addSpyjIfNeed(dbxx: Dbxx, spd: Spd) {
         val currentNodeId = dbxx.param.nodeId

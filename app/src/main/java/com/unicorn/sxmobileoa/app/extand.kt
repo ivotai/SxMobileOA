@@ -49,12 +49,18 @@ fun Spd.set(spdKey: String, spdValue: String) {
     val list = this.spdData.filter { it.spdKey == spdKey }
     if (!list.isEmpty()) {
         list[0].apply {
-            if (this.spdValue == "") create = true else update = true
             this.spdValue = spdValue
+            this.update = true
             this.updateTime = DateTime().toString("yyyy-MM-dd HH:mm:ss")
         }
+    }else{
+//        SpdHelper().addSpdData()
     }
 }
+
+
+
+
 
 fun RecyclerView.addDefaultItemDecoration() {
     HorizontalDividerItemDecoration.Builder(context)

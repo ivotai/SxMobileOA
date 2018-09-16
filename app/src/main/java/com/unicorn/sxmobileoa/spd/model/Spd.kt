@@ -2,8 +2,10 @@ package com.unicorn.sxmobileoa.spd.model
 
 import com.chad.library.adapter.base.entity.IExpandable
 import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.spd.ui.FlowNodeAdapter
 import java.io.Serializable
+import java.util.*
 
 data class Spd(
         val cyy: List<Cyy>,
@@ -196,17 +198,17 @@ data class Cyy(
 ) : Serializable
 
 data class SpdData(
-        var create: Boolean,
-        val createUserId: String,
-        val createUserName: String,
+        var create: Boolean= true,
+        val createUserId: String= Global.loginInfo!!.userId,
+        val createUserName: String= Global.loginInfo!!.userName,
         val dataType: String,
-        val id: String,
+        val id: String=UUID.randomUUID().toString(),
         val qybz: Int,
         val spdKey: String,
         var spdValue: String,
         val spdid: String,
         val sysTime: String,
-        var update: Boolean,
+        var update: Boolean=false,
         var updateTime: String,
         val xtlx: String
 ) : Serializable

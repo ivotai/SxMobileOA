@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.header.sbbf
+package com.unicorn.sxmobileoa.header.sbbf.model
 
 import com.unicorn.sxmobileoa.spd.model.Spd
 import dart.BindExtra
