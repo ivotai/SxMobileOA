@@ -46,7 +46,6 @@ class CommitTaskAct : BaseAct() {
         tvUsers.safeClicks().subscribe {
             startActivity(Intent(this@CommitTaskAct, DeptUserAct::class.java).apply {
                 putExtra(Key.type, Key.deptUserResult)
-//                putExtra(Key.key, "never mind")
             })
         }
     }

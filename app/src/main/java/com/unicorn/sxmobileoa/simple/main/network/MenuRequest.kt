@@ -1,5 +1,5 @@
 package com.unicorn.sxmobileoa.simple.main.network
 
-import com.unicorn.sxmobileoa.app.network.model.request
+import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
 
-class MenuRequest : request("menu")
+class MenuRequest : MaybeRequest("menu")

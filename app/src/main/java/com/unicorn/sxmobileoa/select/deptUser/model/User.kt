@@ -5,9 +5,9 @@ import com.unicorn.sxmobileoa.app.mess.model.Selector
 import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAdapter
 
 data class User(
-        val id: String,
-        val fullname: String
-
+        var id: String,
+        val fullname: String,
+        val courtCode:String
 ) : Selector(), MultiItemEntity {
 
     override fun getItemType() = DeptUserAdapter.TYPE_USER

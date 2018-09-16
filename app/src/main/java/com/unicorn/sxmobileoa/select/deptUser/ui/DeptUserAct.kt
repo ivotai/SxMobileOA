@@ -72,6 +72,7 @@ class DeptUserAct : BaseAct() {
                                 RxBus.get().post(TextResult(key = model.key, result = result))
                             }
                             Key.deptUserResult -> {
+                                selectors.forEach { it.id = "${it.courtCode}_${it.id}" }
                                 RxBus.get().post(DeptUserResult(selectors))
                             }
                         }
