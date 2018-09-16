@@ -64,6 +64,16 @@ object Key {
     const val wxysjf_input = "wxysjf_input"
     const val cljg_input = "cljg_input"
 
+    // sbbf
+    const val sqbm_input = "sqbm_input"
+    const val sqr_input = "sqr_input"
+    const val sqsj_input = "sqsj_input"
+    const val bfxq_input = "bfxq_input"
+//    const val wxff_textarea = "wxff_textarea"
+//    const val wxysjf_input = "wxysjf_input"
+//    const val cljg_input = "cljg_input"
+
+
     // qjsq
     const val qjr_input = "qjr_input"
     const val zw_input = "zw_input"

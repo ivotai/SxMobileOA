@@ -10,6 +10,7 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.header.gcsq.GcsqAct
 import com.unicorn.sxmobileoa.header.nbfw.NbfwAct
 import com.unicorn.sxmobileoa.header.qjsq.QjsqAct
+import com.unicorn.sxmobileoa.header.sbbf.SbbfAct
 import com.unicorn.sxmobileoa.header.sbwx.SbwxAct
 import com.unicorn.sxmobileoa.header.wbfw.WbfwAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
@@ -32,6 +33,7 @@ class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolde
                     "内部发文" -> cls = NbfwAct::class.java
                     "外部发文" -> cls = WbfwAct::class.java
                     "设备维修" -> cls = SbwxAct::class.java
+                    "设备报废" -> cls = SbbfAct::class.java
                     "请假申请" -> cls = QjsqAct::class.java
                     "公出申请" -> cls = GcsqAct::class.java
                 }

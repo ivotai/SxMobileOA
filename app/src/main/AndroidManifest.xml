@@ -30,6 +30,7 @@
         <activity android:name=".header.nbfw.NbfwAct" />
         <activity android:name=".header.wbfw.WbfwAct" />
         <activity android:name=".header.sbwx.SbwxAct" />
+        <activity android:name=".header.sbbf.SbbfAct" />
         <activity android:name=".header.qjsq.QjsqAct" />
         <activity android:name=".header.gcsq.GcsqAct" />
     </application>
