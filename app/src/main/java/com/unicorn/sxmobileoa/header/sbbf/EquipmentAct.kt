@@ -17,6 +17,7 @@ class EquipmentAct : BaseAct() {
 
     override val layoutId = R.layout.act_title_recycler
 
+    // todo 不传值，独立取一次 spd
     @DartModel
     lateinit var model: EquipmentActNavigationModel
 

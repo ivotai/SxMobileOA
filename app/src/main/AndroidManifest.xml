@@ -33,6 +33,8 @@
         <activity android:name=".header.sbbf.SbbfAct" />
         <activity android:name=".header.qjsq.QjsqAct" />
         <activity android:name=".header.gcsq.GcsqAct" />
+        <activity android:name=".header.jdsq.JdsqAct" />
+
         <activity android:name=".header.sbbf.EquipmentAct"></activity>
     </application>
 
