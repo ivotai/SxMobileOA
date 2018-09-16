@@ -13,7 +13,7 @@ class MainAct : BaseAct() {
     override val layoutId = R.layout.act_title_recycler
 
     override fun initViews() {
-        titleBar.setTitle("陕西省高级人民法院移动办公")
+        titleBar.setTitle("陕西省高级人民法院移动办公", true)
         initRecyclerView()
     }
 

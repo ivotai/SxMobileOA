@@ -35,7 +35,7 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                 // 点击后请求
                 tvText.safeClicks().subscribe {
                     if (item.userList == null) {
-                        getUser(item)
+                        getUser(item,helper.adapterPosition)
                         return@subscribe
                     }
                     if (item.isExpanded) collapse(helper.adapterPosition)
@@ -60,11 +60,11 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
         }
     }
 
-    private fun getUser(dept: Dept) {
+    private fun getUser(dept: Dept,position:Int) {
         DeptUser(dept.id).toMaybe(mContext as LifecycleOwner).subscribe { userList ->
             if (userList.isEmpty()) return@subscribe
             dept.userList = userList
-            expand(data.indexOf(dept))
+            expand(position)
         }
     }
 

@@ -14,6 +14,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.MainThreadTransformer
 import com.unicorn.sxmobileoa.select.code.ui.CodeAct
 import com.unicorn.sxmobileoa.select.dept.ui.DeptAct
+import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import florent37.github.com.rxlifecycle.RxLifecycle
@@ -63,6 +64,15 @@ fun TextView.clickDept(key: String) {
     this.safeClicks().subscribe {
         context.startActivity(Intent(context, DeptAct::class.java).apply {
             putExtra(Key.key, key)
+        })
+    }
+}
+
+fun TextView.clickDeptUser(type: String, key: String?) {
+    this.safeClicks().subscribe {
+        context.startActivity(Intent(context, DeptUserAct::class.java).apply {
+            putExtra(Key.type, type)
+            if (key != null) putExtra(Key.key, key)
         })
     }
 }

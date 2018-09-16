@@ -3,7 +3,6 @@ package com.unicorn.sxmobileoa.header.wbfw
 import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -15,7 +14,6 @@ import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
@@ -156,29 +154,23 @@ class WbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             dpd.show(activity.fragmentManager, "dpd")
         }
 
-        // CODE & DEPT
-        tvMj.clickCode("SPD_MJCD", Key.mjcd_select, "密级")
-        tvHj.clickCode("SPD_HJCD", Key.hjcd_select, "缓急")
+        // CODE & DEPT & DEPT_USER
+        tvMj.clickCode("密级", "SPD_MJCD", Key.mjcd_select)
+        tvHj.clickCode("缓急", "SPD_HJCD", Key.hjcd_select)
         tvZsjg.clickDept(Key.zsjgmc_input)
         tvCsjg.clickDept(Key.csjgmc_input)
         tvFsjg.clickDept(Key.fsjgmc_input)
-        RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { selectResult ->
-            when (selectResult.key) {
+        tvYdfw.clickDeptUser(Key.textResult,Key.ydfwmc_input)
+        RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { textResult ->
+            when (textResult.key) {
                 Key.mjcd_select -> tvMj
                 Key.hjcd_select -> tvHj
                 Key.zsjgmc_input -> tvZsjg
                 Key.csjgmc_input -> tvCsjg
-                else -> tvFsjg
-            }.text = selectResult.result
+                Key.fsjgmc_input-> tvFsjg
+                else -> tvYdfw
+            }.text = textResult.result
         })
-
-        // TODO 阅读范围 DEPT USER
-        tvYdfw.safeClicks().subscribe {
-            context.startActivity(Intent(context,DeptUserAct::class.java).apply {
-                putExtra(Key.type,Key.textResult)
-                    putExtra(Key.key,Key.ydfwmc_input)
-            })
-        }
     }
 
     override fun saveToSpd(spd: Spd) {
