@@ -7,6 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.header.gcsq.GcsqAct
 import com.unicorn.sxmobileoa.header.nbfw.NbfwAct
 import com.unicorn.sxmobileoa.header.qjsq.QjsqAct
 import com.unicorn.sxmobileoa.header.sbwx.SbwxAct
@@ -32,6 +33,7 @@ class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolde
                     "外部发文" -> cls = WbfwAct::class.java
                     "设备维修" -> cls = SbwxAct::class.java
                     "请假申请" -> cls = QjsqAct::class.java
+                    "公出申请" -> cls = GcsqAct::class.java
                 }
                 if (cls == null) return@subscribe
 

@@ -1,50 +1,38 @@
-[
-  {
-    "deptOrgCode": "009",
-    "courtCode": "R60",
-    "courtStdNo": 3660,
-    "userNo": 209,
-    "dept_name": "档案室",
-    "uuid": "B4D6F4888F06EBFE7FA29DA2DB10A8EF",
-    "deptNo": 19,
-    "sortNo": 0,
-    "dept_st_name": "档案室",
-    "dept_level_code": "000200190000",
-    "courtNo": 3660,
-    "id": 366000209,
-    "fullname": "刘小英",
-    "username": "0209"
+{
+  "approveConent": "审判意见",
+  "approved": true,
+  "buinessCallBackParams": {
+    "tdyy": ""
   },
-  {
-    "deptOrgCode": "009",
-    "courtCode": "R60",
-    "courtStdNo": 3660,
-    "userNo": 8977,
-    "dept_name": "档案室",
-    "uuid": "F566DBE6740C75627D265DD28E972B4F",
-    "deptNo": 19,
-    "sortNo": 0,
-    "dept_st_name": "档案室",
-    "dept_level_code": "000200190000",
-    "courtNo": 3660,
-    "id": 366008977,
-    "fullname": "杨荣荣",
-    "username": "yangrr"
+  "catagoryCode": "OA_FLOW_GWGL_NBFW",
+  "endTaskType": "",
+  "flowCode": "OA_FLOW_GWGL_NBFW",
+  "fydm": "R60",
+  "gd": 0,
+  "moduleCode": "OA_FUN_GWGL",
+  "nextTaskKey": "OA_FLOW_GWGL_NBFW_YLDSP",
+  "nextTaskPersonModel": [
+    {
+      "approveType": 0,
+      "nextLine": "sequenceFlow",
+      "nextPersonCode": "366000000",
+      "nextPersonName": "系统管理员",
+      "taskDefKey": "OA_FLOW_GWGL_NBFW_YLDSP",
+      "taskType": "paraTask"
+    }
+  ],
+  "nodeId": "OA_FLOW_GWGL_NBFW_NGRBL",
+  "processInstanceId": "40cf6df2-b8b4-11e8-af97-2e60ce96e903",
+  "reject": "",
+  "sfjsjd": false,
+  "spdCode": "OA_SPD_GWGL_NBFW",
+  "spdId": "14e20476-b4ac-41ff-ab6f-1e1dd57f8ae5",
+  "spyjId": "53c81932-e902-471a-b886-7ce10d039577",
+  "taskId": "215c249f-b8b8-11e8-af97-2e60ce96e903",
+  "taskPerson": {
+    "personCode": "366000000",
+    "personName": "系统管理员"
   },
-  {
-    "deptOrgCode": "009",
-    "courtCode": "R60",
-    "courtStdNo": 3660,
-    "userNo": 210,
-    "dept_name": "档案室",
-    "uuid": "85EE3DC9260650549BD58E610830F2F4",
-    "deptNo": 19,
-    "sortNo": 0,
-    "dept_st_name": "档案室",
-    "dept_level_code": "000200190000",
-    "courtNo": 3660,
-    "id": 366000210,
-    "fullname": "陈丽华",
-    "username": "0210"
-  }
-]
+  "tasktype": "paraTask",
+  "tzstate": false
+}
