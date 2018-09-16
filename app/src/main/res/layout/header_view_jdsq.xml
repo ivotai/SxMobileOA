@@ -61,31 +61,6 @@
         <TextView
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
-            android:text="申请部门"
-            android:textColor="@color/md_grey_700"
-            android:textSize="14dp" />
-
-        <TextView
-            android:id="@+id/tvSqbm"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/md_grey_400"
-            android:textSize="14dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1px"
-        android:background="@color/md_white"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <TextView
-            android:layout_width="@dimen/detail_width"
-            android:layout_height="wrap_content"
             android:text="申请人"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
@@ -111,12 +86,37 @@
         <TextView
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
-            android:text="申请时间"
+            android:text="申请日期"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/tvSqsj"
+            android:id="@+id/tvSqrq"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:text="就餐地点"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvJcdd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -137,12 +137,12 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="报废原因及设备数量"
+            android:text="承办人"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/tvBfxq"
+            android:id="@+id/tvCbr"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

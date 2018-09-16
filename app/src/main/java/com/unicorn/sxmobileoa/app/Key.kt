@@ -69,7 +69,6 @@ object Key {
     const val sqr_input = "sqr_input"
     const val sqsj_input = "sqsj_input"
     const val bfxq_input = "bfxq_input"
-//    const val wxff_textarea = "wxff_textarea"
 //    const val wxysjf_input = "wxysjf_input"
 //    const val cljg_input = "cljg_input"
 
@@ -87,6 +86,16 @@ object Key {
     const val fzbry_input = "fzbry_input"
     const val wcdd_input = "wcdd_input"
     const val wcsy_textarea = "wcsy_textarea"
+
+    // jdsq
+    const val sqrq_input = "sqrq_input"
+    const val jcdd_input = "jcdd_input"
+    const val cbr_input = "cbr_input"
+//    const val fzbry_input = "fzbry_input"
+//    const val wcdd_input = "wcdd_input"
+//    const val wcsy_textarea = "wcsy_textarea"
+
+
 
     // const
     const val cornerRadiusDp = 5f

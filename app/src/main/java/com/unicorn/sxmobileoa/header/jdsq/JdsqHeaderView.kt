@@ -19,19 +19,20 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 class JdsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context), BasicHeaderView {
 
     init {
-        initViews(context, menu, dbxx, spd)
+        initViews(context, menu, spd)
     }
 
     lateinit var tvTitle: TextView
-    lateinit var tvBt: TextView         // 真的标题
-    lateinit var tvSqbm: TextView
+    lateinit var tvBt: TextView
+
     lateinit var tvSqr: TextView
-    lateinit var tvSqsj: TextView
-    lateinit var tvBfxq: TextView
+    lateinit var tvSqrq: TextView
+    lateinit var tvJcdd: TextView
+    lateinit var tvCbr: TextView
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
-    fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
+    fun initViews(context: Context, menu: Menu, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_jdsq, this, true)
         findView()
         renderView(menu, spd)
@@ -42,17 +43,18 @@ class JdsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         tvTitle = findViewById(R.id.tvTitle)
         tvBt = findViewById(R.id.tvBt)
 
-        tvSqbm = findViewById(R.id.tvSqbm)
         tvSqr = findViewById(R.id.tvSqr)
-        tvSqsj = findViewById(R.id.tvSqsj)
-        tvBfxq = findViewById(R.id.tvBfxq)
+        tvSqrq = findViewById(R.id.tvSqrq)
+        tvJcdd = findViewById(R.id.tvJcdd)
+        tvCbr = findViewById(R.id.tvCbr)
 
         // 保存 textView 和 eky
         pairs = ArrayList<PAIR<TextView, String>>().apply {
-            add(PAIR(tvSqbm, Key.sqbm_input))
             add(PAIR(tvSqr, Key.sqr_input))
-            add(PAIR(tvSqsj, Key.sqsj_input))
-            add(PAIR(tvBfxq, Key.bfxq_input))
+            add(PAIR(tvSqrq, Key.sqrq_input))
+            add(PAIR(tvJcdd, Key.jcdd_input))
+            add(PAIR(tvCbr, Key.cbr_input))
+
         }
     }
 
