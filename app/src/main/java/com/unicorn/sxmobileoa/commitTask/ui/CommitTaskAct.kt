@@ -10,8 +10,6 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskActNavigationModel
 import com.unicorn.sxmobileoa.commitTask.network.CommitTask
-import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserResult
-import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.sequenceFlow.model.SequenceFlowResult
 import com.unicorn.sxmobileoa.sequenceFlow.ui.SequenceFlowAct
 import dart.DartModel
@@ -43,11 +41,7 @@ class CommitTaskAct : BaseAct() {
             })
         }
 
-        tvUsers.safeClicks().subscribe {
-            startActivity(Intent(this@CommitTaskAct, DeptUserAct::class.java).apply {
-                putExtra(Key.type, Key.deptUserResult)
-            })
-        }
+
     }
 
     private var sequenceFlowResult: SequenceFlowResult? = null
@@ -59,10 +53,7 @@ class CommitTaskAct : BaseAct() {
             tvUsers.text = it.userList.joinToString(",") { user -> user.fullname }
         })
 
-        RxBus.get().registerEvent(DeptUserResult::class.java, this, Consumer {
-            sequenceFlowResult!!.userList = it.userList
-            tvUsers.text = it.userList.joinToString(",") { user -> user.fullname }
-        })
+
     }
 
     @DartModel

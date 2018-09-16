@@ -1,12 +1,15 @@
 package com.unicorn.sxmobileoa.sequenceFlow.ui
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.sequenceFlow.model.NextTaskSequenceFlow
 import com.unicorn.sxmobileoa.sequenceFlow.model.SequenceFlowActNavigationModel
 import com.unicorn.sxmobileoa.sequenceFlow.model.SequenceFlowResult
@@ -36,7 +39,18 @@ class SequenceFlowAct : BaseAct() {
             userAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
         }
+
+        titleBar.safeClicks().subscribe {
+            startActivity(Intent(this, DeptUserAct::class.java).apply {
+                putExtra(Key.type, Key.deptUserResult)
+            })
+        }
+//        RxBus.get().registerEvent(DeptUserResult::class.java, this, Consumer {
+//            sequenceFlowResult!!.userList = it.userList
+//            tvUsers.text = it.userList.joinToString(",") { user -> user.fullname }
+//        })
     }
+
 
 
     private fun next() {
