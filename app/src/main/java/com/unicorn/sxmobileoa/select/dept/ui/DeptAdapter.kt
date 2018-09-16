@@ -15,12 +15,6 @@ class DeptAdapter : BaseQuickAdapter<Dept, BaseViewHolder>(R.layout.item_text) {
         val tvText = helper.getView<TextView>(R.id.tvText)
         tvText.text = item.text
 
-        // 子部门设置 32dp
-//        val dp16 = ConvertUtils.dp2px(16f)
-//        val dp32 = dp16 * 2
-//        val paddingStart = if (item.level0 == 1) dp16 else dp32
-//        tvText.setPadding(paddingStart, dp16, dp16, dp16)
-
         // 选中效果
         tvText.setTextColor(if (item.isSelected) Color.WHITE else Color.BLACK)
         tvText.setBackgroundColor(if (item.isSelected) ContextCompat.getColor(mContext, R.color.colorPrimary) else Color.WHITE)

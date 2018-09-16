@@ -4,6 +4,7 @@ import android.arch.lifecycle.LifecycleOwner
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.widget.TextView
+import com.blankj.utilcode.util.ConvertUtils
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
@@ -31,11 +32,10 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                 item as Dept
                 val tvText = helper.getView<TextView>(R.id.tvText)
                 tvText.text = item.text
-
                 // 点击后请求
                 tvText.safeClicks().subscribe {
                     if (item.userList == null) {
-                        getUser(item,helper.adapterPosition)
+                        getUser(item, helper.adapterPosition)
                         return@subscribe
                     }
                     if (item.isExpanded) collapse(helper.adapterPosition)
@@ -46,6 +46,10 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                 item as User
                 val tvText = helper.getView<TextView>(R.id.tvText)
                 tvText.text = item.fullname
+
+                val dp16 = ConvertUtils.dp2px(16f)
+                val dp32 = dp16 * 2
+                tvText.setPadding(dp32, dp16, dp16, dp16)
 
                 // 选中效果
                 tvText.setTextColor(if (item.isSelected) Color.WHITE else Color.BLACK)
@@ -60,7 +64,7 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
         }
     }
 
-    private fun getUser(dept: Dept,position:Int) {
+    private fun getUser(dept: Dept, position: Int) {
         DeptUser(dept.id).toMaybe(mContext as LifecycleOwner).subscribe { userList ->
             if (userList.isEmpty()) return@subscribe
             dept.userList = userList
