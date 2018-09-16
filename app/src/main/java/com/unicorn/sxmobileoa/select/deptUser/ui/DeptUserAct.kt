@@ -14,7 +14,6 @@ import com.unicorn.sxmobileoa.select.dept.model.Dept
 import com.unicorn.sxmobileoa.select.dept.network.GetDept
 import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserActNavigationModel
 import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserResult
-import com.unicorn.sxmobileoa.select.deptUser.model.User
 import dart.DartModel
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.act_title_recycler.*
@@ -62,7 +61,9 @@ class DeptUserAct : BaseAct() {
     private fun clickOperation() {
         titleBar.setOperation("确认").safeClicks().subscribe { _ ->
             Observable.fromIterable(mAdapter.data)
-                    .ofType(User::class.java)
+                    .ofType(Dept::class.java)
+                    .filter { it.userList != null }
+                    .flatMap { Observable.fromIterable(it.userList) }
                     .filter { it.isSelected }
                     .toList()
                     .subscribe { selectors ->

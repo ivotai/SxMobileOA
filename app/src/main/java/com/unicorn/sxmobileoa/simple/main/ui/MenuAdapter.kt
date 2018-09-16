@@ -22,15 +22,14 @@ class MenuAdapter : BaseSectionQuickAdapter<MenuSection, BaseViewHolder>(R.layou
             helper.setText(R.id.tvCount, count)
             helper.setImageResource(R.id.ivImage, resId)
         }
-
-        helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
-            mContext.startActivity(Intent(mContext, DbxxAct::class.java).apply {
-                putExtra(Key.menu, item.t)
-            })
+        if (item.t.count != "0") {
+            helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
+                mContext.startActivity(Intent(mContext, DbxxAct::class.java).apply {
+                    putExtra(Key.menu, item.t)
+                })
+            }
         }
         helper.getView<View>(R.id.flCount).visibility = if (item.t.count == "0") View.INVISIBLE else View.VISIBLE
-
-        // TODO 超审限 新闻中心 消息公告
     }
 
 }

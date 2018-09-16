@@ -2,13 +2,16 @@ package com.unicorn.sxmobileoa.header.sbbf
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.get
+import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
@@ -35,7 +38,7 @@ class SbbfHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         LayoutInflater.from(context).inflate(R.layout.header_view_sbbf, this, true)
         findView()
         renderView(menu, spd)
-        canEdit(dbxx)
+        canEdit(spd)
     }
 
     private fun findView() {
@@ -69,8 +72,12 @@ class SbbfHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         }
     }
 
-    private fun canEdit(dbxx: Dbxx) {
-        // do nothing
+    private fun canEdit(spd: Spd) {
+        findViewById<View>(R.id.tvEquipment).safeClicks().subscribe {
+            context.startActivity(Intent(context, EquipmentAct::class.java).apply {
+                putExtra(Key.spd, spd)
+            })
+        }
     }
 
     override fun saveToSpd(spd: Spd) {

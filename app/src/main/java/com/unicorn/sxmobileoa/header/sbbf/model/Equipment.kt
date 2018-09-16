@@ -10,7 +10,7 @@ class Equipment(val spd: Spd, @IntRange(from = 1, to = 5) val position: Int) {
     private val key_bfsbmc get() = "bfsbmc${position}_input"
     private val key_ppjxh get() = "ppjxh${position}_input"
     private val key_sl get() = "sl${position}_input"
-    private val key_bfrq get() = "bfrq${position}_input"
+    private val key_bfrq get() = "bfrq${position}_date"
     private val key_bfjg get() = "bfjg${position}_input"
     private val key_sfzx get() = "sfzx${position}_input"
 

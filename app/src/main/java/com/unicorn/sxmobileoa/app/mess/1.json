@@ -1,160 +1,28 @@
-<![
-  CDATA
-  [
-    [
-      {
-        "deptOrgCode": "000",
-        "courtCode": "R60",
-        "courtStdNo": 3660,
-        "userNo": 110,
-        "dept_name": "院领导",
-        "uuid": "F149A22DAB764AF956D19B114690E896",
-        "deptNo": 41,
-        "sortNo": 0,
-        "dept_st_name": "院领导",
-        "dept_level_code": "004100000000",
-        "courtNo": 3660,
-        "phone_number": "",
-        "id": 366000110,
-        "fullname": "马强",
-        "username": "0110"
-      },
-      {
-        "deptOrgCode": "000",
-        "courtCode": "R60",
-        "courtStdNo": 3660,
-        "userNo": 1301,
-        "dept_name": "院领导",
-        "uuid": "9547904BF6AE186D4036F103E156D694",
-        "deptNo": 41,
-        "sortNo": 0,
-        "dept_st_name": "院领导",
-        "dept_level_code": "004100000000",
-        "courtNo": 3660,
-        "phone_number": "",
-        "id": 366001301,
-        "fullname": "郭润余",
-        "username": "1301"
-      },
-      {
-        "deptOrgCode": "000",
-        "courtCode": "R60",
-        "courtStdNo": 3660,
-        "userNo": 8902,
-        "dept_name": "院领导",
-        "uuid": "9369A1AEA162700014FC6B073FC6F1AA",
-        "deptNo": 41,
-        "sortNo": 0,
-        "dept_st_name": "院领导",
-        "dept_level_code": "004100000000",
-        "courtNo": 3660,
-        "phone_number": "",
-        "id": 366008902,
-        "fullname": "周晓平",
-        "username": "0115"
-      },
-      {
-        "deptOrgCode": "000",
-        "courtCode": "R60",
-        "courtStdNo": 3660,
-        "userNo": 902,
-        "dept_name": "院领导",
-        "uuid": "9C34B3046C1F8DCE12CDFB66AAF05B9D",
-        "deptNo": 41,
-        "sortNo": 0,
-        "dept_st_name": "院领导",
-        "dept_level_code": "004100000000",
-        "courtNo": 3660,
-        "phone_number": "",
-        "id": 366000902,
-        "fullname": "郭建军",
-        "username": "0902"
-      },
-      {
-        "deptOrgCode": "000",
-        "courtCode": "R60",
-        "courtStdNo": 3660,
-        "userNo": 8901,
-        "dept_name": "院领导",
-        "uuid": "5C8B74CD8F509B63E58F542504BCB616",
-        "deptNo": 41,
-        "sortNo": 0,
-        "dept_st_name": "院领导",
-        "dept_level_code": "004100000000",
-        "courtNo": 3660,
-        "phone_number": "",
-        "id": 366008901,
-        "fullname": "刘兴平",
-        "username": "0113"
-      },
-      {
-        "deptOrgCode": "000",
-        "courtCode": "R60",
-        "courtStdNo": 3660,
-        "userNo": 8976,
-        "dept_name": "院领导",
-        "uuid": "3C58F2E8FDC555FFF224EFC50D77FD2F",
-        "deptNo": 41,
-        "sortNo": 0,
-        "dept_st_name": "院领导",
-        "dept_level_code": "004100000000",
-        "courtNo": 3660,
-        "phone_number": "",
-        "id": 366008976,
-        "fullname": "杨明德",
-        "username": "yangmd"
-      },
-      {
-        "deptOrgCode": "000",
-        "courtCode": "R60",
-        "courtStdNo": 3660,
-        "userNo": 9026,
-        "dept_name": "院领导",
-        "uuid": "70aa6544-a9a1-4d99-b9c4-f3f89c3ebe8c",
-        "deptNo": 41,
-        "sortNo": 1,
-        "dept_st_name": "院领导",
-        "dept_level_code": "004100000000",
-        "courtNo": 3660,
-        "phone_number": "",
-        "id": 366009026,
-        "fullname": "李志刚",
-        "username": "lizhigang"
-      },
-      {
-        "deptOrgCode": "000",
-        "courtCode": "R60",
-        "courtStdNo": 3660,
-        "userNo": 9027,
-        "dept_name": "院领导",
-        "uuid": "f4b31b42-2194-47ce-b428-59f67f9b5ca4",
-        "deptNo": 41,
-        "sortNo": 2,
-        "dept_st_name": "院领导",
-        "dept_level_code": "004100000000",
-        "courtNo": 3660,
-        "phone_number": "",
-        "id": 366009027,
-        "fullname": "何玉宁",
-        "username": "heyuning"
-      },
-      {
-        "deptOrgCode": "000",
-        "courtCode": "R60",
-        "courtStdNo": 3660,
-        "userNo": 9028,
-        "dept_name": "院领导",
-        "uuid": "32eaa291-247a-4b24-ad2e-26bd37d36094",
-        "deptNo": 41,
-        "sortNo": 2,
-        "dept_st_name": "院领导",
-        "dept_level_code": "004100000000",
-        "courtNo": 3660,
-        "phone_number": "",
-        "id": 366009028,
-        "fullname": "刘明才",
-        "username": "liumc"
-      }
-    ]
-  ]
-]>
+{
+  "mlxx": [
+    {
+      "count": "1",
+      "flowCode": "OA_FLOW_XZZB_SBLY",
+      "moduleCode": "OA_FUN_XZZB",
+      "spdCode": "OA_SPD_XZZB_SBLY",
+      "text": "设备领用"
+    },
+    {
+      "count": "3",
+      "flowCode": "OA_FLOW_XZZB_SBBF",
+      "moduleCode": "OA_FUN_XZZB",
+      "spdCode": "OA_SPD_XZZB_SBBF",
+      "text": "设备报废"
+    },
+    {
+      "count": "2",
+      "flowCode": "OA_FLOW_XZZB_SBWX",
+      "moduleCode": "OA_FUN_XZZB",
+      "spdCode": "OA_SPD_XZZB_SBWX",
+      "text": "设备维修"
+    }
+  ],
+  "name": "行政装备"
+}, {"mlxx":[{"count": "2", "flowCode": "OA_FLOW_HQGL_YCSQ", "moduleCode": "OA_FUN_HQGL", "spdCode": "OA_SPD_HQGL_YCSQ", "text": "用车申请"}, {"count": "0", "flowCode": "OA_FLOW_HQGL_WPLY", "moduleCode": "OA_FUN_HQGL", "spdCode": "OA_SPD_HQGL_WPLY", "text": "物品领用"}], "name": "后勤管理"}, {"mlxx":[{"count": "1", "flowCode": "OA_FLOW_QJGL_GCGL", "moduleCode": "OA_FUN_QJGL", "spdCode": "OA_SPD_QJGL_GCSQ", "text": "公出申请"}, {"count": "3", "flowCode": "OA_FLOW_QJGL_QJGL", "moduleCode": "OA_FUN_QJGL", "spdCode": "OA_SPD_QJGL_QJSQ", "text": "请假申请"}], "name": "请假管理"}, {"mlxx":[{"count": "0", "flowCode": "OA_FLOW_JDGL_JDJLSQ", "moduleCode": "OA_FUN_JDGL", "spdCode": "OA_SPD_JDGL_JDJLSQ", "text": "接待申请"}], "name": "接待管理"}, {"mlxx":[{"count": "", "flowCode": "", "moduleCode": "SP_CSX", "spdCode": "", "text": "超审限"}, {"count": "", "flowCode": "", "moduleCode": "MH_XWZX", "spdCode": "", "text": "新闻中心"}, {"count": "", "flowCode": "", "moduleCode": "MH_XXGG", "spdCode": "", "text": "消息公告"}], "name": "其他"
+}
+

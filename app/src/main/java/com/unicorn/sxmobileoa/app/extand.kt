@@ -12,15 +12,18 @@ import com.jakewharton.rxbinding2.view.clicks
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.MainThreadTransformer
+import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.select.code.ui.CodeAct
 import com.unicorn.sxmobileoa.select.dept.ui.DeptAct
 import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.spd.model.Spd
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Maybe
 import io.reactivex.Observable
 import org.joda.time.DateTime
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 fun View.safeClicks(): Observable<Unit> = this.clicks().throttleFirst(1, TimeUnit.SECONDS)
@@ -90,5 +93,25 @@ fun TextView.clickCode(title: String, code: String, key: String) {
 fun Context.finish() {
     if (this is AppCompatActivity) {
         this.finish()
+    }
+}
+
+fun TextView.clickDate(){
+    this.safeClicks().subscribe {
+        val now = Calendar.getInstance()
+        val activity = context as BaseAct
+        val dpd = DatePickerDialog.newInstance(
+                { _, year, monthOfYear, dayOfMonth ->
+                    val month = monthOfYear + 1
+                    val monthStr = if (month > 9) "$month" else "0$month"
+                    val dayStr = if (dayOfMonth > 9) "$dayOfMonth" else "0$dayOfMonth"
+                    val str = "$year-$monthStr-$dayStr"
+                    this.text = str
+                },
+                now.get(Calendar.YEAR), // Initial year selection
+                now.get(Calendar.MONTH), // Initial month selection
+                now.get(Calendar.DAY_OF_MONTH) // Inital day selection
+        )
+        dpd.show(activity.fragmentManager, "dpd")
     }
 }
