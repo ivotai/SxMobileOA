@@ -1,3 +1,7 @@
+服务器：154.0.21.194
+账号：administrator
+密码：Withub_sxgy194
+
 TODO
 1. html 编辑器
 2. 节点没有及时刷新的问题

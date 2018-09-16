@@ -22,9 +22,9 @@
         <activity android:name=".simple.court.ui.CourtAct" />
         <activity android:name=".simple.main.ui.MainAct" />
         <activity android:name=".simple.dbxx.ui.DbxxAct" />
-        <activity android:name="com.unicorn.sxmobileoa.select.dept.ui.DeptAct" />
-        <activity android:name="com.unicorn.sxmobileoa.select.code.ui.CodeAct" />
-        <activity android:name="com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct" />
+        <activity android:name=".select.dept.ui.DeptAct" />
+        <activity android:name=".select.code.ui.CodeAct" />
+        <activity android:name=".select.deptUser.ui.DeptUserAct" />
         <activity android:name=".sequenceFlow.ui.SequenceFlowAct" />
         <activity android:name=".commitTask.ui.CommitTaskAct" />
         <activity android:name=".header.nbfw.NbfwAct" />
@@ -33,6 +33,7 @@
         <activity android:name=".header.sbbf.SbbfAct" />
         <activity android:name=".header.qjsq.QjsqAct" />
         <activity android:name=".header.gcsq.GcsqAct" />
+        <activity android:name=".header.sbbf.EquipmentAct"></activity>
     </application>
 
 </manifest>

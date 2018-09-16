@@ -9,42 +9,43 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.app.mess.SpdHelper
+import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
-import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
 
 @SuppressLint("ViewConstructor")
-class NbfwHeaderView(context: Context,menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
-        BasicHeaderView {
+class NbfwHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context), BasicHeaderView {
 
     init {
-        initViews(context,menu, dbxx, spd)
+        initViews(context, menu, dbxx, spd)
     }
 
-    lateinit var tvTitle: TextView  // 内部发文标题
+    lateinit var tvTitle: TextView
     lateinit var tvBt: TextView     // 真的标题
-    lateinit var tvJbbm: TextView   // 不可编辑
-    lateinit var tvNgr: TextView    // 不可编辑
+
+    lateinit var tvJbbm: TextView
+    lateinit var tvNgr: TextView
     lateinit var tvZsmc: TextView
     lateinit var tvCsmc: TextView
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
-    fun initViews(context: Context,menu: Menu, dbxx: Dbxx, spd: Spd) {
+    fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
         findView()
-        renderView(menu,spd)
+        renderView(menu, spd)
         canEdit(dbxx)
     }
 
     private fun findView() {
         tvTitle = findViewById(R.id.tvTitle)
         tvBt = findViewById(R.id.tvBt)
+
         tvJbbm = findViewById(R.id.tvJbbm)
         tvNgr = findViewById(R.id.tvNgr)
         tvZsmc = findViewById(R.id.tvZsmc)
@@ -60,7 +61,7 @@ class NbfwHeaderView(context: Context,menu: Menu, dbxx: Dbxx, spd: Spd) : FrameL
     }
 
     @SuppressLint("SetTextI18n")
-    private fun renderView(menu: Menu,spd: Spd) {
+    private fun renderView(menu: Menu, spd: Spd) {
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
         tvBt.text = spd.spdXx.bt
         // 遍历展示
@@ -72,24 +73,16 @@ class NbfwHeaderView(context: Context,menu: Menu, dbxx: Dbxx, spd: Spd) : FrameL
     }
 
     private fun canEdit(dbxx: Dbxx) {
-        if (!SpdHelper().canEdit2(dbxx.param.nodeId)) return
-
-        // 遍历，使其可编辑
-        pairs.forEach {
-            it.apply {
-                textView.isEnabled = true
-            }
+        if (SpdHelper().canEdit2(dbxx.param.nodeId)) {
+            tvZsmc.clickDept(Key.zsmc_input)
+            tvCsmc.clickDept(Key.csmc_input)
+            RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { textResult ->
+                when (textResult.key) {
+                    Key.zsmc_input -> tvZsmc
+                    else -> tvCsmc
+                }.text = textResult.result
+            })
         }
-
-        // 选择部门
-        tvZsmc.clickDept(Key.zsmc_input)
-        tvCsmc.clickDept(Key.csmc_input)
-        RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { selectResult ->
-            when (selectResult.key) {
-                Key.zsmc_input -> tvZsmc
-                else -> tvCsmc
-            }.text = selectResult.result
-        })
     }
 
     override fun saveToSpd(spd: Spd) {
