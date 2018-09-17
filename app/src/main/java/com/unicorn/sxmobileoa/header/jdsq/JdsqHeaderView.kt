@@ -26,8 +26,18 @@ class JdsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     lateinit var tvBt: TextView
     lateinit var tvSqr: TextView
     lateinit var tvSqrq: TextView
+    // TODO 承办部门
     lateinit var tvJcdd: TextView
     lateinit var tvCbr: TextView
+    // TODO 接待日期
+    lateinit var tvLfkrdw: TextView
+    lateinit var tvXm: TextView
+    lateinit var tvLfrs: TextView
+    lateinit var tvJb: TextView
+    lateinit var tvPtry: TextView
+    lateinit var tvLfsy: TextView
+    lateinit var tvJdje: TextView
+    lateinit var tvBz: TextView
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
@@ -41,11 +51,18 @@ class JdsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     private fun findView() {
         tvTitle = findViewById(R.id.tvTitle)
         tvBt = findViewById(R.id.tvBt)
-
         tvSqr = findViewById(R.id.tvSqr)
         tvSqrq = findViewById(R.id.tvSqrq)
         tvJcdd = findViewById(R.id.tvJcdd)
         tvCbr = findViewById(R.id.tvCbr)
+        tvLfkrdw = findViewById(R.id.tvLfkrdw)
+        tvXm = findViewById(R.id.tvXm)
+        tvLfrs = findViewById(R.id.tvLfrs)
+        tvJb = findViewById(R.id.tvJb)
+        tvPtry = findViewById(R.id.tvPtry)
+        tvLfsy = findViewById(R.id.tvLfsy)
+        tvJdje = findViewById(R.id.tvJdje)
+        tvBz = findViewById(R.id.tvBz)
 
         // 保存 textView 和 eky
         pairs = ArrayList<PAIR<TextView, String>>().apply {
@@ -53,7 +70,6 @@ class JdsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             add(PAIR(tvSqrq, Key.sqrq_input))
             add(PAIR(tvJcdd, Key.jcdd_input))
             add(PAIR(tvCbr, Key.cbr_input))
-
         }
     }
 

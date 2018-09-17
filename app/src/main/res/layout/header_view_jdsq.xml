@@ -163,16 +163,197 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="设备报废详情"
+            android:text="来访客人单位"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/tvEquipment"
+            android:id="@+id/tvLfkrdw"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="点击查看设备报废详情"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="姓名"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvXm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="来访人数"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvLfrs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="级别"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvJb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="陪同人员"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvPtry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="来访事由、时间及行程安排计划"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvLfsy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="接待金额"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvJdje"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="备注"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvBz"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
