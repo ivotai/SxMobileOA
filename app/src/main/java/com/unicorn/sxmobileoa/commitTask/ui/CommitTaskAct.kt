@@ -8,6 +8,7 @@ import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.commitTask.model.CommitSuccess
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskActNavigationModel
 import com.unicorn.sxmobileoa.commitTask.network.CommitTask
 import com.unicorn.sxmobileoa.sequenceFlow.model.SequenceFlowResult
@@ -28,6 +29,8 @@ class CommitTaskAct : BaseAct() {
             CommitTask(instance).toMaybe(this).subscribe { commitTaskResponse ->
                 com.orhanobut.logger.Logger.e(commitTaskResponse.toString())
                 ToastUtils.showShort("提交成功")
+                RxBus.get().post(CommitSuccess())
+                finish()
             }
         }
     }

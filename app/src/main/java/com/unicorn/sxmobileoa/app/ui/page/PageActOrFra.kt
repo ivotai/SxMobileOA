@@ -44,7 +44,7 @@ interface PageActOrFra<Model> : ActOrFra {
         loadFirstPage()
     }
 
-    private fun loadFirstPage() {
+     fun loadFirstPage() {
         loadPage(0).subscribe({ page ->
             mSwipeRefreshLayout.isRefreshing = false
             mAdapter!!.setNewData(page.rows)

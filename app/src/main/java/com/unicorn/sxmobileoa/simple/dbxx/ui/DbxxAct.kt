@@ -6,14 +6,17 @@ import com.blankj.utilcode.util.ConvertUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
+import com.unicorn.sxmobileoa.commitTask.model.CommitSuccess
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dbxx.network.GetDbxx
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import dart.DartModel
 import io.reactivex.Maybe
+import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_title_swipe_recycler.*
 
 class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
@@ -30,6 +33,12 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
                 .colorResId(R.color.md_grey_100)
                 .size(ConvertUtils.dp2px(10f))
                 .build().let { mRecyclerView.addItemDecoration(it) }
+    }
+
+    override fun registerEvent() {
+        RxBus.get().registerEvent(CommitSuccess::class.java,this, Consumer {
+                loadFirstPage()
+        })
     }
 
     // ===================== ignore =====================

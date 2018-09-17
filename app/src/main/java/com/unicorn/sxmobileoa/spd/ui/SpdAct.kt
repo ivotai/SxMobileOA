@@ -7,9 +7,11 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.commitTask.model.CommitSuccess
 import com.unicorn.sxmobileoa.commitTask.ui.CommitTaskAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.spd.model.Spd
@@ -19,10 +21,16 @@ import com.unicorn.sxmobileoa.spd.network.toSpd.ToSpd
 import com.unicorn.sxmobileoa.spd.ui.headerView.ButtonFooterView
 import com.unicorn.sxmobileoa.spd.ui.headerView.OperationHeaderView
 import dart.DartModel
+import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_title_recycler.*
 import kotlinx.android.synthetic.main.footer_view_button.view.*
 
 abstract class SpdAct : BaseAct() {
+    override fun registerEvent() {
+       RxBus.get().registerEvent(CommitSuccess::class.java,this, Consumer {
+           finish()
+       })
+    }
 
     abstract fun addBasicHeaderView(): BasicHeaderView
 
