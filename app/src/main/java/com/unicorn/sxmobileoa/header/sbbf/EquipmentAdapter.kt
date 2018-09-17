@@ -16,6 +16,7 @@ class EquipmentAdapter : BaseQuickAdapter<Equipment, BaseViewHolder>(R.layout.it
         helper.setText(R.id.tvBfsbmc, item.bfsbmc)
         helper.setText(R.id.tvPpjxh, item.ppjxh)
         helper.setText(R.id.tvSl, item.sl)
+        helper.setText(R.id.tvBfrq, item.bfrq)
 
         val tvBfrq = helper.getView<TextView>(R.id.tvBfrq)
         tvBfrq.textChanges().subscribe { item.bfrq = it

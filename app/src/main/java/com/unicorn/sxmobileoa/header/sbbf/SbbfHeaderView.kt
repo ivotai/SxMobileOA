@@ -74,9 +74,7 @@ class SbbfHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
     private fun canEdit(spd: Spd) {
         findViewById<View>(R.id.tvEquipment).safeClicks().subscribe {
-            context.startActivity(Intent(context, EquipmentAct::class.java).apply {
-                putExtra(Key.spd, spd)
-            })
+            context.startActivity(Intent(context, EquipmentAct::class.java))
         }
     }
 

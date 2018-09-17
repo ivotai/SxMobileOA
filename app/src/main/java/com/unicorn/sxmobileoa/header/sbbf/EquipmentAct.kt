@@ -2,24 +2,21 @@ package com.unicorn.sxmobileoa.header.sbbf
 
 import android.support.v7.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
-import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.sbbf.model.Equipment
-import com.unicorn.sxmobileoa.header.sbbf.model.EquipmentActNavigationModel
-import com.unicorn.sxmobileoa.spd.network.saveSpd.SaveSpd
+import com.unicorn.sxmobileoa.spd.model.Spd
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
-import dart.DartModel
 import kotlinx.android.synthetic.main.act_title_recycler.*
 
 class EquipmentAct : BaseAct() {
 
-    override val layoutId = R.layout.act_title_recycler
+    companion object {
+        lateinit var spd: Spd
+    }
 
-    // todo 不传值，独立取一次 spd
-    @DartModel
-    lateinit var model: EquipmentActNavigationModel
+    override val layoutId = R.layout.act_title_recycler
 
     val mAdapter = EquipmentAdapter()
 
@@ -34,16 +31,16 @@ class EquipmentAct : BaseAct() {
                     .build().let { this.addItemDecoration(it) }
         }
 
-        titleBar.setOperation("保存").safeClicks().subscribe {
-            SaveSpd(model.spd).toMaybe(this@EquipmentAct).subscribe { _ ->
-                ToastUtils.showShort("保存成功")
-            }
-        }
+//        titleBar.setOperation("保存").safeClicks().subscribe {
+//            SaveSpd(model.spd).toMaybe(this@EquipmentAct).subscribe { _ ->
+//                ToastUtils.showShort("保存成功")
+//            }
+//        }
     }
 
     override fun bindIntent() {
         listOf(1, 2, 3, 4, 5)
-                .map { Equipment(spd = model.spd, position = it) }
+                .map { Equipment(spd = Global.spd, position = it) }
                 .let { mAdapter.setNewData(it) }
     }
 
