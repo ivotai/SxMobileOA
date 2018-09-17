@@ -59,6 +59,8 @@ abstract class SpdAct : BaseAct() {
     override fun bindIntent() {
         ToSpd(model.menu, model.dbxx).toMaybe(this).subscribe {
             spd = it
+
+            // 供 equipmentAct 使用。
             Global.spd = spd
             // 添加 taskId
             spd.spdXx.taskId = model.dbxx.param.taskId

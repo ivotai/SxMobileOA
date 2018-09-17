@@ -1,18 +1,22 @@
 package com.unicorn.sxmobileoa.header.qjsq
 
 import android.annotation.SuppressLint
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
+import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
+import io.reactivex.functions.Consumer
 
 /*
       1. 永远不可编辑（包括标题）
@@ -99,9 +103,12 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                 }
             }
             tvSqrq.clickDate()
-            tvXjzl.clickCode("休假种类及年度","QJSQ_JQ",Key.xjzljsy_select)
+            tvXjzl.clickCode("休假种类及年度", "QJSQ_JQ", Key.xjzljsy_select)
             tvKsrq.clickDate()
             tvJsrq.clickDate()
+            RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { textResult ->
+                tvXjzl.text = textResult.result
+            })
         }
 
         // 特殊字段

@@ -1,18 +1,22 @@
 package com.unicorn.sxmobileoa.header.gcsq
 
 import android.annotation.SuppressLint
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
+import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
+import io.reactivex.functions.Consumer
 
 @SuppressLint("ViewConstructor")
 class GcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
@@ -95,6 +99,9 @@ class GcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             tvWcr.clickDeptUser(Key.textResult, Key.mcwcr_input)
             tvKsqr.clickDate()
             tvJsqr.clickDate()
+            RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { textResult ->
+                tvWcr.text = textResult.result
+            })
         }
         tvBz.isEnabled = nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")
     }
