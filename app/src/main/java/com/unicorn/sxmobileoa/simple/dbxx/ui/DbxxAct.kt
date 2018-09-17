@@ -10,7 +10,7 @@ import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
-import com.unicorn.sxmobileoa.commitTask.model.CommitSuccess
+import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dbxx.network.GetDbxx
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
@@ -36,7 +36,7 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
     }
 
     override fun registerEvent() {
-        RxBus.get().registerEvent(CommitSuccess::class.java,this, Consumer {
+        RxBus.get().registerEvent(CommitTaskSuccess::class.java,this, Consumer {
                 loadFirstPage()
         })
     }

@@ -11,7 +11,7 @@ import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.commitTask.model.CommitSuccess
+import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
 import com.unicorn.sxmobileoa.commitTask.ui.CommitTaskAct
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.spd.model.Spd
@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.footer_view_button.view.*
 
 abstract class SpdAct : BaseAct() {
     override fun registerEvent() {
-       RxBus.get().registerEvent(CommitSuccess::class.java,this, Consumer {
+       RxBus.get().registerEvent(CommitTaskSuccess::class.java,this, Consumer {
            finish()
        })
     }
