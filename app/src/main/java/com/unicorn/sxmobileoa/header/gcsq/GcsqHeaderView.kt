@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
+import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
@@ -85,18 +86,17 @@ class GcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
     private fun canEdit(dbxx: Dbxx) {
         val nodeId = dbxx.param.nodeId
-//        if (SpdHelper().canEdit2(nodeId)) {
-//            // 遍历，使其可编辑
-//            pairs.forEach {
-//                it.apply {
-//                    textView.isEnabled = true
-//                }
-//            }
-//        } else
-//
-        if (nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")) {
-            tvBz.isEnabled = true
+        if (SpdHelper().canEdit2(nodeId)) {
+            pairs.forEach {
+                it.apply {
+                    textView.isEnabled = true
+                }
+            }
+            tvWcr.clickDeptUser(Key.textResult, Key.mcwcr_input)
+            tvKsqr.clickDate()
+            tvJsqr.clickDate()
         }
+        tvBz.isEnabled = nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")
     }
 
     override fun saveToSpd(spd: Spd) {
@@ -105,6 +105,8 @@ class GcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                 spd.set(key, textView.trimText())
             }
         }
+        spd.spdXx.column3 = tvKsqr.trimText()
+        spd.spdXx.column4 = tvJsqr.trimText()
     }
 
 }
