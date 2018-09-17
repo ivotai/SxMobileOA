@@ -33,7 +33,7 @@ class CommitTaskAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        tvSequenceFlow.safeClicks().subscribe {
+        tvSequenceFlow.safeClicks().mergeWith(tvUsers.safeClicks()).subscribe {
             startActivity(Intent(this@CommitTaskAct, SequenceFlowAct::class.java).apply {
                 putExtra(Key.menu, model.menu)
                 putExtra(Key.dbxx, model.dbxx)

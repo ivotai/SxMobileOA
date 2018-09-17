@@ -1,15 +1,14 @@
 package com.unicorn.sxmobileoa.sequenceFlow.ui
 
-import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
-import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
+import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserResult
+import com.unicorn.sxmobileoa.select.deptUser.model.User
 import com.unicorn.sxmobileoa.sequenceFlow.model.NextTaskSequenceFlow
 import com.unicorn.sxmobileoa.sequenceFlow.model.SequenceFlowActNavigationModel
 import com.unicorn.sxmobileoa.sequenceFlow.model.SequenceFlowResult
@@ -40,15 +39,8 @@ class SequenceFlowAct : BaseAct() {
             addDefaultItemDecoration()
         }
 
-        titleBar.safeClicks().subscribe {
-            startActivity(Intent(this, DeptUserAct::class.java).apply {
-                putExtra(Key.type, Key.deptUserResult)
-            })
-        }
-//        RxBus.get().registerEvent(DeptUserResult::class.java, this, Consumer {
-//            sequenceFlowResult!!.userList = it.userList
-//            tvUsers.text = it.userList.joinToString(",") { user -> user.fullname }
-//        })
+
+
     }
 
 
@@ -81,8 +73,21 @@ class SequenceFlowAct : BaseAct() {
         // TODO dealperson  == 1  时  结束节点无需选择人员
         RxBus.get().registerEvent(NextTaskSequenceFlow::class.java, this, Consumer {
             NextUser(model.spd, it).toMaybe(this@SequenceFlowAct).subscribe { list ->
+               val user = User("0","选择其他人员","0")
+                list.add(user)
                 userAdapter.setNewData(list.map { flowUser -> SelectWrapper(flowUser) })
             }
+        })
+
+        RxBus.get().registerEvent(DeptUserResult::class.java, this, Consumer {
+            val list = sequenceFlowAdapter.data.filter { it.isSelected }.map { it.t }
+            if (list.isEmpty()) return@Consumer
+
+
+
+            val result = SequenceFlowResult(list[0], it.userList)
+            RxBus.get().post(result)
+            finish()
         })
     }
 
