@@ -48,6 +48,14 @@ class SequenceFlowAct : BaseAct() {
     private fun next() {
         val list = sequenceFlowAdapter.data.filter { it.isSelected }.map { it.t }
         if (list.isEmpty()) return
+        val flow = list[0]
+        if (flow.nextTaskShowName== "结束"){
+            val result = SequenceFlowResult(flow, ArrayList<User>())
+            RxBus.get().post(result)
+            finish()
+            return
+        }
+
 
         val list2 = userAdapter.data.filter { it.isSelected }.map { it.t }
         if (list2.isEmpty()) return
@@ -72,6 +80,10 @@ class SequenceFlowAct : BaseAct() {
     override fun registerEvent() {
         // TODO dealperson  == 1  时  结束节点无需选择人员
         RxBus.get().registerEvent(NextTaskSequenceFlow::class.java, this, Consumer {
+            if(it.nextTaskShowName== "结束"){
+                return@Consumer
+            }
+
             NextUser(model.spd, it).toMaybe(this@SequenceFlowAct).subscribe { list ->
                val user = User("0","选择其他人员","0")
                 list.add(user)
