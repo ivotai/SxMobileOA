@@ -24,7 +24,6 @@ class JdsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
     lateinit var tvTitle: TextView
     lateinit var tvBt: TextView
-
     lateinit var tvSqr: TextView
     lateinit var tvSqrq: TextView
     lateinit var tvJcdd: TextView

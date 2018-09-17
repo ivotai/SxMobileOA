@@ -20,11 +20,14 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvBfsbmc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:enabled="false"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -45,11 +48,14 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvPpjxh"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:enabled="false"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -70,12 +76,14 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvSl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="sdfsdf"
+            android:background="@null"
+            android:enabled="false"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -98,6 +106,56 @@
 
         <TextView
             android:id="@+id/tvBfrq"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:text="报废结果"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvBfjg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:text="是否注销"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvSfzx"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
