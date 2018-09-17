@@ -8,11 +8,11 @@ data class SaveSpdResponse(
         val fydm: String,
         val processInstancesId: String,
         val currentTaskName: String,
-        val status: String,
+//        val status: String,
         val spdCode: String,
         val primaryId: String,
         val flowCode: String,
-        val spyjId: String,
+        var spyjId: String?,
         val moduleCode: String,
         val currentTaskId: String
 ) : Serializable
