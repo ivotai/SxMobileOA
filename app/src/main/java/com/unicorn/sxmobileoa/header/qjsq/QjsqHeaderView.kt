@@ -35,14 +35,14 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     lateinit var tvSzbm: TextView
     lateinit var tvQjsy: TextView
     lateinit var tvXjzl: TextView
-    lateinit var tvKsqr: TextView
-    lateinit var tvJsqr: TextView
+    lateinit var tvKsrq: TextView
+    lateinit var tvJsrq: TextView
     lateinit var tvBz: TextView
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
     fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
-        LayoutInflater.from(context).inflate(R.layout.header_view_sqrq, this, true)
+        LayoutInflater.from(context).inflate(R.layout.header_view_qjsq, this, true)
         findView()
         renderView(menu, spd)
         canEdit(dbxx)
@@ -57,8 +57,8 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         tvSzbm = findViewById(R.id.tvSzbm)
         tvQjsy = findViewById(R.id.tvQjsy)
         tvXjzl = findViewById(R.id.tvXjzl)
-        tvKsqr = findViewById(R.id.tvKsrq)
-        tvJsqr = findViewById(R.id.tvJsrq)
+        tvKsrq = findViewById(R.id.tvKsrq)
+        tvJsrq = findViewById(R.id.tvJsrq)
         tvBz = findViewById(R.id.tvBz)
 
         // 把 textView 和对应 key 放入 pair
@@ -77,8 +77,8 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
         tvBt.text = spd.spdXx.bt
         tvSqrq.text = spd.spdXx.column2
-        tvKsqr.text = spd.spdXx.column3
-        tvJsqr.text = spd.spdXx.column4
+        tvKsrq.text = spd.spdXx.column3
+        tvJsrq.text = spd.spdXx.column4
 
         // 遍历展示
         pairs.forEach {
@@ -92,13 +92,16 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         val nodeId = dbxx.param.nodeId
 
         // 基本信息
-        // 申请日期 开始日期 结束日期
         if (SpdHelper().canEdit2(nodeId)) {
             pairs.forEach {
                 it.apply {
                     textView.isEnabled = true
                 }
             }
+            tvSqrq.clickDate()
+            tvXjzl.clickCode("休假种类及年度","QJSQ_JQ",Key.xjzljsy_select)
+            tvKsrq.clickDate()
+            tvJsrq.clickDate()
         }
 
         // 特殊字段
@@ -111,6 +114,9 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                 spd.set(key, textView.trimText())
             }
         }
+        spd.spdXx.column2 = tvSqrq.trimText()
+        spd.spdXx.column3 = tvKsrq.trimText()
+        spd.spdXx.column4 = tvJsrq.trimText()
     }
 
 }
