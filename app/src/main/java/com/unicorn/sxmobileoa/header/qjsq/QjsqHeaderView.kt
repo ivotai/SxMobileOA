@@ -7,12 +7,18 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
+import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
 
+/*
+      1. 永远不可编辑（包括标题）
+      2. 基本信息
+      3. 特殊字段
+   */
 @SuppressLint("ViewConstructor")
 class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
         BasicHeaderView {
@@ -21,19 +27,16 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         initViews(context, menu, dbxx, spd)
     }
 
-    lateinit var tvTitle: TextView  // 内部发文标题
-    lateinit var tvBt: TextView     // 真的标题
+    lateinit var tvTitle: TextView
+    lateinit var tvBt: TextView
     lateinit var tvSqrq: TextView
-
     lateinit var tvQjr: TextView
     lateinit var tvZw: TextView
     lateinit var tvSzbm: TextView
     lateinit var tvQjsy: TextView
     lateinit var tvXjzl: TextView
-
     lateinit var tvKsqr: TextView
     lateinit var tvJsqr: TextView
-
     lateinit var tvBz: TextView
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
@@ -49,16 +52,13 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         tvTitle = findViewById(R.id.tvTitle)
         tvBt = findViewById(R.id.tvBt)
         tvSqrq = findViewById(R.id.tvSqrq)
-
         tvQjr = findViewById(R.id.tvQjr)
         tvZw = findViewById(R.id.tvZw)
         tvSzbm = findViewById(R.id.tvSzbm)
         tvQjsy = findViewById(R.id.tvQjsy)
         tvXjzl = findViewById(R.id.tvXjzl)
-
         tvKsqr = findViewById(R.id.tvKsrq)
         tvJsqr = findViewById(R.id.tvJsrq)
-
         tvBz = findViewById(R.id.tvBz)
 
         // 把 textView 和对应 key 放入 pair
@@ -90,18 +90,19 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
     private fun canEdit(dbxx: Dbxx) {
         val nodeId = dbxx.param.nodeId
-//        if (SpdHelper().canEdit2(nodeId)) {
-//            // 遍历，使其可编辑
-//            pairs.forEach {
-//                it.apply {
-//                    textView.isEnabled = true
-//                }
-//            }
-//        } else
-//
-            if (nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")) {
-            tvBz.isEnabled = true
+
+        // 基本信息
+        // 申请日期 开始日期 结束日期
+        if (SpdHelper().canEdit2(nodeId)) {
+            pairs.forEach {
+                it.apply {
+                    textView.isEnabled = true
+                }
+            }
         }
+
+        // 特殊字段
+        tvBz.isEnabled = nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")
     }
 
     override fun saveToSpd(spd: Spd) {
