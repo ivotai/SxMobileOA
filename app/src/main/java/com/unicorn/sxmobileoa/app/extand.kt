@@ -17,6 +17,7 @@ import com.unicorn.sxmobileoa.select.code.ui.CodeAct
 import com.unicorn.sxmobileoa.select.dept.ui.DeptAct
 import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.spd.model.Spd
+import com.unicorn.sxmobileoa.spd.model.SpdData
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import florent37.github.com.rxlifecycle.RxLifecycle
@@ -54,7 +55,8 @@ fun Spd.set(spdKey: String, spdValue: String) {
             this.updateTime = DateTime().toString("yyyy-MM-dd HH:mm:ss")
         }
     }else{
-//        SpdHelper().addSpdData()
+        val spdData = SpdData(spdKey = spdKey,spdValue = spdValue,spdid = this.spdXx.id)
+        this.spdData.add(spdData)
     }
 }
 

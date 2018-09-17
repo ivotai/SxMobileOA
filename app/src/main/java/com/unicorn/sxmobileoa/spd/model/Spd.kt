@@ -4,13 +4,14 @@ import com.chad.library.adapter.base.entity.IExpandable
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.spd.ui.FlowNodeAdapter
+import org.joda.time.DateTime
 import java.io.Serializable
 import java.util.*
 
 data class Spd(
         val cyy: List<Cyy>,
         val flowNodeList: List<FlowNode>,
-        val spdData: List<SpdData>,
+        val spdData: MutableList<SpdData>,
         val spdXx: SpdXx,
         val nodeModel: NodeModel
 ) : Serializable
@@ -198,19 +199,19 @@ data class Cyy(
 ) : Serializable
 
 data class SpdData(
-        var create: Boolean= true,
-        val createUserId: String= Global.loginInfo!!.userId,
-        val createUserName: String= Global.loginInfo!!.userName,
-        val dataType: String,
-        val id: String=UUID.randomUUID().toString(),
-        val qybz: Int,
+        var create: Boolean = true,
+        val createUserId: String = Global.loginInfo!!.userId,
+        val createUserName: String = Global.loginInfo!!.userName,
         val spdKey: String,
+        val dataType: String = spdKey.split("_")[1],
+        val id: String = UUID.randomUUID().toString(),
+        val qybz: Int = 0,
         var spdValue: String,
-        val spdid: String,
-        val sysTime: String,
-        var update: Boolean=false,
-        var updateTime: String,
-        val xtlx: String
+        val spdid: String ,
+        val sysTime: String = DateTime().toString("yyyy-MM-dd HH:mm:ss"),
+        var update: Boolean = false,
+        var updateTime: String = "",
+        val xtlx: String="oa"
 ) : Serializable
 
 data class Spyj(

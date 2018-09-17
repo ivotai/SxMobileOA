@@ -16,11 +16,6 @@ import java.util.*
 
 class SpdHelper {
 
-    fun addSpdData(spd: Spd, spdKey: String, spdValue: String) {
-//        val temp = spd.spdData[0]
-//        val spdData = SpdData()
-    }
-
     fun addSpyjIfNeed(dbxx: Dbxx, spd: Spd) {
         val currentNodeId = dbxx.param.nodeId
         val isCustomNode = spd.flowNodeList[0].flowNodeId != null

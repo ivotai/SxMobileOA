@@ -51,11 +51,10 @@ class DeptUserAct : BaseAct() {
         KeywordHeaderView(this).apply {
             setHint("请输入部门")
             mAdapter.addHeaderView(this)
-        }.etKeyword.textChanges()
-                .subscribe { keyword ->
-                    allDept.filter { dept -> dept.text.contains(keyword) }
-                            .let { mAdapter.setNewData(it) }
-                }
+        }.etKeyword.textChanges().subscribe { keyword ->
+            allDept.filter { it.text.contains(keyword) }
+                    .let { mAdapter.setNewData(it) }
+        }
     }
 
     private fun clickOperation() {
