@@ -1,10 +1,10 @@
 package com.unicorn.sxmobileoa.sequenceFlow.ui
 
 import android.support.v7.widget.LinearLayoutManager
+import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserResult
@@ -20,17 +20,19 @@ import kotlinx.android.synthetic.main.act_spd_next.*
 
 class SequenceFlowAct : BaseAct() {
 
-    private val sequenceFlowAdapter = SequenceFlowAdapter()
+    override fun initViews() {
+        titleBar.setTitle("选择流程节点及人员")
+        initRecyclerViews()
+    }
+
+    private val flowAdapter = NextTaskSequenceFlowAdapter()
 
     private val userAdapter = UserAdapter()
 
-
-    override fun initViews() {
-        titleBar.setTitle("选择流程节点及相关人员")
-        titleBar.setOperation("确认").safeClicks().subscribe { next() }
-        rvSequenceFlow.apply {
+    private fun initRecyclerViews() {
+        rvFlow.apply {
             layoutManager = LinearLayoutManager(this@SequenceFlowAct)
-            sequenceFlowAdapter.bindToRecyclerView(this)
+            flowAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
         }
         rvUser.apply {
@@ -38,76 +40,66 @@ class SequenceFlowAct : BaseAct() {
             userAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
         }
-
-
-
-    }
-
-
-
-    private fun next() {
-        val list = sequenceFlowAdapter.data.filter { it.isSelected }.map { it.t }
-        if (list.isEmpty()) return
-        val flow = list[0]
-        if (flow.nextTaskShowName== "结束"){
-            val result = SequenceFlowResult(flow, ArrayList<User>())
-            RxBus.get().post(result)
-            finish()
-            return
-        }
-
-
-        val list2 = userAdapter.data.filter { it.isSelected }.map { it.t }
-        if (list2.isEmpty()) return
-
-        val result = SequenceFlowResult(list[0], list2)
-        RxBus.get().post(result)
-        finish()
     }
 
     override fun bindIntent() {
-        getSptNext()
+        getFlow()
+        setOperation()
     }
 
-    private fun getSptNext() {
-        SpdNext(model.menu, model.dbxx, model.spd).toMaybe(this)
+    private fun getFlow() {
+        SpdNext(model.dbxx, model.spd).toMaybe(this)
                 .map { it.nextTask_sequenceFlow }
-                .map { it.map { sequenceFlow -> SelectWrapper(sequenceFlow) } }
-                .subscribe { sequenceFlowAdapter.setNewData(it) }
+                .subscribe { flowAdapter.setNewData(it) }
     }
 
+    private fun setOperation() {
+        titleBar.setOperation("确认").safeClicks().subscribe { _ ->
+            val selectedFlows = flowAdapter.data.filter { it.isSelected }
+            if (selectedFlows.isEmpty()) {
+                ToastUtils.showShort("请选择流程节点")
+                return@subscribe
+            }
+
+            val selectedFlow = selectedFlows[0]
+            if (selectedFlow.nextTaskShowName == "结束") {
+                RxBus.get().post(SequenceFlowResult(selectedFlow, ArrayList()))
+                finish()
+                return@subscribe
+            }
+
+            val selectedUsers = userAdapter.data.filter { it.isSelected }
+            if (selectedUsers.isEmpty()) {
+                ToastUtils.showShort("请选择人员")
+                return@subscribe
+            }
+
+            RxBus.get().post(SequenceFlowResult(selectedFlow, selectedUsers))
+            finish()
+        }
+    }
 
     override fun registerEvent() {
-        // TODO dealperson  == 1  时  结束节点无需选择人员
         RxBus.get().registerEvent(NextTaskSequenceFlow::class.java, this, Consumer {
-            if(it.nextTaskShowName== "结束"){
+            // dealperson  == 1  时  结束节点无需选择人员
+            if (it.nextTaskShowName == "结束") {
                 return@Consumer
             }
-
             NextUser(model.spd, it).toMaybe(this@SequenceFlowAct).subscribe { list ->
-               val user = User("0","选择其他人员","0")
-                list.add(user)
-                userAdapter.setNewData(list.map { flowUser -> SelectWrapper(flowUser) })
+                list.apply { add(User("-1", "选择其他人员", "-1")) }
+                        .let { listE -> userAdapter.setNewData(listE) }
             }
         })
-
-        RxBus.get().registerEvent(DeptUserResult::class.java, this, Consumer {
-            val list = sequenceFlowAdapter.data.filter { it.isSelected }.map { it.t }
-            if (list.isEmpty()) return@Consumer
-
-
-
-            val result = SequenceFlowResult(list[0], it.userList)
-            RxBus.get().post(result)
+        RxBus.get().registerEvent(DeptUserResult::class.java, this, Consumer { deptUserResult ->
+            val selectedFlows = flowAdapter.data.filter { it.isSelected }
+            RxBus.get().post(SequenceFlowResult(selectedFlows[0], deptUserResult.userList))
             finish()
         })
     }
-
-
-    override val layoutId = R.layout.act_spd_next
 
     @DartModel
     lateinit var model: SequenceFlowActNavigationModel
 
+    override val layoutId = R.layout.act_spd_next
 
 }

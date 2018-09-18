@@ -33,28 +33,28 @@ class CommitTaskAct : BaseAct() {
     private fun clicks() {
         tvSequenceFlow.safeClicks().mergeWith(tvUsers.safeClicks()).subscribe {
             startActivity(Intent(this@CommitTaskAct, SequenceFlowAct::class.java).apply {
-                putExtra(Key.menu, model.menu)
                 putExtra(Key.dbxx, model.dbxx)
                 putExtra(Key.spd, model.spd)
             })
         }
     }
 
-
     override fun registerEvent() {
-        RxBus.get().registerEvent(SequenceFlowResult::class.java, this, Consumer {
-            sequenceFlowResult = it
-            tvSequenceFlow.text = it.sequenceFlow.nextTaskShowName
-            tvUsers.text = it.userList.joinToString(",") { user -> user.fullname }
+        RxBus.get().registerEvent(SequenceFlowResult::class.java, this, Consumer { result ->
+            sequenceFlowResult = result
+            tvSequenceFlow.text = result.flow.nextTaskShowName
+            tvUsers.text = result.userList.joinToString(",") { user -> user.fullname }
+            if (tvSequenceFlow.text == "结束") {
+                tvUsers.text = "无需选择人员"
+            }
         })
     }
 
     private fun setOperation() {
         titleBar.setOperation("确定").safeClicks().subscribe {
             val temp = sequenceFlowResult ?: return@subscribe
-            val instance = SpdHelper().buildTaskInstance(model.spd, model.saveSpdResponse, temp.sequenceFlow, temp.userList)
-            CommitTask(instance).toMaybe(this).subscribe { commitTaskResponse ->
-                com.orhanobut.logger.Logger.e(commitTaskResponse.toString())
+            val taskInstance = SpdHelper().buildTaskInstance(model.spd, model.saveSpdResponse, temp.flow, temp.userList)
+            CommitTask(taskInstance).toMaybe(this).subscribe { _ ->
                 ToastUtils.showShort("提交成功")
                 RxBus.get().post(CommitTaskSuccess())
                 finish()

@@ -86,7 +86,7 @@ class SpdHelper {
                 moduleCode = response.moduleCode,
                 flowCode = response.flowCode,
                 nodeId = response.nodeId,
-                spyjId = response.spyjId ?: "",
+                spyjId = response.spyjId ,
                 gd = if (nodeId.contains("_GD")) 1 else 0,
                 nextTaskKey = sequenceFlow.nextTaskKey,
                 tasktype = sequenceFlow.nextTaskType,

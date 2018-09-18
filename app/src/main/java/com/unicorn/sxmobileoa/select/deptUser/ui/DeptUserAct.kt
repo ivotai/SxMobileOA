@@ -1,6 +1,7 @@
 package com.unicorn.sxmobileoa.select.deptUser.ui
 
 import android.support.v7.widget.LinearLayoutManager
+import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
@@ -66,6 +67,10 @@ class DeptUserAct : BaseAct() {
                     .filter { it.isSelected }
                     .toList()
                     .subscribe { selectors ->
+                        if (selectors.isEmpty()){
+                            ToastUtils.showShort("请选择人员")
+                            return@subscribe
+                        }
                         when (model.type) {
                             Key.textResult -> {
                                 val result = selectors.joinToString(",") { it.fullname }

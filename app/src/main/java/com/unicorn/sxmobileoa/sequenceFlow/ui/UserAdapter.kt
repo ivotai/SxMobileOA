@@ -8,16 +8,15 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
-import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.select.deptUser.model.User
 import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 
-class UserAdapter : BaseQuickAdapter<SelectWrapper<User>, BaseViewHolder>(R.layout.item_text) {
+class UserAdapter : BaseQuickAdapter<User, BaseViewHolder>(R.layout.item_text) {
 
-    override fun convert(helper: BaseViewHolder, item: SelectWrapper<User>) {
+    override fun convert(helper: BaseViewHolder, item: User) {
         val tvText = helper.getView<TextView>(R.id.tvText)
-        tvText.text = item.t.fullname
+        tvText.text = item.fullname
 
         // 选中效果
         tvText.setTextColor(if (item.isSelected) Color.WHITE else Color.BLACK)
@@ -25,10 +24,10 @@ class UserAdapter : BaseQuickAdapter<SelectWrapper<User>, BaseViewHolder>(R.layo
 
         // 点击后刷新对应条目
         tvText.safeClicks().subscribe {
-            if (item.t.fullname == "选择其他人员"){
-                    mContext.startActivity(Intent(mContext, DeptUserAct::class.java).apply {
-                        putExtra(Key.type, Key.deptUserResult)
-                    })
+            if (item.fullname == "选择其他人员") {
+                mContext.startActivity(Intent(mContext, DeptUserAct::class.java).apply {
+                    putExtra(Key.type, Key.deptUserResult)
+                })
                 return@subscribe
             }
 

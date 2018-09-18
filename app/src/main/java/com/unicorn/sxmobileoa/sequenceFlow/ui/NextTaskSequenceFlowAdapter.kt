@@ -7,26 +7,25 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.model.SelectWrapper
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.sequenceFlow.model.NextTaskSequenceFlow
 
-class SequenceFlowAdapter : BaseQuickAdapter<SelectWrapper<NextTaskSequenceFlow>, BaseViewHolder>(R.layout.item_text) {
+class NextTaskSequenceFlowAdapter : BaseQuickAdapter<NextTaskSequenceFlow, BaseViewHolder>(R.layout.item_text) {
 
-    override fun convert(helper: BaseViewHolder, item: SelectWrapper<NextTaskSequenceFlow>) {
+    override fun convert(helper: BaseViewHolder, item: NextTaskSequenceFlow) {
         val tvText = helper.getView<TextView>(R.id.tvText)
-        tvText.text = item.t.nextTaskShowName
+        tvText.text = item.nextTaskShowName
 
         // 选中效果
         tvText.setTextColor(if (item.isSelected) Color.WHITE else Color.BLACK)
         tvText.setBackgroundColor(if (item.isSelected) ContextCompat.getColor(mContext, R.color.colorPrimary) else Color.WHITE)
 
-        // 点击变动所有item
-        tvText.safeClicks().subscribe {
-            RxBus.get().post(item.t)
-
+        // 单选
+        tvText.safeClicks().subscribe { _ ->
+            RxBus.get().post(item)
             if (item.isSelected) return@subscribe
-            data.forEach { wrapper -> wrapper.isSelected = wrapper == item }
+
+            data.forEach { it.isSelected = it == item }
             notifyDataSetChanged()
         }
     }

@@ -100,6 +100,32 @@
 
     </LinearLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:text="承办部门"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvCbbm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -162,16 +188,44 @@
         <TextView
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
+            android:text="接待日期"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvJdrq"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
             android:paddingEnd="16dp"
             android:text="来访客人单位"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvLfkrdw"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:enabled="false"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -193,11 +247,14 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvXm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:enabled="false"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -219,11 +276,14 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvLfrs"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:enabled="false"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -297,14 +357,16 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvLfsy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:enabled="false"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -323,12 +385,22 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvJdje"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:enabled="false"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="元"
+            android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
     </LinearLayout>
@@ -349,11 +421,14 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvBz"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
+            android:enabled="false"
+            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 

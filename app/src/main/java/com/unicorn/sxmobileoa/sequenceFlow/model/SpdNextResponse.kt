@@ -1,5 +1,7 @@
 package com.unicorn.sxmobileoa.sequenceFlow.model
 
+import com.unicorn.sxmobileoa.app.mess.model.Selector
+
 data class SpdNextResponse(
         val spdid: String,
         val node: Node,
@@ -73,7 +75,7 @@ data class NextTaskSequenceFlow(
         val sort: Int,
         val startPersonId: String,
         val taskCode: String
-)
+): Selector()
 
 data class Node(
         val createUserId: String,
