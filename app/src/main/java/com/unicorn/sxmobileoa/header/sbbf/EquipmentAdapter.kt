@@ -1,14 +1,16 @@
 package com.unicorn.sxmobileoa.header.sbbf
 
+import android.arch.lifecycle.LifecycleOwner
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.Global
-import com.unicorn.sxmobileoa.app.clickDate
+import com.unicorn.sxmobileoa.app.*
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
-import com.unicorn.sxmobileoa.app.textChanges
+import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.sbbf.model.Equipment
+import io.reactivex.functions.Consumer
 
 class EquipmentAdapter : BaseQuickAdapter<Equipment, BaseViewHolder>(R.layout.item_equipment) {
 
@@ -34,14 +36,20 @@ class EquipmentAdapter : BaseQuickAdapter<Equipment, BaseViewHolder>(R.layout.it
 
         val flag2 = nodeId in listOf("OA_FLOW_XZZB_SBBF_XXZSJD", "OA_FLOW_XZZB_SBBF_BGS", "OA_FLOW_XZZB_SBBF_BGSSH")
         tvBfrq.isEnabled = flag2
-        if (flag2){
+        if (flag2) {
             tvBfrq.clickDate()
+            tvBfjg.clickCode("报废结果", "XZZB_SBBF_BFJG", item.key_bfjg)
         }
-
-        // TODO
-        tvBfjg.isEnabled = flag2
         val flag3 = nodeId == "OA_FLOW_XZZB_SBBF_GDZCGLKZX"
         tvSfzx.isEnabled = flag3
+        if (flag3) {
+            tvSfzx.clickCode("是否注销", "XZZB_SBBF_SFZX", item.key_sfzx)
+        }
+
+        RxBus.get().registerEvent(TextResult::class.java, mContext as LifecycleOwner, Consumer {
+            item.spd.set(it.key, it.result)
+            notifyDataSetChanged()
+        })
 
         // 监控值变化
         tvBfsbmc.textChanges().subscribe { item.bfsbmc = it }

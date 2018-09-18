@@ -7,12 +7,12 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 
 class Equipment(val spd: Spd, @IntRange(from = 1, to = 5) val position: Int) {
 
-    private val key_bfsbmc = "bfsbmc${position}_input"
-    private val key_ppjxh = "ppjxh${position}_input"
-    private val key_sl = "sl${position}_input"
-    private val key_bfrq = "bfrq${position}_date"
-    private val key_bfjg = "bfjg${position}_input"
-    private val key_sfzx = "sfzx${position}_input"
+     val key_bfsbmc = "bfsbmc${position}_input"
+     val key_ppjxh = "ppjxh${position}_input"
+     val key_sl = "sl${position}_input"
+     val key_bfrq = "bfrq${position}_date"
+     val key_bfjg = "bfjg${position}_input"
+     val key_sfzx = "sfzx${position}_input"
 
     var bfsbmc
         get() = spd.get(key_bfsbmc)
