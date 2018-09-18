@@ -5,6 +5,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.clickDate
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.textChanges
 import com.unicorn.sxmobileoa.header.sbbf.model.Equipment
@@ -33,8 +34,12 @@ class EquipmentAdapter : BaseQuickAdapter<Equipment, BaseViewHolder>(R.layout.it
 
         val flag2 = nodeId in listOf("OA_FLOW_XZZB_SBBF_XXZSJD", "OA_FLOW_XZZB_SBBF_BGS", "OA_FLOW_XZZB_SBBF_BGSSH")
         tvBfrq.isEnabled = flag2
-        tvBfjg.isEnabled = flag2
+        if (flag2){
+            tvBfrq.clickDate()
+        }
 
+        // TODO
+        tvBfjg.isEnabled = flag2
         val flag3 = nodeId == "OA_FLOW_XZZB_SBBF_GDZCGLKZX"
         tvSfzx.isEnabled = flag3
 
