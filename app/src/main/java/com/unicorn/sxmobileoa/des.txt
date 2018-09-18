@@ -1,2 +1,17 @@
-TODO
-3. 设备报废
+
+<spdZwRequest>
+   <UUID></UUID>
+   <busiCode>spdZw</busiCode>
+   <loginBusiType>1</loginBusiType>
+   <loginName>0000</loginName>
+   <parameters>
+      <parameter name="spdId"><![CDATA[009c9b71-2133-4bdd-8aa2-2b2161ecaab8]]></parameter>
+   </parameters>
+   <phoneType>android</phoneType>
+   <randCode>PkmT4doLD36R</randCode>
+   <randCodeSec></randCodeSec>
+   <requestFlow>20180918102059diflab</requestFlow>
+   <ticket>10000001</ticket>
+   <time>20180918102059</time>
+   <version>1.0</version>
+</spdZwRequest>

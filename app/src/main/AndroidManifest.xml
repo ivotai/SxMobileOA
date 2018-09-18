@@ -37,6 +37,7 @@
         <activity android:name=".header.wply.WplyAct" />
 
         <activity android:name=".header.sbbf.EquipmentAct"></activity>
+    <activity android:name=".header.wply.WplyDetailAct"/>
     </application>
 
 </manifest>

@@ -98,6 +98,13 @@ object Key {
     const val lfsy_textarea = "lfsy_textarea"
     const val jdje_input = "jdje_input"
 
+    // wply
+    const val sqrdh_input = "sqrdh_input"
+//    const val cbbmmc_input = "cbbmmc_input"
+//    const val jcdd_select = "jcdd_select"
+//    const val cbr_input = "cbr_input"
+//    const val jdrq_input = "jdrq_input"
+
 
 
     // const
