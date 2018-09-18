@@ -87,7 +87,7 @@ class WplyHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             }
         }
 
-        findViewById<View>(R.id.tvWply).safeClicks().subscribe {
+        findViewById<View>(R.id.tvWplyDetail).safeClicks().subscribe {
             context.startActivity(Intent(context, WplyDetailAct::class.java))
         }
     }

@@ -5,7 +5,7 @@ import com.unicorn.sxmobileoa.app.get
 import com.unicorn.sxmobileoa.app.set
 import com.unicorn.sxmobileoa.spd.model.Spd
 
-class Equipment(val spd: Spd, @IntRange(from = 1, to = 5) val position: Int) {
+class Sbbf(val spd: Spd, @IntRange(from = 1, to = 5) val position: Int) {
 
      val key_bfsbmc = "bfsbmc${position}_input"
      val key_ppjxh = "ppjxh${position}_input"

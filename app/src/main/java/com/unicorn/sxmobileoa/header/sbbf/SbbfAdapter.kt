@@ -9,12 +9,12 @@ import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
-import com.unicorn.sxmobileoa.header.sbbf.model.Equipment
+import com.unicorn.sxmobileoa.header.sbbf.model.Sbbf
 import io.reactivex.functions.Consumer
 
-class EquipmentAdapter : BaseQuickAdapter<Equipment, BaseViewHolder>(R.layout.item_equipment) {
+class SbbfAdapter : BaseQuickAdapter<Sbbf, BaseViewHolder>(R.layout.item_equipment) {
 
-    override fun convert(helper: BaseViewHolder, item: Equipment) {
+    override fun convert(helper: BaseViewHolder, item: Sbbf) {
         val tvBfsbmc = helper.getView<TextView>(R.id.tvBfsbmc)
         val tvPpjxh = helper.getView<TextView>(R.id.tvPpjxh)
         val tvSl = helper.getView<TextView>(R.id.tvSl)
