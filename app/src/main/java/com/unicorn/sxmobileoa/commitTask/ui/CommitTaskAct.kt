@@ -1,8 +1,8 @@
 package com.unicorn.sxmobileoa.commitTask.ui
 
 import android.content.Intent
+import com.afollestad.materialdialogs.MaterialDialog
 import com.blankj.utilcode.util.ToastUtils
-import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.mess.RxBus
@@ -60,10 +60,21 @@ class CommitTaskAct : BaseAct() {
         CheckGd(model.spd.spdXx.processInstancesId, model.spd.spdXx.taskId)
                 .toMaybe(this)
                 .subscribe {
-                    Logger.e(it.toString())
-
-
+                    //                    if (it.message != "1")
+                    showConfirm()
+//                    else
+//                        commitTask()
                 }
+    }
+
+    private fun showConfirm() {
+        MaterialDialog.Builder(this)
+                .title("归档将会结束其他流程，是否确认？")
+                .positiveText("确认")
+                .negativeText("取消")
+                .onPositive { _, _ ->
+                   commitTask()
+                }.show()
     }
 
     private fun commitTask() {

@@ -1,15 +1,16 @@
 package com.unicorn.sxmobileoa.commitTask.network.checkGd
 
+import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 
-class CheckGd(processInstanceId:String,taskId:String):BaseUseCase<Any>(){
+class CheckGd(processInstanceId:String,taskId:String):BaseUseCase<CheckGdResponse>(){
 
     init {
         request = CheckGdRequest(processInstanceId,taskId)
     }
 
-    override fun toResult(json: String): Any {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun toResult(json: String): CheckGdResponse {
+        return ComponentHolder.appComponent.getGson().fromJson(json,CheckGdResponse::class.java)
     }
 
 }
