@@ -12,6 +12,7 @@ import com.unicorn.sxmobileoa.header.jdsq.JdsqAct
 import com.unicorn.sxmobileoa.header.nbfw.NbfwAct
 import com.unicorn.sxmobileoa.header.qjsq.QjsqAct
 import com.unicorn.sxmobileoa.header.sbbf.SbbfAct
+import com.unicorn.sxmobileoa.header.sbly.SblyAct
 import com.unicorn.sxmobileoa.header.sbwx.SbwxAct
 import com.unicorn.sxmobileoa.header.wbfw.WbfwAct
 import com.unicorn.sxmobileoa.header.wply.WplyAct
@@ -40,6 +41,7 @@ class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolde
                     "公出申请" -> cls = GcsqAct::class.java
                     "接待申请" -> cls = JdsqAct::class.java
                     "物品领用" -> cls = WplyAct::class.java
+                    "设备领用" -> cls = SblyAct::class.java
                 }
                 if (cls == null) return@subscribe
 

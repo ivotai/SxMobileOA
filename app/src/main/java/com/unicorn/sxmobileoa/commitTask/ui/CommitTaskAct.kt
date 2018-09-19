@@ -53,27 +53,39 @@ class CommitTaskAct : BaseAct() {
     }
 
     private fun setOperation() {
-        titleBar.setOperation("确定").safeClicks().subscribe { checkGd() }
+        titleBar.setOperation("确定").safeClicks().subscribe {
+            checkGd()
+        }
     }
 
     private fun checkGd() {
-        CheckGd(model.spd.spdXx.processInstancesId, model.spd.spdXx.taskId)
-                .toMaybe(this)
-                .subscribe {
-                    //                    if (it.message != "1")
-                    showConfirm()
-//                    else
-//                        commitTask()
-                }
+        val temp = sequenceFlowResult
+        if (temp == null) {
+            ToastUtils.showShort("请选择流程节点及人员")
+            return
+        }
+        val nextTaskKey = temp.flow.nextTaskKey
+        if (nextTaskKey.contains("_GD")) {
+            CheckGd(model.spd.spdXx.processInstancesId, model.spd.spdXx.taskId)
+                    .toMaybe(this)
+                    .subscribe {
+                        if (it.message != "1")
+                            showConfirm()
+                        else
+                            commitTask()
+                    }
+        } else {
+            commitTask()
+        }
     }
 
     private fun showConfirm() {
         MaterialDialog.Builder(this)
-                .title("归档将会结束其他流程，是否确认？")
+                .title("当前流程存在未审批完成的待办任务，提交至归档阶段,其他待办任务将无法处理，是否继续？")
                 .positiveText("确认")
                 .negativeText("取消")
                 .onPositive { _, _ ->
-                   commitTask()
+                    commitTask()
                 }.show()
     }
 
