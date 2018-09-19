@@ -2,10 +2,13 @@ package com.unicorn.sxmobileoa.simple.main.ui
 
 import android.support.v7.widget.GridLayoutManager
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
 import com.unicorn.sxmobileoa.simple.main.model.ParentMenu
 import com.unicorn.sxmobileoa.simple.main.model.section.MenuSection
 import com.unicorn.sxmobileoa.simple.main.network.GetMenu
+import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_title_recycler.*
 
 class MainAct : BaseAct() {
@@ -57,6 +60,12 @@ class MainAct : BaseAct() {
             }
         }
         return sectionList
+    }
+
+    override fun registerEvent() {
+        RxBus.get().registerEvent(CommitTaskSuccess::class.java,this, Consumer {
+            bindIntent()
+        })
     }
 
 }

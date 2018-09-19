@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.header.wply
+package com.unicorn.sxmobileoa.header.sbly
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -23,7 +23,7 @@ import com.unicorn.sxmobileoa.spd.model.Spd
       3. 特殊字段
    */
 @SuppressLint("ViewConstructor")
-class WplyHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
+class SblyHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
         BasicHeaderView {
 
     init {

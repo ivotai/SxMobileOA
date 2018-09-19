@@ -19,17 +19,17 @@ class MenuAdapter : BaseSectionQuickAdapter<MenuSection, BaseViewHolder>(R.layou
     override fun convert(helper: BaseViewHolder, item: MenuSection) {
         item.t.apply {
             helper.setText(R.id.tvText, text)
-            helper.setText(R.id.tvCount, count)
+            helper.setText(R.id.tvCount, count.toString())
             helper.setImageResource(R.id.ivImage, resId)
         }
-        if (item.t.count != "0") {
+        if (item.t.count != 0) {
             helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
                 mContext.startActivity(Intent(mContext, DbxxAct::class.java).apply {
                     putExtra(Key.menu, item.t)
                 })
             }
         }
-        helper.getView<View>(R.id.flCount).visibility = if (item.t.count == "0") View.INVISIBLE else View.VISIBLE
+        helper.getView<View>(R.id.flCount).visibility = if (item.t.count == 0) View.INVISIBLE else View.VISIBLE
     }
 
 }

@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.header.wply
+package com.unicorn.sxmobileoa.header.wply.detail
 
 import android.support.v7.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils

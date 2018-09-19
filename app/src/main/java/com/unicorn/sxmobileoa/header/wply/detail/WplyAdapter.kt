@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.header.wply
+package com.unicorn.sxmobileoa.header.wply.detail
 
 import android.arch.lifecycle.LifecycleOwner
 import android.widget.TextView

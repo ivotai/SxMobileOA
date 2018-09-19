@@ -35,9 +35,9 @@
         <activity android:name=".header.gcsq.GcsqAct" />
         <activity android:name=".header.jdsq.JdsqAct" />
         <activity android:name=".header.wply.WplyAct" />
-
+        <activity android:name=".header.sbly.SblyAct" />
         <activity android:name=".header.sbbf.SbbfDetailAct"></activity>
-    <activity android:name=".header.wply.WplyDetailAct"/>
+        <activity android:name=".header.wply.detail.WplyDetailAct" />
     </application>
 
 </manifest>

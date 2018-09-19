@@ -7,7 +7,7 @@ data class Menu(
         val flowCode: String,
         val spdCode: String,
         val text: String,
-        val count: String,
+        val count: Int,
         var resId: Int
 ) : Serializable
 

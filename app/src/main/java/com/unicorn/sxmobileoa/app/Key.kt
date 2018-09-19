@@ -100,12 +100,10 @@ object Key {
 
     // wply
     const val sqrdh_input = "sqrdh_input"
-//    const val cbbmmc_input = "cbbmmc_input"
-//    const val jcdd_select = "jcdd_select"
-//    const val cbr_input = "cbr_input"
-//    const val jdrq_input = "jdrq_input"
 
-
+    // sbly
+    const val lyxq_input = "lyxq_input"
+    const val lyrq_date = "lyrq_date"
 
     // const
     const val cornerRadiusDp = 5f
