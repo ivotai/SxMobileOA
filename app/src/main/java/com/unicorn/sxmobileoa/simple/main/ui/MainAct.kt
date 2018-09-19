@@ -18,6 +18,8 @@ class MainAct : BaseAct() {
     override fun initViews() {
         titleBar.setTitle("陕西省高级人民法院移动办公", true)
         initRecyclerView()
+
+
     }
 
     private val menuAdapter = MenuAdapter()
@@ -32,11 +34,11 @@ class MainAct : BaseAct() {
     // 硬编码 TODO
     private val resIds = listOf(
             R.mipmap.fawen, R.mipmap.shouwen,
-            R.mipmap.bangong_98, R.mipmap.bangong_98, R.mipmap.bangong_98,
-            R.mipmap.yongche, R.mipmap.bangong_98,
-            R.mipmap.bangong_98, R.mipmap.bangong_98,
-            R.mipmap.bangong_98,
-            R.mipmap.bangong_98, R.mipmap.bangong_98, R.mipmap.bangong_98
+            R.mipmap.sbly, R.mipmap.sbbf, R.mipmap.sbwx,
+            R.mipmap.yongche, R.mipmap.wply,
+            R.mipmap.gcsq, R.mipmap.qjsq,
+            R.mipmap.jdsq,
+            R.mipmap.csx, R.mipmap.xwzx, R.mipmap.xxgg
     )
 
     override fun bindIntent() {
