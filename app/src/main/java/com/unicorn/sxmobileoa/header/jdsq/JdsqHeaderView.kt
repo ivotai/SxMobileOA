@@ -110,11 +110,10 @@ class JdsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                 }
             }
             tvCbbm.clickDept(Key.cbbmmc_input)
-//          TODO
-//            tvJcdd.clickCode()
+            tvJcdd.clickCode("就餐地点","JDGL_JDJLSQ_JCDD",Key.jcdd_select)
             tvCbr.clickDeptUser(Key.textResult, null)
             tvJdrq.clickDate()
-//            tvJb.clickCode()
+            tvJb.clickCode("级别","JDGL_JDJLSQ_JB",Key.jb_select)
             tvPtry.clickDeptUser(Key.textResult, null)
             RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { textResult ->
                 when (textResult.key) {
