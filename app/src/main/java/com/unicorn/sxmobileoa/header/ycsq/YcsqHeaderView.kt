@@ -1,7 +1,9 @@
 package com.unicorn.sxmobileoa.header.ycsq
 
 import android.annotation.SuppressLint
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -9,12 +11,16 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
+import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
+import com.unicorn.sxmobileoa.header.ycsq.cllx.ui.CllxAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
+import io.reactivex.functions.Consumer
 
 @SuppressLint("ViewConstructor")
 class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context), BasicHeaderView {
@@ -88,9 +94,9 @@ class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             add(PAIR(tvCcrmc, Key.ccrmc_input))
             add(PAIR(tvCllx, Key.cllx_input))
             add(PAIR(tvYcrs, Key.ycrs_input))
-            add(PAIR(tvCcsj1, Key.ccsj1_select))
-            add(PAIR(tvCcsj2, Key.ccsj2_select))
-            add(PAIR(tvCcsj3, Key.ccsj3_select))
+            add(PAIR(tvCcsj1, Key.ccsjxm1_input))
+            add(PAIR(tvCcsj2, Key.ccsjxm2_input))
+            add(PAIR(tvCcsj3, Key.ccsjxm3_input))
             add(PAIR(tvSycl1, Key.sycl1_select))
             add(PAIR(tvSycl2, Key.sycl2_select))
             add(PAIR(tvSycl3, Key.sycl3_select))
@@ -122,10 +128,33 @@ class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                     textView.isEnabled = true
                 }
             }
+            tvYcsy.isEnabled = true
+
+            // TODO TIME
+            tvCfsj.clickDate()
+            tvFhsj.clickDate()
+
+            tvCcrmc.clickDeptUser(Key.textResult, Key.ccrmc_input)
+            tvCllx.safeClicks().subscribe {
+                context.startActivity(Intent(context, CllxAct::class.java).apply {
+                    putExtra(Key.key, Key.cllx_input)
+                })
+            }
+            tvKwdd.isEnabled = true
         }
+
+        //
+        RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer {
+            when (it.key) {
+                Key.ccrmc_input -> tvCcrmc
+                else -> tvCllx
+            }.text = it.result
+        })
     }
 
     override fun saveToSpd(spd: Spd) {
+        spd.spdXx.column1 = tvYcsy.trimText()
+        spd.spdXx.column3 = tvKwdd.trimText()
         pairs.forEach {
             it.apply {
                 spd.set(key, textView.trimText())

@@ -14,7 +14,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         init()
-        setErrorHandler()
+//        setErrorHandler()
     }
 
     private fun init() {

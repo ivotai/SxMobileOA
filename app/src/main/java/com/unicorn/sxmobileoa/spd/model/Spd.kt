@@ -71,7 +71,7 @@ data class SpdXx(
         val bmbm: String,
         val bmmc: String,
         var bt: String,
-        val column1: String,
+        var column1: String,
         val column10: String,
         var column2: String,
         var column3: String,
