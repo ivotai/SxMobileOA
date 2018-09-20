@@ -1,7 +1,6 @@
 package com.unicorn.sxmobileoa.header.ycsq
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.FrameLayout
@@ -10,15 +9,12 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
-import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
-import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
-import io.reactivex.functions.Consumer
 
 @SuppressLint("ViewConstructor")
 class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context), BasicHeaderView {
@@ -51,11 +47,26 @@ class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     lateinit var tvKwdd: TextView
     @BindView(R.id.tvYcrs)
     lateinit var tvYcrs: TextView
-    lateinit var tvJb: TextView
-    lateinit var tvPtry: TextView
-    lateinit var tvLfsy: TextView
-    lateinit var tvJdje: TextView
-    lateinit var tvBz: TextView
+    @BindView(R.id.tvCcsj1)
+    lateinit var tvCcsj1: TextView
+    @BindView(R.id.tvCcsj2)
+    lateinit var tvCcsj2: TextView
+    @BindView(R.id.tvCcsj3)
+    lateinit var tvCcsj3: TextView
+    @BindView(R.id.tvSycl1)
+    lateinit var tvSycl1: TextView
+    @BindView(R.id.tvSycl2)
+    lateinit var tvSycl2: TextView
+    @BindView(R.id.tvSycl3)
+    lateinit var tvSycl3: TextView
+    @BindView(R.id.tvPcr)
+    lateinit var tvPcr: TextView
+    @BindView(R.id.tvPcsj)
+    lateinit var tvPcsj: TextView
+    @BindView(R.id.tvHzsj)
+    lateinit var tvHzsj: TextView
+    @BindView(R.id.tvBcsm)
+    lateinit var tvBcsm: TextView
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
@@ -68,12 +79,6 @@ class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     }
 
     private fun findView() {
-        tvJb = findViewById(R.id.tvJb)
-        tvPtry = findViewById(R.id.tvPtry)
-        tvLfsy = findViewById(R.id.tvLfsy)
-        tvJdje = findViewById(R.id.tvJdje)
-        tvBz = findViewById(R.id.tvBz)
-
         pairs = ArrayList<PAIR<TextView, String>>().apply {
             add(PAIR(tvHbmc, Key.hbmc_input))
             add(PAIR(tvSqr, Key.sqr_input))
@@ -83,12 +88,15 @@ class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             add(PAIR(tvCcrmc, Key.ccrmc_input))
             add(PAIR(tvCllx, Key.cllx_input))
             add(PAIR(tvYcrs, Key.ycrs_input))
-
-            add(PAIR(tvJb, Key.jb_select))
-            add(PAIR(tvPtry, Key.ptry_input))
-            add(PAIR(tvLfsy, Key.lfsy_textarea))
-            add(PAIR(tvJdje, Key.jdje_input))
-            add(PAIR(tvBz, Key.bz_textarea))
+            add(PAIR(tvCcsj1, Key.ccsj1_select))
+            add(PAIR(tvCcsj2, Key.ccsj2_select))
+            add(PAIR(tvCcsj3, Key.ccsj3_select))
+            add(PAIR(tvSycl1, Key.sycl1_select))
+            add(PAIR(tvSycl2, Key.sycl2_select))
+            add(PAIR(tvSycl3, Key.sycl3_select))
+            add(PAIR(tvPcsj, Key.pcsj_input))
+            add(PAIR(tvHzsj, Key.hzsj_date))
+            add(PAIR(tvBcsm, Key.bcsm_input))
         }
     }
 
@@ -98,6 +106,7 @@ class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
         tvBt.text = spd.spdXx.bt
         tvYcsy.text = spd.spdXx.column1
         tvKwdd.text = spd.spdXx.column3
+        tvPcr.text = spd.spdXx.column8
         pairs.forEach {
             it.apply {
                 textView.text = spd.get(key)
@@ -113,15 +122,6 @@ class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                     textView.isEnabled = true
                 }
             }
-            tvJb.clickCode("级别", "JDGL_JDJLSQ_JB", Key.jb_select)
-            tvPtry.clickDeptUser(Key.textResult, null)
-            RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { textResult ->
-
-                when (textResult.key) {
-                    Key.jb_select -> tvJb
-                    else -> tvPtry
-                }.text = textResult.result
-            })
         }
     }
 

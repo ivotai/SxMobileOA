@@ -326,12 +326,12 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="级别"
+            android:text="出租司机(1)"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/tvJb"
+            android:id="@+id/tvCcsj1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -352,12 +352,12 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="陪同人员"
+            android:text="出租司机(2)"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/tvPtry"
+            android:id="@+id/tvCcsj2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -378,12 +378,142 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="来访事由、时间及行程安排计划"
+            android:text="出租司机(3)"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvCcsj3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="使用车辆(1)"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvSycl1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="使用车辆(2)"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvSycl2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="使用车辆(3)"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvSycl3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="派车人"
+            android:textColor="@color/md_grey_700"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvPcr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/md_grey_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1px"
+        android:background="@color/md_white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="@dimen/detail_width"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:text="派车时间"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/tvLfsy"
+            android:id="@+id/tvPcsj"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -406,12 +536,12 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="接待金额"
+            android:text="回站时间"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/tvJdje"
+            android:id="@+id/tvHzsj"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -419,13 +549,6 @@
             android:enabled="false"
             android:inputType="text"
             android:textColor="@color/md_grey_400"
-            android:textSize="14dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="元"
-            android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
     </LinearLayout>
@@ -442,12 +565,12 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="备注"
+            android:text="补充说明"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/tvBz"
+            android:id="@+id/tvBcsm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
