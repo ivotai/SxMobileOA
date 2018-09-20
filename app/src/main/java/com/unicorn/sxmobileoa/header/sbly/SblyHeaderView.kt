@@ -89,7 +89,7 @@ class SblyHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                 }
             }
         }
-        findViewById<View>(R.id.tvSbbfDetail).safeClicks().subscribe {
+        findViewById<View>(R.id.tvSblyDetail).safeClicks().subscribe {
             context.startActivity(Intent(context, SblyDetailAct::class.java))
         }
         if (nodeId in listOf("OA_FLOW_XZZB_SBLY_CGR", "OA_FLOW_XZZB_SBLY_BGS", "OA_FLOW_XZZB_SBLY_KGY"))

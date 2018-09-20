@@ -1,12 +1,70 @@
-{
-  "taskId": "e43e95d7-ba40-11e8-ad2f-2e60ce96e903",
-  "fydm": "R60",
-  "nodeId": "OA_FLOW_QJGL_QJGL_SQR",
-  "currentTaskName": "申请人",
-  "processInstancesId": "acafde20-ba40-11e8-ad2f-2e60ce96e903",
-  "flowCode": "OA_FLOW_QJGL_QJGL",
-  "primaryId": "1fd6244a-ec1b-432a-81f8-c335b1dc82ae",
-  "spdCode": "OA_SPD_QJGL_QJSQ",
-  "moduleCode": "OA_FUN_QJGL",
-  "currentTaskId": "e43e95d7-ba40-11e8-ad2f-2e60ce96e903"
-}
+[
+  {
+    name: '一般公务',
+    children: [
+      {
+        name: '老干服务保障'
+      },
+      {
+        name: '机要通讯',
+        children: [
+          {
+            name: '取送机要件'
+          },
+          {
+            name: '银行存取现金'
+          }
+        ]
+      },
+      {
+        name: '应急保障'
+      }
+    ]
+  },
+  {
+    name: '法执勤',
+    children: [
+      {
+        name: '审判业务'
+      },
+      {
+        name: '执行业务'
+      },
+      {
+        name: '调解'
+      },
+      {
+        name: '调查取证'
+      },
+      {
+        name: '送达'
+      },
+      {
+        name: '调卷'
+      }
+    ]
+  },
+  {
+    name: '特种车辆',
+    children: [
+      {
+        name: '押送 '
+      },
+      {
+        name: '遣送'
+      },
+      {
+        name: '人身强制'
+      }
+    ]
+  },
+  {
+    name: '其他',
+    children: [
+      {
+        name: '其他业务 '
+      }
+    ]
+  }
+]
+       
