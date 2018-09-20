@@ -99,10 +99,12 @@ object Key {
     const val jdje_input = "jdje_input"
 
     // ycsq
-    const val hbbm_input = "hbbm_input"
+    const val hbmc_input = "hbmc_input"
     const val cfsj_input = "cfsj_input"
     const val fhsj_input = "fhsj_input"
     const val ccrmc_input = "ccrmc_input"
+    const val cllx_input = "cllx_input"
+
     const val ycrs_input = "ycrs_input"
     const val ccsj1_select = "ccsj1_select"
     const val ccsj2_select = "ccsj2_select"
