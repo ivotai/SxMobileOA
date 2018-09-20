@@ -98,6 +98,22 @@ object Key {
     const val lfsy_textarea = "lfsy_textarea"
     const val jdje_input = "jdje_input"
 
+    // ycsq
+    const val hbbm_input = "hbbm_input"
+    const val cfsj_input = "cfsj_input"
+    const val fhsj_input = "fhsj_input"
+    const val ccrmc_input = "ccrmc_input"
+    const val ycrs_input = "ycrs_input"
+    const val ccsj1_select = "ccsj1_select"
+    const val ccsj2_select = "ccsj2_select"
+    const val ccsj3_select = "ccsj3_select"
+    const val sycl1_select = "sycl1_select"
+    const val sycl2_select = "sycl2_select"
+    const val sycl3_select = "sycl3_select"
+    const val pcsj_input = "pcsj_input"
+    const val hzsj_date = "hzsj_date"
+    const val bcsm_input = "bcsm_input"
+
     // wply
     const val sqrdh_input = "sqrdh_input"
 
