@@ -143,10 +143,37 @@ class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
             tvKwdd.isEnabled = true
         }
 
+        val flag = nodeId in listOf(
+                "OA_FLOW_HQGL_YCSQ_CGSP",
+                "OA_FLOW_HQGL_YCSQ_CDSP",
+                "OA_FLOW_HQGL_YCSQ_CDPC",
+                "OA_FLOW_HQGL_YCSQ_CGK",
+                "OA_FLOW_HQGL_YCSQ_BGSSP",
+                "OA_FLOW_HQGL_YCSQ_CDDZ",
+                "OA_FLOW_HQGL_YCSQ_TZ",
+                "OA_FLOW_HQGL_YCSQ_FYZSP"
+        )
+        if (flag) {
+            tvCcsj1.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsjxm1_input)
+            tvCcsj2.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsjxm2_input)
+            tvCcsj3.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsjxm3_input)
+            tvSycl1.clickCode("选择使用车辆", "YCSQ_CL", Key.sycl1_select)
+            tvSycl2.clickCode("选择使用车辆", "YCSQ_CL", Key.sycl2_select)
+            tvSycl3.clickCode("选择使用车辆", "YCSQ_CL", Key.sycl3_select)
+            tvPcsj.clickDate()
+            tvHzsj.clickDate()
+        }
+
         //
         RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer {
             when (it.key) {
                 Key.ccrmc_input -> tvCcrmc
+                Key.ccsjxm1_input -> tvCcsj1
+                Key.ccsjxm2_input -> tvCcsj2
+                Key.ccsjxm3_input -> tvCcsj3
+                Key.sycl1_select -> tvSycl1
+                Key.sycl2_select -> tvSycl2
+                Key.sycl3_select -> tvSycl3
                 else -> tvCllx
             }.text = it.result
         })
@@ -155,6 +182,22 @@ class YcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     override fun saveToSpd(spd: Spd) {
         spd.spdXx.column1 = tvYcsy.trimText()
         spd.spdXx.column3 = tvKwdd.trimText()
+
+        // column4
+        listOf(tvSycl1, tvSycl2, tvSycl3)
+                .map { it.trimText() }
+                .filter { it != "" }
+                .joinToString(",") { it }
+                .let { spd.spdXx.column4 = it }
+
+        // column5
+        listOf(tvCcsj1, tvCcsj2, tvCcsj3)
+                .map { it.trimText() }
+                .map { it.split("--")[0] }
+                .filter { it != "" }
+                .joinToString(",") { it }
+                .let { spd.spdXx.column4 = it }
+
         pairs.forEach {
             it.apply {
                 spd.set(key, textView.trimText())
