@@ -14,6 +14,8 @@ import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 
 class UserAdapter : BaseQuickAdapter<User, BaseViewHolder>(R.layout.item_text) {
 
+    var single = false
+
     override fun convert(helper: BaseViewHolder, item: User) {
         val tvText = helper.getView<TextView>(R.id.tvText)
         tvText.text = item.fullname
@@ -31,6 +33,16 @@ class UserAdapter : BaseQuickAdapter<User, BaseViewHolder>(R.layout.item_text) {
                 return@subscribe
             }
 
+            // 单选
+            if (single) {
+                data.forEach {
+                    it.isSelected = it == item
+                }
+                notifyDataSetChanged()
+                return@subscribe
+            }
+
+            // 多选
             item.isSelected = !item.isSelected
             notifyItemChanged(helper.adapterPosition)
         }

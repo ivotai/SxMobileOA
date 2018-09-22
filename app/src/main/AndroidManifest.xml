@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".simple.court.ui.CourtAct" />
-        <activity android:name=".simple.main.ui.MainAct" />
+        <activity android:name=".simple.main.ui.MainAct"
+            android:launchMode="singleTask"/>
         <activity android:name=".simple.dbxx.ui.DbxxAct" />
         <activity android:name=".select.dept.ui.DeptAct" />
         <activity android:name=".select.code.ui.CodeAct" />

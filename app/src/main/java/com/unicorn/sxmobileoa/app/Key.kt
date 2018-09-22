@@ -125,4 +125,6 @@ object Key {
     // const
     const val cornerRadiusDp = 5f
 
+    val SXFW_OA_LOGIN_TIMEOUT = "OA0002"
+
 }

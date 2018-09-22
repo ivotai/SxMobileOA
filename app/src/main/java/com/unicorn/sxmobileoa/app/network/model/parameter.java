@@ -17,6 +17,7 @@ public class parameter {
     @Attribute
     public String name;
 
+    // require
     @Text(data = true)
     public String text;
 

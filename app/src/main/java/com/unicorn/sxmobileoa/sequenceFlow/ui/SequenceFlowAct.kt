@@ -81,10 +81,11 @@ class SequenceFlowAct : BaseAct() {
 
     override fun registerEvent() {
         RxBus.get().registerEvent(NextTaskSequenceFlow::class.java, this, Consumer {
-            // dealperson  == 1  时  结束节点无需选择人员
             if (it.nextTaskShowName == "结束") {
                 return@Consumer
             }
+            val single = it.nextTaskType == "userTask"
+            userAdapter.single = single
             NextUser(model.spd, it).toMaybe(this@SequenceFlowAct).subscribe { list ->
                 list.apply { add(User("-1", "选择其他人员", "-1")) }
                         .let { listE -> userAdapter.setNewData(listE) }

@@ -13,8 +13,11 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.select.dept.model.Dept
 import com.unicorn.sxmobileoa.select.deptUser.model.User
 import com.unicorn.sxmobileoa.select.deptUser.network.DeptUser
+import io.reactivex.Observable
 
 class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>(null) {
+
+    var single = false
 
     companion object {
         const val TYPE_DEPT = 0
@@ -56,7 +59,19 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                 tvText.setBackgroundColor(if (item.isSelected) ContextCompat.getColor(mContext, R.color.colorPrimary) else Color.WHITE)
 
                 // 点击后刷新对应条目
-                tvText.safeClicks().subscribe {
+                tvText.safeClicks().subscribe { _ ->
+                    // 单选
+                    if (single){
+                        Observable.fromIterable(data)
+                                .ofType(Dept::class.java)
+                                .flatMap { Observable.fromIterable(it.userList) }
+                                .subscribe {  it.isSelected = it == item }
+                        notifyDataSetChanged()
+                   return@subscribe
+                    }
+
+
+                    // 多选
                     item.isSelected = !item.isSelected
                     notifyItemChanged(helper.adapterPosition)
                 }
