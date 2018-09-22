@@ -64,6 +64,7 @@ class DeptUserAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                     if (single){
                         Observable.fromIterable(data)
                                 .ofType(Dept::class.java)
+                                .filter { it.userList != null }
                                 .flatMap { Observable.fromIterable(it.userList) }
                                 .subscribe {  it.isSelected = it == item }
                         notifyDataSetChanged()

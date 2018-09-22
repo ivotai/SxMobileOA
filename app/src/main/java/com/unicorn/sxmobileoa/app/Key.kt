@@ -34,6 +34,7 @@ object Key {
 
     // dept
     const val key = "key"
+    const val single = "single"
 
     // nbfw
     const val jbbm_input = "jbbm_input"

@@ -29,6 +29,7 @@ class UserAdapter : BaseQuickAdapter<User, BaseViewHolder>(R.layout.item_text) {
             if (item.fullname == "选择其他人员") {
                 mContext.startActivity(Intent(mContext, DeptUserAct::class.java).apply {
                     putExtra(Key.type, Key.deptUserResult)
+                    putExtra(Key.single, single.toString())
                 })
                 return@subscribe
             }

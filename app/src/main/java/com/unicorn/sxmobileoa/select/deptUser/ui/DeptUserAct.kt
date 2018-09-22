@@ -34,6 +34,7 @@ class DeptUserAct : BaseAct() {
             mAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
         }
+        mAdapter.single = model.single == true.toString()
     }
 
     override fun bindIntent() {

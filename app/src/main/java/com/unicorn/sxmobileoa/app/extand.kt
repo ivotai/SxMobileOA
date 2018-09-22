@@ -84,6 +84,7 @@ fun TextView.clickDeptUser(type: String, key: String?) {
         context.startActivity(Intent(context, DeptUserAct::class.java).apply {
             putExtra(Key.type, type)
             if (key != null) putExtra(Key.key, key)
+            putExtra(Key.single,false.toString())
         })
     }
 }

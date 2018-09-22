@@ -14,4 +14,7 @@ class DeptUserActNavigationModel {
     @BindExtra
     lateinit var key: String
 
+    @BindExtra
+    lateinit var single:String
+
 }
