@@ -127,5 +127,6 @@ object Key {
     const val cornerRadiusDp = 5f
 
     val SXFW_OA_LOGIN_TIMEOUT = "OA0002"
+    val isRead = "isRead"
 
 }

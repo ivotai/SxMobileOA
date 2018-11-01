@@ -20,8 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".simple.court.ui.CourtAct" />
-        <activity android:name=".simple.main.ui.MainAct"
-            android:launchMode="singleTask"/>
+        <activity
+            android:name=".simple.main.ui.MainAct"
+            android:launchMode="singleTask" />
         <activity android:name=".simple.dbxx.ui.DbxxAct" />
         <activity android:name=".select.dept.ui.DeptAct" />
         <activity android:name=".select.code.ui.CodeAct" />
@@ -37,11 +38,12 @@
         <activity android:name=".header.jdsq.JdsqAct" />
         <activity android:name=".header.wply.WplyAct" />
         <activity android:name=".header.sbly.SblyAct" />
-        <activity android:name=".header.ycsq.YcsqAct"/>
-        <activity android:name=".header.sbbf.SbbfDetailAct"/>
+        <activity android:name=".header.ycsq.YcsqAct" />
+        <activity android:name=".header.sbbf.SbbfDetailAct" />
         <activity android:name=".header.wply.detail.WplyDetailAct" />
-        <activity android:name=".header.sbly.SblyDetailAct"/>
-        <activity android:name=".header.ycsq.cllx.ui.CllxAct"/>
+        <activity android:name=".header.sbly.SblyDetailAct" />
+        <activity android:name=".header.ycsq.cllx.ui.CllxAct" />
+        <activity android:name=".n.ggxx.ui.GgxxAct"></activity>
     </application>
 
 </manifest>

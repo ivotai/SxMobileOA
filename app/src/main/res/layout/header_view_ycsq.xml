@@ -329,7 +329,7 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="出租司机(1)"
+            android:text="出车司机(1)"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
@@ -355,7 +355,7 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="出租司机(2)"
+            android:text="出车司机(2)"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
@@ -381,7 +381,7 @@
             android:layout_width="@dimen/detail_width"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="出租司机(3)"
+            android:text="出车司机(3)"
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
