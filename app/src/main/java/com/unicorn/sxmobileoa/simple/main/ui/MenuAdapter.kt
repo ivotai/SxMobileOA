@@ -23,7 +23,7 @@ class MenuAdapter : BaseSectionQuickAdapter<MenuSection, BaseViewHolder>(R.layou
         item.t.apply {
             helper.setText(R.id.tvText, text)
             helper.setText(R.id.tvCount, count.toString())
-            helper.setImageResource(R.id.ivImage, resId)
+            helper.setImageResource(R.id.ivAttachment, resId)
         }
         if (item.t.count != 0) {
             helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->

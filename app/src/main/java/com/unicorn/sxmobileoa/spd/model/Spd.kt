@@ -13,7 +13,8 @@ data class Spd(
         val flowNodeList: List<FlowNode>,
         val spdData: MutableList<SpdData>,
         val spdXx: SpdXx,
-        val nodeModel: NodeModel
+        val nodeModel: NodeModel,
+        val spdFj:List<Fj>
 ) : Serializable
 
 data class FlowNode(
@@ -207,11 +208,11 @@ data class SpdData(
         val id: String = UUID.randomUUID().toString(),
         val qybz: Int = 0,
         var spdValue: String,
-        val spdid: String ,
+        val spdid: String,
         val sysTime: String = DateTime().toString("yyyy-MM-dd HH:mm:ss"),
         var update: Boolean = false,
         var updateTime: String = "",
-        val xtlx: String="oa"
+        val xtlx: String = "oa"
 ) : Serializable
 
 data class Spyj(
@@ -255,3 +256,9 @@ data class Spyj(
     override fun getItemType() =
             FlowNodeAdapter.TYPE_SPYJ
 }
+
+
+data class Fj(
+        val fjdz: String,
+        val fjmc: String
+)

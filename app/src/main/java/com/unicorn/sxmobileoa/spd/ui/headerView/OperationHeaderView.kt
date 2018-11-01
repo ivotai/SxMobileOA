@@ -3,24 +3,23 @@ package com.unicorn.sxmobileoa.spd.ui.headerView
 import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
+import android.content.Intent
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.config.ConfigModule
 import com.unicorn.sxmobileoa.app.mess.FileUtils2
 import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.n.attachment.AttachmentAct
 import com.unicorn.sxmobileoa.spd.network.spdZw.SpdZw
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.FileCallBack
 import okhttp3.Call
-import okhttp3.Request
 import java.io.File
-import java.lang.Exception
 
 
 @SuppressLint("CheckResult")
@@ -46,15 +45,15 @@ class OperationHeaderView(context: Context, val spdId: String) : FrameLayout(con
                 val fileName = dz.substring(lastIndex + 1, dz.length)
                 val file = File(ConfigModule.baseDir(), fileName)
                 if (file.exists()) {
-                    FileUtils2.openFile(context,file = file)
+                    FileUtils2.openFile(context, file = file)
                 } else {
                     OkHttpUtils
                             .get()
                             .url(it.wjdz)
                             .build()
-                            .execute(object :FileCallBack(ConfigModule.baseDir(),fileName){
+                            .execute(object : FileCallBack(ConfigModule.baseDir(), fileName) {
                                 override fun onResponse(response: File, id: Int) {
-                                    FileUtils2.openFile(context,file = response)
+                                    FileUtils2.openFile(context, file = response)
                                 }
 
                                 override fun onError(call: Call?, e: Exception?, id: Int) {
@@ -64,10 +63,15 @@ class OperationHeaderView(context: Context, val spdId: String) : FrameLayout(con
                 }
             }
         }
+
+        val llAttachment = findViewById<LinearLayout>(R.id.llAttachment)
+        llAttachment.safeClicks().subscribe { _ ->
+            context.startActivity(Intent(context, AttachmentAct::class.java))
+        }
     }
 
 
-    private fun openFile(file:File){
+    private fun openFile(file: File) {
 
     }
 

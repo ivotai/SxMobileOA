@@ -9,7 +9,7 @@
     tools:ignore="ContentDescription,HardcodedText,SpUsage">
 
     <ImageView
-        android:id="@+id/ivImage"
+        android:id="@+id/ivAttachment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,16 +23,16 @@
         android:layout_marginTop="4dp"
         android:textColor="@color/md_black"
         android:textSize="13dp"
-        app:layout_constraintEnd_toEndOf="@+id/ivImage"
-        app:layout_constraintStart_toStartOf="@+id/ivImage"
-        app:layout_constraintTop_toBottomOf="@+id/ivImage" />
+        app:layout_constraintEnd_toEndOf="@+id/ivAttachment"
+        app:layout_constraintStart_toStartOf="@+id/ivAttachment"
+        app:layout_constraintTop_toBottomOf="@+id/ivAttachment" />
 
     <FrameLayout
         android:id="@+id/flCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        app:layout_constraintStart_toEndOf="@+id/ivImage"
+        app:layout_constraintStart_toEndOf="@+id/ivAttachment"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView

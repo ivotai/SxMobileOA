@@ -44,7 +44,8 @@
         <activity android:name=".header.wply.detail.WplyDetailAct" />
         <activity android:name=".header.sbly.SblyDetailAct" />
         <activity android:name=".header.ycsq.cllx.ui.CllxAct" />
-        <activity android:name=".n.ggxx.ui.GgxxAct"></activity>
+        <activity android:name=".n.ggxx.ui.GgxxAct" />
+        <activity android:name=".n.attachment.AttachmentAct"></activity>
     </application>
 
 </manifest>
