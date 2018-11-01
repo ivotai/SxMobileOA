@@ -1,8 +1,10 @@
 package com.unicorn.sxmobileoa.spd.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ToastUtils
+import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
@@ -17,6 +19,7 @@ import com.unicorn.sxmobileoa.header.BasicHeaderView
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.SpdActNavigationModel
 import com.unicorn.sxmobileoa.spd.network.saveSpd.SaveSpd
+import com.unicorn.sxmobileoa.spd.network.spdZw.SpdZw
 import com.unicorn.sxmobileoa.spd.network.toSpd.ToSpd
 import com.unicorn.sxmobileoa.spd.ui.headerView.ButtonFooterView
 import com.unicorn.sxmobileoa.spd.ui.headerView.OperationHeaderView
@@ -25,11 +28,12 @@ import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_title_recycler.*
 import kotlinx.android.synthetic.main.footer_view_button.view.*
 
+@SuppressLint("CheckResult")
 abstract class SpdAct : BaseAct() {
     override fun registerEvent() {
-       RxBus.get().registerEvent(CommitTaskSuccess::class.java,this, Consumer {
-           finish()
-       })
+        RxBus.get().registerEvent(CommitTaskSuccess::class.java, this, Consumer {
+            finish()
+        })
     }
 
     abstract fun addBasicHeaderView(): BasicHeaderView
@@ -66,7 +70,7 @@ abstract class SpdAct : BaseAct() {
             spd.spdXx.taskId = model.dbxx.param.taskId
 
 //            处理审批意见
-             SpdHelper().addSpyjIfNeed(model.dbxx, spd)
+            SpdHelper().addSpyjIfNeed(model.dbxx, spd)
 
             flowNodeAdapter.setNewData(spd.flowNodeList)
 
@@ -78,7 +82,7 @@ abstract class SpdAct : BaseAct() {
     }
 
     private fun addOperationHeaderView() {
-        OperationHeaderView(this).apply {
+        OperationHeaderView(this,spdId = spd.spdXx.id).apply {
             flowNodeAdapter.addHeaderView(this)
         }
     }

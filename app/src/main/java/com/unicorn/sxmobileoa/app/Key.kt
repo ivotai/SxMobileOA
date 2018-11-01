@@ -21,6 +21,7 @@ object Key {
     const val dbxx = "dbxx"
     const val spd = "spd"
     const val spdId = "spdId"
+    const val spdid = "spdid"
     const val saveSpdResponse = "saveSpdResponse"
     const val code = "code"
     const val title = "title"
