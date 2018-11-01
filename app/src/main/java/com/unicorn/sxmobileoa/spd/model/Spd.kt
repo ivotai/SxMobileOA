@@ -1,8 +1,10 @@
 package com.unicorn.sxmobileoa.spd.model
 
+import com.blankj.utilcode.util.FileUtils
 import com.chad.library.adapter.base.entity.IExpandable
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.mess.FileUtils2
 import com.unicorn.sxmobileoa.spd.ui.FlowNodeAdapter
 import org.joda.time.DateTime
 import java.io.Serializable
@@ -260,4 +262,6 @@ data class Spyj(
 data class Fj(
         val fjdz: String,
         val fjmc: String
-):Serializable
+):Serializable{
+
+}

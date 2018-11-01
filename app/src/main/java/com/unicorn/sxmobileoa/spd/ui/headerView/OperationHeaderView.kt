@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.blankj.utilcode.util.ToastUtils
-import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.config.ConfigModule
@@ -41,7 +40,6 @@ class OperationHeaderView(context: Context, val spd: Spd) : FrameLayout(context)
                     return@subscribe
                 }
 
-                Logger.e(it.toString())
                 val dz = it.wjdz
                 val lastIndex = dz.lastIndexOf("/")
                 val fileName = dz.substring(lastIndex + 1, dz.length)
@@ -68,8 +66,13 @@ class OperationHeaderView(context: Context, val spd: Spd) : FrameLayout(context)
 
         val llAttachment = findViewById<LinearLayout>(R.id.llAttachment)
         llAttachment.safeClicks().subscribe { _ ->
+            if (spd.spdFj.isEmpty()) {
+                ToastUtils.showShort("无附件")
+                return@subscribe
+            }
+
             context.startActivity(Intent(context, AttachmentAct::class.java).apply {
-                putExtra(Key.spd,spd)
+                putExtra(Key.spd, spd)
             })
         }
     }
