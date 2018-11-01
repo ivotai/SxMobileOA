@@ -1,7 +1,10 @@
 package com.unicorn.sxmobileoa.n.attachment
 
+import android.arch.lifecycle.AndroidViewModel
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.select.code.model.CodeActNavigationModel
+import dart.DartModel
 import kotlinx.android.synthetic.main.title_bar.*
 
 class AttachmentAct : BaseAct() {
@@ -15,4 +18,8 @@ class AttachmentAct : BaseAct() {
     override fun bindIntent() {
     }
 
+    @DartModel
+    lateinit var model: AttachmentActNavigationModel
+
 }
+

@@ -82,7 +82,7 @@ abstract class SpdAct : BaseAct() {
     }
 
     private fun addOperationHeaderView() {
-        OperationHeaderView(this,spdId = spd.spdXx.id).apply {
+        OperationHeaderView(this,spd = spd).apply {
             flowNodeAdapter.addHeaderView(this)
         }
     }

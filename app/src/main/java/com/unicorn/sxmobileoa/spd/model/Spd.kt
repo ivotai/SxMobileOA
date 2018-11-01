@@ -257,8 +257,7 @@ data class Spyj(
             FlowNodeAdapter.TYPE_SPYJ
 }
 
-
 data class Fj(
         val fjdz: String,
         val fjmc: String
-)
+):Serializable

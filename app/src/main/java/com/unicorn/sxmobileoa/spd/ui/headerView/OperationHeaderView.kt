@@ -11,10 +11,12 @@ import android.widget.LinearLayout
 import com.blankj.utilcode.util.ToastUtils
 import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.config.ConfigModule
 import com.unicorn.sxmobileoa.app.mess.FileUtils2
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.n.attachment.AttachmentAct
+import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.network.spdZw.SpdZw
 import com.zhy.http.okhttp.OkHttpUtils
 import com.zhy.http.okhttp.callback.FileCallBack
@@ -23,7 +25,7 @@ import java.io.File
 
 
 @SuppressLint("CheckResult")
-class OperationHeaderView(context: Context, val spdId: String) : FrameLayout(context) {
+class OperationHeaderView(context: Context, val spd: Spd) : FrameLayout(context) {
 
     init {
         initViews(context)
@@ -33,7 +35,7 @@ class OperationHeaderView(context: Context, val spdId: String) : FrameLayout(con
         val view = LayoutInflater.from(context).inflate(R.layout.header_view_operation, this, true)
         llZhengWen = view.findViewById(R.id.llZhengWen)
         llZhengWen.safeClicks().subscribe { _ ->
-            SpdZw(spdId).toMaybe(context as LifecycleOwner).subscribe {
+            SpdZw(spd.spdXx.id).toMaybe(context as LifecycleOwner).subscribe {
                 if (TextUtils.isEmpty(it.wjdz)) {
                     ToastUtils.showShort("无正文")
                     return@subscribe
@@ -66,7 +68,9 @@ class OperationHeaderView(context: Context, val spdId: String) : FrameLayout(con
 
         val llAttachment = findViewById<LinearLayout>(R.id.llAttachment)
         llAttachment.safeClicks().subscribe { _ ->
-            context.startActivity(Intent(context, AttachmentAct::class.java))
+            context.startActivity(Intent(context, AttachmentAct::class.java).apply {
+                putExtra(Key.spd,spd)
+            })
         }
     }
 
