@@ -5,5 +5,6 @@ data class SimpleResponse<Model>(
         val code: String,
         val msg: String,
         var message: Int? = null,
+        var reMess:String = "",
         var result: Model? = null
 )

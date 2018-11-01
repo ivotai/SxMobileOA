@@ -28,14 +28,11 @@ abstract class BaseUseCase<Result> {
         val requestXml = toXml(request)
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), requestXml)
         return ComponentHolder.appComponent.getUniqueApi().post(requestBody)
-                .map{
+                .map {
                     return@map toSimpleResponse(it)
                 }
-                .filter {
-                    simpleResponse ->
-                    val success = simpleResponse.code == Key.SUCCESS_CODE
-                    if (!success) ToastUtils.showShort(simpleResponse.msg)
-                    return@filter success
+                .filter { simpleResponse ->
+                    return@filter simpleResponse.code == Key.SUCCESS_CODE
                 }
                 .filter {
                     if (it.message == 2) {
@@ -44,6 +41,12 @@ abstract class BaseUseCase<Result> {
                         context.startActivity(Intent(context, LoginAct::class.java))
                     }
                     it.message != 2
+                }
+                .filter {
+                    if (it.message == 0) {
+                        ToastUtils.showShort(it.reMess)
+                    }
+                    return@filter it.message != 0
                 }
                 .map { it.result!! }
                 .common(lifecycleOwner)
@@ -56,7 +59,15 @@ abstract class BaseUseCase<Result> {
             when (parameter.name) {
                 "key" -> Global.ticket = parameter.text
                 "message" -> message = parameter.text.toInt()
-                "result" -> result = toResult(parameter.text)
+                "reMess" -> reMess = parameter.text
+            }
+        }
+        // message 成功
+        if (message == 1) {
+            response.parameters?.parameterList?.forEach { parameter ->
+                when (parameter.name) {
+                    "result" -> result = toResult(parameter.text)
+                }
             }
         }
     }
