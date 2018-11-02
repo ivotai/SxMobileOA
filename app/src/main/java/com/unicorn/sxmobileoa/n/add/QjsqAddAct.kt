@@ -15,7 +15,6 @@ class QjsqAddAct : BaseAct() {
 
     override fun initViews() {
         titleBar.setTitle("请假申请")
-        divider.visibility = View.GONE
     }
 
     @SuppressLint("CheckResult")

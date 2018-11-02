@@ -9,7 +9,6 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
@@ -20,54 +19,25 @@ import io.reactivex.functions.Consumer
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.header_view_qjsq.view.*
 
-/*
-      1. 永远不可编辑（包括标题）
-      2. 基本信息
-      3. 特殊字段
-   */
+@SuppressLint("ViewConstructor")
 class QjsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Boolean = false) : FrameLayout(context), BasicInfoView, LayoutContainer {
 
     override val containerView = this
 
-    init {
-        initViews(context, menu, dbxx, spd)
-    }
-
-    //    lateinit var tvTitle: TextView
-//    lateinit var tvBt: TextView
-    lateinit var tvSqrq: TextView
-    lateinit var tvQjr: TextView
-    lateinit var tvZw: TextView
-    lateinit var tvSzbm: TextView
-    lateinit var tvQjsy: TextView
-    lateinit var tvXjzl: TextView
-    lateinit var tvKsrq: TextView
-    lateinit var tvJsrq: TextView
-    lateinit var tvBz: TextView
-
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
-    fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
-        LayoutInflater.from(context).inflate(R.layout.header_view_qjsq, this, true)
-        findView()
-        renderView(menu, spd)
-        canEdit(dbxx)
+    init {
+        initViews(context, menu, dbxx, spd, isAdd)
     }
 
-    private fun findView() {
-//        tvTitle = findViewById(R.id.tvTitle)
-//        tvBt = findViewById(R.id.tvBt)
-        tvSqrq = findViewById(R.id.tvSqrq)
-        tvQjr = findViewById(R.id.tvQjr)
-        tvZw = findViewById(R.id.tvZw)
-        tvSzbm = findViewById(R.id.tvSzbm)
-        tvQjsy = findViewById(R.id.tvQjsy)
-        tvXjzl = findViewById(R.id.tvXjzl)
-        tvKsrq = findViewById(R.id.tvKsrq)
-        tvJsrq = findViewById(R.id.tvJsrq)
-        tvBz = findViewById(R.id.tvBz)
+    fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Boolean) {
+        LayoutInflater.from(context).inflate(R.layout.header_view_qjsq, this, true)
+        preparePairs()
+        renderView(menu, spd)
+        canEdit(dbxx, isAdd)
+    }
 
-        // 把 textView 和对应 key 放入 pair
+    private fun preparePairs() {
         pairs = ArrayList<PAIR<TextView, String>>().apply {
             add(PAIR(tvQjr, Key.qjr_input))
             add(PAIR(tvZw, Key.zw_input))
@@ -85,26 +55,19 @@ class QjsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Bo
         tvSqrq.text = spd.spdXx.column2
         tvKsrq.text = spd.spdXx.column3
         tvJsrq.text = spd.spdXx.column4
-
-        // 遍历展示
-        pairs.forEach {
-            it.apply {
+        pairs.forEach { pair ->
+            pair.apply {
                 textView.text = spd.get(key)
             }
         }
     }
 
-    private fun canEdit(dbxx: Dbxx) {
-        val nodeId = dbxx.param.nodeId
-
-        // 基本信息
-        if (SpdHelper().canEdit2(nodeId)) {
-            pairs.forEach {
-                it.apply {
-                    textView.isEnabled = true
-                }
-            }
+    private fun canEdit(dbxx: Dbxx, isAdd: Boolean) {
+        if (true) {
+            tvBt.isEnabled = true
             tvSqrq.clickDate()
+            tvZw.isEnabled = true
+            tvQjsy.isEnabled = true
             tvXjzl.clickCode("休假种类及年度", "QJSQ_JQ", Key.xjzljsy_select)
             tvKsrq.clickDate()
             tvJsrq.clickDate()
@@ -114,18 +77,19 @@ class QjsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Bo
         }
 
         // 特殊字段
+        val nodeId = dbxx.param.nodeId
         tvBz.isEnabled = nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")
     }
 
     override fun saveToSpd(spd: Spd) {
-        pairs.forEach {
-            it.apply {
-                spd.set(key, textView.trimText())
-            }
-        }
         spd.spdXx.column2 = tvSqrq.trimText()
         spd.spdXx.column3 = tvKsrq.trimText()
         spd.spdXx.column4 = tvJsrq.trimText()
+        pairs.forEach { pair ->
+            pair.apply {
+                spd.set(key, textView.trimText())
+            }
+        }
     }
 
 }
