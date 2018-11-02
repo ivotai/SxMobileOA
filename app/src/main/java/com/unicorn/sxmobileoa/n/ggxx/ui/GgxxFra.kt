@@ -6,6 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.ui.BaseFra
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
@@ -29,5 +30,10 @@ class GgxxFra : BaseFra(), PageActOrFra<Ggxx> {
     }
 
     override val layoutId = R.layout.act_swipe_recycler
+
+    override fun initViews() {
+        super.initViews()
+        mRecyclerView.addDefaultItemDecoration()
+    }
 
 }

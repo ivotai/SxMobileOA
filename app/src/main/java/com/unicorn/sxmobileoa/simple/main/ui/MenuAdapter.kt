@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.n.csx.ui.SpcsxAct
 import com.unicorn.sxmobileoa.n.ggxx.ui.GgxxAct
 import com.unicorn.sxmobileoa.simple.dbxx.ui.DbxxAct
 import com.unicorn.sxmobileoa.simple.main.model.section.MenuSection
@@ -25,10 +26,14 @@ class MenuAdapter : BaseSectionQuickAdapter<MenuSection, BaseViewHolder>(R.layou
             helper.setText(R.id.tvCount, count.toString())
             helper.setImageResource(R.id.ivAttachment, resId)
         }
-        if (item.t.count != 0) {
+//        if (item.t.count != 0) {
             helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
                 if (item.t.text == "消息公告") {
                     mContext.startActivity(Intent(mContext, GgxxAct::class.java))
+                    return@subscribe
+                }
+                if (item.t.text == "超审限") {
+                    mContext.startActivity(Intent(mContext, SpcsxAct::class.java))
                     return@subscribe
                 }
 
@@ -36,7 +41,7 @@ class MenuAdapter : BaseSectionQuickAdapter<MenuSection, BaseViewHolder>(R.layou
                     putExtra(Key.menu, item.t)
                 })
             }
-        }
+//        }
         helper.getView<View>(R.id.flCount).visibility = if (item.t.count == 0) View.INVISIBLE else View.VISIBLE
     }
 
