@@ -2,10 +2,13 @@ package com.unicorn.sxmobileoa.n.process.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.blankj.utilcode.util.ConvertUtils
 import com.github.vipulasri.timelineview.TimelineView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.n.process.model.Process
@@ -37,9 +40,17 @@ class ProcessAdapter : RecyclerView.Adapter<ProcessViewHolder>() {
         holder.apply {
             time_marker.setMarker(ContextCompat.getDrawable(mContext, R.drawable.ic_marker), ContextCompat.getColor(mContext, R.color.colorPrimary))
             val process = mData[position]
-            tvDealTime.text = process.dealTime
+            val array = process.dealTime.split(" ")
+            tvDealDate.text = array[0]
+            tvDealTime.text = array[1]
             tvTaskName.text = process.taskName + " " + process.dealPersonName
             tvSpResult.text = process.spResult
+
+            GradientDrawable().apply {
+                setStroke(1, ContextCompat.getColor(mContext, R.color.md_grey_600))
+                setColor(Color.WHITE)
+                cornerRadius = ConvertUtils.dp2px(5f).toFloat()
+            }.let { container.background = it  }
         }
     }
 

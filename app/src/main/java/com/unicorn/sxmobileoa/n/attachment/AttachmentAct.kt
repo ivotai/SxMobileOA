@@ -16,7 +16,7 @@ class AttachmentAct : BaseAct() {
     override val layoutId = R.layout.act_title_recycler
 
     override fun initViews() {
-        tvTitle.text = "附件列表"
+        tvTitle.text = "附件"
         initRecyclerView()
     }
 
