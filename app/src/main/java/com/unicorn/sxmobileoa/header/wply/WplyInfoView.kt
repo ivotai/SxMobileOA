@@ -1,26 +1,30 @@
-package com.unicorn.sxmobileoa.header.gcsq
+package com.unicorn.sxmobileoa.header.wply
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
-import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
-import com.unicorn.sxmobileoa.app.mess.model.TextResult
-import com.unicorn.sxmobileoa.header.BasicHeaderView
+import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
+import com.unicorn.sxmobileoa.header.wply.detail.WplyDetailAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
-import io.reactivex.functions.Consumer
 
+/*
+      1. 永远不可编辑（包括标题）
+      2. 基本信息
+      3. 特殊字段
+   */
 @SuppressLint("ViewConstructor")
-class GcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
-        BasicHeaderView {
+class WplyInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
+        BasicInfoView {
 
     init {
         initViews(context, menu, dbxx, spd)
@@ -28,21 +32,15 @@ class GcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
     lateinit var tvTitle: TextView
     lateinit var tvBt: TextView
+    lateinit var tvSqsj: TextView
     lateinit var tvSqr: TextView
-    lateinit var tvSzbm: TextView
-    lateinit var tvWcr: TextView
-    lateinit var tvFzbry: TextView
-    lateinit var tvWcdd: TextView
-    lateinit var tvWcsy: TextView
-    lateinit var tvXjzl: TextView
-    lateinit var tvKsqr: TextView
-    lateinit var tvJsqr: TextView
-    lateinit var tvBz: TextView
+    lateinit var tvSqrdh: TextView
+    lateinit var tvSqbm: TextView
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
     fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
-        LayoutInflater.from(context).inflate(R.layout.header_view_gcsq, this, true)
+        LayoutInflater.from(context).inflate(R.layout.header_view_wply, this, true)
         findView()
         renderView(menu, spd)
         canEdit(dbxx)
@@ -51,25 +49,17 @@ class GcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     private fun findView() {
         tvTitle = findViewById(R.id.tvTitle)
         tvBt = findViewById(R.id.tvBt)
+        tvSqsj = findViewById(R.id.tvSqsj)
         tvSqr = findViewById(R.id.tvSqr)
-        tvSzbm = findViewById(R.id.tvSzbm)
-        tvWcr = findViewById(R.id.tvWcr)
-        tvFzbry = findViewById(R.id.tvFzbry)
-        tvWcdd = findViewById(R.id.tvWcdd)
-        tvWcsy = findViewById(R.id.tvWcsy)
-        tvKsqr = findViewById(R.id.tvKsrq)
-        tvJsqr = findViewById(R.id.tvJsrq)
-        tvBz = findViewById(R.id.tvBz)
+        tvSqrdh = findViewById(R.id.tvSqrdh)
+        tvSqbm = findViewById(R.id.tvSqbm)
 
         // 把 textView 和对应 key 放入 pair
         pairs = ArrayList<PAIR<TextView, String>>().apply {
+            add(PAIR(tvSqsj, Key.sqsj_input))
             add(PAIR(tvSqr, Key.sqr_input))
-            add(PAIR(tvSzbm, Key.szbm_input))
-            add(PAIR(tvWcr, Key.mcwcr_input))
-            add(PAIR(tvFzbry, Key.fzbry_input))
-            add(PAIR(tvWcdd, Key.wcdd_input))
-            add(PAIR(tvWcsy, Key.wcsy_textarea))
-            add(PAIR(tvBz, Key.bz_textarea))
+            add(PAIR(tvSqrdh, Key.sqrdh_input))
+            add(PAIR(tvSqbm, Key.sqbm_input))
         }
     }
 
@@ -77,8 +67,6 @@ class GcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     private fun renderView(menu: Menu, spd: Spd) {
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
         tvBt.text = spd.spdXx.bt
-        tvKsqr.text = spd.spdXx.column3
-        tvJsqr.text = spd.spdXx.column4
 
         // 遍历展示
         pairs.forEach {
@@ -90,20 +78,19 @@ class GcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
     private fun canEdit(dbxx: Dbxx) {
         val nodeId = dbxx.param.nodeId
+
+        // 基本信息
         if (SpdHelper().canEdit2(nodeId)) {
             pairs.forEach {
                 it.apply {
                     textView.isEnabled = true
                 }
             }
-            tvWcr.clickDeptUser(Key.textResult, Key.mcwcr_input)
-            tvKsqr.clickDate()
-            tvJsqr.clickDate()
-            RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { textResult ->
-                tvWcr.text = textResult.result
-            })
         }
-        tvBz.isEnabled = nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")
+
+        findViewById<View>(R.id.tvWplyDetail).safeClicks().subscribe {
+            context.startActivity(Intent(context, WplyDetailAct::class.java))
+        }
     }
 
     override fun saveToSpd(spd: Spd) {
@@ -112,8 +99,6 @@ class GcsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                 spd.set(key, textView.trimText())
             }
         }
-        spd.spdXx.column3 = tvKsqr.trimText()
-        spd.spdXx.column4 = tvJsqr.trimText()
     }
 
 }

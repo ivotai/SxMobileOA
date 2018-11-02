@@ -12,14 +12,14 @@ import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.get
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.header.BasicHeaderView
+import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
 
 @SuppressLint("ViewConstructor")
-class SbbfHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context), BasicHeaderView {
+class SbbfInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context), BasicInfoView {
 
     init {
         initViews(context, menu, dbxx, spd)

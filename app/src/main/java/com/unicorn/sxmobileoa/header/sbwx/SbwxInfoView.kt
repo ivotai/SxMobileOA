@@ -7,7 +7,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
-import com.unicorn.sxmobileoa.header.BasicHeaderView
+import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
@@ -15,8 +15,8 @@ import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
 
 @SuppressLint("ViewConstructor")
-class SbwxHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
-        BasicHeaderView {
+class SbwxInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
+        BasicInfoView {
 
     init {
         initViews(context, menu, dbxx, spd)

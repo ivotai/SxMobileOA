@@ -11,7 +11,7 @@ import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
-import com.unicorn.sxmobileoa.header.BasicHeaderView
+import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
@@ -19,7 +19,7 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
 
 @SuppressLint("ViewConstructor")
-class JdsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context), BasicHeaderView {
+class JdsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context), BasicInfoView {
 
     init {
         initViews(context, menu, spd)

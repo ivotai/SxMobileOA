@@ -11,28 +11,30 @@ import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
-import com.unicorn.sxmobileoa.header.BasicHeaderView
+import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.header_view_qjsq.view.*
 
 /*
       1. 永远不可编辑（包括标题）
       2. 基本信息
       3. 特殊字段
    */
-@SuppressLint("ViewConstructor")
-class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
-        BasicHeaderView {
+class QjsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Boolean = false) : FrameLayout(context), BasicInfoView, LayoutContainer {
+
+    override val containerView = this
 
     init {
         initViews(context, menu, dbxx, spd)
     }
 
-    lateinit var tvTitle: TextView
-    lateinit var tvBt: TextView
+    //    lateinit var tvTitle: TextView
+//    lateinit var tvBt: TextView
     lateinit var tvSqrq: TextView
     lateinit var tvQjr: TextView
     lateinit var tvZw: TextView
@@ -53,8 +55,8 @@ class QjsqHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     }
 
     private fun findView() {
-        tvTitle = findViewById(R.id.tvTitle)
-        tvBt = findViewById(R.id.tvBt)
+//        tvTitle = findViewById(R.id.tvTitle)
+//        tvBt = findViewById(R.id.tvBt)
         tvSqrq = findViewById(R.id.tvSqrq)
         tvQjr = findViewById(R.id.tvQjr)
         tvZw = findViewById(R.id.tvZw)

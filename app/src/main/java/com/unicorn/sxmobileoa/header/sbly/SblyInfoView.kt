@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.header.wply
+package com.unicorn.sxmobileoa.header.sbly
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,9 +10,8 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
-import com.unicorn.sxmobileoa.header.BasicHeaderView
+import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.header.wply.detail.WplyDetailAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
@@ -23,8 +22,8 @@ import com.unicorn.sxmobileoa.spd.model.Spd
       3. 特殊字段
    */
 @SuppressLint("ViewConstructor")
-class WplyHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
-        BasicHeaderView {
+class SblyInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
+        BasicInfoView {
 
     init {
         initViews(context, menu, dbxx, spd)
@@ -32,15 +31,16 @@ class WplyHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
 
     lateinit var tvTitle: TextView
     lateinit var tvBt: TextView
-    lateinit var tvSqsj: TextView
-    lateinit var tvSqr: TextView
-    lateinit var tvSqrdh: TextView
     lateinit var tvSqbm: TextView
+    lateinit var tvSqr: TextView
+    lateinit var tvSqsj: TextView
+    lateinit var tvLyxq: TextView
+    lateinit var tvLyrq: TextView
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
     fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
-        LayoutInflater.from(context).inflate(R.layout.header_view_wply, this, true)
+        LayoutInflater.from(context).inflate(R.layout.header_view_sbly, this, true)
         findView()
         renderView(menu, spd)
         canEdit(dbxx)
@@ -49,17 +49,19 @@ class WplyHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
     private fun findView() {
         tvTitle = findViewById(R.id.tvTitle)
         tvBt = findViewById(R.id.tvBt)
-        tvSqsj = findViewById(R.id.tvSqsj)
-        tvSqr = findViewById(R.id.tvSqr)
-        tvSqrdh = findViewById(R.id.tvSqrdh)
         tvSqbm = findViewById(R.id.tvSqbm)
+        tvSqr = findViewById(R.id.tvSqr)
+        tvSqsj = findViewById(R.id.tvSqsj)
+        tvLyxq = findViewById(R.id.tvLyxq)
+        tvLyrq = findViewById(R.id.tvLyrq)
 
         // 把 textView 和对应 key 放入 pair
         pairs = ArrayList<PAIR<TextView, String>>().apply {
-            add(PAIR(tvSqsj, Key.sqsj_input))
-            add(PAIR(tvSqr, Key.sqr_input))
-            add(PAIR(tvSqrdh, Key.sqrdh_input))
             add(PAIR(tvSqbm, Key.sqbm_input))
+            add(PAIR(tvSqr, Key.sqr_input))
+            add(PAIR(tvSqsj, Key.sqsj_input))
+            add(PAIR(tvLyxq, Key.lyxq_input))
+            add(PAIR(tvLyrq, Key.lyrq_date))
         }
     }
 
@@ -87,10 +89,11 @@ class WplyHeaderView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : Frame
                 }
             }
         }
-
-        findViewById<View>(R.id.tvWplyDetail).safeClicks().subscribe {
-            context.startActivity(Intent(context, WplyDetailAct::class.java))
+        findViewById<View>(R.id.tvSblyDetail).safeClicks().subscribe {
+            context.startActivity(Intent(context, SblyDetailAct::class.java))
         }
+        if (nodeId in listOf("OA_FLOW_XZZB_SBLY_CGR", "OA_FLOW_XZZB_SBLY_BGS", "OA_FLOW_XZZB_SBLY_KGY"))
+            tvLyrq.clickDate()
     }
 
     override fun saveToSpd(spd: Spd) {

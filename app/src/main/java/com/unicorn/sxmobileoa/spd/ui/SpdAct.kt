@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ToastUtils
-import com.orhanobut.logger.Logger
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
@@ -15,11 +14,10 @@ import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
 import com.unicorn.sxmobileoa.commitTask.ui.CommitTaskAct
-import com.unicorn.sxmobileoa.header.BasicHeaderView
+import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.SpdActNavigationModel
 import com.unicorn.sxmobileoa.spd.network.saveSpd.SaveSpd
-import com.unicorn.sxmobileoa.spd.network.spdZw.SpdZw
 import com.unicorn.sxmobileoa.spd.network.toSpd.ToSpd
 import com.unicorn.sxmobileoa.spd.ui.headerView.ButtonFooterView
 import com.unicorn.sxmobileoa.spd.ui.headerView.OperationHeaderView
@@ -36,14 +34,14 @@ abstract class SpdAct : BaseAct() {
         })
     }
 
-    abstract fun addBasicHeaderView(): BasicHeaderView
+    abstract fun addBasicHeaderView(): BasicInfoView
 
     override val layoutId = R.layout.act_title_recycler
 
     @DartModel
     lateinit var model: SpdActNavigationModel
     lateinit var spd: Spd
-    private lateinit var basicHeaderView: BasicHeaderView
+    private lateinit var basicInfoView: BasicInfoView
 
     override fun initViews() {
         titleBar.setTitle(model.menu.text)
@@ -76,7 +74,7 @@ abstract class SpdAct : BaseAct() {
 
             //
             addOperationHeaderView()
-            basicHeaderView = addBasicHeaderView()
+            basicInfoView = addBasicHeaderView()
             addFooterView()
         }
     }
@@ -93,13 +91,13 @@ abstract class SpdAct : BaseAct() {
         footer.btnSave.safeClicks().subscribe { _ ->
             // TODO QUESTION! 展开会向 flowNodeList 里添 sub
             // TODO 不采用 textChange 方式 时刻保存到 spd 而是最后再保存
-            basicHeaderView.saveToSpd(spd)
+            basicInfoView.saveToSpd(spd)
             SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
                 ToastUtils.showShort("保存成功")
             }
         }
         footer.btnNextStep.safeClicks().subscribe { _ ->
-            basicHeaderView.saveToSpd(spd)
+            basicInfoView.saveToSpd(spd)
             SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
                 startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
                     putExtra(Key.menu, model.menu)

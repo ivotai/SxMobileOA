@@ -2,7 +2,7 @@ package com.unicorn.sxmobileoa.header
 
 import com.unicorn.sxmobileoa.spd.model.Spd
 
-interface BasicHeaderView {
+interface BasicInfoView {
 
     fun saveToSpd(spd: Spd)
 
