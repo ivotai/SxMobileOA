@@ -1,10 +1,8 @@
 package com.unicorn.sxmobileoa.spd.model
 
-import com.blankj.utilcode.util.FileUtils
 import com.chad.library.adapter.base.entity.IExpandable
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.unicorn.sxmobileoa.app.Global
-import com.unicorn.sxmobileoa.app.mess.FileUtils2
 import com.unicorn.sxmobileoa.spd.ui.FlowNodeAdapter
 import org.joda.time.DateTime
 import java.io.Serializable
@@ -16,7 +14,7 @@ data class Spd(
         val spdData: MutableList<SpdData>,
         val spdXx: SpdXx,
         val nodeModel: NodeModel,
-        val spdFj:List<Fj>
+        val spdFj: List<Fj>
 ) : Serializable
 
 data class FlowNode(
@@ -262,6 +260,6 @@ data class Spyj(
 data class Fj(
         val fjdz: String,
         val fjmc: String
-):Serializable{
+) : Serializable {
 
 }

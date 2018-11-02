@@ -46,7 +46,8 @@
         <activity android:name=".header.ycsq.cllx.ui.CllxAct" />
         <activity android:name=".n.ggxx.ui.GgxxAct" />
         <activity android:name=".n.attachment.AttachmentAct" />
-        <activity android:name=".n.process.ui.ProcessAct"></activity>
+        <activity android:name=".n.process.ui.ProcessAct" />
+        <activity android:name=".n.add.QjAddAct"></activity>
     </application>
 
 </manifest>

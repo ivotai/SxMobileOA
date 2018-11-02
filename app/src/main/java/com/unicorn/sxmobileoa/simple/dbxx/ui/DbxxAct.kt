@@ -1,5 +1,7 @@
 package com.unicorn.sxmobileoa.simple.dbxx.ui
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
@@ -7,10 +9,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
+import com.unicorn.sxmobileoa.n.add.QjAddAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dbxx.network.GetDbxx
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
@@ -33,11 +37,21 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
                 .colorResId(R.color.md_grey_100)
                 .size(ConvertUtils.dp2px(10f))
                 .build().let { mRecyclerView.addItemDecoration(it) }
+        prepareAdd()
+    }
+
+    @SuppressLint("CheckResult")
+    private fun prepareAdd() {
+        if (model.menu.text == "请假申请") {
+            titleBar.setOperation("新建").safeClicks().subscribe { _ ->
+                startActivity(Intent(this@DbxxAct, QjAddAct::class.java))
+            }
+        }
     }
 
     override fun registerEvent() {
-        RxBus.get().registerEvent(CommitTaskSuccess::class.java,this, Consumer {
-                loadFirstPage()
+        RxBus.get().registerEvent(CommitTaskSuccess::class.java, this, Consumer {
+            loadFirstPage()
         })
     }
 
