@@ -1,6 +1,8 @@
 package com.unicorn.sxmobileoa.app
 
 import android.app.Application
+import android.content.Context
+import android.support.multidex.MultiDex
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.orhanobut.logger.AndroidLogAdapter
@@ -31,6 +33,11 @@ class App : Application() {
                 ToastUtils.showShort(it.toString())
             }
         }
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 
 }

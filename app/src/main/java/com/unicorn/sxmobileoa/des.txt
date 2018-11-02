@@ -12,3 +12,7 @@
 5. 调整请求后解析 xml 流程。
 message == 2 超时 或 message == 0 密码错误等，不解析 result。
 message == 1 时，才解析 result。
+
+10/15
+1. 64k问题。
+2. 流程列表。

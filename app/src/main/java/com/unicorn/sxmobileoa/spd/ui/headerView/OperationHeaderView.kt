@@ -15,6 +15,7 @@ import com.unicorn.sxmobileoa.app.config.ConfigModule
 import com.unicorn.sxmobileoa.app.mess.FileUtils2
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.n.attachment.AttachmentAct
+import com.unicorn.sxmobileoa.n.process.ui.ProcessAct
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.network.spdZw.SpdZw
 import com.zhy.http.okhttp.OkHttpUtils
@@ -23,7 +24,7 @@ import okhttp3.Call
 import java.io.File
 
 
-@SuppressLint("CheckResult")
+@SuppressLint("CheckResult", "ViewConstructor")
 class OperationHeaderView(context: Context, val spd: Spd) : FrameLayout(context) {
 
     init {
@@ -75,11 +76,13 @@ class OperationHeaderView(context: Context, val spd: Spd) : FrameLayout(context)
                 putExtra(Key.spd, spd)
             })
         }
-    }
 
-
-    private fun openFile(file: File) {
-
+        val llLiuCheng = findViewById<LinearLayout>(R.id.llLiuCheng)
+        llLiuCheng.safeClicks().subscribe {
+            context.startActivity(Intent(context, ProcessAct::class.java).apply {
+                putExtra(Key.processInstanceId, spd.spdXx.processInstancesId)
+            })
+        }
     }
 
     lateinit var llZhengWen: LinearLayout

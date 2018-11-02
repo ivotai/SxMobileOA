@@ -164,6 +164,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tvBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
