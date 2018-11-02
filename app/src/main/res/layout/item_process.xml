@@ -2,54 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvDealTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.github.vipulasri.timelineview.TimelineView
         android:id="@+id/time_marker"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:markerSize="20dp"
-        app:lineSize="3dp"
         app:line="@color/colorPrimary"
-        app:linePadding="5dp"/>
+        app:linePadding="5dp"
+        app:lineSize="3dp"
+        app:markerSize="20dp" />
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="10dp"
-        android:layout_gravity="center_vertical"
-        >
+        android:orientation="vertical"
+        android:padding="12dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvTaskName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_timeline_date"
-                android:textSize="12sp"
-                tools:text="24 JAN"/>
+        <TextView
+            android:id="@+id/tvSpResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:id="@+id/text_timeline_title"
-                android:textColor="@android:color/black"
-                tools:text="Order Successfully Completed"/>
-
-        </LinearLayout>
-
-    </FrameLayout>
+    </LinearLayout>
 
 </LinearLayout>

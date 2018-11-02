@@ -24,7 +24,6 @@ class ProcessAct : BaseAct() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mAdapter
-            addDefaultItemDecoration()
         }
     }
 
