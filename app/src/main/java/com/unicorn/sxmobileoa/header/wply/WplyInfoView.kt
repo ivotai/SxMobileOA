@@ -93,12 +93,13 @@ class WplyInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
         }
     }
 
-    override fun saveToSpd(spd: Spd) {
+    override fun saveToSpd(spd: Spd):Boolean {
         pairs.forEach {
             it.apply {
                 spd.set(key, textView.trimText())
             }
         }
+        return true
     }
 
 }

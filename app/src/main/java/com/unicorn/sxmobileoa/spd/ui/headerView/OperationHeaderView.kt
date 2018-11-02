@@ -12,6 +12,7 @@ import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.config.ConfigModule
+import com.unicorn.sxmobileoa.app.mess.DialogUitls
 import com.unicorn.sxmobileoa.app.mess.FileUtils2
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.n.attachment.AttachmentAct
@@ -48,6 +49,7 @@ class OperationHeaderView(context: Context, val spd: Spd) : FrameLayout(context)
                 if (file.exists()) {
                     FileUtils2.openFile(context, file = file)
                 } else {
+                    val mask = DialogUitls.showMask(context = context, title = "下载正文中...")
                     OkHttpUtils
                             .get()
                             .url(it.wjdz)
@@ -55,10 +57,11 @@ class OperationHeaderView(context: Context, val spd: Spd) : FrameLayout(context)
                             .execute(object : FileCallBack(ConfigModule.baseDir(), fileName) {
                                 override fun onResponse(response: File, id: Int) {
                                     FileUtils2.openFile(context, file = response)
+                                    mask.dismiss()
                                 }
 
                                 override fun onError(call: Call?, e: Exception?, id: Int) {
-                                    ToastUtils.showShort("SHIBAI")
+                                    mask.dismiss()
                                 }
                             })
                 }

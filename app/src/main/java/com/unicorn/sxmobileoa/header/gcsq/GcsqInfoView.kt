@@ -106,7 +106,7 @@ class GcsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
         tvBz.isEnabled = nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")
     }
 
-    override fun saveToSpd(spd: Spd) {
+    override fun saveToSpd(spd: Spd) :Boolean{
         pairs.forEach {
             it.apply {
                 spd.set(key, textView.trimText())
@@ -114,6 +114,7 @@ class GcsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
         }
         spd.spdXx.column3 = tvKsqr.trimText()
         spd.spdXx.column4 = tvJsqr.trimText()
+        return true
     }
 
 }

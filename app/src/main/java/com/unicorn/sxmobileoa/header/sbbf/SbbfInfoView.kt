@@ -78,8 +78,9 @@ class SbbfInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
         }
     }
 
-    override fun saveToSpd(spd: Spd) {
+    override fun saveToSpd(spd: Spd):Boolean {
         // do nothing
+        return true
     }
 
 }

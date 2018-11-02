@@ -91,13 +91,13 @@ abstract class SpdAct : BaseAct() {
         footer.btnSave.safeClicks().subscribe { _ ->
             // TODO QUESTION! 展开会向 flowNodeList 里添 sub
             // TODO 不采用 textChange 方式 时刻保存到 spd 而是最后再保存
-            basicInfoView.saveToSpd(spd)
+            if (!basicInfoView.saveToSpd(spd)) return@subscribe
             SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
                 ToastUtils.showShort("保存成功")
             }
         }
         footer.btnNextStep.safeClicks().subscribe { _ ->
-            basicInfoView.saveToSpd(spd)
+            if (!basicInfoView.saveToSpd(spd)) return@subscribe
             SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
                 startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
                     putExtra(Key.menu, model.menu)

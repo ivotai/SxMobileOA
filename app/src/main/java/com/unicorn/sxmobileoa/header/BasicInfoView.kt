@@ -4,6 +4,6 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 
 interface BasicInfoView {
 
-    fun saveToSpd(spd: Spd)
+    fun saveToSpd(spd: Spd): Boolean
 
 }

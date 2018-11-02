@@ -179,7 +179,7 @@ class YcsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
         })
     }
 
-    override fun saveToSpd(spd: Spd) {
+    override fun saveToSpd(spd: Spd):Boolean {
         spd.spdXx.column1 = tvYcsy.trimText()
         spd.spdXx.column3 = tvKwdd.trimText()
 
@@ -203,6 +203,7 @@ class YcsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
                 spd.set(key, textView.trimText())
             }
         }
+        return true
     }
 
 }

@@ -81,7 +81,7 @@ class QjsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Bo
         tvBz.isEnabled = nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")
     }
 
-    override fun saveToSpd(spd: Spd) {
+    override fun saveToSpd(spd: Spd):Boolean {
         spd.spdXx.column2 = tvSqrq.trimText()
         spd.spdXx.column3 = tvKsrq.trimText()
         spd.spdXx.column4 = tvJsrq.trimText()
@@ -90,6 +90,7 @@ class QjsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Bo
                 spd.set(key, textView.trimText())
             }
         }
+        return true
     }
 
 }
