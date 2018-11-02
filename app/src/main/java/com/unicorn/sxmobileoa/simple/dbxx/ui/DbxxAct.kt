@@ -14,7 +14,7 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
-import com.unicorn.sxmobileoa.n.add.QjAddAct
+import com.unicorn.sxmobileoa.n.add.QjsqAddAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dbxx.network.GetDbxx
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
@@ -44,7 +44,7 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
     private fun prepareAdd() {
         if (model.menu.text == "请假申请") {
             titleBar.setOperation("新建").safeClicks().subscribe { _ ->
-                startActivity(Intent(this@DbxxAct, QjAddAct::class.java))
+                startActivity(Intent(this@DbxxAct, QjsqAddAct::class.java))
             }
         }
     }
