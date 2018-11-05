@@ -6,6 +6,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
+import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
@@ -17,22 +18,23 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.header_view_qjsq.view.*
+import org.joda.time.DateTime
 
 @SuppressLint("ViewConstructor")
-class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isAdd: Boolean = false) : FrameLayout(context), BasicInfoView, LayoutContainer {
+class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : FrameLayout(context), BasicInfoView, LayoutContainer {
 
     override val containerView = this
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
     init {
-        initViews(context, menu, spd, isAdd)
+        initViews(context, menu, spd, isCreate)
     }
 
     fun initViews(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) {
         LayoutInflater.from(context).inflate(R.layout.header_view_qjsq, this, true)
         preparePairs()
-        renderView(menu, spd)
+        renderView(menu, spd, isCreate)
         canEdit(spd.nodeModel.nodeid, isCreate)
     }
 
@@ -48,9 +50,18 @@ class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isAdd: Boolean = fals
     }
 
     @SuppressLint("SetTextI18n")
-    private fun renderView(menu: Menu, spd: Spd) {
+    private fun renderView(menu: Menu, spd: Spd, isCreate: Boolean) {
+        // 初始化值
+        if (isCreate) {
+            val spdXx = spd.spdXx
+            spdXx.column2 = DateTime().toString("yyyy-MM-dd")
+            spd.set(Key.qjr_input, spdXx.createUserName)
+            spd.set(Key.szbm_input, spdXx.bmmc)
+        }
+
+        // 展示值
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
-        tvBt.text = spd.spdXx.bt
+        tvBt.setText(spd.spdXx.bt)
         tvSqrq.text = spd.spdXx.column2
         tvKsrq.text = spd.spdXx.column3
         tvJsrq.text = spd.spdXx.column4
@@ -62,7 +73,7 @@ class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isAdd: Boolean = fals
     }
 
     private fun canEdit(nodeId: String, isCreate: Boolean) {
-        if (true) {
+        if (isCreate) {
             tvBt.isEnabled = true
             tvSqrq.clickDate()
             tvZw.isEnabled = true
@@ -80,6 +91,19 @@ class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isAdd: Boolean = fals
     }
 
     override fun saveToSpd(spd: Spd): Boolean {
+        if (tvXjzl.trimText().isEmpty()) {
+            ToastUtils.showShort("休假种类及年度不能为空")
+            return false
+        }
+        if (tvKsrq.trimText().isEmpty()) {
+            ToastUtils.showShort("开始日期不能为空")
+            return false
+        }
+        if (tvJsrq.trimText().isEmpty()) {
+            ToastUtils.showShort("结束日期不能为空")
+            return false
+        }
+
         spd.spdXx.column2 = tvSqrq.trimText()
         spd.spdXx.column3 = tvKsrq.trimText()
         spd.spdXx.column4 = tvJsrq.trimText()

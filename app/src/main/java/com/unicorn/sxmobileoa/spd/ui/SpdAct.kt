@@ -15,6 +15,7 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
 import com.unicorn.sxmobileoa.commitTask.ui.CommitTaskAct
 import com.unicorn.sxmobileoa.header.BasicInfoView
+import com.unicorn.sxmobileoa.n.add.network.AddSpd
 import com.unicorn.sxmobileoa.simple.dbxx.model.Param
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.SpdActNavigationModel
@@ -29,6 +30,8 @@ import kotlinx.android.synthetic.main.footer_view_button.view.*
 
 @SuppressLint("CheckResult")
 abstract class SpdAct : BaseAct() {
+
+    var isCreate = false
 
     override fun registerEvent() {
         RxBus.get().registerEvent(CommitTaskSuccess::class.java, this, Consumer {
@@ -61,9 +64,20 @@ abstract class SpdAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        val isCreate = intent.getBooleanExtra(Key.isCreate, false)
+        isCreate = intent.getBooleanExtra(Key.isCreate, false)
         if (isCreate) {
+            val spdCode = if (model.menu.text == "请假申请") "OA_SPD_QJGL_QJSQ" else ""
+            AddSpd(spdCode).toMaybe(this).subscribe {
+                spd = it
 
+                // 供 equipmentAct 使用。
+                Global.spd = spd
+
+                //
+                addOperationHeaderView()
+                basicInfoView = addBasicHeaderView()
+                addFooterView()
+            }
             return
         }
         // 非创建
