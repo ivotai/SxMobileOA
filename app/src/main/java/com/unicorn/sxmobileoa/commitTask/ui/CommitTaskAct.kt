@@ -35,7 +35,7 @@ class CommitTaskAct : BaseAct() {
     private fun clicks() {
         tvSequenceFlow.safeClicks().mergeWith(tvUsers.safeClicks()).subscribe {
             startActivity(Intent(this@CommitTaskAct, SequenceFlowAct::class.java).apply {
-                putExtra(Key.dbxx, model.dbxx)
+                putExtra(Key.param, model.param)
                 putExtra(Key.spd, model.spd)
             })
         }

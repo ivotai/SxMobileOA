@@ -14,7 +14,8 @@ data class Spd(
         val spdData: MutableList<SpdData>,
         val spdXx: SpdXx,
         val nodeModel: NodeModel,
-        val spdFj: List<Fj>
+        val spdFj: List<Fj>,
+        val operType:String
 ) : Serializable
 
 data class FlowNode(

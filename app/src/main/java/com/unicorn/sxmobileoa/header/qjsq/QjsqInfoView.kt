@@ -12,7 +12,6 @@ import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
@@ -20,21 +19,21 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.header_view_qjsq.view.*
 
 @SuppressLint("ViewConstructor")
-class QjsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Boolean = false) : FrameLayout(context), BasicInfoView, LayoutContainer {
+class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isAdd: Boolean = false) : FrameLayout(context), BasicInfoView, LayoutContainer {
 
     override val containerView = this
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
     init {
-        initViews(context, menu, dbxx, spd, isAdd)
+        initViews(context, menu, spd, isAdd)
     }
 
-    fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Boolean) {
+    fun initViews(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) {
         LayoutInflater.from(context).inflate(R.layout.header_view_qjsq, this, true)
         preparePairs()
         renderView(menu, spd)
-        canEdit(dbxx, isAdd)
+        canEdit(spd.nodeModel.nodeid, isCreate)
     }
 
     private fun preparePairs() {
@@ -62,7 +61,7 @@ class QjsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Bo
         }
     }
 
-    private fun canEdit(dbxx: Dbxx, isAdd: Boolean) {
+    private fun canEdit(nodeId: String, isCreate: Boolean) {
         if (true) {
             tvBt.isEnabled = true
             tvSqrq.clickDate()
@@ -77,11 +76,10 @@ class QjsqInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd, isAdd: Bo
         }
 
         // 特殊字段
-        val nodeId = dbxx.param.nodeId
         tvBz.isEnabled = nodeId in listOf("OA_FLOW_QJGL_GCGL_RSCBA", "OA_FLOW_QJGL_QJGL_RSCLDSP")
     }
 
-    override fun saveToSpd(spd: Spd):Boolean {
+    override fun saveToSpd(spd: Spd): Boolean {
         spd.spdXx.column2 = tvSqrq.trimText()
         spd.spdXx.column3 = tvKsrq.trimText()
         spd.spdXx.column4 = tvJsrq.trimText()

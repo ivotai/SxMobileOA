@@ -7,19 +7,19 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
+import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
-import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.spd.model.Spd
 
 @SuppressLint("ViewConstructor")
-class SbwxInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
+class SbwxInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context),
         BasicInfoView {
 
     init {
-        initViews(context, menu, dbxx, spd)
+        initViews(context, menu, spd)
     }
 
     lateinit var tvTitle: TextView  // 内部发文标题
@@ -35,11 +35,11 @@ class SbwxInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
-    fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
+    fun initViews(context: Context, menu: Menu, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_sbwx, this, true)
         findView()
         renderView(menu, spd)
-        canEdit(dbxx)
+//        canEdit(dbxx)
     }
 
     private fun findView() {

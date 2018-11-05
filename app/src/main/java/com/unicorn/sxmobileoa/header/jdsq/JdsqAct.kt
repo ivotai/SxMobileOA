@@ -4,7 +4,7 @@ import com.unicorn.sxmobileoa.spd.ui.SpdAct
 
 class JdsqAct : SpdAct() {
 
-    override fun addBasicHeaderView() = JdsqInfoView(this, model.menu, model.dbxx, spd).apply {
+    override fun addBasicHeaderView() = JdsqInfoView(this, model.menu, spd).apply {
         flowNodeAdapter.addHeaderView(this)
     }
 

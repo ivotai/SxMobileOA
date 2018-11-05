@@ -19,10 +19,10 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
 
 @SuppressLint("ViewConstructor")
-class NbfwInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context), BasicInfoView {
+class NbfwInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context), BasicInfoView {
 
     init {
-        initViews(context, menu, dbxx, spd)
+        initViews(context, menu, spd)
     }
 
     lateinit var tvTitle: TextView
@@ -35,11 +35,11 @@ class NbfwInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
-    fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
+    fun initViews(context: Context, menu: Menu, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
         findView()
         renderView(menu, spd)
-        canEdit(dbxx)
+//        canEdit(dbxx)
     }
 
     private fun findView() {

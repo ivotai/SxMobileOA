@@ -14,15 +14,14 @@ import com.unicorn.sxmobileoa.app.get
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
 
 @SuppressLint("ViewConstructor")
-class SbbfInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context), BasicInfoView {
+class SbbfInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context), BasicInfoView {
 
     init {
-        initViews(context, menu, dbxx, spd)
+        initViews(context, menu, spd)
     }
 
     lateinit var tvTitle: TextView
@@ -34,7 +33,7 @@ class SbbfInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
-    fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
+    fun initViews(context: Context, menu: Menu , spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_sbbf, this, true)
         findView()
         renderView(menu, spd)

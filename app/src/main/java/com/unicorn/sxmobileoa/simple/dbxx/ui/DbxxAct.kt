@@ -48,8 +48,6 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
 //                startActivity(Intent(this@DbxxAct, QjsqAddAct::class.java))
                 startActivity(Intent(this, QjsqAct::class.java).apply {
                     putExtra(Key.menu, model.menu)
-                    // todo
-//                    putExtra(Key.dbxx, model.dbxx)
                     putExtra(Key.isCreate, true)
                 })
             }

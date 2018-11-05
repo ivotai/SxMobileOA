@@ -15,6 +15,7 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
 import com.unicorn.sxmobileoa.commitTask.ui.CommitTaskAct
 import com.unicorn.sxmobileoa.header.BasicInfoView
+import com.unicorn.sxmobileoa.simple.dbxx.model.Param
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.SpdActNavigationModel
 import com.unicorn.sxmobileoa.spd.network.saveSpd.SaveSpd
@@ -28,6 +29,7 @@ import kotlinx.android.synthetic.main.footer_view_button.view.*
 
 @SuppressLint("CheckResult")
 abstract class SpdAct : BaseAct() {
+
     override fun registerEvent() {
         RxBus.get().registerEvent(CommitTaskSuccess::class.java, this, Consumer {
             finish()
@@ -59,13 +61,19 @@ abstract class SpdAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        ToSpd(model.menu, model.dbxx).toMaybe(this).subscribe {
+        val isCreate = intent.getBooleanExtra(Key.isCreate, false)
+        if (isCreate) {
+
+            return
+        }
+        // 非创建
+        ToSpd(model.menu, model.param).toMaybe(this).subscribe {
             spd = it
 
             // 供 equipmentAct 使用。
             Global.spd = spd
             // 添加 taskId
-            spd.spdXx.taskId = model.dbxx.param.taskId
+            spd.spdXx.taskId = model.param.taskId
 
 //            处理审批意见
             SpdHelper().addSpyjIfNeed(spd)
@@ -80,7 +88,7 @@ abstract class SpdAct : BaseAct() {
     }
 
     private fun addOperationHeaderView() {
-        OperationHeaderView(this,spd = spd).apply {
+        OperationHeaderView(this, spd = spd).apply {
             flowNodeAdapter.addHeaderView(this)
         }
     }
@@ -93,15 +101,18 @@ abstract class SpdAct : BaseAct() {
             // TODO 不采用 textChange 方式 时刻保存到 spd 而是最后再保存
             if (!basicInfoView.saveToSpd(spd)) return@subscribe
             SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
+                // todo 拼凑 param
+                model.param = Param(nodeId = it.nodeId, primaryId = it.primaryId, taskId = it.taskId)
                 ToastUtils.showShort("保存成功")
             }
         }
         footer.btnNextStep.safeClicks().subscribe { _ ->
             if (!basicInfoView.saveToSpd(spd)) return@subscribe
             SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
+                model.param = Param(nodeId = it.nodeId, primaryId = it.primaryId, taskId = it.taskId)
                 startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
                     putExtra(Key.menu, model.menu)
-                    putExtra(Key.dbxx, model.dbxx)
+                    putExtra(Key.param, model.param)
                     putExtra(Key.spd, spd)
                     putExtra(Key.saveSpdResponse, it)
                 })

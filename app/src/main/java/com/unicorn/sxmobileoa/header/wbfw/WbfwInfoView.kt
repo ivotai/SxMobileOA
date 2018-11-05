@@ -14,7 +14,6 @@ import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
@@ -22,11 +21,11 @@ import io.reactivex.functions.Consumer
 import java.util.*
 
 @SuppressLint("ViewConstructor")
-class WbfwInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
+class WbfwInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context),
         BasicInfoView {
 
     init {
-        initViews(context, menu, dbxx, spd)
+        initViews(context, menu, spd)
     }
 
     lateinit var tvTitle: TextView  // 标题外部发文
@@ -48,11 +47,11 @@ class WbfwInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
-    fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
+    fun initViews(context: Context, menu: Menu, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_wbfw, this, true)
         findView()
         renderView(menu, spd)
-        canEdit(dbxx, spd)
+        canEdit( spd)
     }
 
     private fun findView() {
@@ -102,8 +101,8 @@ class WbfwInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
         }
     }
 
-    private fun canEdit(dbxx: Dbxx, spd: Spd) {
-        if (!SpdHelper().canEdit2(dbxx.param.nodeId)) return
+    private fun canEdit( spd: Spd) {
+        if (!SpdHelper().canEdit2(spd.nodeModel.nodeid)) return
 
         // 标题的编辑无法统一处理
         tvBt.apply {

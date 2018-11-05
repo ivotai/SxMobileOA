@@ -2,16 +2,16 @@ package com.unicorn.sxmobileoa.spd.network.toSpd
 
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.network.model.MaybeRequest
-import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
+import com.unicorn.sxmobileoa.simple.dbxx.model.Param
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 
-class ToSpdRequest(menu: Menu, dbxx: Dbxx) : MaybeRequest("tospd") {
+class ToSpdRequest(menu: Menu, param: Param) : MaybeRequest("tospd") {
 
     init {
         addParameter(Key.moduleCode, menu.moduleCode)
-        addParameter(Key.primaryId, dbxx.param.primaryId)
-        addParameter(Key.taskId, dbxx.param.taskId)
-        addParameter(Key.nodeId, dbxx.param.nodeId)
+        addParameter(Key.primaryId, param.primaryId)
+        addParameter(Key.taskId, param.taskId)
+        addParameter(Key.nodeId, param.nodeId)
     }
 
 }

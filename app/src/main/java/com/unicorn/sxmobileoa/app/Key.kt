@@ -30,6 +30,7 @@ object Key {
 
     // login
     const val menu = "menu"
+    const val param = "param"
     const val username = "username"
     const val courtStr = "courtStr"
 

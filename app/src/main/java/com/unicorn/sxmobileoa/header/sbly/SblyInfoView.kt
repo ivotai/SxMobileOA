@@ -22,11 +22,11 @@ import com.unicorn.sxmobileoa.spd.model.Spd
       3. 特殊字段
    */
 @SuppressLint("ViewConstructor")
-class SblyInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLayout(context),
+class SblyInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context),
         BasicInfoView {
 
     init {
-        initViews(context, menu, dbxx, spd)
+        initViews(context, menu, spd)
     }
 
     lateinit var tvTitle: TextView
@@ -39,11 +39,11 @@ class SblyInfoView(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) : FrameLa
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
-    fun initViews(context: Context, menu: Menu, dbxx: Dbxx, spd: Spd) {
+    fun initViews(context: Context, menu: Menu, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_sbly, this, true)
         findView()
         renderView(menu, spd)
-        canEdit(dbxx)
+//        canEdit(dbxx)
     }
 
     private fun findView() {

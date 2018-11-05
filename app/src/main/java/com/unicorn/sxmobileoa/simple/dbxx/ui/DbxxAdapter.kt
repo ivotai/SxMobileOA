@@ -49,7 +49,7 @@ class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolde
 
                 mContext.startActivity(Intent(mContext, cls).apply {
                     putExtra(Key.menu, menu)
-                    putExtra(Key.dbxx, item)
+                    putExtra(Key.param, item.param)
                     putExtra(Key.isCreate, false)
                 })
             }

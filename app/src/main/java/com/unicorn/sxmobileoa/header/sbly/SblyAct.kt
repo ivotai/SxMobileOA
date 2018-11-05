@@ -4,7 +4,7 @@ import com.unicorn.sxmobileoa.spd.ui.SpdAct
 
 class SblyAct : SpdAct() {
 
-    override fun addBasicHeaderView() = SblyInfoView(this, model.menu, model.dbxx, spd).apply {
+    override fun addBasicHeaderView() = SblyInfoView(this, model.menu, spd).apply {
         flowNodeAdapter.addHeaderView(this)
     }
 
