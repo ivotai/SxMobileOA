@@ -68,7 +68,7 @@ abstract class SpdAct : BaseAct() {
             spd.spdXx.taskId = model.dbxx.param.taskId
 
 //            处理审批意见
-            SpdHelper().addSpyjIfNeed(model.dbxx, spd)
+            SpdHelper().addSpyjIfNeed(spd)
 
             flowNodeAdapter.setNewData(spd.flowNodeList)
 

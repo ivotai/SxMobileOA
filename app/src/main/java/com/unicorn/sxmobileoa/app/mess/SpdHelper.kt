@@ -7,7 +7,6 @@ import com.unicorn.sxmobileoa.commitTask.model.TaskInstance
 import com.unicorn.sxmobileoa.commitTask.model.TaskPerson
 import com.unicorn.sxmobileoa.select.deptUser.model.User
 import com.unicorn.sxmobileoa.sequenceFlow.model.NextTaskSequenceFlow
-import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.Spyj
@@ -16,8 +15,9 @@ import java.util.*
 
 class SpdHelper {
 
-    fun addSpyjIfNeed(dbxx: Dbxx, spd: Spd) {
-        val currentNodeId = dbxx.param.nodeId
+    fun addSpyjIfNeed(spd: Spd) {
+//        val currentNodeId = dbxx.param.nodeId
+        val currentNodeId = spd.nodeModel.nodeid
         val isCustomNode = spd.flowNodeList[0].flowNodeId != null
         val currentFlowNodeList = if (isCustomNode) spd.flowNodeList.filter { flowNode ->
             currentNodeId in flowNode.flowNodeId!!.split(",")

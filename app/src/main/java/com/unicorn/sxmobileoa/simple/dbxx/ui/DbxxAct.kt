@@ -8,13 +8,14 @@ import com.blankj.utilcode.util.ConvertUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.app.ui.page.PageActOrFra
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
-import com.unicorn.sxmobileoa.n.add.QjsqAddAct
+import com.unicorn.sxmobileoa.header.qjsq.QjsqAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.dbxx.network.GetDbxx
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
@@ -44,7 +45,13 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
     private fun prepareAdd() {
         if (model.menu.text == "请假申请") {
             titleBar.setOperation("新建").safeClicks().subscribe { _ ->
-                startActivity(Intent(this@DbxxAct, QjsqAddAct::class.java))
+//                startActivity(Intent(this@DbxxAct, QjsqAddAct::class.java))
+                startActivity(Intent(this, QjsqAct::class.java).apply {
+                    putExtra(Key.menu, model.menu)
+                    // todo
+//                    putExtra(Key.dbxx, model.dbxx)
+                    putExtra(Key.isCreate, true)
+                })
             }
         }
     }
