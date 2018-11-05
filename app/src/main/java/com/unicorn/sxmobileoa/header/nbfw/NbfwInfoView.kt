@@ -7,7 +7,9 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
-import com.unicorn.sxmobileoa.app.*
+import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.get
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.main.model.Menu
@@ -54,11 +56,11 @@ class NbfwInfoView(context: Context, menu: Menu, spd: Spd,isCreate: Boolean) : F
     }
 
     override fun saveToSpd(spd: Spd): Boolean {
-        pairs.forEach { pair ->
-            pair.apply {
-                spd.set(key, textView.trimText())
-            }
-        }
+//        pairs.forEach { pair ->
+//            pair.apply {
+//                spd.set(key, textView.trimText())
+//            }
+//        }
         return true
     }
 
