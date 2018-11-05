@@ -42,8 +42,8 @@ data class FlowNode(
         val whsfbt: Int,
         val yjsfzwlj: String
 ) : IExpandable<Spyj>, MultiItemEntity, Serializable {
-    override fun getSubItems(): MutableList<Spyj> {
-        return spyjList
+    override fun getSubItems(): List<Spyj> {
+        return spyjList.filter { it.spyj.isNotEmpty() }
     }
 
     var b = false

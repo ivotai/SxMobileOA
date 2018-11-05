@@ -2,11 +2,9 @@ package com.unicorn.sxmobileoa.spd.ui
 
 import android.text.Html
 import android.view.View
-import android.widget.EditText
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
-import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.spd.model.FlowNode
@@ -45,12 +43,12 @@ class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                 helper.setText(R.id.tvSysTime, item.sysTime)
                 helper.setText(R.id.etSpyj, Html.fromHtml(item.spyj))
 
-                val canEdit = item.spyjStatus == 0
-                val etSpyj = helper.getView<EditText>(R.id.etSpyj)
-                etSpyj.isEnabled = canEdit
+//                val canEdit = item.spyjStatus == 0
+//                val etSpyj = helper.getView<EditText>(R.id.etSpyj)
+//                etSpyj.isEnabled = canEdit
 
-                RxTextView.textChanges(etSpyj).map { it.toString() }
-                        .subscribe { item.spyj = it }
+//                RxTextView.textChanges(etSpyj).map { it.toString() }
+//                        .subscribe { item.spyj = it }
             }
         }
     }
