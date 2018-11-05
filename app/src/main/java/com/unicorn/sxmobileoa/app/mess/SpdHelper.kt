@@ -16,7 +16,6 @@ import java.util.*
 class SpdHelper {
 
     fun addSpyjIfNeed(spd: Spd) {
-//        val currentNodeId = dbxx.param.nodeId
         val currentNodeId = spd.nodeModel.nodeid
         val isCustomNode = spd.flowNodeList[0].flowNodeId != null
         val currentFlowNodeList = if (isCustomNode) spd.flowNodeList.filter { flowNode ->
@@ -32,8 +31,7 @@ class SpdHelper {
         val currentFlowNode = currentFlowNodeList[0]
         // 当前可编辑审批意见
         val currentSpyjList = currentFlowNode.spyjList.filter { spyj ->
-            spyj.spyjStatus == 0 &&
-                    spyj.createUserId == Global.loginInfo!!.userId
+            spyj.spyjStatus == 0 && spyj.createUserId == Global.loginInfo!!.userId
         }
         // 如1果为空，则创建审批意见
         if (currentSpyjList.isEmpty()) {

@@ -96,10 +96,10 @@ data class SpdXx(
         val fbrid: String,
         val fbrmc: String,
         val fbsj: String,
-        val flowCode: String,
+        var flowCode: String,
         val flowName: String,
         val flowParams: Any,
-        val funCode: String,
+        var funCode: String,
         val fydm: String,
         val fyjc: String,
         val fymc: String,
@@ -120,7 +120,7 @@ data class SpdXx(
         val jsrId: String,
         val jssj: String,
         val lcmc: String,
-        val moduleCode: String,
+        var moduleCode: String,
         val ndh: String,
         val nodeId: String,
         val nodeName: String,
@@ -138,7 +138,7 @@ data class SpdXx(
         val sjrlxfs: String,
         val sjrmc: String,
         val sort: String,
-        val spdCode: String,
+        var spdCode: String,
         val spdJson: String,
         val spdNodeName: String,
         val spdSprmc: String,
@@ -261,6 +261,4 @@ data class Spyj(
 data class Fj(
         val fjdz: String,
         val fjmc: String
-) : Serializable {
-
-}
+) : Serializable

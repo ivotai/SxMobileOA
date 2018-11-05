@@ -71,9 +71,13 @@ abstract class SpdAct : BaseAct() {
 
                 // 供 equipmentAct 使用。
                 Global.spd = spd
+                spd.spdXx.apply {
+                    moduleCode = model.menu.moduleCode
+                    spdCode = model.menu.spdCode
+                    flowCode = model.menu.flowCode
+                }
 
                 //
-//                addOperationHeaderView()
                 basicInfoView = addBasicHeaderView()
                 addFooterView()
             }
