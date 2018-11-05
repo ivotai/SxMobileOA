@@ -107,9 +107,12 @@ class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
             return false
         }
 
-        spd.spdXx.column2 = tvSqrq.trimText()
-        spd.spdXx.column3 = tvKsrq.trimText()
-        spd.spdXx.column4 = tvJsrq.trimText()
+        spd.spdXx.apply {
+            bt = tvBt.trimText()
+            column2 = tvSqrq.trimText()
+            column3 = tvKsrq.trimText()
+            column4 = tvJsrq.trimText()
+        }
         pairs.forEach { pair ->
             pair.apply {
                 spd.set(key, textView.trimText())

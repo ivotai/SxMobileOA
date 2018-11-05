@@ -1,57 +1,39 @@
 package com.unicorn.sxmobileoa.header.nbfw
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
-import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.SpdHelper
-import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
-import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
-import io.reactivex.functions.Consumer
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.header_view_nbfw.*
 
 @SuppressLint("ViewConstructor")
-class NbfwInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context), BasicInfoView {
+class NbfwInfoView(context: Context, menu: Menu, spd: Spd,isCreate: Boolean) : FrameLayout(context), BasicInfoView, LayoutContainer {
 
-    init {
-        initViews(context, menu, spd)
-    }
-
-    lateinit var tvTitle: TextView
-    lateinit var tvBt: TextView     // 真的标题
-
-    lateinit var tvJbbm: TextView
-    lateinit var tvNgr: TextView
-    lateinit var tvZsmc: TextView
-    lateinit var tvCsmc: TextView
+    override val containerView = this
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
-    fun initViews(context: Context, menu: Menu, spd: Spd) {
-        LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
-        findView()
-        renderView(menu, spd)
-//        canEdit(dbxx)
+    init {
+        initViews(context, menu, spd,isCreate)
     }
 
-    private fun findView() {
-        tvTitle = findViewById(R.id.tvTitle)
-        tvBt = findViewById(R.id.tvBt)
+    fun initViews(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) {
+        LayoutInflater.from(context).inflate(R.layout.header_view_nbfw, this, true)
+        if (isCreate) divider.visibility = View.GONE
+        preparePairs()
+        renderView(menu, spd)
+    }
 
-        tvJbbm = findViewById(R.id.tvJbbm)
-        tvNgr = findViewById(R.id.tvNgr)
-        tvZsmc = findViewById(R.id.tvZsmc)
-        tvCsmc = findViewById(R.id.tvCsmc)
-
-        // 把 textView 和对应 key 放入 pair
+    private fun preparePairs() {
         pairs = ArrayList<PAIR<TextView, String>>().apply {
             add(PAIR(tvJbbm, Key.jbbm_input))
             add(PAIR(tvNgr, Key.ngr_input))
@@ -64,30 +46,16 @@ class NbfwInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context
     private fun renderView(menu: Menu, spd: Spd) {
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
         tvBt.text = spd.spdXx.bt
-        // 遍历展示
-        pairs.forEach {
-            it.apply {
+        pairs.forEach { pair ->
+            pair.apply {
                 textView.text = spd.get(key)
             }
         }
     }
 
-    private fun canEdit(dbxx: Dbxx) {
-        if (SpdHelper().canEdit2(dbxx.param.nodeId)) {
-            tvZsmc.clickDept(Key.zsmc_input)
-            tvCsmc.clickDept(Key.csmc_input)
-            RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { textResult ->
-                when (textResult.key) {
-                    Key.zsmc_input -> tvZsmc
-                    else -> tvCsmc
-                }.text = textResult.result
-            })
-        }
-    }
-
-    override fun saveToSpd(spd: Spd):Boolean {
-        pairs.forEach {
-            it.apply {
+    override fun saveToSpd(spd: Spd): Boolean {
+        pairs.forEach { pair ->
+            pair.apply {
                 spd.set(key, textView.trimText())
             }
         }

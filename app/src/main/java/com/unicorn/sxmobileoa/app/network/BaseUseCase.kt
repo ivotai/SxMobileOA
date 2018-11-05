@@ -32,7 +32,9 @@ abstract class BaseUseCase<Result> {
                     return@map toSimpleResponse(it)
                 }
                 .filter { simpleResponse ->
-                    return@filter simpleResponse.code == Key.SUCCESS_CODE
+                    val result = simpleResponse.code == Key.SUCCESS_CODE
+                    if (!result) ToastUtils.showShort(simpleResponse.msg)
+                    return@filter result
                 }
                 .filter {
                     if (it.message == 2) {
