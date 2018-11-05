@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.blankj.utilcode.util.ToastUtils
@@ -33,6 +34,7 @@ class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
 
     fun initViews(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) {
         LayoutInflater.from(context).inflate(R.layout.header_view_qjsq, this, true)
+        if (isCreate) divider.visibility = View.GONE
         preparePairs()
         renderView(menu, spd, isCreate)
         canEdit(spd.nodeModel.nodeid, isCreate)
@@ -53,10 +55,11 @@ class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
     private fun renderView(menu: Menu, spd: Spd, isCreate: Boolean) {
         // 初始化值
         if (isCreate) {
-            val spdXx = spd.spdXx
-            spdXx.column2 = DateTime().toString("yyyy-MM-dd")
-            spd.set(Key.qjr_input, spdXx.createUserName)
-            spd.set(Key.szbm_input, spdXx.bmmc)
+            spd.spdXx.apply {
+                column2 = DateTime().toString("yyyy-MM-dd")
+                spd.set(Key.qjr_input, createUserName)
+                spd.set(Key.szbm_input, bmmc)
+            }
         }
 
         // 展示值

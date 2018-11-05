@@ -66,15 +66,14 @@ abstract class SpdAct : BaseAct() {
     override fun bindIntent() {
         isCreate = intent.getBooleanExtra(Key.isCreate, false)
         if (isCreate) {
-            val spdCode = if (model.menu.text == "请假申请") "OA_SPD_QJGL_QJSQ" else ""
-            AddSpd(spdCode).toMaybe(this).subscribe {
+            AddSpd(model.menu.spdCode).toMaybe(this).subscribe {
                 spd = it
 
                 // 供 equipmentAct 使用。
                 Global.spd = spd
 
                 //
-                addOperationHeaderView()
+//                addOperationHeaderView()
                 basicInfoView = addBasicHeaderView()
                 addFooterView()
             }
