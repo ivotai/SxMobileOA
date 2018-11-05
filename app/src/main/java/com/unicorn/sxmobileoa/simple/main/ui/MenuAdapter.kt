@@ -26,22 +26,22 @@ class MenuAdapter : BaseSectionQuickAdapter<MenuSection, BaseViewHolder>(R.layou
             helper.setText(R.id.tvCount, count.toString())
             helper.setImageResource(R.id.ivAttachment, resId)
         }
-//        if (item.t.count != 0) {
-            helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
-                if (item.t.text == "消息公告") {
-                    mContext.startActivity(Intent(mContext, GgxxAct::class.java))
-                    return@subscribe
-                }
-                if (item.t.text == "超审限") {
-                    mContext.startActivity(Intent(mContext, SpcsxAct::class.java))
-                    return@subscribe
-                }
-
-                mContext.startActivity(Intent(mContext, DbxxAct::class.java).apply {
-                    putExtra(Key.menu, item.t)
-                })
+        helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
+            if (item.t.text == "超审限") {
+                mContext.startActivity(Intent(mContext, SpcsxAct::class.java))
+                return@subscribe
             }
-//        }
+            if (item.t.text == "新闻中心") {
+                return@subscribe
+            }
+            if (item.t.text == "消息公告") {
+                mContext.startActivity(Intent(mContext, GgxxAct::class.java))
+                return@subscribe
+            }
+            mContext.startActivity(Intent(mContext, DbxxAct::class.java).apply {
+                putExtra(Key.menu, item.t)
+            })
+        }
         helper.getView<View>(R.id.flCount).visibility = if (item.t.count == 0) View.INVISIBLE else View.VISIBLE
     }
 
