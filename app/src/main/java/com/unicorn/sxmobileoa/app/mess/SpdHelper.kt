@@ -31,8 +31,11 @@ class SpdHelper {
         // 当前流程节点
         val currentFlowNode = currentFlowNodeList[0]
         // 当前可编辑审批意见
-        val currentSpyjList = currentFlowNode.spyjList.filter { spyj -> spyj.spyjStatus == 0 }
-        // 如果为空，则创建审批意见
+        val currentSpyjList = currentFlowNode.spyjList.filter { spyj ->
+            spyj.spyjStatus == 0 &&
+                    spyj.createUserId == Global.loginInfo!!.userId
+        }
+        // 如1果为空，则创建审批意见
         if (currentSpyjList.isEmpty()) {
             val spyj = Spyj(
                     createUserId = Global.loginInfo!!.userId,
@@ -86,7 +89,7 @@ class SpdHelper {
                 moduleCode = response.moduleCode,
                 flowCode = response.flowCode,
                 nodeId = response.nodeId,
-                spyjId = response.spyjId ,
+                spyjId = response.spyjId,
                 gd = if (nodeId.contains("_GD")) 1 else 0,
                 nextTaskKey = sequenceFlow.nextTaskKey,
                 tasktype = sequenceFlow.nextTaskType,
