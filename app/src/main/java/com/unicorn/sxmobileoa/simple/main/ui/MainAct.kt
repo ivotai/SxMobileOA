@@ -1,26 +1,36 @@
 package com.unicorn.sxmobileoa.simple.main.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.support.v7.widget.GridLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
+import com.unicorn.sxmobileoa.login.ui.LoginAct
 import com.unicorn.sxmobileoa.simple.main.model.ParentMenu
 import com.unicorn.sxmobileoa.simple.main.model.section.MenuSection
 import com.unicorn.sxmobileoa.simple.main.network.GetMenu
+import com.unicorn.sxmobileoa.simple.main.network.loginout.LoginOut
 import io.reactivex.functions.Consumer
-import kotlinx.android.synthetic.main.act_title_swipe_recycler.*
+import kotlinx.android.synthetic.main.act_main.*
 
 @SuppressLint("CheckResult")
 class MainAct : BaseAct() {
 
-    override val layoutId = R.layout.act_title_swipe_recycler
+    override val layoutId = R.layout.act_main
 
     override fun initViews() {
         titleBar.setTitle("${Global.court!!.dmms}移动办公", true)
         initRecyclerView()
+        nav_view.setNavigationItemSelectedListener { _ ->
+            LoginOut().toMaybe(this).subscribe {
+                drawer_layout.closeDrawers()
+                startActivity(Intent(this@MainAct, LoginAct::class.java))
+            }
+            return@setNavigationItemSelectedListener true
+        }
     }
 
     private val menuAdapter = MenuAdapter()

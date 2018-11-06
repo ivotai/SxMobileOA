@@ -24,6 +24,7 @@ object Key {
     const val spdid = "spdid"
     const val saveSpdResponse = "saveSpdResponse"
     const val code = "code"
+    const val ticket = "ticket"
     const val title = "title"
     const val textResult = "textResult"
     const val deptUserResult = "deptUserResult"
