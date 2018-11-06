@@ -31,7 +31,7 @@ fun View.safeClicks(): Observable<Unit> = this.clicks().throttleFirst(1, TimeUni
 
 fun TextView.trimText() = this.text.toString().trim()
 
-fun TextView.textChanges(): Observable<String> = RxTextView.textChanges(this).map { it.toString() }
+fun TextView.textChanges2(): Observable<String> = RxTextView.textChanges(this).map { it.toString() }
 
 fun <T> Maybe<T>.common(lifecycleOwner: LifecycleOwner): Maybe<T> = this.compose(MainThreadTransformer())
         .compose(RxLifecycle.with(lifecycleOwner).disposeOnDestroy())

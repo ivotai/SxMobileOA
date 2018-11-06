@@ -9,7 +9,7 @@ import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.app.safeClicks
-import com.unicorn.sxmobileoa.app.textChanges
+import com.unicorn.sxmobileoa.app.textChanges2
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.select.dept.model.Dept
 import com.unicorn.sxmobileoa.select.dept.network.GetDept
@@ -53,7 +53,7 @@ class DeptUserAct : BaseAct() {
         KeywordHeaderView(this).apply {
             setHint("请输入部门")
             mAdapter.addHeaderView(this)
-        }.etKeyword.textChanges().subscribe { keyword ->
+        }.etKeyword.textChanges2().subscribe { keyword ->
             allDept.filter { it.text.contains(keyword) }
                     .let { mAdapter.setNewData(it) }
         }

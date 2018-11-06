@@ -76,7 +76,7 @@ class WbfwInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
         // 标题的编辑无法统一处理
         tvBt.apply {
             isEnabled = true
-            textChanges().subscribe { spd.spdXx.bt = it }
+            textChanges2().subscribe { spd.spdXx.bt = it }
         }
         // 遍历，使其可编辑
         pairs.forEach {

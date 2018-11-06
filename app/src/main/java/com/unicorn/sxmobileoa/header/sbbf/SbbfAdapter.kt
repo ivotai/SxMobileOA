@@ -52,12 +52,12 @@ class SbbfAdapter : BaseQuickAdapter<Sbbf, BaseViewHolder>(R.layout.item_equipme
         })
 
         // 监控值变化
-        tvBfsbmc.textChanges().subscribe { item.bfsbmc = it }
-        tvPpjxh.textChanges().subscribe { item.ppjxh = it }
-        tvSl.textChanges().subscribe { item.sl = it }
-        tvBfrq.textChanges().subscribe { item.bfrq = it }
-        tvBfjg.textChanges().subscribe { item.bfjg = it }
-        tvSfzx.textChanges().subscribe { item.sfzx = it }
+        tvBfsbmc.textChanges2().subscribe { item.bfsbmc = it }
+        tvPpjxh.textChanges2().subscribe { item.ppjxh = it }
+        tvSl.textChanges2().subscribe { item.sl = it }
+        tvBfrq.textChanges2().subscribe { item.bfrq = it }
+        tvBfjg.textChanges2().subscribe { item.bfjg = it }
+        tvSfzx.textChanges2().subscribe { item.sfzx = it }
     }
 
 }

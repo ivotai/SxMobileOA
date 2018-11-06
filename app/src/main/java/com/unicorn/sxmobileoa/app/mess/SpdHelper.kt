@@ -22,7 +22,7 @@ class SpdHelper {
         spd.apply {
             currentFlowNodeList =
                     if (nodeModel_1 != null) flowNodeList.filter { it.nodeid == nodeModel_1.nodeid }
-                    else flowNodeList.filter { nodeModel_2!!.nodeid in it.flowNodeId!!.split(",") }
+                    else flowNodeList.filter { it.spyjNodeId == nodeModel_2!!.spyjNodeId }
         }
 
         // 归档，不做任何处理

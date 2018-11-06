@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.mess.KeywordHeaderView
-import com.unicorn.sxmobileoa.app.textChanges
+import com.unicorn.sxmobileoa.app.textChanges2
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.court.model.Court
 import com.unicorn.sxmobileoa.simple.court.network.GetCourt
@@ -46,7 +46,7 @@ class CourtAct : BaseAct() {
     }
 
     private fun textChangeKeyword(allCourt: List<Court>) {
-        headerView.etKeyword.textChanges()
+        headerView.etKeyword.textChanges2()
                 .subscribe { keyword ->
                     allCourt.filter { it.dmms.contains(keyword) }
                             .let { mAdapter.setNewData(it) }

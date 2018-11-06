@@ -10,7 +10,7 @@ import com.unicorn.sxmobileoa.app.clickCode
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.app.set
-import com.unicorn.sxmobileoa.app.textChanges
+import com.unicorn.sxmobileoa.app.textChanges2
 import io.reactivex.functions.Consumer
 
 class SblyAdapter : BaseQuickAdapter<Sbly, BaseViewHolder>(R.layout.item_sbly) {
@@ -43,11 +43,11 @@ class SblyAdapter : BaseQuickAdapter<Sbly, BaseViewHolder>(R.layout.item_sbly) {
         })
 
         // 监控值变化
-        tvWpmc.textChanges().subscribe { item.wpmc = it }
-        tvSl.textChanges().subscribe { item.sl = it }
-        tvGg.textChanges().subscribe { item.gg = it }
-        tvPp.textChanges().subscribe { item.pp = it }
-        tvBz.textChanges().subscribe { item.bz = it }
+        tvWpmc.textChanges2().subscribe { item.wpmc = it }
+        tvSl.textChanges2().subscribe { item.sl = it }
+        tvGg.textChanges2().subscribe { item.gg = it }
+        tvPp.textChanges2().subscribe { item.pp = it }
+        tvBz.textChanges2().subscribe { item.bz = it }
     }
 
 }

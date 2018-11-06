@@ -11,7 +11,7 @@ import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.app.set
-import com.unicorn.sxmobileoa.app.textChanges
+import com.unicorn.sxmobileoa.app.textChanges2
 import com.unicorn.sxmobileoa.header.wply.model.Wply
 import io.reactivex.functions.Consumer
 
@@ -49,11 +49,11 @@ class WplyAdapter : BaseQuickAdapter<Wply, BaseViewHolder>(R.layout.item_wply) {
         })
 
         // 监控值变化
-        tvWpmc.textChanges().subscribe { item.wpmc = it }
-        tvGg.textChanges().subscribe { item.gg = it }
-        tvSqsl.textChanges().subscribe { item.sqsl = it }
-        tvSlsl.textChanges().subscribe { item.slsl = it }
-        tvZkff.textChanges().subscribe { item.zkff = it }
+        tvWpmc.textChanges2().subscribe { item.wpmc = it }
+        tvGg.textChanges2().subscribe { item.gg = it }
+        tvSqsl.textChanges2().subscribe { item.sqsl = it }
+        tvSlsl.textChanges2().subscribe { item.slsl = it }
+        tvZkff.textChanges2().subscribe { item.zkff = it }
     }
 
 }
