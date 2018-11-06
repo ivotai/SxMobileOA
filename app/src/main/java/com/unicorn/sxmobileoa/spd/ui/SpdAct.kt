@@ -168,7 +168,7 @@ abstract class SpdAct : BaseAct() {
         }
     }
 
-    fun startCommitTaskAct(saveSpdResponse: SaveSpdResponse){
+    private fun startCommitTaskAct(saveSpdResponse: SaveSpdResponse){
         startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
             putExtra(Key.menu, model.menu)
             putExtra(Key.param, model.param)
