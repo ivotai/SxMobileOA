@@ -20,7 +20,7 @@ class GgxxPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     override fun getCount() = 2
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return if (position == 0) "待办" else "已办"
+        return if (position == 0) "未读" else "已读"
     }
 
 }

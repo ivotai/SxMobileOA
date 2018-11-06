@@ -3,6 +3,7 @@ package com.unicorn.sxmobileoa.login.ui
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.text.TextUtils
+import com.afollestad.materialdialogs.MaterialDialog
 import com.github.florent37.rxsharedpreferences.RxSharedPreferences
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.unicorn.sxmobileoa.R
@@ -10,6 +11,7 @@ import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.login.model.LoginUser
 import com.unicorn.sxmobileoa.login.network.Login
 import com.unicorn.sxmobileoa.simple.court.model.Court
 import com.unicorn.sxmobileoa.simple.court.ui.CourtAct
@@ -19,6 +21,7 @@ import io.reactivex.functions.Consumer
 import io.reactivex.functions.Function3
 import kotlinx.android.synthetic.main.act_login.*
 
+@SuppressLint("CheckResult")
 class LoginAct : BaseAct() {
 
     override val layoutId = R.layout.act_login
@@ -34,14 +37,38 @@ class LoginAct : BaseAct() {
         observeInput()
         tvCourt.safeClicks().subscribe { startActivity(Intent(this@LoginAct, CourtAct::class.java)) }
         btnLogin.safeClicks().subscribe {
-            Login(etUsername.trimText(), etPassword.trimText()).toMaybe(this).subscribe { loginInfo ->
-                Global.loginInfo = loginInfo
-                saveInputInfo()
-                startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))
-            }
+            showListDialog()
         }
         restoreInputInfo()
     }
+
+    private fun showListDialog() {
+        val list = listOf(
+                LoginUser("系统管理员", "0000", "zyadmin"),
+                LoginUser("杨继锋", "0704", "admin"),
+                LoginUser("周晓平", "0115", "admin"),
+                LoginUser("郭建军", "0902", "admin"),
+                LoginUser("杨明德", "yangmd", "admin"),
+                LoginUser("覃亮", "qinliang", "0000")
+        )
+        MaterialDialog.Builder(this)
+                .items(list.map { it.name })
+                .itemsCallback { _, _, position, _ ->
+                    val loginUser = list[position]
+                    etUsername.setText(loginUser.loginName)
+                    etPassword.setText(loginUser.password)
+                    login()
+                }.show()
+    }
+
+    private fun login() {
+        Login(etUsername.trimText(), etPassword.trimText()).toMaybe(this).subscribe { loginInfo ->
+            Global.loginInfo = loginInfo
+            saveInputInfo()
+            startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))
+        }
+    }
+
 
     private fun observeInput() {
         Observable.combineLatest(
