@@ -7,6 +7,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
+import com.unicorn.sxmobileoa.app.mess.DialogUitls
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.safeClicks
@@ -16,6 +17,7 @@ import com.unicorn.sxmobileoa.commitTask.ui.CommitTaskAct
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.n.add.network.AddSpd
 import com.unicorn.sxmobileoa.simple.dbxx.model.Param
+import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.SpdActNavigationModel
 import com.unicorn.sxmobileoa.spd.network.saveSpd.SaveSpd
@@ -136,31 +138,43 @@ abstract class SpdAct : BaseAct() {
 //        }
         footer.btnNextStep.safeClicks().subscribe { _ ->
             if (!basicInfoView.saveToSpd(spd)) return@subscribe
+            val mask = DialogUitls.showMask(this,"提交数据中...")
+
+            // 第一次保存，产生 spd
             SaveSpd(spd).toMaybe(this@SpdAct).subscribe { saveSpdResponse ->
                 model.param = Param(nodeId = saveSpdResponse.nodeId, primaryId = saveSpdResponse.primaryId, taskId = saveSpdResponse.taskId)
-                if (!isCreate)
-                    startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
-                        putExtra(Key.menu, model.menu)
-                        putExtra(Key.param, model.param)
-                        putExtra(Key.spd, spd)
-                        putExtra(Key.saveSpdResponse, saveSpdResponse)
-                    })
+                if (!isCreate){
+                    mask.dismiss()
+                    startCommitTaskAct(saveSpdResponse)
+                }
                 else {
+                    // 第二次 重新加载页面
                     ToSpd(model.menu, model.param).toMaybe(this).subscribe {
                         spd = it
                         Global.spd = spd
                         spd.spdXx.taskId = model.param.taskId
                         SpdHelper().addSpyjIfNeed(spd)
                         flowNodeAdapter.setNewData(spd.flowNodeList)
-                        startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
-                            putExtra(Key.menu, model.menu)
-                            putExtra(Key.param, model.param)
-                            putExtra(Key.spd, spd)
-                            putExtra(Key.saveSpdResponse, saveSpdResponse)
-                        })
+
+                        // 第三次 再保存
+                        SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
+                            mask.dismiss()
+                            model.param = Param(nodeId = saveSpdResponse.nodeId, primaryId = saveSpdResponse.primaryId, taskId = saveSpdResponse.taskId)
+                            startCommitTaskAct(it)
+                        }
                     }
                 }
             }
         }
     }
+
+    fun startCommitTaskAct(saveSpdResponse: SaveSpdResponse){
+        startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
+            putExtra(Key.menu, model.menu)
+            putExtra(Key.param, model.param)
+            putExtra(Key.spd, spd)
+            putExtra(Key.saveSpdResponse, saveSpdResponse)
+        })
+    }
+
 }

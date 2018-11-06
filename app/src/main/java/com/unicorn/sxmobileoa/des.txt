@@ -27,4 +27,5 @@ message == 1 时，才解析 result。
 1. 添加 spdMb nodeModel_1 nodeModel_2。
 2. 修正 checkGd bug。
 3. 新增请假。
-4. 编辑意见貌似可以了。
+4. 新增后刷新界面数据。
+5. 编辑意见貌似可以了。
