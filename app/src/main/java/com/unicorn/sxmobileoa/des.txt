@@ -9,7 +9,6 @@
    超审限，新闻中心，消息公告暂时不用做。
 3. 正文
 4. 附件
-
 5. 调整请求后解析 xml 流程。
 message == 2 超时 或 message == 0 密码错误等，不解析 result。
 message == 1 时，才解析 result。
@@ -26,5 +25,5 @@ message == 1 时，才解析 result。
 4. 主界面加入刷新功能。
 
 11/6
-1. mb 模板
-2. 2 个 key nodelModel2 自定义
+1. 添加 spdMb nodeModel_1 nodeModel_2
+2. 修正 checkGd bug

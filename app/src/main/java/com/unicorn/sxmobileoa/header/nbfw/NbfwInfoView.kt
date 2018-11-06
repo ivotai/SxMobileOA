@@ -56,11 +56,6 @@ class NbfwInfoView(context: Context, menu: Menu, spd: Spd,isCreate: Boolean) : F
     }
 
     override fun saveToSpd(spd: Spd): Boolean {
-//        pairs.forEach { pair ->
-//            pair.apply {
-//                spd.set(key, textView.trimText())
-//            }
-//        }
         return true
     }
 

@@ -9,6 +9,7 @@ import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.safeClicks
+import com.unicorn.sxmobileoa.app.textChanges
 import com.unicorn.sxmobileoa.spd.model.FlowNode
 import com.unicorn.sxmobileoa.spd.model.Spyj
 
@@ -48,12 +49,10 @@ class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolde
                 val canEdit = item.spyjStatus == 0 && item.createUserId == Global.loginInfo!!.userId
                 val etSpyj = helper.getView<EditText>(R.id.etSpyj)
                 etSpyj.isEnabled = canEdit
-
-                // TODO
-//                RxTextView.textChanges(etSpyj).map { it.toString() }
-//                        .subscribe { item.spyj = it }
+                etSpyj.textChanges().subscribe { item.spyj = it }
             }
         }
     }
+
 
 }

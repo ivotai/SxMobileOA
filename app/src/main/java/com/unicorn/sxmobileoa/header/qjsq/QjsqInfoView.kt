@@ -94,6 +94,10 @@ class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
     }
 
     override fun saveToSpd(spd: Spd): Boolean {
+        if (tvQjsy.trimText().isEmpty()) {
+            ToastUtils.showShort("请假事由不能为空")
+            return false
+        }
         if (tvXjzl.trimText().isEmpty()) {
             ToastUtils.showShort("休假种类及年度不能为空")
             return false

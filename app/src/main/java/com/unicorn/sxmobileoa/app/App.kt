@@ -30,7 +30,7 @@ class App : Application() {
             if (it is SocketTimeoutException || it.cause is SocketTimeoutException) {
                 ToastUtils.showShort("连接超时")
             } else {
-                ToastUtils.showShort(it.toString())
+                ToastUtils.showShort(it.cause.toString())
             }
         }
     }

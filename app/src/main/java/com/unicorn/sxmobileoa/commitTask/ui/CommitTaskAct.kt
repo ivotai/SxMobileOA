@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.commitTask.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import com.afollestad.materialdialogs.MaterialDialog
 import com.blankj.utilcode.util.ToastUtils
@@ -19,6 +20,7 @@ import dart.DartModel
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_commit_task.*
 
+@SuppressLint("CheckResult")
 class CommitTaskAct : BaseAct() {
 
     private var sequenceFlowResult: SequenceFlowResult? = null
