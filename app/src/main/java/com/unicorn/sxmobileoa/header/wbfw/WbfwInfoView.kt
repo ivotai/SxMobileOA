@@ -10,7 +10,6 @@ import android.widget.TextView
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.BasicInfoView
@@ -72,7 +71,7 @@ class WbfwInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
     }
 
     private fun canEdit(spd: Spd) {
-        if (!SpdHelper().canEdit2(spd.nodeModel.nodeid)) return
+//        if (!SpdHelper().canEdit2(spd.nodeModel_2.nodeid)) return
 
         // 标题的编辑无法统一处理
         tvBt.apply {

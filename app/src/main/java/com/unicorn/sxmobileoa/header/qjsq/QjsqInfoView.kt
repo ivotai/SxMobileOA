@@ -37,7 +37,7 @@ class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
         if (isCreate) divider.visibility = View.GONE
         preparePairs()
         renderView(menu, spd, isCreate)
-        canEdit(spd.nodeModel.nodeid, isCreate)
+        canEdit(spd.nodeModel_1!!.nodeid, isCreate)
     }
 
     private fun preparePairs() {

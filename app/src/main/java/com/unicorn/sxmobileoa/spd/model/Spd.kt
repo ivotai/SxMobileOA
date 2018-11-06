@@ -13,9 +13,11 @@ data class Spd(
         val flowNodeList: List<FlowNode>,
         val spdData: MutableList<SpdData>,
         val spdXx: SpdXx,
-        val nodeModel: NodeModel,
+        val nodeModel_1: NodeModel_1?,
+        val nodeModel_2: NodeModel_2?,   // 自定义节点
         val spdFj: List<Fj>,
-        val operType:String
+        val operType: String,
+        val spdMb: SpdMb
 ) : Serializable
 
 data class FlowNode(
@@ -167,7 +169,7 @@ data class SpdXx(
         val zhmc: String
 ) : Serializable
 
-data class NodeModel(
+data class NodeModel_2(
         val flowCode: String,
         val flowNodeId: String,
         val formIndex: Int,
@@ -261,4 +263,87 @@ data class Spyj(
 data class Fj(
         val fjdz: String,
         val fjmc: String
+) : Serializable
+
+data class SpdMb(
+        val addmblj: String,
+        val againmblj: String,
+        val courtCode: String,
+        val createUserId: String,
+        val createUserName: String,
+        val detialmblj: String,
+        val dyType: Int,
+        val editmblj: String,
+        val fileName: String,
+        val flowCode: String,
+        val flowName: String,
+        val functionCode: String,
+        val functionName: String,
+        val fyjb: Int,
+        val id: String,
+        val lastModifiTime: String,
+        val mbContent: String,
+        val mbmc: String,
+        val moduleCode: String,
+        val ngryj: Int,
+        val qybz: Int,
+        val remark: String,
+        val spdbm: String,
+        val spdmc: String,
+        val spyjType: Int,
+        val sysTime: String,
+        val updateTime: String,
+        val version: Int,
+        val xtlx: String
+) : Serializable
+
+data class NodeModel_1(
+        val createUserId: String,
+        val createUserName: String,
+        val createuserid: String,
+        val createusername: String,
+        val flowcode: String,
+        val flowname: String,
+        val fydm: String,
+        val gdlx: String,
+        val id: String,
+        val jdsfmrxz: Int,
+        val ngrnode: Int,
+        val nodeid: String,
+        val nodemc: String,
+        val qybz: Int,
+        val remark: String,
+        val sfdxtz: Int,
+        val sfgz: Int,
+        val sftxspyj: Int,
+        val sfyjtz: Int,
+        val sfyxgq: Int,
+        val sfzdgd: Int,
+        val smsTepId: String,
+        val sort: Int,
+        val spyjList: List<Any>,
+        val spyjsfbt: Int,
+        val sysTime: String,
+        val systime: Systime,
+        val tzbt: String,
+        val tzfw: Int,
+        val tzjd: String,
+        val tznr: String,
+        val updateTime: String,
+        val whsfbt: Int,
+        val xtlx: String,
+        val yjsfzwlj: Int
+) : Serializable
+
+data class Systime(
+        val date: Int,
+        val day: Int,
+        val hours: Int,
+        val minutes: Int,
+        val month: Int,
+        val nanos: Int,
+        val seconds: Int,
+        val time: Long,
+        val timezoneOffset: Int,
+        val year: Int
 ) : Serializable
