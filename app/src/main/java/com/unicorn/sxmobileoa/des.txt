@@ -19,11 +19,12 @@ message == 1 时，才解析 result。
 3. 超审限。
 
 11/5
-1. 新增请假，进行中。。。
-2. 重构内部发文。
-3. 重构外部发文。
-4. 主界面加入刷新功能。
+1. 重构内部发文。
+2. 重构外部发文。
+3. 主界面加入刷新功能。
 
 11/6
-1. 添加 spdMb nodeModel_1 nodeModel_2
-2. 修正 checkGd bug
+1. 添加 spdMb nodeModel_1 nodeModel_2。
+2. 修正 checkGd bug。
+3. 新增请假。
+4. 编辑意见貌似可以了。

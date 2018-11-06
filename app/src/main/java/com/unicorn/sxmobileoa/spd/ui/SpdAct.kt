@@ -3,7 +3,6 @@ package com.unicorn.sxmobileoa.spd.ui
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
-import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
@@ -113,28 +112,55 @@ abstract class SpdAct : BaseAct() {
     private fun addFooterView() {
         val footer = ButtonFooterView(this)
         flowNodeAdapter.addFooterView(footer)
-        footer.btnSave.safeClicks().subscribe { _ ->
-            // TODO QUESTION! 展开会向 flowNodeList 里添 sub
-            // TODO 不采用 textChange 方式 时刻保存到 spd 而是最后再保存
-            if (!basicInfoView.saveToSpd(spd)) return@subscribe
-            SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
-                // todo 拼凑 param
-                model.param = Param(nodeId = it.nodeId, primaryId = it.primaryId, taskId = it.taskId)
-                ToastUtils.showShort("保存成功")
-            }
-        }
+//        footer.btnSave.safeClicks().subscribe { _ ->
+//            // TODO QUESTION! 展开会向 flowNodeList 里添 sub
+//            // TODO 不采用 textChange 方式 时刻保存到 spd 而是最后再保存
+//            if (!basicInfoView.saveToSpd(spd)) return@subscribe
+//            SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
+//                // todo 拼凑 param
+//                model.param = Param(nodeId = it.nodeId, primaryId = it.primaryId, taskId = it.taskId)
+//
+//                if (!isCreate)
+//                    ToastUtils.showShort("保存成功")
+//                else {
+//                    ToSpd(model.menu, model.param).toMaybe(this).subscribe {
+//                        spd = it
+//                        Global.spd = spd
+//                        spd.spdXx.taskId = model.param.taskId
+//                        SpdHelper().addSpyjIfNeed(spd)
+//                        flowNodeAdapter.setNewData(spd.flowNodeList)
+//                        ToastUtils.showShort("保存成功")
+//                    }
+//                }
+//            }
+//        }
         footer.btnNextStep.safeClicks().subscribe { _ ->
             if (!basicInfoView.saveToSpd(spd)) return@subscribe
-            SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
-                model.param = Param(nodeId = it.nodeId, primaryId = it.primaryId, taskId = it.taskId)
-                startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
-                    putExtra(Key.menu, model.menu)
-                    putExtra(Key.param, model.param)
-                    putExtra(Key.spd, spd)
-                    putExtra(Key.saveSpdResponse, it)
-                })
+            SaveSpd(spd).toMaybe(this@SpdAct).subscribe { saveSpdResponse ->
+                model.param = Param(nodeId = saveSpdResponse.nodeId, primaryId = saveSpdResponse.primaryId, taskId = saveSpdResponse.taskId)
+                if (!isCreate)
+                    startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
+                        putExtra(Key.menu, model.menu)
+                        putExtra(Key.param, model.param)
+                        putExtra(Key.spd, spd)
+                        putExtra(Key.saveSpdResponse, saveSpdResponse)
+                    })
+                else {
+                    ToSpd(model.menu, model.param).toMaybe(this).subscribe {
+                        spd = it
+                        Global.spd = spd
+                        spd.spdXx.taskId = model.param.taskId
+                        SpdHelper().addSpyjIfNeed(spd)
+                        flowNodeAdapter.setNewData(spd.flowNodeList)
+                        startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
+                            putExtra(Key.menu, model.menu)
+                            putExtra(Key.param, model.param)
+                            putExtra(Key.spd, spd)
+                            putExtra(Key.saveSpdResponse, saveSpdResponse)
+                        })
+                    }
+                }
             }
         }
     }
-
 }
