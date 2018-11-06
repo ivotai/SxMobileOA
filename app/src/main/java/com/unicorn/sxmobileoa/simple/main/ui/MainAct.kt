@@ -3,6 +3,7 @@ package com.unicorn.sxmobileoa.simple.main.ui
 import android.annotation.SuppressLint
 import android.support.v7.widget.GridLayoutManager
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
@@ -18,7 +19,7 @@ class MainAct : BaseAct() {
     override val layoutId = R.layout.act_title_swipe_recycler
 
     override fun initViews() {
-        titleBar.setTitle("陕西省高级人民法院移动办公", true)
+        titleBar.setTitle("${Global.court!!.dmms}移动办公", true)
         initRecyclerView()
     }
 
