@@ -40,6 +40,7 @@ class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, MyHolder>(nul
                         else View.VISIBLE
 
                 helper.getView<View>(R.id.root).safeClicks().subscribe { _ ->
+                    if (item.subItems.isEmpty()) return@subscribe
                     if (item.isExpanded) collapse(helper.adapterPosition)
                     else expand(helper.adapterPosition)
                 }
