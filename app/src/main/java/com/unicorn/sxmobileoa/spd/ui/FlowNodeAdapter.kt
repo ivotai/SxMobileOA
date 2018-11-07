@@ -64,11 +64,11 @@ class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, MyHolder>(nul
                 // 手写签
                 val tvSign = helper.tvSign
                 GradientDrawable().apply {
-                    setStroke(ConvertUtils.dp2px(1f),ContextCompat.getColor(mContext,R.color.colorPrimary))
+                    setStroke(ConvertUtils.dp2px(1f), ContextCompat.getColor(mContext, R.color.colorPrimary))
                     setColor(Color.WHITE)
                 }.let { tvSign.background = it }
-                tvSign.visibility = if(canEdit) View.VISIBLE else View.GONE
-                tvSign.safeClicks().subscribe { _ -> etSpyj.setText("${Global.loginInfo!!.userName} ${DateTime().toString("yyyy年MM月dd日")}") }
+                tvSign.visibility = if (canEdit) View.VISIBLE else View.GONE
+                tvSign.safeClicks().subscribe { _ -> etSpyj.setText("${etSpyj.text} ${Global.loginInfo!!.userName} ${DateTime().toString("yyyy年MM月dd日")}") }
             }
         }
     }
