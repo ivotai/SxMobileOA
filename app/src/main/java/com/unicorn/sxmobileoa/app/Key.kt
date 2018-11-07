@@ -121,6 +121,7 @@ object Key {
 
     // wply
     const val sqrdh_input = "sqrdh_input"
+    const val wpgs_input = "wpgs_input"
 
     // sbly
     const val lyxq_input = "lyxq_input"

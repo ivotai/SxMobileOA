@@ -4,6 +4,8 @@ import android.support.v7.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
+import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.get
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.wply.model.Wply
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
@@ -28,8 +30,10 @@ class WplyDetailAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        listOf(1, 2, 3, 4, 5)
-                .map { Wply(spd = Global.spd, position = it) }
+        val spd = Global.spd
+        val wpgs = spd.get(Key.wpgs_input).toInt()
+        IntRange(1, wpgs)
+                .map { Wply(spd = spd, position = it) }
                 .let { mAdapter.setNewData(it) }
     }
 
