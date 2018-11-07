@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.app
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
@@ -19,6 +20,7 @@ import com.unicorn.sxmobileoa.select.deptUser.ui.DeptUserAct
 import com.unicorn.sxmobileoa.spd.model.Spd
 import com.unicorn.sxmobileoa.spd.model.SpdData
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Maybe
@@ -54,14 +56,11 @@ fun Spd.set(spdKey: String, spdValue: String) {
             this.update = true
             this.updateTime = DateTime().toString("yyyy-MM-dd HH:mm:ss")
         }
-    }else{
-        val spdData = SpdData(spdKey = spdKey,spdValue = spdValue,spdid = this.spdXx.id)
+    } else {
+        val spdData = SpdData(spdKey = spdKey, spdValue = spdValue, spdid = this.spdXx.id)
         this.spdData.add(spdData)
     }
 }
-
-
-
 
 
 fun RecyclerView.addDefaultItemDecoration() {
@@ -84,11 +83,12 @@ fun TextView.clickDeptUser(type: String, key: String?) {
         context.startActivity(Intent(context, DeptUserAct::class.java).apply {
             putExtra(Key.type, type)
             if (key != null) putExtra(Key.key, key)
-            putExtra(Key.single,false.toString())
+            putExtra(Key.single, false.toString())
         })
     }
 }
 
+@SuppressLint("CheckResult")
 fun TextView.clickCode(title: String, code: String, key: String) {
     this.safeClicks().subscribe {
         context.startActivity(Intent(context, CodeAct::class.java).apply {
@@ -105,7 +105,8 @@ fun Context.finish() {
     }
 }
 
-fun TextView.clickDate(){
+@SuppressLint("CheckResult")
+fun TextView.clickDate() {
     this.safeClicks().subscribe {
         val now = Calendar.getInstance()
         val activity = context as BaseAct
@@ -116,11 +117,24 @@ fun TextView.clickDate(){
                     val dayStr = if (dayOfMonth > 9) "$dayOfMonth" else "0$dayOfMonth"
                     val str = "$year-$monthStr-$dayStr"
                     this.text = str
+                    clickTime()
                 },
-                now.get(Calendar.YEAR), // Initial year selection
-                now.get(Calendar.MONTH), // Initial month selection
-                now.get(Calendar.DAY_OF_MONTH) // Inital day selection
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
         )
         dpd.show(activity.fragmentManager, "dpd")
     }
+}
+
+@SuppressLint("CheckResult")
+private fun TextView.clickTime() {
+    val activity = context as BaseAct
+    val tpd = TimePickerDialog.newInstance({ _, hour, minute, second ->
+        val hourStr = if (hour > 9) "$hour" else "0$hour"
+        val minuteStr = if (minute > 9) "$minute" else "0$minute"
+        val str = "$hourStr:$minuteStr"
+        this@clickTime.text = "${this@clickTime.text} $str"
+    }, true)
+    tpd.show(activity.fragmentManager, "tpd")
 }
