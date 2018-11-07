@@ -20,7 +20,7 @@ import com.unicorn.sxmobileoa.header.ycsq.YcsqAct
 import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 
-class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx) {
+class DbxxAdapter(private val menu: Menu,private val type:String) : BaseQuickAdapter<Dbxx, BaseViewHolder>(R.layout.item_dbxx) {
 
     override fun convert(helper: BaseViewHolder, item: Dbxx) {
         helper.apply {
@@ -50,7 +50,8 @@ class DbxxAdapter(private val menu: Menu) : BaseQuickAdapter<Dbxx, BaseViewHolde
                 mContext.startActivity(Intent(mContext, cls).apply {
                     putExtra(Key.menu, menu)
                     putExtra(Key.param, item.param)
-                    putExtra(Key.isCreate, false)
+                    if (type =="2")
+                        putExtra(Key.isFinish, true)
                 })
             }
         }

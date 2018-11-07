@@ -66,6 +66,7 @@ abstract class SpdAct : BaseAct() {
 
     override fun bindIntent() {
         isCreate = intent.getBooleanExtra(Key.isCreate, false)
+        val isFinish = intent.getBooleanExtra(Key.isFinish, false)
         if (isCreate) {
             AddSpd(model.menu.spdCode).toMaybe(this).subscribe {
                 spd = it
@@ -101,7 +102,7 @@ abstract class SpdAct : BaseAct() {
             //
             addOperationHeaderView()
             basicInfoView = addBasicHeaderView()
-            addFooterView()
+            if (!isFinish) addFooterView()
         }
     }
 
@@ -138,16 +139,15 @@ abstract class SpdAct : BaseAct() {
 //        }
         footer.btnNextStep.safeClicks().subscribe { _ ->
             if (!basicInfoView.saveToSpd(spd)) return@subscribe
-            val mask = DialogUitls.showMask(this,"提交数据中...")
+            val mask = DialogUitls.showMask(this, "提交数据中...")
 
             // 第一次保存，产生 spd
             SaveSpd(spd).toMaybe(this@SpdAct).subscribe { saveSpdResponse ->
                 model.param = Param(nodeId = saveSpdResponse.nodeId, primaryId = saveSpdResponse.primaryId, taskId = saveSpdResponse.taskId)
-                if (!isCreate){
+                if (!isCreate) {
                     mask.dismiss()
                     startCommitTaskAct(saveSpdResponse)
-                }
-                else {
+                } else {
                     // 第二次 重新加载页面
                     ToSpd(model.menu, model.param).toMaybe(this).subscribe {
                         spd = it
@@ -168,7 +168,7 @@ abstract class SpdAct : BaseAct() {
         }
     }
 
-    private fun startCommitTaskAct(saveSpdResponse: SaveSpdResponse){
+    private fun startCommitTaskAct(saveSpdResponse: SaveSpdResponse) {
         startActivity(Intent(this@SpdAct, CommitTaskAct::class.java).apply {
             putExtra(Key.menu, model.menu)
             putExtra(Key.param, model.param)
