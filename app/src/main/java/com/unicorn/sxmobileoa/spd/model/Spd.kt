@@ -83,7 +83,7 @@ data class SpdXx(
         var column5: String,
         val column6: String,
         val column7: String,
-        val column8: String,
+        var column8: String,
         val column9: String,
         val createUserId: String,
         val createUserName: String,

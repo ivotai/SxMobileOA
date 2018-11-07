@@ -8,10 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
+import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.SpdHelper
 import com.unicorn.sxmobileoa.app.mess.model.CodeResult
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.BasicInfoView
@@ -22,6 +22,7 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.header_view_ycsq.view.*
+import org.joda.time.DateTime
 
 @SuppressLint("ViewConstructor")
 class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : FrameLayout(context), BasicInfoView, LayoutContainer {
@@ -38,8 +39,8 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
         LayoutInflater.from(context).inflate(R.layout.header_view_ycsq, this, true)
         if (isCreate) divider.visibility = View.GONE
         preparePairs()
-        renderView(menu, spd,isCreate)
-//        canEdit(spd)
+        renderView(menu, spd, isCreate)
+        canEdit(spd, isCreate)
     }
 
     private fun preparePairs() {
@@ -65,7 +66,7 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
     }
 
     @SuppressLint("SetTextI18n")
-    private fun renderView(menu: Menu, spd: Spd,isCreate: Boolean) {
+    private fun renderView(menu: Menu, spd: Spd, isCreate: Boolean) {
         // 新增时有些值需要赋值
         if (isCreate) {
             spd.spdXx.apply {
@@ -74,10 +75,18 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
             }
         }
 
+        //
+        if (canEdit(spd)) {
+            if (spd.spdXx.column8.isEmpty())
+                spd.spdXx.column8 = Global.loginInfo!!.userName
+            if (spd.get(Key.pcsj_input).isEmpty())
+                spd.set(Key.pcsj_input, DateTime().toString("yyyy-MM-dd"))
+        }
+
         // 展示值
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
         spd.spdXx.apply {
-            tvBt.text = bt
+            tvBt.setText(bt)
             tvYcsy.setText(column1)
             tvKwdd.setText(column3)
             tvPcr.text = column8
@@ -89,20 +98,15 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
         }
     }
 
-    private fun canEdit(spd: Spd) {
-        val nodeId = spd.nodeModel_1!!.nodeid
-        if (SpdHelper().canEdit2(nodeId)) {
-            pairs.forEach {
-                it.apply {
-                    textView.isEnabled = true
-                }
-            }
+    @SuppressLint("CheckResult")
+    private fun canEdit(spd: Spd, isCreate: Boolean) {
+        if (isCreate) {
+            tvBt.isEnabled = true
             tvYcsy.isEnabled = true
-
-            // TODO TIME
+            tvHbmc.clickDept(Key.hbmc_input)
+            tvSqrdh.isEnabled = true
             tvCfsj.clickDate()
             tvFhsj.clickDate()
-
             tvCcrmc.clickDeptUser(Key.textResult, Key.ccrmc_input)
             tvCllx.safeClicks().subscribe {
                 context.startActivity(Intent(context, CllxAct::class.java).apply {
@@ -110,32 +114,22 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
                 })
             }
             tvKwdd.isEnabled = true
+            tvYcrs.isEnabled = true
         }
 
-        val flag = nodeId in listOf(
-                "OA_FLOW_HQGL_YCSQ_CGSP",
-                "OA_FLOW_HQGL_YCSQ_CDSP",
-                "OA_FLOW_HQGL_YCSQ_CDPC",
-                "OA_FLOW_HQGL_YCSQ_CGK",
-                "OA_FLOW_HQGL_YCSQ_BGSSP",
-                "OA_FLOW_HQGL_YCSQ_CDDZ",
-                "OA_FLOW_HQGL_YCSQ_TZ",
-                "OA_FLOW_HQGL_YCSQ_FYZSP"
-        )
-        if (flag) {
+        if (canEdit(spd)) {
             tvCcsj1.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsj1_select)
             tvCcsj2.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsj2_select)
             tvCcsj3.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsj3_select)
             tvSycl1.clickCode("选择使用车辆", "YCSQ_CL", Key.sycl1_select)
             tvSycl2.clickCode("选择使用车辆", "YCSQ_CL", Key.sycl2_select)
             tvSycl3.clickCode("选择使用车辆", "YCSQ_CL", Key.sycl3_select)
-            tvPcsj.clickDate()
-            tvHzsj.clickDate()
+            tvPcsj.clickDate(false)
+            tvHzsj.clickDate(false)
         }
-
-        //
         RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer {
             when (it.key) {
+                Key.hbmc_input -> tvHbmc
                 Key.ccrmc_input -> tvCcrmc
                 else -> tvCllx
             }.text = it.result
@@ -155,10 +149,60 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
         })
     }
 
-    override fun saveToSpd(spd: Spd): Boolean {
-        spd.spdXx.column1 = tvYcsy.trimText()
-        spd.spdXx.column3 = tvKwdd.trimText()
+    private fun canEdit(spd: Spd): Boolean {
+        val nodeId = spd.nodeModel_1!!.nodeid
+        return nodeId in listOf(
+                "OA_FLOW_HQGL_YCSQ_CGSP",
+                "OA_FLOW_HQGL_YCSQ_CDSP",
+                "OA_FLOW_HQGL_YCSQ_CDPC",
+                "OA_FLOW_HQGL_YCSQ_CGK",
+                "OA_FLOW_HQGL_YCSQ_BGSSP",
+                "OA_FLOW_HQGL_YCSQ_CDDZ",
+                "OA_FLOW_HQGL_YCSQ_TZ",
+                "OA_FLOW_HQGL_YCSQ_FYZSP"
+        )
+    }
 
+
+    override fun saveToSpd(spd: Spd): Boolean {
+        if (tvYcsy.trimText().isEmpty()) {
+            ToastUtils.showShort("用车事由不能为空")
+            return false
+        }
+        if (tvSqrdh.trimText().isEmpty()) {
+            ToastUtils.showShort("电话不能为空")
+            return false
+        }
+        if (tvCfsj.trimText().isEmpty()) {
+            ToastUtils.showShort("出发时间不能为空")
+            return false
+        }
+        if (tvFhsj.trimText().isEmpty()) {
+            ToastUtils.showShort("返回时间不能为空")
+            return false
+        }
+        if (tvCcrmc.trimText().isEmpty()) {
+            ToastUtils.showShort("乘车人不能为空")
+            return false
+        }
+        if (tvCllx.trimText().isEmpty()) {
+            ToastUtils.showShort("车辆类型不能为空")
+            return false
+        }
+        if (tvKwdd.trimText().isEmpty()) {
+            ToastUtils.showShort("开往地点不能为空")
+            return false
+        }
+        if (tvYcrs.trimText().isEmpty()) {
+            ToastUtils.showShort("用车人数不能为空")
+            return false
+        }
+
+        spd.spdXx.apply {
+            bt = tvBt.trimText()
+            column1 = tvYcsy.trimText()
+            column3 = tvKwdd.trimText()
+        }
 
         // column4 司机总信息
         listOf(tvCcsj1, tvCcsj2, tvCcsj3)
@@ -169,6 +213,7 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
                 .let {
                     spd.spdXx.column4 = it
                 }
+
         // column5 车辆总信息
         listOf(tvSycl1, tvSycl2, tvSycl3)
                 .map { it.trimText() }
@@ -178,8 +223,8 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
                     spd.spdXx.column5 = it
                 }
 
-        pairs.forEach {
-            it.apply {
+        pairs.forEach { pair ->
+            pair.apply {
                 spd.set(key, textView.trimText())
             }
         }

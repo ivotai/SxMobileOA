@@ -48,7 +48,7 @@ class CommitTaskAct : BaseAct() {
             sequenceFlowResult = result
             tvSequenceFlow.text = result.flow.nextTaskShowName
             tvUsers.text = result.userList.joinToString(",") { user -> user.fullname }
-            if (tvSequenceFlow.text == "结束") {
+            if (tvSequenceFlow.text.toString() in listOf("结束", "不通过结束")) {
                 tvUsers.text = "无需选择人员"
             }
         })

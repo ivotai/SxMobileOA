@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.sequenceFlow.ui
 
+import android.annotation.SuppressLint
 import android.support.v7.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
@@ -18,6 +19,7 @@ import dart.DartModel
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_spd_next.*
 
+@SuppressLint("CheckResult")
 class SequenceFlowAct : BaseAct() {
 
     override fun initViews() {
@@ -62,7 +64,7 @@ class SequenceFlowAct : BaseAct() {
             }
 
             val selectedFlow = selectedFlows[0]
-            if (selectedFlow.nextTaskShowName == "结束") {
+            if (selectedFlow.nextTaskShowName in listOf("结束","不通过结束")) {
                 RxBus.get().post(SequenceFlowResult(selectedFlow, ArrayList()))
                 finish()
                 return@subscribe
@@ -81,7 +83,7 @@ class SequenceFlowAct : BaseAct() {
 
     override fun registerEvent() {
         RxBus.get().registerEvent(NextTaskSequenceFlow::class.java, this, Consumer {
-            if (it.nextTaskShowName == "结束") {
+            if (it.nextTaskShowName in listOf("结束", "不通过结束")) {
                 return@Consumer
             }
             val single = it.nextTaskType == "userTask"

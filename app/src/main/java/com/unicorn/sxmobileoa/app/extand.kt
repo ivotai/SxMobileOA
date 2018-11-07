@@ -106,7 +106,7 @@ fun Context.finish() {
 }
 
 @SuppressLint("CheckResult")
-fun TextView.clickDate() {
+fun TextView.clickDate(showTime: Boolean=true) {
     this.safeClicks().subscribe {
         val now = Calendar.getInstance()
         val activity = context as BaseAct
@@ -117,7 +117,7 @@ fun TextView.clickDate() {
                     val dayStr = if (dayOfMonth > 9) "$dayOfMonth" else "0$dayOfMonth"
                     val str = "$year-$monthStr-$dayStr"
                     this.text = str
-                    clickTime()
+                   if(showTime) clickTime()
                 },
                 now.get(Calendar.YEAR),
                 now.get(Calendar.MONTH),
