@@ -1,9 +1,12 @@
 package com.unicorn.sxmobileoa.header.wply.detail
 
+import android.annotation.SuppressLint
+import android.view.ViewGroup
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.mess.MyHolder
+import com.unicorn.sxmobileoa.app.textChanges2
 import com.unicorn.sxmobileoa.header.wply.model.Wply
 import kotlinx.android.synthetic.main.item_wply.*
 
@@ -23,13 +26,24 @@ class WplyAdapter : BaseQuickAdapter<Wply, MyHolder>(R.layout.item_wply) {
             tvSlsl.isEnabled = canEdit
             tvZkff.isEnabled = canEdit
         }
+    }
 
-        // 监控值变化
-//        tvWpmc.textChanges2().subscribe { item.wpmc = it }
-//        tvGg.textChanges2()8.subscribe { item.gg = it }
-//        tvSqsl.textChanges2().subscribe { item.sqsl = it }
-//        tvSlsl.textChanges2().subscribe { item.slsl = it }
-//        tvZkff.textChanges2().subscribe { item.zkff = it }
+    @SuppressLint("CheckResult")
+    override fun onCreateDefViewHolder(parent: ViewGroup?, viewType: Int): MyHolder {
+        val helper = super.onCreateDefViewHolder(parent, viewType)
+        helper.tvSlsl.textChanges2().filter { it.isNotEmpty() }.subscribe {
+            val adapterPos = helper.adapterPosition
+            if (adapterPos == -1) return@subscribe
+            val target = mData[adapterPos]
+            target.slsl = it
+        }
+        helper.tvZkff.textChanges2().filter { it.isNotEmpty() }.subscribe {
+            val adapterPos = helper.adapterPosition
+            if (adapterPos == -1) return@subscribe
+            val target = mData[adapterPos]
+            target.zkff = it
+        }
+        return helper
     }
 
 }
