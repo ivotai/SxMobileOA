@@ -6,6 +6,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.finish
 import com.unicorn.sxmobileoa.app.mess.RxBus
+import com.unicorn.sxmobileoa.app.mess.model.CodeResult
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.select.code.model.Code
@@ -19,6 +20,10 @@ class CodeAdapter(val key: String) : BaseQuickAdapter<Code, BaseViewHolder>(R.la
 
             // 单选
             tvText.safeClicks().subscribe {
+                if (key.contains("_select")){
+                    RxBus.get().post(CodeResult(key, item))
+                    mContext.finish()
+                }
                 RxBus.get().post(TextResult(key, item.text))
                 mContext.finish()
             }

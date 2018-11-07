@@ -11,6 +11,7 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.mess.SpdHelper
+import com.unicorn.sxmobileoa.app.mess.model.CodeResult
 import com.unicorn.sxmobileoa.app.mess.model.TextResult
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
@@ -125,14 +126,21 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context
         RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer {
             when (it.key) {
                 Key.ccrmc_input -> tvCcrmc
-                Key.ccsj1_select -> tvCcsj1
-                Key.ccsj2_select -> tvCcsj2
-                Key.ccsj3_select -> tvCcsj3
-                Key.sycl1_select -> tvSycl1
-                Key.sycl2_select -> tvSycl2
-                Key.sycl3_select -> tvSycl3
                 else -> tvCllx
             }.text = it.result
+        })
+        RxBus.get().registerEvent(CodeResult::class.java, context as LifecycleOwner, Consumer {
+            it.apply {
+                spd.set(key, result.`val`)
+                when (it.key) {
+                    Key.ccsj1_select -> tvCcsj1
+                    Key.ccsj2_select -> tvCcsj2
+                    Key.ccsj3_select -> tvCcsj3
+                    Key.sycl1_select -> tvSycl1
+                    Key.sycl2_select -> tvSycl2
+                    else -> tvSycl3
+                }.text = result.text
+            }
         })
     }
 
