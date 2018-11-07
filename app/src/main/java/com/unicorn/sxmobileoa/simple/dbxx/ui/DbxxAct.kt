@@ -31,7 +31,7 @@ class DbxxAct : BaseAct(), PageActOrFra<Dbxx> {
     override fun loadPage(pageNo: Int): Maybe<Page<Dbxx>> = GetDbxx(pageNo, model.menu).toMaybe(this)
 
     override fun initViews() {
-        titleBar.setTitle(model.menu.text)
+        titleBar.setTitle("${model.menu.text}列表")
         mAdapter = DbxxAdapter(model.menu)
         super.initViews()
         HorizontalDividerItemDecoration.Builder(this)

@@ -1,10 +1,14 @@
 package com.unicorn.sxmobileoa.spd.ui
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
+import android.support.v4.content.ContextCompat
 import android.text.Html
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import com.blankj.utilcode.util.ConvertUtils
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.orhanobut.logger.Logger
@@ -16,6 +20,7 @@ import com.unicorn.sxmobileoa.app.textChanges2
 import com.unicorn.sxmobileoa.spd.model.FlowNode
 import com.unicorn.sxmobileoa.spd.model.Spyj
 import kotlinx.android.synthetic.main.item_spyj.*
+import org.joda.time.DateTime
 
 class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, MyHolder>(null) {
 
@@ -29,6 +34,7 @@ class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, MyHolder>(nul
         addItemType(TYPE_SPYJ, R.layout.item_spyj)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun convert(helper: MyHolder, item: MultiItemEntity) {
         when (item.itemType) {
             TYPE_FLOW_NODE -> {
@@ -54,6 +60,15 @@ class FlowNodeAdapter : BaseMultiItemQuickAdapter<MultiItemEntity, MyHolder>(nul
                 val canEdit = item.spyjStatus == 0 && item.createUserId == Global.loginInfo!!.userId
                 val etSpyj = helper.getView<EditText>(R.id.etSpyj)
                 etSpyj.isEnabled = canEdit
+
+                // 手写签
+                val tvSign = helper.tvSign
+                GradientDrawable().apply {
+                    setStroke(ConvertUtils.dp2px(1f),ContextCompat.getColor(mContext,R.color.colorPrimary))
+                    setColor(Color.WHITE)
+                }.let { tvSign.background = it }
+                tvSign.visibility = if(canEdit) View.VISIBLE else View.GONE
+                tvSign.safeClicks().subscribe { _ -> etSpyj.setText("${Global.loginInfo!!.userName} ${DateTime().toString("yyyy年MM月dd日")}") }
             }
         }
     }
