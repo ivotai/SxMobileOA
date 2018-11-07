@@ -4,7 +4,7 @@ import com.unicorn.sxmobileoa.spd.ui.SpdAct
 
 class YcsqAct : SpdAct() {
 
-    override fun addBasicHeaderView() = YcsqInfoView(this, model.menu, spd).apply {
+    override fun addBasicHeaderView() = YcsqInfoView(this, model.menu, spd,isCreate).apply {
         flowNodeAdapter.addHeaderView(this)
     }
 

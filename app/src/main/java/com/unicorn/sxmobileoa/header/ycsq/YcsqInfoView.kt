@@ -5,6 +5,7 @@ import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
@@ -23,24 +24,25 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.header_view_ycsq.view.*
 
 @SuppressLint("ViewConstructor")
-class YcsqInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context), BasicInfoView, LayoutContainer {
+class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : FrameLayout(context), BasicInfoView, LayoutContainer {
 
     override val containerView = this
 
     private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
     init {
-        initViews(context, menu, spd)
+        initViews(context, menu, spd, isCreate)
     }
 
-    fun initViews(context: Context, menu: Menu, spd: Spd) {
+    fun initViews(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) {
         LayoutInflater.from(context).inflate(R.layout.header_view_ycsq, this, true)
-        findView()
-        preparePairs(menu, spd)
-        canEdit(spd)
+        if (isCreate) divider.visibility = View.GONE
+        preparePairs()
+        renderView(menu, spd,isCreate)
+//        canEdit(spd)
     }
 
-    private fun findView() {
+    private fun preparePairs() {
         pairs = ArrayList<PAIR<TextView, String>>().apply {
             add(PAIR(tvHbmc, Key.hbmc_input))
             add(PAIR(tvSqr, Key.sqr_input))
@@ -63,7 +65,16 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context
     }
 
     @SuppressLint("SetTextI18n")
-    private fun preparePairs(menu: Menu, spd: Spd) {
+    private fun renderView(menu: Menu, spd: Spd,isCreate: Boolean) {
+        // 新增时有些值需要赋值
+        if (isCreate) {
+            spd.spdXx.apply {
+                spd.set(Key.sqr_input, createUserName)  // 申请人
+                spd.set(Key.hbmc_input, bmmc)           // 用车部门
+            }
+        }
+
+        // 展示值
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
         spd.spdXx.apply {
             tvBt.text = bt

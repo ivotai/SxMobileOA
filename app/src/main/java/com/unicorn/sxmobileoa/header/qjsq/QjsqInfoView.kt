@@ -53,7 +53,7 @@ class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
 
     @SuppressLint("SetTextI18n")
     private fun renderView(menu: Menu, spd: Spd, isCreate: Boolean) {
-        // 初始化值
+        // 新增时有些值需要赋值
         if (isCreate) {
             spd.spdXx.apply {
                 column2 = DateTime().toString("yyyy-MM-dd")
