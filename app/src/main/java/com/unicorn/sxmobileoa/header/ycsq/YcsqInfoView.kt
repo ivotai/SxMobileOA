@@ -7,8 +7,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
@@ -20,66 +18,24 @@ import com.unicorn.sxmobileoa.header.ycsq.cllx.ui.CllxAct
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.header_view_ycsq.view.*
 
 @SuppressLint("ViewConstructor")
-class YcsqInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context), BasicInfoView {
+class YcsqInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context), BasicInfoView, LayoutContainer {
+
+    override val containerView = this
+
+    private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
     init {
         initViews(context, menu, spd)
     }
 
-    @BindView(R.id.tvTitle)
-    lateinit var tvTitle: TextView
-    @BindView(R.id.tvBt)
-    lateinit var tvBt: TextView
-    @BindView(R.id.tvYcsy)
-    lateinit var tvYcsy: TextView
-    @BindView(R.id.tvHbmc)
-    lateinit var tvHbmc: TextView
-    @BindView(R.id.tvSqr)
-    lateinit var tvSqr: TextView
-    @BindView(R.id.tvSqrdh)
-    lateinit var tvSqrdh: TextView
-    @BindView(R.id.tvCfsj)
-    lateinit var tvCfsj: TextView
-    @BindView(R.id.tvFhsj)
-    lateinit var tvFhsj: TextView
-    @BindView(R.id.tvCcrmc)
-    lateinit var tvCcrmc: TextView
-    @BindView(R.id.tvCllx)
-    lateinit var tvCllx: TextView
-    @BindView(R.id.tvKwdd)
-    lateinit var tvKwdd: TextView
-    @BindView(R.id.tvYcrs)
-    lateinit var tvYcrs: TextView
-    @BindView(R.id.tvCcsj1)
-    lateinit var tvCcsj1: TextView
-    @BindView(R.id.tvCcsj2)
-    lateinit var tvCcsj2: TextView
-    @BindView(R.id.tvCcsj3)
-    lateinit var tvCcsj3: TextView
-    @BindView(R.id.tvSycl1)
-    lateinit var tvSycl1: TextView
-    @BindView(R.id.tvSycl2)
-    lateinit var tvSycl2: TextView
-    @BindView(R.id.tvSycl3)
-    lateinit var tvSycl3: TextView
-    @BindView(R.id.tvPcr)
-    lateinit var tvPcr: TextView
-    @BindView(R.id.tvPcsj)
-    lateinit var tvPcsj: TextView
-    @BindView(R.id.tvHzsj)
-    lateinit var tvHzsj: TextView
-    @BindView(R.id.tvBcsm)
-    lateinit var tvBcsm: TextView
-
-    private lateinit var pairs: ArrayList<PAIR<TextView, String>>
-
     fun initViews(context: Context, menu: Menu, spd: Spd) {
-        val view = LayoutInflater.from(context).inflate(R.layout.header_view_ycsq, this, true)
-        ButterKnife.bind(this, view)
+        LayoutInflater.from(context).inflate(R.layout.header_view_ycsq, this, true)
         findView()
-        renderView(menu, spd)
+        preparePairs(menu, spd)
         canEdit(spd)
     }
 
@@ -96,9 +52,9 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context
             add(PAIR(tvCcsj1, Key.ccsjxm1_input))
             add(PAIR(tvCcsj2, Key.ccsjxm2_input))
             add(PAIR(tvCcsj3, Key.ccsjxm3_input))
-            add(PAIR(tvSycl1, Key.sycl1_select))
-            add(PAIR(tvSycl2, Key.sycl2_select))
-            add(PAIR(tvSycl3, Key.sycl3_select))
+            add(PAIR(tvSycl1, Key.syclcp1_input))
+            add(PAIR(tvSycl2, Key.syclcp2_input))
+            add(PAIR(tvSycl3, Key.syclcp3_input))
             add(PAIR(tvPcsj, Key.pcsj_input))
             add(PAIR(tvHzsj, Key.hzsj_date))
             add(PAIR(tvBcsm, Key.bcsm_input))
@@ -106,21 +62,23 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context
     }
 
     @SuppressLint("SetTextI18n")
-    private fun renderView(menu: Menu, spd: Spd) {
+    private fun preparePairs(menu: Menu, spd: Spd) {
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
-        tvBt.text = spd.spdXx.bt
-        tvYcsy.text = spd.spdXx.column1
-        tvKwdd.text = spd.spdXx.column3
-        tvPcr.text = spd.spdXx.column8
-        pairs.forEach {
-            it.apply {
+        spd.spdXx.apply {
+            tvBt.text = bt
+            tvYcsy.setText(column1)
+            tvKwdd.setText(column3)
+            tvPcr.text = column8
+        }
+        pairs.forEach { pair ->
+            pair.apply {
                 textView.text = spd.get(key)
             }
         }
     }
 
     private fun canEdit(spd: Spd) {
-        val nodeId = spd.spdXx.nodeId
+        val nodeId = spd.nodeModel_1!!.nodeid
         if (SpdHelper().canEdit2(nodeId)) {
             pairs.forEach {
                 it.apply {
@@ -153,9 +111,9 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context
                 "OA_FLOW_HQGL_YCSQ_FYZSP"
         )
         if (flag) {
-            tvCcsj1.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsjxm1_input)
-            tvCcsj2.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsjxm2_input)
-            tvCcsj3.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsjxm3_input)
+            tvCcsj1.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsj1_select)
+            tvCcsj2.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsj2_select)
+            tvCcsj3.clickCode("选择出车司机", "YCSQ_SJ", Key.ccsj3_select)
             tvSycl1.clickCode("选择使用车辆", "YCSQ_CL", Key.sycl1_select)
             tvSycl2.clickCode("选择使用车辆", "YCSQ_CL", Key.sycl2_select)
             tvSycl3.clickCode("选择使用车辆", "YCSQ_CL", Key.sycl3_select)
@@ -167,9 +125,9 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context
         RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer {
             when (it.key) {
                 Key.ccrmc_input -> tvCcrmc
-                Key.ccsjxm1_input -> tvCcsj1
-                Key.ccsjxm2_input -> tvCcsj2
-                Key.ccsjxm3_input -> tvCcsj3
+                Key.ccsj1_select -> tvCcsj1
+                Key.ccsj2_select -> tvCcsj2
+                Key.ccsj3_select -> tvCcsj3
                 Key.sycl1_select -> tvSycl1
                 Key.sycl2_select -> tvSycl2
                 Key.sycl3_select -> tvSycl3
@@ -178,24 +136,28 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context
         })
     }
 
-    override fun saveToSpd(spd: Spd):Boolean {
+    override fun saveToSpd(spd: Spd): Boolean {
         spd.spdXx.column1 = tvYcsy.trimText()
         spd.spdXx.column3 = tvKwdd.trimText()
 
-        // column4
-        listOf(tvSycl1, tvSycl2, tvSycl3)
-                .map { it.trimText() }
-                .filter { it != "" }
-                .joinToString(",") { it }
-                .let { spd.spdXx.column4 = it }
 
-        // column5
+        // column4 司机总信息
         listOf(tvCcsj1, tvCcsj2, tvCcsj3)
                 .map { it.trimText() }
                 .map { it.split("--")[0] }
                 .filter { it != "" }
                 .joinToString(",") { it }
-                .let { spd.spdXx.column4 = it }
+                .let {
+                    spd.spdXx.column4 = it
+                }
+        // column5 车辆总信息
+        listOf(tvSycl1, tvSycl2, tvSycl3)
+                .map { it.trimText() }
+                .filter { it != "" }
+                .joinToString(",") { it }
+                .let {
+                    spd.spdXx.column5 = it
+                }
 
         pairs.forEach {
             it.apply {

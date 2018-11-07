@@ -80,7 +80,7 @@ data class SpdXx(
         var column2: String,
         var column3: String,
         var column4: String,
-        val column5: String,
+        var column5: String,
         val column6: String,
         val column7: String,
         val column8: String,

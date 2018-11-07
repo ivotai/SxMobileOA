@@ -28,6 +28,7 @@ class MainAct : BaseAct() {
             LoginOut().toMaybe(this).subscribe {
                 drawer_layout.closeDrawers()
                 startActivity(Intent(this@MainAct, LoginAct::class.java))
+                finish()
             }
             return@setNavigationItemSelectedListener true
         }
