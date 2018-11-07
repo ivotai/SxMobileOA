@@ -175,7 +175,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="点击查看物品领用详情"
+            android:text="查看物品领用详情"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 

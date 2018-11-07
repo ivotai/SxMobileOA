@@ -10,6 +10,9 @@ import dart.DartModel
 class SpdActNavigationModel {
 
     @BindExtra
+    lateinit var type: String
+
+    @BindExtra
     lateinit var menu: Menu
 
     @Nullable

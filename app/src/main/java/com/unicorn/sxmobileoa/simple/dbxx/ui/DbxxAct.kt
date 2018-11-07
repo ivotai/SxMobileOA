@@ -25,6 +25,7 @@ class DbxxAct : BaseAct() {
                 startActivity(Intent(this, QjsqAct::class.java).apply {
                     putExtra(Key.menu, model.menu)
                     putExtra(Key.isCreate, true)
+                    putExtra(Key.type, type)
                 })
             }
         }

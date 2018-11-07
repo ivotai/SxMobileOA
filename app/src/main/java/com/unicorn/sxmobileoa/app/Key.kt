@@ -133,6 +133,5 @@ object Key {
     val SXFW_OA_LOGIN_TIMEOUT = "OA0002"
     val isRead = "isRead"
     val isCreate = "isCreate"
-    val isFinish = "isFinish"
 
 }

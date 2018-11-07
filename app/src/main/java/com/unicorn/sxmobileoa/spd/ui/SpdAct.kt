@@ -66,7 +66,6 @@ abstract class SpdAct : BaseAct() {
 
     override fun bindIntent() {
         isCreate = intent.getBooleanExtra(Key.isCreate, false)
-        val isFinish = intent.getBooleanExtra(Key.isFinish, false)
         if (isCreate) {
             AddSpd(model.menu.spdCode).toMaybe(this).subscribe {
                 spd = it
@@ -86,7 +85,7 @@ abstract class SpdAct : BaseAct() {
             return
         }
         // 非创建
-        ToSpd(model.menu, model.param).toMaybe(this).subscribe {
+        ToSpd(model.menu, model.param, model.type).toMaybe(this).subscribe {
             spd = it
 
             // 供 equipmentAct 使用。
@@ -95,14 +94,14 @@ abstract class SpdAct : BaseAct() {
             spd.spdXx.taskId = model.param.taskId
 
 //            处理审批意见
-            SpdHelper().addSpyjIfNeed(spd)
+            if (model.type == "1") SpdHelper().addSpyjIfNeed(spd)
 
             flowNodeAdapter.setNewData(spd.flowNodeList)
 
             //
             addOperationHeaderView()
             basicInfoView = addBasicHeaderView()
-            if (!isFinish) addFooterView()
+            if (model.type == "1") addFooterView()
         }
     }
 
@@ -149,7 +148,7 @@ abstract class SpdAct : BaseAct() {
                     startCommitTaskAct(saveSpdResponse)
                 } else {
                     // 第二次 重新加载页面
-                    ToSpd(model.menu, model.param).toMaybe(this).subscribe {
+                    ToSpd(model.menu, model.param, model.type).toMaybe(this).subscribe {
                         spd = it
                         Global.spd = spd
                         spd.spdXx.taskId = model.param.taskId
