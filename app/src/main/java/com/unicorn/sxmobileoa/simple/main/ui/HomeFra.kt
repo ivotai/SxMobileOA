@@ -1,17 +1,18 @@
 package com.unicorn.sxmobileoa.simple.main.ui
 
 import android.annotation.SuppressLint
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseFra
 import com.unicorn.sxmobileoa.commitTask.model.CommitTaskSuccess
-import com.unicorn.sxmobileoa.simple.main.model.ParentMenu
-import com.unicorn.sxmobileoa.simple.main.model.section.MenuSection
 import com.unicorn.sxmobileoa.simple.main.network.GetMenu
 import io.reactivex.functions.Consumer
-import kotlinx.android.synthetic.main.act_main.*
+import kotlinx.android.synthetic.main.fra_home.*
+
+
 
 @SuppressLint("CheckResult")
 class HomeFra : BaseFra() {
@@ -27,7 +28,7 @@ class HomeFra : BaseFra() {
         }
      */
 
-    override val layoutId = R.layout.act_main
+    override val layoutId = R.layout.title_swipe_recycler
 
     override fun initViews() {
         titleBar.setTitle("${Global.court!!.dmms}移动办公", true)
@@ -40,22 +41,19 @@ class HomeFra : BaseFra() {
         recyclerView.apply {
             layoutManager = GridLayoutManager(context, 4)
             menuAdapter.bindToRecyclerView(this)
+            addItemDecoration(GridDividerItemDecoration(1,ContextCompat.getColor(context,R.color.md_grey_300)))
         }
+        menuAdapter.addHeaderView(HomeHeaderView(context!!))
         swipeRefreshLayout.setColorScheme(R.color.colorPrimary)
         swipeRefreshLayout.setOnRefreshListener { getMenu() }
     }
 
     // 硬编码
     private val resIds = listOf(
-            R.mipmap.fawen, R.mipmap.shouwen,
-            R.mipmap.sbly, R.mipmap.sbbf, R.mipmap.sbwx,
-            R.mipmap.yongche, R.mipmap.wply,
-            R.mipmap.gcsq, R.mipmap.qjsq,
-            R.mipmap.jdsq,
-            R.mipmap.csx, R.mipmap.xwzx, R.mipmap.xxgg,
-            R.mipmap.csx, R.mipmap.xwzx, R.mipmap.xxgg
+            R.mipmap.swgl, R.mipmap.nbfw, R.mipmap.wbfw, R.mipmap.jdsq,
+            R.mipmap.gcsq, R.mipmap.qjsq, R.mipmap.ycsq, R.mipmap.wply,
+            R.mipmap.csx, R.mipmap.sbly, R.mipmap.sbwx, R.mipmap.sbbf
     )
-
 
     override fun bindIntent() {
         getMenu()
@@ -63,27 +61,15 @@ class HomeFra : BaseFra() {
 
     private fun getMenu() {
         GetMenu().toMaybe(this)
-//                .map { toSectionList(it) }
-                .doOnSuccess { sectionList ->
-                    sectionList.forEachIndexed { index, section ->
-                                section.resId = resIds[index]
-                            }
+                .map {
+                    val temp = it.take(12)
+                    temp.forEachIndexed { index, menu -> menu.resId = resIds[index] }
+                    return@map temp
                 }
                 .subscribe {
                     swipeRefreshLayout.isRefreshing = false
                     menuAdapter.setNewData(it)
                 }
-    }
-
-    private fun toSectionList(parentMenuList: List<ParentMenu>): List<MenuSection> {
-        val sectionList = ArrayList<MenuSection>()
-        parentMenuList.forEach { parentMenu ->
-            sectionList.add(MenuSection(header = parentMenu.name, isHeader = true))
-            parentMenu.mlxx.forEach { menu ->
-                sectionList.add(MenuSection(t = menu))
-            }
-        }
-        return sectionList
     }
 
     override fun registerEvent() {
