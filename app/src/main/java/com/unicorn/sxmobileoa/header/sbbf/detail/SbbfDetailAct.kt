@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.header.sbbf
+package com.unicorn.sxmobileoa.header.sbbf.detail
 
 import android.support.v7.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
@@ -13,7 +13,7 @@ class SbbfDetailAct : BaseAct() {
 
     override val layoutId = R.layout.act_title_recycler
 
-    val mAdapter = SbbfAdapter()
+    val mAdapter = SbbfDetailAdapter()
 
     override fun initViews() {
         titleBar.setTitle("设备报废详情")
@@ -28,7 +28,7 @@ class SbbfDetailAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        listOf(1, 2, 3, 4, 5)
+        IntRange(1, 5)
                 .map { Sbbf(spd = Global.spd, position = it) }
                 .let { mAdapter.setNewData(it) }
     }

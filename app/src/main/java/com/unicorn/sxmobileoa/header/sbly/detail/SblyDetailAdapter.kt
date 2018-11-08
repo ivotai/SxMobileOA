@@ -29,9 +29,6 @@ class SblyDetailAdapter : BaseQuickAdapter<Sbly, MyHolder>(R.layout.item_sbly) {
             val canEdit = nodeId in listOf("OA_FLOW_XZZB_SBLY_XXZXQRCG", "OA_FLOW_XZZB_SBLY_BGSSH", "OA_FLOW_XZZB_SBLY_XXZXQDCGHW")
             if (canEdit) tvWpmc.clickCode("设备名称", "SBLY_WP", item.key_wpmc)
             RxBus.get().registerEvent(TextResult::class.java, mContext as LifecycleOwner, Consumer {
-//                item.wpmc = it.result
-//                notifyItemChanged(helper.adapterPosition)
-//                item.wpmc = it.result
                 item.spd.set(it.key,  it.result)
                 notifyDataSetChanged()
             })
@@ -39,7 +36,6 @@ class SblyDetailAdapter : BaseQuickAdapter<Sbly, MyHolder>(R.layout.item_sbly) {
             tvGg.isEnabled = canEdit
             tvPp.isEnabled = canEdit
             tvBz.isEnabled = canEdit
-
         }
     }
 

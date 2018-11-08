@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.unicorn.sxmobileoa.R
@@ -14,42 +13,34 @@ import com.unicorn.sxmobileoa.app.get
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
+import com.unicorn.sxmobileoa.header.sbbf.detail.SbbfDetailAct
 import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.header_view_sbbf.view.*
 
 @SuppressLint("ViewConstructor")
-class SbbfInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context), BasicInfoView {
+class SbbfInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context), BasicInfoView, LayoutContainer {
+
+    override val containerView = this
+
+    private lateinit var pairs: ArrayList<PAIR<TextView, String>>
 
     init {
         initViews(context, menu, spd)
     }
 
-    lateinit var tvTitle: TextView
-    lateinit var tvBt: TextView         // 真的标题
-    lateinit var tvSqbm: TextView
-    lateinit var tvSqr: TextView
-    lateinit var tvSqsj: TextView
-    lateinit var tvBfxq: TextView
-
-    private lateinit var pairs: ArrayList<PAIR<TextView, String>>
-
-    fun initViews(context: Context, menu: Menu , spd: Spd) {
+    @SuppressLint("CheckResult")
+    fun initViews(context: Context, menu: Menu, spd: Spd) {
         LayoutInflater.from(context).inflate(R.layout.header_view_sbbf, this, true)
-        findView()
+        preparePairs()
         renderView(menu, spd)
-        canEdit(spd)
+        tvSbbfDetail.safeClicks().subscribe {
+            context.startActivity(Intent(context, SbbfDetailAct::class.java))
+        }
     }
 
-    private fun findView() {
-        tvTitle = findViewById(R.id.tvTitle)
-        tvBt = findViewById(R.id.tvBt)
-
-        tvSqbm = findViewById(R.id.tvSqbm)
-        tvSqr = findViewById(R.id.tvSqr)
-        tvSqsj = findViewById(R.id.tvSqsj)
-        tvBfxq = findViewById(R.id.tvBfxq)
-
-        // 保存 textView 和 eky
+    private fun preparePairs() {
         pairs = ArrayList<PAIR<TextView, String>>().apply {
             add(PAIR(tvSqbm, Key.sqbm_input))
             add(PAIR(tvSqr, Key.sqr_input))
@@ -62,23 +53,14 @@ class SbbfInfoView(context: Context, menu: Menu, spd: Spd) : FrameLayout(context
     private fun renderView(menu: Menu, spd: Spd) {
         tvTitle.text = "${Global.court!!.dmms}${menu.text}"
         tvBt.text = spd.spdXx.bt
-
-        // 遍历展示
-        pairs.forEach {
-            it.apply {
+        pairs.forEach { pair ->
+            pair.apply {
                 textView.text = spd.get(key)
             }
         }
     }
 
-    private fun canEdit(spd: Spd) {
-        findViewById<View>(R.id.tvSbbfDetail).safeClicks().subscribe {
-            context.startActivity(Intent(context, SbbfDetailAct::class.java))
-        }
-    }
-
-    override fun saveToSpd(spd: Spd):Boolean {
-        // do nothing
+    override fun saveToSpd(spd: Spd): Boolean {
         return true
     }
 

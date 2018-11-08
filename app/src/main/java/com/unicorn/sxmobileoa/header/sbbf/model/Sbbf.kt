@@ -7,12 +7,14 @@ import com.unicorn.sxmobileoa.spd.model.Spd
 
 class Sbbf(val spd: Spd, @IntRange(from = 1, to = 5) val position: Int) {
 
-     val key_bfsbmc = "bfsbmc${position}_input"
-     val key_ppjxh = "ppjxh${position}_input"
-     val key_sl = "sl${position}_input"
-     val key_bfrq = "bfrq${position}_date"
-     val key_bfjg = "bfjg${position}_input"
-     val key_sfzx = "sfzx${position}_input"
+    val key_bfsbmc = "bfsbmc${position}_input"
+    val key_ppjxh = "ppjxh${position}_input"
+    val key_sl = "sl${position}_input"
+    val key_bfrq = "bfrq${position}_date"
+//    val key_bfjg_input = "bfjg${position}_input"
+    val key_bfjg_select = "bfjg${position}_select"
+//    val key_sfzx_input = "sfzx${position}_input"
+    val key_sfzx_select = "sfzx${position}_select"
 
     var bfsbmc
         get() = spd.get(key_bfsbmc)
@@ -34,15 +36,15 @@ class Sbbf(val spd: Spd, @IntRange(from = 1, to = 5) val position: Int) {
         set(value) {
             spd.set(key_bfrq, value)
         }
-    var bfjg
-        get() = spd.get(key_bfjg)
+    var bfjg_select
+        get() = spd.get(key_bfjg_select)
         set(value) {
-            spd.set(key_bfjg, value)
+            spd.set(key_bfjg_select, value)
         }
-    var sfzx
-        get() = spd.get(key_sfzx)
+    var sfzx_select
+        get() = spd.get(key_sfzx_select)
         set(value) {
-            spd.set(key_sfzx, value)
+            spd.set(key_sfzx_select, value)
         }
 
 }

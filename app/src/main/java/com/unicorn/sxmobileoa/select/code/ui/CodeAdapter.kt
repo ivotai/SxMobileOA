@@ -23,6 +23,7 @@ class CodeAdapter(val key: String) : BaseQuickAdapter<Code, BaseViewHolder>(R.la
                 if (key.contains("_select")){
                     RxBus.get().post(CodeResult(key, item))
                     mContext.finish()
+                    return@subscribe
                 }
                 RxBus.get().post(TextResult(key, item.text))
                 mContext.finish()

@@ -20,14 +20,11 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <EditText
+        <TextView
             android:id="@+id/tvBfsbmc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@null"
-            android:enabled="false"
-            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -48,14 +45,11 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <EditText
+        <TextView
             android:id="@+id/tvPpjxh"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@null"
-            android:enabled="false"
-            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 
@@ -76,14 +70,11 @@
             android:textColor="@color/md_grey_700"
             android:textSize="14dp" />
 
-        <EditText
+        <TextView
             android:id="@+id/tvSl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@null"
-            android:enabled="false"
-            android:inputType="text"
             android:textColor="@color/md_grey_400"
             android:textSize="14dp" />
 

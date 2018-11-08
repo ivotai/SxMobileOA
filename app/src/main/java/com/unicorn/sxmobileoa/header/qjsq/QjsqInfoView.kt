@@ -11,7 +11,7 @@ import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.*
 import com.unicorn.sxmobileoa.app.mess.RxBus
-import com.unicorn.sxmobileoa.app.mess.model.TextResult
+import com.unicorn.sxmobileoa.app.mess.model.CodeResult
 import com.unicorn.sxmobileoa.header.BasicInfoView
 import com.unicorn.sxmobileoa.header.PAIR
 import com.unicorn.sxmobileoa.simple.main.model.Menu
@@ -84,8 +84,9 @@ class QjsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
             tvXjzl.clickCode("休假种类及年度", "QJSQ_JQ", Key.xjzljsy_select)
             tvKsrq.clickDate()
             tvJsrq.clickDate()
-            RxBus.get().registerEvent(TextResult::class.java, context as LifecycleOwner, Consumer { textResult ->
-                tvXjzl.text = textResult.result
+            RxBus.get().registerEvent(CodeResult::class.java, context as LifecycleOwner, Consumer {
+                // somehow val equals text
+                tvXjzl.text = it.result.text
             })
         }
 
