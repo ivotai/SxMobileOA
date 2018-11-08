@@ -1,4 +1,4 @@
-package com.unicorn.sxmobileoa.header.sbly
+package com.unicorn.sxmobileoa.header.sbly.detail
 
 import android.support.annotation.IntRange
 import com.unicorn.sxmobileoa.app.get
