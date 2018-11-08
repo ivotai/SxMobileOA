@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".n.ggxx.ui.GgxxAct">
+    tools:context=".n.ggxx.ui.GgxxPagerFra">
 
     <com.unicorn.sxmobileoa.app.ui.TitleBar
         android:id="@+id/titleBar"

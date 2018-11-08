@@ -9,7 +9,7 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.qjsq.QjsqAct
 import com.unicorn.sxmobileoa.header.ycsq.YcsqAct
 import dart.DartModel
-import kotlinx.android.synthetic.main.act_title_tab_viewpager.*
+import kotlinx.android.synthetic.main.title_tab_viewpager.*
 
 class DbxxAct : BaseAct() {
 
@@ -38,6 +38,6 @@ class DbxxAct : BaseAct() {
     @DartModel
     lateinit var model: DbxxActNavigationModel
 
-    override val layoutId: Int = R.layout.act_title_tab_viewpager
+    override val layoutId: Int = R.layout.title_tab_viewpager
 
 }

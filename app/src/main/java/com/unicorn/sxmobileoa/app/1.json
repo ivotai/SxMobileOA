@@ -1,3 +1,5 @@
-{
-name:"",
-}
+[{"mlxx":[{"count":0,"flowCode":"OA_FLOW_GWGL_NBFW","moduleCode":"OA_FUN_GWGL","spdCode":"OA_SPD_GWGL_NBFW","text":"内部发文"},
+{"count":0,"flowCode":"OA_FLOW_GWGL_WBFW","moduleCode":"OA_FUN_GWGL","spdCode":"OA_SPD_GWGL_WBFW","text":"外部发文"}
+],"name":"公文管理"}
+
+,{"mlxx":[{"count":0,"flowCode":"OA_FLOW_XZZB_SBLY","moduleCode":"OA_FUN_XZZB","spdCode":"OA_SPD_XZZB_SBLY","text":"设备领用"},{"count":0,"flowCode":"OA_FLOW_XZZB_SBBF","moduleCode":"OA_FUN_XZZB","spdCode":"OA_SPD_XZZB_SBBF","text":"设备报废"},{"count":0,"flowCode":"OA_FLOW_XZZB_SBWX","moduleCode":"OA_FUN_XZZB","spdCode":"OA_SPD_XZZB_SBWX","text":"设备维修"}],"name":"行政装备"},{"mlxx":[{"count":4,"flowCode":"OA_FLOW_HQGL_YCSQ","moduleCode":"OA_FUN_HQGL","spdCode":"OA_SPD_HQGL_YCSQ","text":"用车申请"},{"count":1,"flowCode":"OA_FLOW_HQGL_WPLY","moduleCode":"OA_FUN_HQGL","spdCode":"OA_SPD_HQGL_WPLY","text":"物品领用"}],"name":"后勤管理"},{"mlxx":[{"count":1,"flowCode":"OA_FLOW_QJGL_GCGL","moduleCode":"OA_FUN_QJGL","spdCode":"OA_SPD_QJGL_GCSQ","text":"公出申请"},{"count":0,"flowCode":"OA_FLOW_QJGL_QJGL","moduleCode":"OA_FUN_QJGL","spdCode":"OA_SPD_QJGL_QJSQ","text":"请假申请"}],"name":"请假管理"},{"mlxx":[{"count":0,"flowCode":"OA_FLOW_JDGL_JDJLSQ","moduleCode":"OA_FUN_JDGL","spdCode":"OA_SPD_JDGL_JDJLSQ","text":"接待申请"}],"name":"接待管理"},{"mlxx":[{"count":0,"flowCode":"","moduleCode":"SP_CSX","spdCode":"","text":"超审限"},{"count":0,"flowCode":"","moduleCode":"MH_XWZX","spdCode":"","text":"新闻中心"},{"count":14,"flowCode":"","moduleCode":"MH_XXGG","spdCode":"","text":"消息公告"}],"name":"其他"}]

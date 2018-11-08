@@ -18,7 +18,7 @@
         android:text="重庆时高级人民法院关于什么"
         android:textColor="@color/md_black"
         android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/ivAttachment"
+        app:layout_constraintEnd_toStartOf="@+id/ivImage"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintHorizontal_weight="1"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ivAttachment"
+        android:id="@+id/ivImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -45,9 +45,9 @@
         android:gravity="center"
         android:textColor="@color/md_black"
         android:textSize="13dp"
-        app:layout_constraintEnd_toEndOf="@+id/ivAttachment"
-        app:layout_constraintStart_toStartOf="@+id/ivAttachment"
-        app:layout_constraintTop_toBottomOf="@+id/ivAttachment" />
+        app:layout_constraintEnd_toEndOf="@+id/ivImage"
+        app:layout_constraintStart_toStartOf="@+id/ivImage"
+        app:layout_constraintTop_toBottomOf="@+id/ivImage" />
 
     <View
         android:id="@+id/divider"

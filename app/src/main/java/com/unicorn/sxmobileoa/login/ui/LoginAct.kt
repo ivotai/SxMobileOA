@@ -15,7 +15,7 @@ import com.unicorn.sxmobileoa.login.model.LoginUser
 import com.unicorn.sxmobileoa.login.network.Login
 import com.unicorn.sxmobileoa.simple.court.model.Court
 import com.unicorn.sxmobileoa.simple.court.ui.CourtAct
-import com.unicorn.sxmobileoa.simple.main.ui.MainAct
+import com.unicorn.sxmobileoa.simple.main.ui.MainAct2
 import io.reactivex.Observable
 import io.reactivex.functions.Consumer
 import io.reactivex.functions.Function3
@@ -65,7 +65,7 @@ class LoginAct : BaseAct() {
         Login(etUsername.trimText(), etPassword.trimText()).toMaybe(this).subscribe { loginInfo ->
             Global.loginInfo = loginInfo
             saveInputInfo()
-            startActivityAndFinish(Intent(this@LoginAct, MainAct::class.java))
+            startActivityAndFinish(Intent(this@LoginAct, MainAct2::class.java))
         }
     }
 
