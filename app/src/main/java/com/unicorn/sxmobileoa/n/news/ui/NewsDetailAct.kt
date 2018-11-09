@@ -23,9 +23,7 @@ class NewsDetailAct : BaseAct() {
     private fun getDetail() {
         val contentId = intent.getStringExtra(Key.contentId)
         GetDetail(contentId).toMaybe(this).subscribe {
-            //            wv.getSettings().setDefaultTextEncodingName(“UTF -8”) ;
-
-            webView.loadData(it.txt, "text/html", "UTF-8")
+            webView.loadDataWithBaseURL(null, it.txt, "text/html", "utf-8", null)
         }
     }
 

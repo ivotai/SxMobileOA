@@ -21,7 +21,7 @@ class GgxxHeaderView(context: Context, ggxx: Ggxx) : FrameLayout(context), Layou
     fun initViews(context: Context, ggxx: Ggxx) {
         LayoutInflater.from(context).inflate(R.layout.header_view_ggxx, this, true)
         ggxx.apply {
-            webView.loadData(content, "text/html", "UTF-8")
+            webView.loadDataWithBaseURL(null,content, "text/html",  "utf-8", null)
             tvFsr.text = fsrmc
             tvSysTime.text = systime
             tvJsr.text = jsrmc
