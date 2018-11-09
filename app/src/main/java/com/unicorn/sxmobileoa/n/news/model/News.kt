@@ -7,3 +7,4 @@ data class News(
     val title: String,
     val txt: String
 )
+
