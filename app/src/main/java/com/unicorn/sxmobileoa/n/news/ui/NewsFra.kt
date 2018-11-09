@@ -1,23 +1,23 @@
-package com.unicorn.sxmobileoa.n.attachment
+package com.unicorn.sxmobileoa.n.news.ui
 
+import android.annotation.SuppressLint
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
-import com.unicorn.sxmobileoa.app.ui.BaseAct
-import dart.DartModel
+import com.unicorn.sxmobileoa.app.ui.BaseFra
+import com.unicorn.sxmobileoa.n.news.network.GetNews
 import kotlinx.android.synthetic.main.title_recycler.*
-import kotlinx.android.synthetic.main.title_bar.*
 
-class AttachmentAct : BaseAct() {
+class NewsFra : BaseFra() {
 
     override val layoutId = R.layout.title_recycler
 
     override fun initViews() {
-        tvTitle.text = "附件"
+        titleBar.setTitle("新闻中心")
         initRecyclerView()
     }
 
-    private val mAdapter = AttachmentAdapter()
+    private val mAdapter = NewsAdapter()
 
     private fun initRecyclerView() {
         recyclerView.apply {
@@ -28,11 +28,14 @@ class AttachmentAct : BaseAct() {
     }
 
     override fun bindIntent() {
-        model.spd.spdFj.let { mAdapter.setNewData(it) }
+        getNews()
     }
 
-    @DartModel
-    lateinit var model: AttachmentActNavigationModel
+    @SuppressLint("CheckResult")
+    private fun getNews() {
+        GetNews().toMaybe(this).subscribe {
+            mAdapter.setNewData(it)
+        }
+    }
 
 }
-

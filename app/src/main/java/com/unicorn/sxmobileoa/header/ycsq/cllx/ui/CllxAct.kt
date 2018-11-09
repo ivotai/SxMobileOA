@@ -8,7 +8,7 @@ import com.unicorn.sxmobileoa.header.ycsq.cllx.model.CllxActNavigationModel
 import com.unicorn.sxmobileoa.header.ycsq.cllx.network.GetCllx
 import dart.DartModel
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.act_title_recycler.*
+import kotlinx.android.synthetic.main.title_recycler.*
 
 class CllxAct : BaseAct() {
 
@@ -36,7 +36,7 @@ class CllxAct : BaseAct() {
                 .subscribe { t -> mAdapter.setNewData(t) }
     }
 
-    override val layoutId = R.layout.act_title_recycler
+    override val layoutId = R.layout.title_recycler
 
     @DartModel
     lateinit var model: CllxActNavigationModel

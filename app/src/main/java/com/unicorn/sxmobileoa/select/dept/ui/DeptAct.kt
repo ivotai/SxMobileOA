@@ -13,7 +13,7 @@ import com.unicorn.sxmobileoa.select.dept.model.Dept
 import com.unicorn.sxmobileoa.select.dept.model.DeptActNavigationModel
 import com.unicorn.sxmobileoa.select.dept.network.GetDept
 import dart.DartModel
-import kotlinx.android.synthetic.main.act_title_recycler.*
+import kotlinx.android.synthetic.main.title_recycler.*
 
 class DeptAct : BaseAct() {
 
@@ -69,6 +69,6 @@ class DeptAct : BaseAct() {
     @DartModel
     lateinit var model: DeptActNavigationModel
 
-    override val layoutId = R.layout.act_title_recycler
+    override val layoutId = R.layout.title_recycler
 
 }

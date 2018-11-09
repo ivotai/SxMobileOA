@@ -13,7 +13,6 @@ import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.fra_home.*
 
 
-
 @SuppressLint("CheckResult")
 class HomeFra : BaseFra() {
 
@@ -41,7 +40,7 @@ class HomeFra : BaseFra() {
         recyclerView.apply {
             layoutManager = GridLayoutManager(context, 4)
             menuAdapter.bindToRecyclerView(this)
-            addItemDecoration(GridDividerItemDecoration(1,ContextCompat.getColor(context,R.color.md_grey_300)))
+            addItemDecoration(GridDividerItemDecoration(1, ContextCompat.getColor(context, R.color.md_grey_300)))
         }
         menuAdapter.addHeaderView(HomeHeaderView(context!!))
         swipeRefreshLayout.setColorScheme(R.color.colorPrimary)
@@ -61,8 +60,8 @@ class HomeFra : BaseFra() {
 
     private fun getMenu() {
         GetMenu().toMaybe(this)
-                .map {
-                    val temp = it.take(12)
+                .map { list ->
+                    val temp = list.filter { it.moduleCode.isNotEmpty() }
                     temp.forEachIndexed { index, menu -> menu.resId = resIds[index] }
                     return@map temp
                 }

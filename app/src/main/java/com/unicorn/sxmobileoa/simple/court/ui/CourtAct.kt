@@ -8,7 +8,7 @@ import com.unicorn.sxmobileoa.app.textChanges2
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.simple.court.model.Court
 import com.unicorn.sxmobileoa.simple.court.network.GetCourt
-import kotlinx.android.synthetic.main.act_title_recycler.*
+import kotlinx.android.synthetic.main.title_recycler.*
 
 class CourtAct : BaseAct() {
 
@@ -53,6 +53,6 @@ class CourtAct : BaseAct() {
                 }
     }
 
-    override val layoutId = R.layout.act_title_recycler
+    override val layoutId = R.layout.title_recycler
 
 }

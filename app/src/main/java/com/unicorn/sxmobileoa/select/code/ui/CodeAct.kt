@@ -7,7 +7,7 @@ import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.select.code.model.CodeActNavigationModel
 import com.unicorn.sxmobileoa.select.code.network.GetCode
 import dart.DartModel
-import kotlinx.android.synthetic.main.act_title_recycler.*
+import kotlinx.android.synthetic.main.title_recycler.*
 
 class CodeAct : BaseAct() {
 
@@ -32,7 +32,7 @@ class CodeAct : BaseAct() {
                 .subscribe { mAdapter.setNewData(it) }
     }
 
-    override val layoutId = R.layout.act_title_recycler
+    override val layoutId = R.layout.title_recycler
 
     @DartModel
     lateinit var model: CodeActNavigationModel

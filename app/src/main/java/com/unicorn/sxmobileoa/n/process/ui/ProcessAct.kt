@@ -4,14 +4,13 @@ import android.annotation.SuppressLint
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
-import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.n.process.network.GetSqlcls
-import kotlinx.android.synthetic.main.act_title_recycler.*
+import kotlinx.android.synthetic.main.title_recycler.*
 
 class ProcessAct : BaseAct() {
 
-    override val layoutId: Int = R.layout.act_title_recycler
+    override val layoutId: Int = R.layout.title_recycler
 
     override fun initViews() {
         titleBar.setTitle("流程")

@@ -9,11 +9,11 @@ import com.unicorn.sxmobileoa.app.get
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.wply.model.Wply
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
-import kotlinx.android.synthetic.main.act_title_recycler.*
+import kotlinx.android.synthetic.main.title_recycler.*
 
 class WplyDetailAct : BaseAct() {
 
-    override val layoutId = R.layout.act_title_recycler
+    override val layoutId = R.layout.title_recycler
 
     val mAdapter = WplyAdapter()
 

@@ -17,7 +17,7 @@ import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserActNavigationModel
 import com.unicorn.sxmobileoa.select.deptUser.model.DeptUserResult
 import dart.DartModel
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.act_title_recycler.*
+import kotlinx.android.synthetic.main.title_recycler.*
 
 class DeptUserAct : BaseAct() {
 
@@ -90,6 +90,6 @@ class DeptUserAct : BaseAct() {
     @DartModel
     lateinit var model: DeptUserActNavigationModel
 
-    override val layoutId = R.layout.act_title_recycler
+    override val layoutId = R.layout.title_recycler
 
 }

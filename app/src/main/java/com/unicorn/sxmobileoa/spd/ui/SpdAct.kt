@@ -26,7 +26,7 @@ import com.unicorn.sxmobileoa.spd.ui.headerView.ButtonFooterView
 import com.unicorn.sxmobileoa.spd.ui.headerView.OperationHeaderView
 import dart.DartModel
 import io.reactivex.functions.Consumer
-import kotlinx.android.synthetic.main.act_title_recycler.*
+import kotlinx.android.synthetic.main.title_recycler.*
 import kotlinx.android.synthetic.main.footer_view_button.view.*
 
 @SuppressLint("CheckResult")
@@ -42,7 +42,7 @@ abstract class SpdAct : BaseAct() {
 
     abstract fun addBasicHeaderView(): BasicInfoView
 
-    override val layoutId = R.layout.act_title_recycler
+    override val layoutId = R.layout.title_recycler
 
     @DartModel
     lateinit var model: SpdActNavigationModel

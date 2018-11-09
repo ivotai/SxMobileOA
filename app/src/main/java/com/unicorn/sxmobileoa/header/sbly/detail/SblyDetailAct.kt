@@ -6,11 +6,11 @@ import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
-import kotlinx.android.synthetic.main.act_title_recycler.*
+import kotlinx.android.synthetic.main.title_recycler.*
 
 class SblyDetailAct : BaseAct() {
 
-    override val layoutId = R.layout.act_title_recycler
+    override val layoutId = R.layout.title_recycler
 
     val mAdapter = SblyDetailAdapter()
 
