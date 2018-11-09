@@ -18,15 +18,14 @@ import java.io.File
 
 class AttachmentAdapter : BaseQuickAdapter<Fj, MyHolder>(R.layout.item_fj) {
 
-    // todo 图标替换
     override fun convert(helper: MyHolder, item: Fj) {
         helper.apply {
             tvText.text = item.fjmc
             val extension = FileUtils.getFileExtension(item.fjmc)
             when (extension) {
-                in listOf("doc","docx") -> Glide.with(mContext).load(R.mipmap.word).into(ivImage)
-                in listOf("ppt","pptx") -> Glide.with(mContext).load(R.mipmap.ppt).into(ivImage)
-                in listOf("xls","xlsx") -> Glide.with(mContext).load(R.mipmap.excel).into(ivImage)
+                in listOf("doc", "docx") -> Glide.with(mContext).load(R.mipmap.word).into(ivImage)
+                in listOf("ppt", "pptx") -> Glide.with(mContext).load(R.mipmap.ppt).into(ivImage)
+                in listOf("xls", "xlsx") -> Glide.with(mContext).load(R.mipmap.excel).into(ivImage)
             }
 
             root.safeClicks().subscribe {
