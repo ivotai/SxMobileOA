@@ -39,6 +39,7 @@
         <activity android:name=".header.wply.WplyAct" />
         <activity android:name=".header.sbly.SblyAct" />
         <activity android:name=".header.ycsq.YcsqAct" />
+        <activity android:name=".header.swgl.SwglAct" />
         <activity android:name=".header.sbbf.detail.SbbfDetailAct" />
         <activity android:name=".header.wply.detail.WplyDetailAct" />
         <activity android:name=".header.sbly.detail.SblyDetailAct" />

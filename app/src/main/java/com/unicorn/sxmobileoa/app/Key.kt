@@ -127,6 +127,12 @@ object Key {
     const val hzsj_date = "hzsj_date"
     const val bcsm_input = "bcsm_input"
 
+    // swgl
+    const val blsx_input = "blsx_input"
+    const val mjcd_input = "mjcd_input"
+    const val hjcd_input = "hjcd_input"
+    const val remark_textarea = "remark_textarea"
+
     // wply
     const val sqrdh_input = "sqrdh_input"
     const val wpgs_input = "wpgs_input"

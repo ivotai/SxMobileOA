@@ -14,6 +14,7 @@ import com.unicorn.sxmobileoa.header.qjsq.QjsqAct
 import com.unicorn.sxmobileoa.header.sbbf.SbbfAct
 import com.unicorn.sxmobileoa.header.sbly.SblyAct
 import com.unicorn.sxmobileoa.header.sbwx.SbwxAct
+import com.unicorn.sxmobileoa.header.swgl.SwglAct
 import com.unicorn.sxmobileoa.header.wbfw.WbfwAct
 import com.unicorn.sxmobileoa.header.wply.WplyAct
 import com.unicorn.sxmobileoa.header.ycsq.YcsqAct
@@ -36,6 +37,7 @@ class DbxxAdapter(private val menu: Menu, private val type: String) : BaseQuickA
                 when (menu.text) {
                     "内部发文" -> cls = NbfwAct::class.java
                     "外部发文" -> cls = WbfwAct::class.java
+                    "收文管理" -> cls = SwglAct::class.java
                     "设备维修" -> cls = SbwxAct::class.java
                     "设备报废" -> cls = SbbfAct::class.java
                     "请假申请" -> cls = QjsqAct::class.java
