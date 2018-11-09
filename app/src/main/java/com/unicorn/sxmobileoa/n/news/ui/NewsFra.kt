@@ -13,7 +13,7 @@ class NewsFra : BaseFra() {
     override val layoutId = R.layout.title_recycler
 
     override fun initViews() {
-        titleBar.setTitle("新闻中心")
+        titleBar.setTitle("新闻中心", true)
         initRecyclerView()
     }
 

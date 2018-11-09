@@ -47,7 +47,9 @@
         <activity android:name=".n.process.ui.ProcessAct" />
         <activity android:name=".n.add.QjsqAddAct" />
         <activity android:name=".n.csx.ui.SpcsxAct" />
-        <activity android:name=".simple.main.ui.MainAct2"></activity>
+        <activity android:name=".simple.main.ui.MainAct2" />
+        <activity android:name=".n.news.ui.NewsDetailAct"/>
+        <activity android:name=".n.ggxx.ui.GgxxDetailAct"/>
     </application>
 
 </manifest>
