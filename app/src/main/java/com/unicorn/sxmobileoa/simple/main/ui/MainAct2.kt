@@ -1,7 +1,12 @@
 package com.unicorn.sxmobileoa.simple.main.ui
 
+import android.content.Intent
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.ui.BaseAct
+import com.unicorn.sxmobileoa.login.ui.LoginAct
+import com.unicorn.sxmobileoa.simple.main.network.loginout.LoginOut
+import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.act_main2.*
 import me.majiajie.pagerbottomtabstrip.item.NormalItemView
 
@@ -26,6 +31,15 @@ class MainAct2 : BaseAct() {
     }
 
     override fun bindIntent() {
+    }
+
+    override fun registerEvent() {
+        RxBus.get().registerEvent(LoginOut::class.java, this, Consumer {
+            LoginOut().toMaybe(this).subscribe { _ ->
+                startActivity(Intent(this, LoginAct::class.java))
+                finish()
+            }
+        })
     }
 
 }

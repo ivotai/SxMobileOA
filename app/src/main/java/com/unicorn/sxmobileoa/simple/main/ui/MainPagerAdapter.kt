@@ -2,6 +2,7 @@ package com.unicorn.sxmobileoa.simple.main.ui
 
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import com.unicorn.sxmobileoa.n.MyFra
 import com.unicorn.sxmobileoa.n.ggxx.ui.GgxxPagerFra
 import com.unicorn.sxmobileoa.n.news.ui.NewsFra
 
@@ -11,7 +12,7 @@ class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         0 -> HomeFra()
         1 -> GgxxPagerFra()
         2 -> NewsFra()
-        else -> NewsFra()
+        else -> MyFra()
     }
 
     override fun getCount() = 4
