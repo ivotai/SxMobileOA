@@ -4,6 +4,7 @@ import com.blankj.utilcode.util.FileUtils
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.config.ConfigModule
 import com.unicorn.sxmobileoa.app.mess.DialogUitls
 import com.unicorn.sxmobileoa.app.mess.FileUtils2
@@ -29,9 +30,9 @@ class AttachmentAdapter : BaseQuickAdapter<Fj, MyHolder>(R.layout.item_fj) {
             }
 
             root.safeClicks().subscribe {
-                val dz = item.fjdz
-                val lastIndex = dz.lastIndexOf("/")
-                val fileName = dz.substring(lastIndex + 1, dz.length)
+                val fullUrl = "http://192.168.20.100:8090/reqChaOne/attachRedirect.do?fybm=${Global.court!!.dm}&url=${item.fjdz}"
+                val lastIndex = fullUrl.lastIndexOf("/")
+                val fileName = fullUrl.substring(lastIndex + 1, fullUrl.length)
                 val file = File(ConfigModule.baseDir(), fileName)
                 if (file.exists()) {
                     FileUtils2.openFile(mContext, file = file)
@@ -39,7 +40,7 @@ class AttachmentAdapter : BaseQuickAdapter<Fj, MyHolder>(R.layout.item_fj) {
                     val mask = DialogUitls.showMask(mContext, "下载附件中...")
                     OkHttpUtils
                             .get()
-                            .url(item.fjdz)
+                            .url(fullUrl)
                             .build()
                             .execute(object : FileCallBack(ConfigModule.baseDir(), fileName) {
                                 override fun onResponse(response: File, id: Int) {
