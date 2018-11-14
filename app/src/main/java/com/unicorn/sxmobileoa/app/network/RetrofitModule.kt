@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.app.network
 
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
@@ -43,6 +44,7 @@ class RetrofitModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(loggingInterceptor: LoggingInterceptor): OkHttpClient = OkHttpClient.Builder()
+            .addNetworkInterceptor(StethoInterceptor())
             .addNetworkInterceptor(loggingInterceptor)
             // TODO 可能需要配置更多参数
             .readTimeout(10,TimeUnit.SECONDS)
