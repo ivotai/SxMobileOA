@@ -23,6 +23,9 @@ import io.reactivex.functions.Consumer
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.header_view_ycsq.view.*
 import org.joda.time.DateTime
+import org.joda.time.Days
+import org.joda.time.format.DateTimeFormat
+
 
 @SuppressLint("ViewConstructor")
 class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : FrameLayout(context), BasicInfoView, LayoutContainer {
@@ -36,7 +39,6 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
     }
 
     fun initViews(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) {
-        spd.set(Key.ts_input, "共1天")
 
         LayoutInflater.from(context).inflate(R.layout.header_view_ycsq, this, true)
         if (isCreate) divider.visibility = View.GONE
@@ -183,6 +185,17 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
             ToastUtils.showShort("返回时间不能为空")
             return false
         }
+        // TODO 验证时间，计算天数
+        val format = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm")
+        val cfsj = DateTime.parse(tvCfsj.trimText(), format)
+        val fhsj = DateTime.parse(tvFhsj.trimText(), format)
+        if (cfsj.isAfter(fhsj)) {
+            ToastUtils.showShort("出发时间不能晚于返回时间")
+            return false
+        }
+        val ts = Days.daysBetween(cfsj, fhsj).days
+        spd.set(Key.ts_input, "共${ts+1}天")
+
         if (tvCcrmc.trimText().isEmpty()) {
             ToastUtils.showShort("乘车人不能为空")
             return false
