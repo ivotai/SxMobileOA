@@ -8,7 +8,8 @@ import retrofit2.http.POST
 
 interface UniqueApi {
 
-    @POST("request.shtml")
+    @POST("redirect.do?fybm=R60")
+//    @POST("request.shtml")
     fun post(@Body requestBody: RequestBody): Single<Response>
 
 }

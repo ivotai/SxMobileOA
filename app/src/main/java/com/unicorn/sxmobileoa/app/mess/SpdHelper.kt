@@ -7,6 +7,7 @@ import com.unicorn.sxmobileoa.commitTask.model.TaskInstance
 import com.unicorn.sxmobileoa.commitTask.model.TaskPerson
 import com.unicorn.sxmobileoa.select.deptUser.model.User
 import com.unicorn.sxmobileoa.sequenceFlow.model.NextTaskSequenceFlow
+import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.FlowNode
 import com.unicorn.sxmobileoa.spd.model.SaveSpdResponse
 import com.unicorn.sxmobileoa.spd.model.Spd
@@ -60,9 +61,14 @@ class SpdHelper {
         return list.any { nodeId.contains(it) }
     }
 
-    fun buildTaskInstance(spd: Spd, response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, userList: List<User>): TaskInstance {
+    fun buildTaskInstance(menu: Menu, spd: Spd, response: SaveSpdResponse, sequenceFlow: NextTaskSequenceFlow, userList: List<User>): TaskInstance {
         val nodeId = spd.spdXx.nodeId
         val taskDefKey = sequenceFlow.nextTaskKey
+        var gd = -1
+        if (nodeId.contains("_GD") && menu.isGd == 1) {
+            gd = 1
+        }
+//        val gd = if (nodeId.contains("_GD")) (if (menu.isGd == 1) 1 else -1) else 0
         return TaskInstance(
                 processInstanceId = response.processInstancesId,
                 taskId = response.taskId,
@@ -89,7 +95,7 @@ class SpdHelper {
                 flowCode = response.flowCode,
                 nodeId = response.nodeId,
                 spyjId = response.spyjId,
-                gd = if (nodeId.contains("_GD")) 1 else 0,
+                gd = gd,
                 nextTaskKey = sequenceFlow.nextTaskKey,
                 tasktype = sequenceFlow.nextTaskType,
                 spdCode = response.spdCode,

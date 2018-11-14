@@ -21,8 +21,9 @@ class ConfigModule {
     @Provides
     @BaseUrl
     fun baseUrl() =
-            "http://154.0.21.194:8189/busiGate/"
-//            "http://154.0.66.127:8080/busiGate/"
+              "http://192.168.20.100:8090/reqChaOne/"
+//                "http://154.0.21.194:8189/busiGate/"
+//              "http://154.0.66.127:8080/busiGate/"
 
 }
 

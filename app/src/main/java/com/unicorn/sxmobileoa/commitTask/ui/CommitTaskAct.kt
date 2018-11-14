@@ -97,7 +97,7 @@ class CommitTaskAct : BaseAct() {
             ToastUtils.showShort("请选择流程节点及人员")
             return
         }
-        val taskInstance = SpdHelper().buildTaskInstance(model.spd, model.saveSpdResponse, temp.flow, temp.userList)
+        val taskInstance = SpdHelper().buildTaskInstance(model.menu,model.spd, model.saveSpdResponse, temp.flow, temp.userList)
         CommitTask(taskInstance).toMaybe(this).subscribe { _ ->
             ToastUtils.showShort("提交成功")
             RxBus.get().post(CommitTaskSuccess())

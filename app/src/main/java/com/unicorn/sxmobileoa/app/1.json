@@ -1,5 +1,13 @@
-[{"mlxx":[{"count":0,"flowCode":"OA_FLOW_GWGL_NBFW","moduleCode":"OA_FUN_GWGL","spdCode":"OA_SPD_GWGL_NBFW","text":"内部发文"},
-{"count":0,"flowCode":"OA_FLOW_GWGL_WBFW","moduleCode":"OA_FUN_GWGL","spdCode":"OA_SPD_GWGL_WBFW","text":"外部发文"}
-],"name":"公文管理"}
-
-,{"mlxx":[{"count":0,"flowCode":"OA_FLOW_XZZB_SBLY","moduleCode":"OA_FUN_XZZB","spdCode":"OA_SPD_XZZB_SBLY","text":"设备领用"},{"count":0,"flowCode":"OA_FLOW_XZZB_SBBF","moduleCode":"OA_FUN_XZZB","spdCode":"OA_SPD_XZZB_SBBF","text":"设备报废"},{"count":0,"flowCode":"OA_FLOW_XZZB_SBWX","moduleCode":"OA_FUN_XZZB","spdCode":"OA_SPD_XZZB_SBWX","text":"设备维修"}],"name":"行政装备"},{"mlxx":[{"count":4,"flowCode":"OA_FLOW_HQGL_YCSQ","moduleCode":"OA_FUN_HQGL","spdCode":"OA_SPD_HQGL_YCSQ","text":"用车申请"},{"count":1,"flowCode":"OA_FLOW_HQGL_WPLY","moduleCode":"OA_FUN_HQGL","spdCode":"OA_SPD_HQGL_WPLY","text":"物品领用"}],"name":"后勤管理"},{"mlxx":[{"count":1,"flowCode":"OA_FLOW_QJGL_GCGL","moduleCode":"OA_FUN_QJGL","spdCode":"OA_SPD_QJGL_GCSQ","text":"公出申请"},{"count":0,"flowCode":"OA_FLOW_QJGL_QJGL","moduleCode":"OA_FUN_QJGL","spdCode":"OA_SPD_QJGL_QJSQ","text":"请假申请"}],"name":"请假管理"},{"mlxx":[{"count":0,"flowCode":"OA_FLOW_JDGL_JDJLSQ","moduleCode":"OA_FUN_JDGL","spdCode":"OA_SPD_JDGL_JDJLSQ","text":"接待申请"}],"name":"接待管理"},{"mlxx":[{"count":0,"flowCode":"","moduleCode":"SP_CSX","spdCode":"","text":"超审限"},{"count":0,"flowCode":"","moduleCode":"MH_XWZX","spdCode":"","text":"新闻中心"},{"count":14,"flowCode":"","moduleCode":"MH_XXGG","spdCode":"","text":"消息公告"}],"name":"其他"}]
+{"approveConent":"审判意见","approved":true,"buinessCallBackParams":{"tdyy":""},
+   "catagoryCode":"OA_FLOW_HQGL_YCSQ","endTaskType":"","flowCode":"OA_FLOW_HQGL_YCSQ",
+  "fydm":"R80","gd":0,"moduleCode":"OA_FUN_HQGL","nextTaskKey":"End",
+  
+  "nextTaskPersonModel":[{"approveType":0,"nextLine":"sequenceFlow","nextPersonCode":"","nextPersonName":"",
+    "taskDefKey":"End","taskType":"end"}],
+    
+    "nodeId":"OA_FLOW_HQGL_YCSQ_BMSP",
+    "processInstanceId":"fdce59b7-e649-11e8-bb85-2e60ce96e903","reject":"","sfjsjd":true,
+    "spdCode":"OA_SPD_HQGL_YCSQ","spdId":"b7d31f01-7d7a-470a-bd7c-f593aae4243d",
+    "spyjId":"50b805b3-80ac-46fc-9f05-697d31f05041","taskId":"0369bdb4-e64a-11e8-bb85-2e60ce96e903",
+    "taskPerson":{"personCode":"366000000","personName":"系统管理员"},
+    "tasktype":"end","tzstate":false}

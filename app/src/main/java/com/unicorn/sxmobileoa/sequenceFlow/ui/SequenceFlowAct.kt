@@ -52,7 +52,9 @@ class SequenceFlowAct : BaseAct() {
     private fun getFlow() {
         SpdNext(model.param, model.spd).toMaybe(this)
                 .map { it.nextTask_sequenceFlow }
-                .subscribe { flowAdapter.setNewData(it) }
+                .subscribe {
+                    flowAdapter.setNewData(it)
+                }
     }
 
     private fun setOperation() {

@@ -8,6 +8,7 @@ data class Menu(
         val spdCode: String,
         val text: String,
         val count: Int,
-        var resId: Int
+        var resId: Int,
+        val isGd:Int
 ) : Serializable
 

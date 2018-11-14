@@ -36,6 +36,8 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
     }
 
     fun initViews(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) {
+        spd.set(Key.ts_input, "共1天")
+
         LayoutInflater.from(context).inflate(R.layout.header_view_ycsq, this, true)
         if (isCreate) divider.visibility = View.GONE
         preparePairs()
