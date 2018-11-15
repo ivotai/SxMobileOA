@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import com.unicorn.sxmobileoa.BuildConfig
-import com.unicorn.sxmobileoa.app.config.BaseUrl
+import com.unicorn.sxmobileoa.app.config.ConfigModule
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -47,15 +47,15 @@ class RetrofitModule {
             .addNetworkInterceptor(StethoInterceptor())
             .addNetworkInterceptor(loggingInterceptor)
             // TODO 可能需要配置更多参数
-            .readTimeout(10,TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
             .connectTimeout(10, TimeUnit.SECONDS)
             .build()
 
     @Suppress("DEPRECATION")
     @Singleton
     @Provides
-    fun provideRetrofit(@BaseUrl baseUrl: String, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+            .baseUrl(ConfigModule.baseUrl)
             .client(okHttpClient)
             .addConverterFactory(SimpleXmlConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

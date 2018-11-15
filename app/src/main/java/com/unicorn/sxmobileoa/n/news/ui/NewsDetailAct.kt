@@ -7,6 +7,7 @@ import android.webkit.WebViewClient
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.config.ConfigModule
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import kotlinx.android.synthetic.main.act_news_detail.*
 
@@ -26,7 +27,7 @@ class NewsDetailAct : BaseAct() {
     @SuppressLint("CheckResult", "SetJavaScriptEnabled")
     private fun getDetail() {
         val contentId = intent.getStringExtra(Key.contentId)
-        val url = "http://192.168.20.100:8090/reqChaOne/XwViewServlet.do?fybm=${Global.court!!.dm}&contentid=$contentId"
+        val url = "${ConfigModule.baseUrl}XwViewServlet.do?fybm=${Global.court!!.dm}&contentid=$contentId"
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 return false

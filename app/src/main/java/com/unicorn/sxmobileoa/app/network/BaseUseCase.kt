@@ -27,7 +27,7 @@ abstract class BaseUseCase<Result> {
     fun toMaybe(lifecycleOwner: LifecycleOwner): Maybe<Result> {
         val requestXml = toXml(request)
         val requestBody = RequestBody.create(MediaType.parse("text/xml"), requestXml)
-        return ComponentHolder.appComponent.getUniqueApi().post(requestBody)
+        return ComponentHolder.appComponent.getUniqueApi().post(Global.court?.dm ?: "R60", requestBody)
                 .map {
                     return@map toSimpleResponse(it)
                 }

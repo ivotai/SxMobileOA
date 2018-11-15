@@ -2,7 +2,6 @@ package com.unicorn.sxmobileoa.app.config
 
 import android.os.Environment
 import dagger.Module
-import dagger.Provides
 import java.io.File
 
 @Module
@@ -15,15 +14,12 @@ class ConfigModule {
             if (!baseDir.exists()) baseDir.mkdir()
             return baseDir.absolutePath
         }
+
+        const val baseUrl = "http://192.168.20.100:8090/reqChaOne/"
+
+        const val baseAttachmentUrl = "${baseUrl}attachRedirect.do"
+
     }
-
-
-    @Provides
-    @BaseUrl
-    fun baseUrl() =
-              "http://192.168.20.100:8090/reqChaOne/"
-//                "http://154.0.21.194:8189/busiGate/"
-//              "http://154.0.66.127:8080/busiGate/"
 
 }
 

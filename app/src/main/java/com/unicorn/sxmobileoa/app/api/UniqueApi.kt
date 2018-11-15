@@ -5,11 +5,12 @@ import io.reactivex.Single
 import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface UniqueApi {
 
-    @POST("redirect.do?fybm=R60")
+    @POST("redirect.do")
 //    @POST("request.shtml")
-    fun post(@Body requestBody: RequestBody): Single<Response>
+    fun post(@Query("fybm") fybm: String, @Body requestBody: RequestBody): Single<Response>
 
 }

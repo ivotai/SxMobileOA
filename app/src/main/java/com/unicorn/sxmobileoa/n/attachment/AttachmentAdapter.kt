@@ -30,7 +30,7 @@ class AttachmentAdapter : BaseQuickAdapter<Fj, MyHolder>(R.layout.item_fj) {
             }
 
             root.safeClicks().subscribe {
-                val fullUrl = "http://192.168.20.100:8090/reqChaOne/attachRedirect.do?fybm=${Global.court!!.dm}&url=${item.fjdz}"
+                val fullUrl = "${ConfigModule.baseAttachmentUrl}?fybm=${Global.court!!.dm}&url=${item.fjdz}"
                 val lastIndex = fullUrl.lastIndexOf("/")
                 val fileName = fullUrl.substring(lastIndex + 1, fullUrl.length)
                 val file = File(ConfigModule.baseDir(), fileName)

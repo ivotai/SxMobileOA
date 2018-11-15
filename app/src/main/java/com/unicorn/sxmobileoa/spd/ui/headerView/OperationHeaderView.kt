@@ -10,6 +10,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.blankj.utilcode.util.ToastUtils
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Global
 import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.config.ConfigModule
 import com.unicorn.sxmobileoa.app.mess.DialogUitls
@@ -42,9 +43,9 @@ class OperationHeaderView(context: Context, val spd: Spd) : FrameLayout(context)
                     return@subscribe
                 }
 
-                val dz = it.wjdz
-                val lastIndex = dz.lastIndexOf("/")
-                val fileName = dz.substring(lastIndex + 1, dz.length)
+                val fullUrl = "${ConfigModule.baseAttachmentUrl}?fybm=${Global.court!!.dm}&url=${it.wjdz}"
+                val lastIndex = fullUrl.lastIndexOf("/")
+                val fileName = fullUrl.substring(lastIndex + 1, fullUrl.length)
                 val file = File(ConfigModule.baseDir(), fileName)
                 if (file.exists()) {
                     FileUtils2.openFile(context, file = file)
@@ -52,7 +53,7 @@ class OperationHeaderView(context: Context, val spd: Spd) : FrameLayout(context)
                     val mask = DialogUitls.showMask(context = context, title = "下载正文中...")
                     OkHttpUtils
                             .get()
-                            .url(it.wjdz)
+                            .url(fullUrl)
                             .build()
                             .execute(object : FileCallBack(ConfigModule.baseDir(), fileName) {
                                 override fun onResponse(response: File, id: Int) {
