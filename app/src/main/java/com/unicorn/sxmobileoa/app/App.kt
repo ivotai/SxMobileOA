@@ -3,14 +3,11 @@ package com.unicorn.sxmobileoa.app
 import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
-import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.facebook.stetho.Stetho
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
-import io.reactivex.plugins.RxJavaPlugins
 import net.danlew.android.joda.JodaTimeAndroid
-import java.net.SocketTimeoutException
 
 class App : Application() {
 
@@ -28,13 +25,13 @@ class App : Application() {
     }
 
     private fun setErrorHandler() {
-        RxJavaPlugins.setErrorHandler {
-            if (it is SocketTimeoutException || it.cause is SocketTimeoutException) {
-                ToastUtils.showShort("连接超时")
-            } else {
-                ToastUtils.showShort(it.cause.toString())
-            }
-        }
+//        RxJavaPlugins.setErrorHandler {
+//            if (it is SocketTimeoutException || it.cause is SocketTimeoutException) {
+//                ToastUtils.showShort("连接超时")
+//            } else {
+//                ToastUtils.showShort(it.cause.toString())
+//            }
+//        }
     }
 
     override fun attachBaseContext(base: Context?) {

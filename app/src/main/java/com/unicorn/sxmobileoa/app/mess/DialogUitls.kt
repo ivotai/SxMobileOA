@@ -13,5 +13,14 @@ class DialogUitls{
                     .show()
 
         }
+
+        fun showMask2(context: Context,title:String):MaterialDialog{
+            return MaterialDialog.Builder(context)
+                    .title(title)
+                    .progress(false,100)
+                    .cancelable(false)
+                    .show()
+
+        }
     }
 }
