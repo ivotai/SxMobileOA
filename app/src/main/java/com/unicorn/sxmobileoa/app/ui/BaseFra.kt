@@ -16,8 +16,8 @@ abstract class BaseFra : SupportFragment(), ActOrFra {
         registerEvent()
     }
 
-    override fun onSupportVisible() {
-        super.onSupportVisible()
+    override fun onLazyInitView(savedInstanceState: Bundle?) {
+        super.onLazyInitView(savedInstanceState)
         bindIntent()
     }
 

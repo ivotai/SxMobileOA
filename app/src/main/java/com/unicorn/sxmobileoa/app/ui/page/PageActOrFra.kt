@@ -37,6 +37,7 @@ interface PageActOrFra<Model> : ActOrFra {
             mAdapter!!.bindToRecyclerView(this)
             mAdapter!!.setEnableLoadMore(true)
             mAdapter!!.setOnLoadMoreListener({ loadNextPage() }, mRecyclerView)
+            mAdapter!!.setEmptyView(R.layout.empty_view,mRecyclerView)
         }
     }
 

@@ -6,6 +6,7 @@ import android.support.multidex.MultiDex
 import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.facebook.stetho.Stetho
+import com.google.gson.JsonSyntaxException
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import io.reactivex.plugins.RxJavaPlugins
@@ -31,8 +32,9 @@ class App : Application() {
         RxJavaPlugins.setErrorHandler {
             if (it is SocketTimeoutException || it.cause is SocketTimeoutException) {
                 ToastUtils.showShort("连接超时")
-            } else {
-//                ToastUtils.showShort(it.cause.toString())
+            }
+            if (it.cause is JsonSyntaxException){
+                ToastUtils.showShort("解析异常")
             }
         }
     }

@@ -24,6 +24,7 @@ class NewsFra : BaseFra() {
             layoutManager = LinearLayoutManager(context)
             mAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
+            mAdapter.setEmptyView(R.layout.empty_view,this)
         }
     }
 
