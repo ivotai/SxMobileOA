@@ -1,20 +1,24 @@
 package com.unicorn.sxmobileoa.app.ui
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import me.yokeyword.fragmentation.SupportFragment
 
-abstract class BaseFra : Fragment(), ActOrFra {
+abstract class BaseFra : SupportFragment(), ActOrFra {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View = inflater.inflate(layoutId, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initArguments()
         initViews()
-        bindIntent()
         registerEvent()
+    }
+
+    override fun onSupportVisible() {
+        super.onSupportVisible()
+        bindIntent()
     }
 
     override fun initArguments() {

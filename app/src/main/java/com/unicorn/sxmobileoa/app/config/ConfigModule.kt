@@ -19,6 +19,8 @@ class ConfigModule {
 
         const val baseAttachmentUrl = "${baseUrl}attachRedirect.do"
 
+        const val defaultFydm = "R80"
+
     }
 
 }

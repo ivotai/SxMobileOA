@@ -30,14 +30,14 @@ class LoginAct : BaseAct() {
     @SuppressLint("SetTextI18n")
     override fun initViews() {
 //        etPassword.setText("withub4l")
-        etPassword.setText("zyadmin")
+//        etPassword.setText("zyadmin")
     }
 
     override fun bindIntent() {
         observeInput()
         tvCourt.safeClicks().subscribe { startActivity(Intent(this@LoginAct, CourtAct::class.java)) }
         btnLogin.safeClicks().subscribe {
-            showListDialog()
+            login()
         }
         restoreInputInfo()
     }
