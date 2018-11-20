@@ -5,13 +5,11 @@ import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.BaseUseCase
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import com.unicorn.sxmobileoa.n.ggxx.model.Ggxx
-import com.unicorn.sxmobileoa.simple.dbxx.model.Dbxx
-import com.unicorn.sxmobileoa.simple.main.model.Menu
 
 class GetGgxx(pageNo: Int, isRead: String) : BaseUseCase<Page<Ggxx>>() {
 
     init {
-        request = GgxxRequest(pageNo,isRead)
+        request = GgxxRequest(pageNo, isRead)
     }
 
     override fun toResult(json: String): Page<Ggxx> {

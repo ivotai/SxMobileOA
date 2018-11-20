@@ -1,14 +1,15 @@
 package com.unicorn.sxmobileoa.n.ggxx.model
 
-data class Ggxx(
+data class GgxxDetail(
     val content: String,
     val createDate: String,
-    val fj: String,
-    val fjlist: List<Any>,
-    val fjname: String,
+    val fjlist: List<Fjlist>,
     val id: String,
-    val msgType: String,
-    val originate: String,
     val sendUserName: String,
     val title: String
+)
+
+data class Fjlist(
+    val fj: String,
+    val fjname: String
 )

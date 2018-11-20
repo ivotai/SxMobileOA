@@ -7,7 +7,7 @@ import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.n.attachment.AttachmentAdapter
-import com.unicorn.sxmobileoa.n.ggxx.model.Ggxx
+import com.unicorn.sxmobileoa.n.ggxx.model.GgxxDetail
 import com.unicorn.sxmobileoa.n.ggxx.network.GetGgxxDetail
 import com.unicorn.sxmobileoa.spd.model.Fj
 import kotlinx.android.synthetic.main.title_recycler.*
@@ -37,18 +37,13 @@ class GgxxDetailAct : BaseAct() {
 
     @SuppressLint("CheckResult")
     private fun getDetail() {
-        // TODO GgxxHeaderView
         val id = intent.getStringExtra(Key.id)
-        GetGgxxDetail(id).toMaybe(this).subscribe { setData(ggxx = it) }
+        GetGgxxDetail(id).toMaybe(this).subscribe { setData(detail = it) }
     }
 
-    private fun setData(ggxx: Ggxx) {
-        ggxx.apply {
-            filenameArr.zip(filepathArr) { name, path -> Fj(fjmc = name, fjdz = path) }
-                    .let { mAdapter.setNewData(it) }
-            val headerView = GgxxHeaderView(this@GgxxDetailAct,ggxx)
-            mAdapter.addHeaderView(headerView)
-        }
+    private fun setData(detail: GgxxDetail) {
+        detail.fjlist.map { Fj(fjmc = it.fjname, fjdz = it.fj) }.let { mAdapter.setNewData(it) }
+        mAdapter.addHeaderView(GgxxHeaderView(this@GgxxDetailAct, detail))
     }
 
 }
