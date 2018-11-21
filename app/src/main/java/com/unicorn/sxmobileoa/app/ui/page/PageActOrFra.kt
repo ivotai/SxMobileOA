@@ -1,5 +1,6 @@
 package com.unicorn.sxmobileoa.app.ui.page
 
+import android.annotation.SuppressLint
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -10,6 +11,7 @@ import com.unicorn.sxmobileoa.app.ui.ActOrFra
 import com.unicorn.sxmobileoa.app.ui.page.model.Page
 import io.reactivex.Maybe
 
+@SuppressLint("CheckResult")
 interface PageActOrFra<Model> : ActOrFra {
 
     val mRecyclerView: RecyclerView
