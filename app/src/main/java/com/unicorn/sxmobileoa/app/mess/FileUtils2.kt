@@ -26,7 +26,6 @@ class FileUtils2 {
                 context.startActivity(intent)
                 //	    Intent.createChooser(intent, "请选择对应的软件打开该附件！");
             } catch (e: ActivityNotFoundException) {
-                // TODO: handle exception
                 Toast.makeText(context, "sorry附件不能打开，请下载相关软件！", 500).show()
             }
 

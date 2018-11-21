@@ -185,7 +185,7 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
             ToastUtils.showShort("返回时间不能为空")
             return false
         }
-        // TODO 验证时间，计算天数
+        //  验证时间，计算天数
         val format = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm")
         val cfsj = DateTime.parse(tvCfsj.trimText(), format)
         val fhsj = DateTime.parse(tvFhsj.trimText(), format)

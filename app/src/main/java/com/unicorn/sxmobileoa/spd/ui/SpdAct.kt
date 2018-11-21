@@ -119,7 +119,6 @@ abstract class SpdAct : BaseAct() {
 //            // TODO 不采用 textChange 方式 时刻保存到 spd 而是最后再保存
 //            if (!basicInfoView.saveToSpd(spd)) return@subscribe
 //            SaveSpd(spd).toMaybe(this@SpdAct).subscribe {
-//                // todo 拼凑 param
 //                model.param = Param(nodeId = it.nodeId, primaryId = it.primaryId, taskId = it.taskId)
 //
 //                if (!isCreate)

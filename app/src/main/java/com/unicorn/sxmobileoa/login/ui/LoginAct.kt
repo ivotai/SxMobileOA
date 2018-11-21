@@ -26,7 +26,6 @@ class LoginAct : BaseAct() {
 
     override val layoutId = R.layout.act_login
 
-    // TODO DELETE
     @SuppressLint("SetTextI18n")
     override fun initViews() {
 //        etPassword.setText("withub4l")

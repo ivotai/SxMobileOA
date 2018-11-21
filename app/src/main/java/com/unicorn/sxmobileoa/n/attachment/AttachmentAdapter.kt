@@ -27,7 +27,7 @@ class AttachmentAdapter : BaseQuickAdapter<Fj, MyHolder>(R.layout.item_fj) {
                 in listOf("doc", "docx") -> Glide.with(mContext).load(R.mipmap.word).into(ivImage)
                 in listOf("ppt", "pptx") -> Glide.with(mContext).load(R.mipmap.ppt).into(ivImage)
                 in listOf("xls", "xlsx") -> Glide.with(mContext).load(R.mipmap.excel).into(ivImage)
-                in listOf("jpg", "jpeg", "png") -> Glide.with(mContext).load(R.mipmap.img).into(ivImage) // TODO
+                in listOf("jpg", "jpeg", "png") -> Glide.with(mContext).load(R.mipmap.img).into(ivImage)
             }
 
             root.safeClicks().subscribe {

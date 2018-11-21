@@ -8,7 +8,6 @@ open class MaybeRequest(busiCode: String) : request(busiCode) {
 
     init {
         addParameter(Key.fydm, (Global.court?.dm ?: ConfigModule.defaultFydm))
-        // TODO DELETE
         Global.loginInfo?.userId?.let { addParameter(Key.userId, it) }
     }
 
