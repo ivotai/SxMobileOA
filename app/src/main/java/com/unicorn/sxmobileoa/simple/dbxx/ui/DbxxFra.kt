@@ -33,7 +33,10 @@ class DbxxFra : BaseFra(), PageActOrFra<Dbxx> {
                 .build().let { mRecyclerView.addItemDecoration(it) }
     }
 
-    override fun loadPage(pageNo: Int): Maybe<Page<Dbxx>> = GetDbxx(pageNo, menu, type).toMaybe(this)
+    override fun loadPage(pageNo: Int): Maybe<Page<Dbxx>> = GetDbxx(pageNo, menu, type).toMaybe(this).doAfterSuccess {
+        val index = if (type.toInt() == 1) 0 else 1
+        RxBus.get().post(IndexCount(index, it.total))
+    }
 
     override fun registerEvent() {
         RxBus.get().registerEvent(CommitTaskSuccess::class.java, this, Consumer {

@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import com.unicorn.sxmobileoa.R
 import com.unicorn.sxmobileoa.app.Key
+import com.unicorn.sxmobileoa.app.mess.RxBus
 import com.unicorn.sxmobileoa.app.safeClicks
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.qjsq.QjsqAct
 import com.unicorn.sxmobileoa.header.ycsq.YcsqAct
 import dart.DartModel
+import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.title_tab_viewpager.*
 
 class DbxxAct : BaseAct() {
@@ -33,7 +35,14 @@ class DbxxAct : BaseAct() {
         }
     }
 
-    // ===================== ignore =====================
+    override fun registerEvent() {
+        RxBus.get().registerEventOnMain(IndexCount::class.java, this, Consumer {
+            val text = if (it.index == 0) "待办(" else "已办("
+            val tab = tabLayout.getTabAt(it.index)
+            tab!!.text = "$text${it.count})"
+        })
+    }
+// ===================== ignore =====================
 
     @DartModel
     lateinit var model: DbxxActNavigationModel

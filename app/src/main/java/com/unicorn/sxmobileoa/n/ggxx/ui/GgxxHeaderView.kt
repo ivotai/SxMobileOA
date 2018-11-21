@@ -22,6 +22,7 @@ class GgxxHeaderView(context: Context, detail: GgxxDetail) : FrameLayout(context
     fun initViews(context: Context, detail: GgxxDetail) {
         LayoutInflater.from(context).inflate(R.layout.header_view_ggxx, this, true)
         detail.apply {
+            tvTitle.text = title
             webView.loadDataWithBaseURL(null, content, "text/html", "utf-8", null)
             tvSendUserName.text = "发布人:$sendUserName"
             tvCreateDate.text = createDate
