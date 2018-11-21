@@ -17,20 +17,21 @@ class SpcsxAct : BaseAct() {
         initRecyclerView()
     }
 
-    private val csxAdapter = CsxAdapter()
+    private val mAdapter = CsxAdapter()
 
     private fun initRecyclerView() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@SpcsxAct)
-            csxAdapter.bindToRecyclerView(this)
+            mAdapter.bindToRecyclerView(this)
             addDefaultItemDecoration()
+            mAdapter.setEmptyView(R.layout.empty_view,this)
         }
     }
 
     @SuppressLint("CheckResult")
     override fun bindIntent() {
         GetSpcsx().toMaybe(this).subscribe {
-            csxAdapter.setNewData(it)
+            mAdapter.setNewData(it)
         }
     }
 

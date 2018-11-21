@@ -23,7 +23,7 @@ interface PageActOrFra<Model> : ActOrFra {
     fun loadPage(pageNo: Int): Maybe<Page<Model>>
 
     companion object {
-        val rows get() = 5
+        val rows get() = 10
     }
 
     private val pageNo

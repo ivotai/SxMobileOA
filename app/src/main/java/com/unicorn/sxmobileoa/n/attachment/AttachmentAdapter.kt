@@ -27,6 +27,7 @@ class AttachmentAdapter : BaseQuickAdapter<Fj, MyHolder>(R.layout.item_fj) {
                 in listOf("doc", "docx") -> Glide.with(mContext).load(R.mipmap.word).into(ivImage)
                 in listOf("ppt", "pptx") -> Glide.with(mContext).load(R.mipmap.ppt).into(ivImage)
                 in listOf("xls", "xlsx") -> Glide.with(mContext).load(R.mipmap.excel).into(ivImage)
+                in listOf("jpg", "jpeg", "png") -> Glide.with(mContext).load(R.mipmap.img).into(ivImage) // TODO
             }
 
             root.safeClicks().subscribe {
@@ -34,25 +35,25 @@ class AttachmentAdapter : BaseQuickAdapter<Fj, MyHolder>(R.layout.item_fj) {
                 val lastIndex = fullUrl.lastIndexOf("/")
                 val fileName = fullUrl.substring(lastIndex + 1, fullUrl.length)
                 val file = File(ConfigModule.baseDir(), fileName)
-                if (file.exists()) {
-                    FileUtils2.openFile(mContext, file = file)
-                } else {
-                    val mask = DialogUitls.showMask(mContext, "下载附件中...")
-                    OkHttpUtils
-                            .get()
-                            .url(fullUrl)
-                            .build()
-                            .execute(object : FileCallBack(ConfigModule.baseDir(), fileName) {
-                                override fun onResponse(response: File, id: Int) {
-                                    mask.dismiss()
-                                    FileUtils2.openFile(mContext, file = response)
-                                }
+//                if (file.exists()) {
+//                    FileUtils2.openFile(mContext, file = file)
+//                } else {
+                val mask = DialogUitls.showMask(mContext, "下载附件中...")
+                OkHttpUtils
+                        .get()
+                        .url(fullUrl)
+                        .build()
+                        .execute(object : FileCallBack(ConfigModule.baseDir(), fileName) {
+                            override fun onResponse(response: File, id: Int) {
+                                mask.dismiss()
+                                FileUtils2.openFile(mContext, file = response)
+                            }
 
-                                override fun onError(call: Call?, e: Exception?, id: Int) {
-                                    mask.dismiss()
-                                }
-                            })
-                }
+                            override fun onError(call: Call?, e: Exception?, id: Int) {
+                                mask.dismiss()
+                            }
+                        })
+//                }
             }
         }
     }
