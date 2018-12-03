@@ -9,6 +9,7 @@ import com.facebook.stetho.Stetho
 import com.google.gson.JsonSyntaxException
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
+import io.reactivex.exceptions.OnErrorNotImplementedException
 import io.reactivex.plugins.RxJavaPlugins
 import net.danlew.android.joda.JodaTimeAndroid
 import java.net.SocketTimeoutException
@@ -30,11 +31,11 @@ class App : Application() {
 
     private fun setErrorHandler() {
         RxJavaPlugins.setErrorHandler {
-            if (it is SocketTimeoutException || it.cause is SocketTimeoutException) {
-                ToastUtils.showShort("连接超时")
-            }
-            if (it.cause is JsonSyntaxException){
-                ToastUtils.showShort("解析异常")
+            if (it is OnErrorNotImplementedException) {
+                when (it.cause) {
+                    is SocketTimeoutException -> ToastUtils.showShort("连接超时")
+                    is JsonSyntaxException -> ToastUtils.showShort("解析异常")
+                }
             }
         }
     }
