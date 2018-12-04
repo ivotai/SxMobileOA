@@ -194,15 +194,17 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
             return false
         }
         val ts = Days.daysBetween(cfsj, fhsj).days
-        spd.set(Key.ts_input, "共${ts+1}天")
+        spd.set(Key.ts_input, "共${ts + 1}天")
 
         if (tvCcrmc.trimText().isEmpty()) {
             ToastUtils.showShort("乘车人不能为空")
             return false
         }
-        if (tvCllx.trimText().isEmpty()) {
-            ToastUtils.showShort("车辆类型不能为空")
-            return false
+        if (Global.court!!.dm != "R00") {
+            if (tvCllx.trimText().isEmpty()) {
+                ToastUtils.showShort("车辆类型不能为空")
+                return false
+            }
         }
         if (tvKwdd.trimText().isEmpty()) {
             ToastUtils.showShort("开往地点不能为空")
