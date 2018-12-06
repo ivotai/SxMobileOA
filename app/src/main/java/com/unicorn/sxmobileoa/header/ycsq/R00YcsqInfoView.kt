@@ -21,14 +21,14 @@ import com.unicorn.sxmobileoa.simple.main.model.Menu
 import com.unicorn.sxmobileoa.spd.model.Spd
 import io.reactivex.functions.Consumer
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.header_view_ycsq.view.*
+import kotlinx.android.synthetic.main.header_view_ycsq_r00.view.*
 import org.joda.time.DateTime
 import org.joda.time.Days
 import org.joda.time.format.DateTimeFormat
 
 
 @SuppressLint("ViewConstructor")
-class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : FrameLayout(context), BasicInfoView, LayoutContainer {
+class R00YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : FrameLayout(context), BasicInfoView, LayoutContainer {
 
     override val containerView = this
 
@@ -40,7 +40,7 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
 
     fun initViews(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) {
 
-        LayoutInflater.from(context).inflate(R.layout.header_view_ycsq, this, true)
+        LayoutInflater.from(context).inflate(R.layout.header_view_ycsq_r00, this, true)
         if (isCreate) divider.visibility = View.GONE
         preparePairs()
         renderView(menu, spd, isCreate)
@@ -55,7 +55,6 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
             add(PAIR(tvCfsj, Key.cfsj_input))
             add(PAIR(tvFhsj, Key.fhsj_input))
             add(PAIR(tvCcrmc, Key.ccrmc_input))
-            add(PAIR(tvCllx, Key.cllx_input))
             add(PAIR(tvYcrs, Key.ycrs_input))
             add(PAIR(tvCcsj1, Key.ccsjxm1_input))
             add(PAIR(tvCcsj2, Key.ccsjxm2_input))
@@ -106,16 +105,15 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
     private fun canEdit(spd: Spd, isCreate: Boolean) {
         if (isCreate) {
             tvBt.isEnabled = true
-            tvYcsy.isEnabled = true
             tvHbmc.clickDept(Key.hbmc_input)
             tvSqrdh.isEnabled = true
             tvCfsj.clickDate()
             tvFhsj.clickDate()
             tvCcrmc.clickDeptUser(Key.textResult, Key.ccrmc_input)
-            tvCllx.safeClicks().subscribe {
+            tvYcsy.safeClicks().subscribe {
                 context.startActivity(Intent(context, CllxAct::class.java).apply {
                     putExtra(Key.key, Key.cllx_input)
-                    putExtra(Key.title,"选择车辆类型")
+                    putExtra(Key.title,"选择用车事由")
                 })
             }
             tvKwdd.isEnabled = true
@@ -136,7 +134,7 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
             when (it.key) {
                 Key.hbmc_input -> tvHbmc
                 Key.ccrmc_input -> tvCcrmc
-                else -> tvCllx
+                else -> tvYcsy
             }.text = it.result
         })
         RxBus.get().registerEvent(CodeResult::class.java, context as LifecycleOwner, Consumer {
@@ -200,12 +198,6 @@ class YcsqInfoView(context: Context, menu: Menu, spd: Spd, isCreate: Boolean) : 
         if (tvCcrmc.trimText().isEmpty()) {
             ToastUtils.showShort("乘车人不能为空")
             return false
-        }
-        if (Global.court!!.dm != "R00") {
-            if (tvCllx.trimText().isEmpty()) {
-                ToastUtils.showShort("车辆类型不能为空")
-                return false
-            }
         }
         if (tvKwdd.trimText().isEmpty()) {
             ToastUtils.showShort("开往地点不能为空")

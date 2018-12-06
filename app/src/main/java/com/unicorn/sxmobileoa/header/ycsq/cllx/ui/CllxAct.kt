@@ -2,6 +2,7 @@ package com.unicorn.sxmobileoa.header.ycsq.cllx.ui
 
 import android.support.v7.widget.LinearLayoutManager
 import com.unicorn.sxmobileoa.R
+import com.unicorn.sxmobileoa.app.Key
 import com.unicorn.sxmobileoa.app.addDefaultItemDecoration
 import com.unicorn.sxmobileoa.app.ui.BaseAct
 import com.unicorn.sxmobileoa.header.ycsq.cllx.model.CllxActNavigationModel
@@ -13,7 +14,8 @@ import kotlinx.android.synthetic.main.title_recycler.*
 class CllxAct : BaseAct() {
 
     override fun initViews() {
-        titleBar.setTitle("选择车辆类型")
+        val title = intent.getStringExtra(Key.title)
+        titleBar.setTitle(title)
         initRecyclerView()
     }
 
