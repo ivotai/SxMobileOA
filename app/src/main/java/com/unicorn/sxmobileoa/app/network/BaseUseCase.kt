@@ -38,8 +38,8 @@ abstract class BaseUseCase<Result> {
                 }
                 .filter {
                     if (it.message == 2) {
-                        val context = lifecycleOwner as Context
                         ToastUtils.showShort("登录超时")
+                        val context = lifecycleOwner as Context
                         context.startActivity(Intent(context, LoginAct::class.java))
                     }
                     it.message != 2

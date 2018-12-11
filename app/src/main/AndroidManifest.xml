@@ -13,9 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity
-            android:name=".login.ui.LoginAct"
-            android:launchMode="singleTask">
+        <activity android:name=".login.ui.LoginAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,9 +46,11 @@
         <activity android:name=".n.process.ui.ProcessAct" />
         <activity android:name=".n.add.QjsqAddAct" />
         <activity android:name=".n.csx.ui.SpcsxAct" />
-        <activity android:name=".simple.main.ui.MainAct2" />
-        <activity android:name=".n.news.ui.NewsDetailAct"/>
-        <activity android:name=".n.ggxx.ui.GgxxDetailAct"/>
+        <activity
+            android:name=".simple.main.ui.MainAct2"
+            android:launchMode="singleTask" />
+        <activity android:name=".n.news.ui.NewsDetailAct" />
+        <activity android:name=".n.ggxx.ui.GgxxDetailAct" />
     </application>
 
 </manifest>
