@@ -11,6 +11,7 @@ import com.unicorn.sxmobileoa.app.di.ComponentHolder
 import com.unicorn.sxmobileoa.app.network.model.Response
 import com.unicorn.sxmobileoa.app.network.model.SimpleResponse
 import com.unicorn.sxmobileoa.app.network.model.request
+import com.unicorn.sxmobileoa.app.ui.BaseFra
 import com.unicorn.sxmobileoa.login.ui.LoginAct
 import io.reactivex.Maybe
 import okhttp3.MediaType
@@ -39,8 +40,8 @@ abstract class BaseUseCase<Result> {
                 .filter {
                     if (it.message == 2) {
                         ToastUtils.showShort("登录超时")
-                        val context = lifecycleOwner as Context
-                        context.startActivity(Intent(context, LoginAct::class.java))
+                        val context = if(lifecycleOwner is BaseFra) lifecycleOwner.context else lifecycleOwner as Context
+                        context!!.startActivity(Intent(context, LoginAct::class.java))
                     }
                     it.message != 2
                 }

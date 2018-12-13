@@ -28,6 +28,12 @@ class LoginAct : BaseAct() {
 
     @SuppressLint("SetTextI18n")
     override fun initViews() {
+        if (intent.flags and Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT != 0) {
+            finish()
+            return
+        }
+
+
 //        etPassword.setText("withub4l")
 //        etPassword.setText("zyadmin")
     }
